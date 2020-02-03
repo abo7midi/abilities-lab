@@ -5,19 +5,15 @@
  */
 class examController extends Controller
 {
-
     public function index()
     {
         $this->model('Exam');
-        $this->view('admin'.DIRECTORY_SEPARATOR.'exam',['exam'=>$this->model->all()]);
+        $this->view('home'.DIRECTORY_SEPARATOR.'exam',['exam'=>$this->model->all()]);
 
         $this->view->pageTitle='exam';
         $this->view->render();
 
     }
-
-
-
 
     public function add()
     {
@@ -94,7 +90,7 @@ class examController extends Controller
                 }
             }
         }
-        $this->view('admin'.DIRECTORY_SEPARATOR.'addExam',["category"=>$category->allSubCate()]);
+        $this->view('home'.DIRECTORY_SEPARATOR.'addExam',["category"=>$category->allSubCate()]);
         $this->view->pageTitle='exam';
         $this->view->render();
     }
@@ -130,7 +126,7 @@ class examController extends Controller
                         }
                     }
                     if($stateChoice==1){
-                        $this->view('admin'.DIRECTORY_SEPARATOR.'takeExam',["q"=>$Questions,"choice"=>Helper::getChoicesOfQuestions($Questions),"duration"=>$oneExamTime,"ifSubmit"=>$ifSubmit]);
+                        $this->view('home'.DIRECTORY_SEPARATOR.'takeExam',["q"=>$Questions,"choice"=>Helper::getChoicesOfQuestions($Questions),"duration"=>$oneExamTime,"ifSubmit"=>$ifSubmit]);
                         $this->view->pageTitle='take Exam';
                         $this->view->render();
                         return '';
@@ -152,7 +148,7 @@ class examController extends Controller
                     header("location:/home/index");
                 }
             }
-        $this->view('admin'.DIRECTORY_SEPARATOR.'takeExam',["q"=>$Questions,"choice"=>Helper::getChoicesOfQuestions($Questions),"duration"=>$oneExamTime,"ifSubmit"=>$ifSubmit]);
+        $this->view('home'.DIRECTORY_SEPARATOR.'takeExam',["q"=>$Questions,"choice"=>Helper::getChoicesOfQuestions($Questions),"duration"=>$oneExamTime,"ifSubmit"=>$ifSubmit]);
         $this->view->pageTitle='take Exam';
         $this->view->render();
     }

@@ -1,0 +1,111 @@
+<?php include VIEW . "header.phtml" ?>
+
+
+
+
+<!--////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
+<div class="container">
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+            <form class="form_exam" method="post">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="div_name"><h5>New Exam</h5></div>
+                    </div>
+                    <?php echo Message::check("logicError   "); ?>
+                </div>
+                <div class="form-group row">
+                    <label for="exam_name" class="col-sm-2 col-form-label"> Exam Name</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="inputExam_name" name="name">
+                    </div>
+                    <?php echo Message::check("name"); ?>
+                </div>
+                <div class="form-group row">
+                    <label for="inputPassword3" class="col-sm-2 col-form-label">Question No.</label>
+                    <div class="col-sm-10">
+                        <input type="number" class="form-control" id="inputDateEnd" name="no_q">
+                    </div>
+                    <?php echo Message::check("no_q"); ?>
+                </div>
+
+                <div class="form-group row">
+                    <label for="inputPassword3" class="col-sm-2 col-form-label">full mark</label>
+                    <div class="col-sm-10">
+                        <input type="number" class="form-control" id="inputDateEnd" name="total_mark">
+                    </div>
+                    <?php echo Message::check("total_mark"); ?>
+                </div>
+                <div class="form-group row">
+                    <label for="inputPassword3" class="col-sm-2 col-form-label">pass mark</label>
+                    <div class="col-sm-10">
+                        <input type="number" class="form-control" id="inputDateEnd" name="pass_mark">
+                    </div>
+                    <?php echo Message::check("pass_mark"); ?>
+                </div>
+
+                <div class="form-group row">
+                    <label for="inputPassword3" class="col-sm-2 col-form-label">Enter Time Limit of Exam</label>
+                    <div class="col-sm-10">
+                        <input type="number" class="form-control" id="inputDateEnd" name="duration" max="60">
+                    </div>
+                    <?php echo Message::check("duration"); ?>
+                </div>
+
+                <div class="form-group row">
+                    <label for="inputPassword3" class="col-sm-2 col-form-label">Enter category of Exam</label>
+                    <div class="col-sm-10">
+                        <select name="category" class="form-control input-md">
+                            <?php
+                            foreach ($this->view_data["category"] as $row){
+                                echo ' <option value="'.$row['cat_id'].'" > '.$row['cat_name'].'';
+                            }
+                            ?>
+                        </select>
+                    </div>
+                    <?php echo Message::check("category"); ?>
+                </div>
+
+                <div class="form-group row">
+                    <label for="inputPassword3" class="col-sm-2 col-form-label">Price</label>
+                    <div class="col-sm-10">
+                        <input type="number" class="form-control" id="inputDateEnd" name="price">
+                    </div>
+                    <?php echo Message::check("price"); ?>
+                </div>
+
+                <div class="form-group row">
+                    <label for="inputPassword3" class="col-sm-2 col-form-label">Select level of exam</label>
+                    <div class="col-sm-10">
+                    <select id="level" name="level" placeholder="Choose correct answer " class="form-control input-md" >
+
+                        <option value="h">Hard</option>
+                        <option value="m">medium</option>
+                        <option value="e" selected>Easy</option>
+                    </select>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="inputPassword3" class="col-sm-2 col-form-label">Discrption</label>
+                    <div class="col-sm-10">
+                        <input type="textarea" class="form-control" id="inputDateEnd" name="desc">
+                    </div>
+                </div>
+
+
+                <div class="form-group row">
+                    <div class="col-sm-12">
+                        <button type="submit" class="btn btn-primary btn-block">submit</button>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+        <div class="col-md-2"></div>
+
+
+    </div>
+</div>
+<?php include VIEW . "footer.phtml" ?>
