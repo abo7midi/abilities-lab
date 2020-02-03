@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        p {
+            text-align: center;
+            font-size: 60px;
+            margin-top: 0px;
+        }
+    </style>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="/css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: serif;
+            font-style: italic;
+            font-weight: bold;
+        }
+
+        body {
+            background-color: #fff;
+            margin: 0;
+            padding: 0;
+            font: normal 14px/1.4 Tahoma, Verdana, Segoe, sans-serif;
+            color: #36455b;
+
+        }
+
+        #wrap {
+            width: 800px;
+            margin: 0 auto;
+        }
+        .txt-ctr {
+            font-family: "Lucida Bright", Georgia, serif;
+            font-weight: 400;
+            line-height: 1.5;
+            margin: 10px ;
+            padding-left: 12px;
+
+        }
+        p{
+            padding:20px;
+        }
+
+
+        .txt-ctr {
+            padding: 10px 0;
+            margin-bottom: 0;
+            color: #000;
+            border-bottom: 1px solid gray;
+
+        }
+        form.cf{
+
+            background-color: #f8f8ff;
+            margin-top: 10px;
+        }
+        @import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro);
+
+        *{
+            font-family: 'Source Sans Pro', sans-serif;
+            font-size: 18px;
+
+        }
+
+        .simple-radio {
+            padding-left: 30px;
+            margin: 2rem 0;
+        }
+
+        .simple-radio ul {
+            counter-reset: section;
+        }
+
+        .simple-radio li {
+            display: block;
+            line-height: 1.2em;
+            width: 50%;
+            color: #636363;
+            border: 1px solid #ccc;
+            counter-increment: section;
+            cursor: pointer;
+            margin: .5em .5em .5em 0em;
+            margin-left: 70px;
+            padding: .4em .4em .4em 1.8em;
+        }
+
+        .simple-radio li:before {
+            content: counter(section, upper-alpha) " ";
+            border:1px solid #ccc;
+            margin-left: -20px!important;
+            font-size: 14px;
+            text-align: center;
+            color: #999;
+            border-radius: 20%;
+            margin-right: 10px;
+            padding: 0 1px 0 4px;
+        }
+
+        .simple-radio li:hover:before, .simple-radio li.checked:before {
+            color: #fff;
+        }
+
+
+
+        .simple-radio .check {
+            display: inline-block;
+            text-align: center;
+            width: 1.5em;
+            line-height: 1em;
+            padding-top: .2em;
+            float: right;
+            font-size: 15px;
+            font-weight: 700;
+            color: #fff;
+        }
+
+        .simple-radio input,
+        .simple-radio li .check .yes,
+        .simple-radio li.checked .check .no {
+            display: none;
+        }
+        h2{
+            padding-left: 10px;
+        }
+
+        .simple-radio li:hover,
+        .simple-radio li.checked {
+            background-color: #34A853;
+            color: #ffffff;
+        }
+
+        .simple-radio li .check .no,
+        .simple-radio li.checked .check .yes {
+            display: inline;
+        }
+
+        .que li {
+            margin-left: 4%;
+            list-style: none;
+        }
+        #time{
+            background: #00a65a;
+            width: 10%;
+            height: 5%;
+            color: #fff;
+            border-radius: 0 10px 10px 0;
+            text-align: center;
+            margin-top: 5%;
+            position: fixed;
+            z-index: 9999;
+        }
+        @media screen and (max-width: 600px) {
+
+            #time{
+                width: 15%;
+                height: 4%;
+                font-size: 14px;
+                margin-top: 5%;
+                line-height: 20px;
+            }
+        }
+        #goback{
+            display: none;
+        }
+    </style>
+
+    <title>take Exam</title>
+</head>
+<script type="application/javascript">
+
+
+    function timeout()
+    {
+        var hours=Math.floor(timeLeft/3600);
+        var minute=Math.floor((timeLeft-(hours*60*60))/60);
+        var second=timeLeft%60;
+        var hrs=checktime(hours);
+        var mint=checktime(minute);
+        var sec=checktime(second);
+
+        if(timeLeft<=0)
+        {
+            clearTimeout(tm);
+            document.getElementById("endExam").click();
+        }
+        else
+        {
+            // document.getElementById("time").innerHTML=hrs+":"+mint+":"+sec;
+            document.getElementById("time").innerHTML=hrs+":"+mint+":"+sec;
+        }
+        timeLeft--;
+        var tm= setTimeout(function(){timeout()},1000);
+    }
+    function checktime(msg)
+    {
+        if(msg<10)
+        {
+            msg="0"+msg;
+        }
+        return msg;
+    };
+</script>
+
+<body onload="timeout()">
+
+<script typy="text/javascript">
+    var duration=<?php echo $this->view_data["duration"]?>;
+    var timeLeft=1*1*60;
+</script>
+
+<div id="time" ></div>
+<div class="container">
+
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+            <form class="cf" method="post" id="form1">
+                <div class="txt-ctr"><h2> EXAM </h2></div>
+<?php
+    $i=0;
+    foreach($this->view_data['q'] as $ques ){
+        echo "<p>".$ques["q_content"]."</p>
+                <ul class='que'  id=\"sr1\">
+                <input type='hidden' name='q_id".$i."'  value=".$ques["q_id"]."> ";
+        foreach ($this->view_data['choice'] as $choice){
+            foreach ($choice as $row){
+                if($row["q_id"]===$ques["q_id"]){
+                    echo "<li class='q_".$i."' >
+                            <input type=\"radio\"  name=q_".$i." id='_".$i."' value=".$row["choice_id"].">
+                            ".$row["choice_content"]."
+                        </li> ";
+                }
+               //class="simple-radio" <div class='check q_".$i.$i."'><span class=\"no\">&nbsp;</span><span class=\"yes\">&#10003;</span></div>
+            }
+        }
+
+        echo "<li>".Message::check("trueChoice".$i)."</li>";
+        echo "<li>".Message::check("falseChoice".$i)."</li>";
+        echo "<li>".Message::check("q_".$i)."</li>";
+        echo "</ul><hr>";
+        $i++;
+    }
+?>
+                <div class="col-sm-11">
+                    <input type="submit" class="form-control btn btn-outline-primary"  name="endExam" id="endExam" value="done"></input>
+                </div>
+                <div class="col-sm-11">
+                    <input type="submit" class="form-control btn btn-outline-primary"  name="goback" id="goback" value="Exit"></input>
+                </div>
+                <input type="hidden" name="q_num" value=<?php echo $i ?>>
+                </form>
+            </div>
+        <div class="col-md-12"></div>
+        <div class="col-md-3"></div>
+        <div class="col-md-6"><?php echo Message::check("trueExam");
+                                    echo Message::check("examDegreeT");
+                                    echo Message::check("falseExam");
+                                    echo Message::check("examDegreeF");
+                                ?>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
+<!DOCTYPE HTML>
+
+<p id="demo"></p>
+
+<script>
+    // Set the date we're counting down to
+    var countDownDate = new Date("Jan 5, 2021 15:37:25").getTime();
+
+    // Update the count down every 1 second
+    var x = setInterval(function() {
+
+        // Get today's date and time
+        var now = new Date().getTime();
+
+        // Find the distance between now and the count down date
+        var distance = countDownDate - now;
+
+        // Time calculations for days, hours, minutes and seconds
+        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        // Output the result in an element with id="demo"
+        document.getElementById("demo").innerHTML = days + "d " + hours + "h "
+            + minutes + "m " + seconds + "s ";
+
+        // If the count down is over, write some text
+        if (distance < 0) {
+            clearInterval(x);
+            document.getElementById("demo").innerHTML = "EXPIRED";
+        }
+    }, 1000);
+</script>
+
+
+<script>
+    var ifSubmit=<?php echo $this->view_data["ifSubmit"]?>;
+    if(ifSubmit==1){
+        $("#goback").show();
+        $("#endExam").hide();
+
+    }
+
+    // simple radio - sets up shop
+    /*$( '.simple-radio li' ).click(function(){
+
+        var x=$(this).attr("class");
+        alert(x);
+        var c=$(this).children('input').attr("name");
+
+        var y=$(this).children('input').attr("id");
+        alert(y);
+        $('.simple-radio li').removeClass('checked');
+        $(this, "#"+y).attr('checked', 'checked');
+        $(this, "#"+y).prop({
+            checked: true
+        });
+        $("."+x).addClass('checked');
+
+    });*/
+    /*
+
+        $('.simple-radio li').each(function(index) {
+            if ($('input', this).prop('checked')) {
+                $(this).addClass('checked');
+            }
+        });
+
+        // simple radio - listen for click
+        $('.simple-radio li').click(function() {
+            $('.simple-radio input').removeAttr('checked');
+            $('input', this).attr('checked', 'checked');
+            $('input', this).prop({
+                checked: true
+            });
+            $('.simple-radio li').removeAttr('class');
+            $(this).addClass('checked');
+        });*/
+</script>
+
+</body>
+</html>

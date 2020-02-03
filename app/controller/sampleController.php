@@ -4,15 +4,6 @@
 class sampleController extends Controller
 {
 
-    public function index()
-    {
-        $this->model('Sample');
-        $this->view('admin'.DIRECTORY_SEPARATOR.'sample',['sample'=>$this->model->all()]);
-        $this->view->pageTitle='admin sample';
-        $this->view->render();
-
-    }
-
     public function add($sampleName)
     {
             $sample_name=$sampleName;

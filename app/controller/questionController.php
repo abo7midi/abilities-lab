@@ -8,7 +8,7 @@ class questionController extends Controller
     public function index()
     {
         $this->model('Question');
-        $this->view('admin'.DIRECTORY_SEPARATOR.'addQuestion',['question'=>$this->model->all()]);
+        $this->view('home'.DIRECTORY_SEPARATOR.'addQuestion',['question'=>$this->model->all()]);
         $this->view->pageTitle='admin question';
         $this->view->render();
 
@@ -129,7 +129,7 @@ class questionController extends Controller
                 $sample->add($sampleNum);
             }
         }
-        $this->view('admin'.DIRECTORY_SEPARATOR.'addQuestion');
+        $this->view('home'.DIRECTORY_SEPARATOR.'addQuestion');
         $this->view->pageTitle='admin question';
         $this->view->render();
 
