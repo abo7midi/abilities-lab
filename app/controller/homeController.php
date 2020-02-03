@@ -10,10 +10,10 @@ class homeController extends Controller
   {
     // echo 'i am in '.__CLASS__.'<br>method '.__METHOD__.'';
     // echo 'i am is '.$id.' my name is '.$name;
-//  $news= $this->model('News');
+  $exam= $this->model('exam');
   $category= $this->model('Category');
 
-    $this->view('home'.DIRECTORY_SEPARATOR.'index',['exam'=>$category->all()]);
+    $this->view('home'.DIRECTORY_SEPARATOR.'index');
     $this->view->pageTitle='this page of index';
 
     $this->view->render();

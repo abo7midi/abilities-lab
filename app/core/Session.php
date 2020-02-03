@@ -1,5 +1,4 @@
 <?php
-
 abstract class Session
 {
     /**
@@ -17,9 +16,9 @@ abstract class Session
 
     public static function loggIn(array $user)
     {
-            $_SESSION['userID'] = $user['id'];
-            $_SESSION['userName'] = $user['username'];
-            $_SESSION['type'] = $user['type'];
+            $_SESSION['userID'] = $user[0];
+            $_SESSION['userName'] = $user[1];
+            $_SESSION['type'] = $user[2];
 
 
     }
@@ -84,8 +83,6 @@ abstract class Session
      */
     public static function destroy()
     {
-
-
         session_destroy();
     }
 }

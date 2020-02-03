@@ -80,7 +80,7 @@ class examController extends Controller
                         $price,
                         $paid,
                         "0",
-                        "1",
+                        Session::get("userID"),
                         $total_mark,
                         $pass_mark,
                         $category
@@ -145,7 +145,7 @@ class examController extends Controller
                         Message::setMessage(0,'falseExam','Try again...! You faild in this exam');
                         Message::setMessage(0,'examDegreeF','Your Mark : '.$st_degree." /".$exam->getSpecificExam([$Examid])[0]['exam_total_mark']);
                     }
-                    $exam->addUserExam([1,$Examid,$st_degree]);
+                    $exam->addUserExam([Session::get("userID"),$Examid,$st_degree]);
                     $ifSubmit=1;
                 }
                 else if(isset($_POST['goback'])){
