@@ -7,6 +7,13 @@
   font-family: 'Droid Sans', sans-serif;
   outline: none;
 }
+.container-fluid>.navbar-collapse, .container-fluid>.navbar-header, .container>.navbar-collapse, .container>.navbar-header {
+  margin-right: -25px;
+    margin-left: 0;
+  margin-top: -15px;
+  margin-bottom: -15px;
+}
+
 ::-webkit-scrollbar {
   background: transparent;
   width: 5px;
@@ -419,7 +426,10 @@ body {background-color: #ffffff}
 .navbar-default .navbar-brand {line-height: 55px !important; padding: 0 !important}
 .navbar-default .navbar-brand:focus,
 .navbar-default .navbar-brand:hover {color: #FFF !important}
-.navbar>.container .navbar-brand, .navbar>.container-fluid .navbar-brand {margin-left: 60px !important}
+.navbar>.container .navbar-brand, .navbar>.container-fluid .navbar-brand {
+  margin-left: 20px !important;
+  margin-bottom: 20px;
+}
 @media (max-width: 767px) {
   .navbar>.container-fluid .navbar-brand {
     margin-left: 15px !important;
