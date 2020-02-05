@@ -685,17 +685,13 @@
   <component name="ProjectId" id="1Wh4RX0sIpIWlKgQHuHXC5JKJfS" />
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/public/images" />
-    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="WebServerToolWindowFactoryState" value="false" />    <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\xamppNew\htdocs\abilities lab\app\view\home" />
     </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\xamppNew\htdocs\abilities lab\public\images" />
-      <recent name="C:\xamppNew\htdocs\abilities lab\public" />
+    <key name="CopyFile.RECENT_KEYS">      <recent name="C:\xamppNew\htdocs\abilities lab\public" />
       <recent name="C:\xamppNew\htdocs\abilities lab\app\view\admin" />
       <recent name="C:\xamppNew\htdocs\abilities lab\app\view\home" />
       <recent name="C:\xamppNew\htdocs\abilities lab\app\controller" />
