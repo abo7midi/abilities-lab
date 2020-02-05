@@ -111,7 +111,7 @@ class examController extends Controller
         $q_num=0;
 
         if($_SERVER["REQUEST_METHOD"] == "POST"){
-            global $st_degree,$trueChoice,$falseChoice,$emptyChoice,$q_num;
+          //  global $st_degree,$trueChoice,$falseChoice,$emptyChoice,$q_num;
             $_SESSION[$Examid]="yes" ;
              $q_num=$_POST['q_num'];
                     for($i=0;$i<$_POST['q_num'];$i++){
@@ -130,6 +130,11 @@ class examController extends Controller
                             $emptyChoice++;
                         }
                     }
+                    $_SESSION['truechoice']=$trueChoice;
+                    $_SESSION['falsechoice']=$falseChoice;
+                    $_SESSION['unchoice']=$emptyChoice;
+                    $_SESSION['studentdegree']=$st_degree;
+                    $_SESSION['QNO']=$q_num;
                     if($st_degree>=$exam->getSpecificExam([$Examid])[0]['exam_pass_mark'] && $st_degree < $exam->getSpecificExam([$Examid])[0]['exam_total_mark'] || $st_degree == $exam->getSpecificExam([$Examid])[0]['exam_total_mark']){
                         Message::setMessage(1,'trueExam','Congradulations...! You pass this exam');
                         Message::setMessage(1,'examDegreeT','Your Mark : '.$st_degree." /".$exam->getSpecificExam([$Examid])[0]['exam_total_mark']);
@@ -151,7 +156,7 @@ class examController extends Controller
         }
         else {
             Message::setMessage(0,"examError","you taked this exam before");
-            $this->view('home'.DIRECTORY_SEPARATOR.'showResult',["studentDegree"=>$st_degree,"trueChoice"=>$trueChoice,"falseChoice"=>$falseChoice,"emptyChoice"=>$emptyChoice,"totalMark"=>$exam->getSpecificExam([$Examid])[0]['exam_total_mark'],"numberQ"=>$q_num]);
+            $this->view('home'.DIRECTORY_SEPARATOR.'showResult',["studentDegree"=>$_SESSION['studentdegree'],"trueChoice"=>$_SESSION['truechoice'],"falseChoice"=>$_SESSION['falsechoice'],"emptyChoice"=>$_SESSION['unchoice'],"totalMark"=>$exam->getSpecificExam([$Examid])[0]['exam_total_mark'],"numberQ"=>$_SESSION['QNO']]);
             $this->view->pageTitle='exam result';
             $this->view->render();
             return "";
