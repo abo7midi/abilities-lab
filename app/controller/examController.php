@@ -9,10 +9,8 @@ class examController extends Controller
     {
         $this->model('Exam');
         $this->view('home'.DIRECTORY_SEPARATOR.'exam',['exam'=>$this->model->all()]);
-
         $this->view->pageTitle='exam';
         $this->view->render();
-
     }
 
     public function add()
@@ -22,7 +20,6 @@ class examController extends Controller
         // check if there submit
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $postErr=0;
-
             $validate=Validation::required(['name','no_q','total_mark','pass_mark','duration','category','level']);
 
             # add new record to the database
@@ -76,7 +73,7 @@ class examController extends Controller
                         $price,
                         $paid,
                         "0",
-                        Session::get("userID"),
+                        1/*Session::get("userID")*/,
                         $total_mark,
                         $pass_mark,
                         $category
@@ -107,50 +104,58 @@ class examController extends Controller
         $samples=$sample->getExamSamples([$Examid]);
         $oneSample=array_rand($samples);
         $Questions=$Q->getQofSample([$samples[$oneSample]['sample_id']]);
-        $stateChoice=0;
+        $st_degree=0;
+        $trueChoice=0;
+        $falseChoice=0;
+        $emptyChoice=0;
+        $q_num=0;
+
         if($_SERVER["REQUEST_METHOD"] == "POST"){
-            if(isset($_POST['endExam'])){
-                    $st_degree=0;
+            global $st_degree,$trueChoice,$falseChoice,$emptyChoice,$q_num;
+            $_SESSION[$Examid]="yes" ;
+             $q_num=$_POST['q_num'];
                     for($i=0;$i<$_POST['q_num'];$i++){
                         if (isset($_POST["q_".$i])){
                             $Q->addUserChoice([1,$_POST["q_".$i]]);   //user id / choice id
                             if($_POST["q_".$i]===$Q->True_choices($_POST["q_id".$i])[0]['choice_id']){
                                 $st_degree+=$Q->Q_($_POST["q_id".$i])[0]['q_degree'];
-                                Message::setMessage(1,'trueChoice'.$i,'Greate..True ansower');
+                                $trueChoice++;
+                               // Message::setMessage(1,'trueChoice'.$i,'Greate..True ansower');
                             }
                             else
-                                Message::setMessage(0,'falseChoice'.$i ,'Ooh..Wrong ansower');
+                                //Message::setMessage(0,'falseChoice'.$i ,'Ooh..Wrong ansower');
+                                $falseChoice++;
                         }else{
-                            Message::setMessage(0,"q_".$i,"you should choose once of these choices");
-                            $stateChoice=1;
+                            $Q->addUserChoice([1,"no choice"]);   //user id / choice id
+                            $emptyChoice++;
                         }
                     }
-                    if($stateChoice==1){
-                        $this->view('home'.DIRECTORY_SEPARATOR.'takeExam',["q"=>$Questions,"choice"=>Helper::getChoicesOfQuestions($Questions),"duration"=>$oneExamTime,"ifSubmit"=>$ifSubmit]);
-                        $this->view->pageTitle='take Exam';
-                        $this->view->render();
-                        return '';
-                    }
                     if($st_degree>=$exam->getSpecificExam([$Examid])[0]['exam_pass_mark'] && $st_degree < $exam->getSpecificExam([$Examid])[0]['exam_total_mark'] || $st_degree == $exam->getSpecificExam([$Examid])[0]['exam_total_mark']){
-
                         Message::setMessage(1,'trueExam','Congradulations...! You pass this exam');
                         Message::setMessage(1,'examDegreeT','Your Mark : '.$st_degree." /".$exam->getSpecificExam([$Examid])[0]['exam_total_mark']);
-
                     }else{
-
                         Message::setMessage(0,'falseExam','Try again...! You faild in this exam');
                         Message::setMessage(0,'examDegreeF','Your Mark : '.$st_degree." /".$exam->getSpecificExam([$Examid])[0]['exam_total_mark']);
                     }
-                    $exam->addUserExam([Session::get("userID"),$Examid,$st_degree]);
-                    $ifSubmit=1;
-                }
-                else if(isset($_POST['goback'])){
-                    header("location:/home/index");
-                }
-            }
-        $this->view('home'.DIRECTORY_SEPARATOR.'takeExam',["q"=>$Questions,"choice"=>Helper::getChoicesOfQuestions($Questions),"duration"=>$oneExamTime,"ifSubmit"=>$ifSubmit]);
-        $this->view->pageTitle='take Exam';
-        $this->view->render();
+            $exam->addUserExam([1/*Session::get("userID")*/,$Examid,$st_degree]);
+            $this->view('home'.DIRECTORY_SEPARATOR.'showResult',["studentDegree"=>$st_degree,"trueChoice"=>$trueChoice,"falseChoice"=>$falseChoice,"emptyChoice"=>$emptyChoice,"totalMark"=>$exam->getSpecificExam([$Examid])[0]['exam_total_mark'],"numberQ"=>$_POST['q_num']]);
+            $this->view->pageTitle='exam result';
+            $this->view->render();
+            return "";
+        }
+        if(!isset($_SESSION[$Examid])){
+
+            $this->view('home'.DIRECTORY_SEPARATOR.'takeExam',["q"=>$Questions,"choice"=>Helper::getChoicesOfQuestions($Questions),"duration"=>$oneExamTime]);
+            $this->view->pageTitle='take Exam';
+            $this->view->render();
+        }
+        else {
+            Message::setMessage(0,"examError","you taked this exam before");
+            $this->view('home'.DIRECTORY_SEPARATOR.'showResult',["studentDegree"=>$st_degree,"trueChoice"=>$trueChoice,"falseChoice"=>$falseChoice,"emptyChoice"=>$emptyChoice,"totalMark"=>$exam->getSpecificExam([$Examid])[0]['exam_total_mark'],"numberQ"=>$q_num]);
+            $this->view->pageTitle='exam result';
+            $this->view->render();
+            return "";
+        }
     }
 /***************************************************************************************/
 

@@ -23,15 +23,6 @@ public function allSubCate()
 
 //
 
-public function add(array $aData)
-{
-
-      $oStmt = $this->db->preparation('insert into exams values(?,?,?,?,?,?,?,?,?,?,?,?,?)');
-
-          return $oStmt->execute($aData);
-
-  }
-
   //
   public function delete($id)
   {

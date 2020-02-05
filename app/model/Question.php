@@ -26,7 +26,7 @@ class question
     public function addQuez(array $aData)
     {
 
-        $oStmt = $this->db->preparation('INSERT INTO questions VALUES(?,?,?,?)');
+        $oStmt = $this->db->preparation('INSERT INTO questions VALUES(?,?,?,?,?)');
 
         return $oStmt->execute($aData);
 

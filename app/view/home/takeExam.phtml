@@ -2,14 +2,6 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <style>
-        p {
-            text-align: center;
-            font-size: 60px;
-            margin-top: 0px;
-        }
-    </style>
-
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="/css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -165,58 +157,55 @@
                 line-height: 20px;
             }
         }
-        #goback{
-            display: none;
-        }
     </style>
 
     <title>take Exam</title>
+    <script typy="text/javascript">
+
+        var duration=<?php echo $this->view_data["duration"]?>;
+        var timeLeft=1*1*60;
+
+        function timeout()
+        {
+            if (!localStorage.timimg) {
+                localStorage.timimg=timeLeft;
+            }
+            var hours=Math.floor(Number(localStorage.timimg)/3600);
+            var minute=Math.floor(Number((localStorage.timimg-(hours*60*60)))/60);
+            var second=Number(localStorage.timimg)%60;
+            console.log(localStorage.timimg);
+            var hrs=checktime(hours);
+            var mint=checktime(minute);
+            var sec=checktime(second);
+
+            if(Number(localStorage.timimg)<=0)
+            {
+                localStorage.timimg=timeLeft;
+                clearTimeout(tm);
+                document.getElementById("endExam").click();
+            }
+            else
+            {
+                // document.getElementById("time").innerHTML=hrs+":"+mint+":"+sec;
+                document.getElementById("time").innerHTML=hrs+":"+mint+":"+sec;
+                localStorage.timimg--;
+            }
+            var tm= setTimeout(function(){timeout()},1000);
+        }
+        function checktime(msg)
+        {
+            if(msg<10)
+            {
+                msg="0"+msg;
+            }
+            return msg;
+        };
+    </script>
 </head>
-<script type="application/javascript">
-
-
-    function timeout()
-    {
-        var hours=Math.floor(timeLeft/3600);
-        var minute=Math.floor((timeLeft-(hours*60*60))/60);
-        var second=timeLeft%60;
-        var hrs=checktime(hours);
-        var mint=checktime(minute);
-        var sec=checktime(second);
-
-        if(timeLeft<=0)
-        {
-            clearTimeout(tm);
-            document.getElementById("endExam").click();
-        }
-        else
-        {
-            // document.getElementById("time").innerHTML=hrs+":"+mint+":"+sec;
-            document.getElementById("time").innerHTML=hrs+":"+mint+":"+sec;
-        }
-        timeLeft--;
-        var tm= setTimeout(function(){timeout()},1000);
-    }
-    function checktime(msg)
-    {
-        if(msg<10)
-        {
-            msg="0"+msg;
-        }
-        return msg;
-    };
-</script>
-
 <body onload="timeout()">
-
-<script typy="text/javascript">
-    var duration=<?php echo $this->view_data["duration"]?>;
-    var timeLeft=1*1*60;
-</script>
-
 <div id="time" ></div>
 <div class="container">
-
+    <center><?php echo $_SESSION['testcomplete']?>/center>
     <div class="row">
         <div class="col-md-2"></div>
         <div class="col-md-8">
@@ -239,10 +228,10 @@
                //class="simple-radio" <div class='check q_".$i.$i."'><span class=\"no\">&nbsp;</span><span class=\"yes\">&#10003;</span></div>
             }
         }
-
+/*
         echo "<li>".Message::check("trueChoice".$i)."</li>";
         echo "<li>".Message::check("falseChoice".$i)."</li>";
-        echo "<li>".Message::check("q_".$i)."</li>";
+        echo "<li>".Message::check("q_".$i)."</li>";*/
         echo "</ul><hr>";
         $i++;
     }
@@ -250,19 +239,16 @@
                 <div class="col-sm-11">
                     <input type="submit" class="form-control btn btn-outline-primary"  name="endExam" id="endExam" value="done"></input>
                 </div>
-                <div class="col-sm-11">
-                    <input type="submit" class="form-control btn btn-outline-primary"  name="goback" id="goback" value="Exit"></input>
-                </div>
                 <input type="hidden" name="q_num" value=<?php echo $i ?>>
                 </form>
             </div>
         <div class="col-md-12"></div>
         <div class="col-md-3"></div>
-        <div class="col-md-6"><?php echo Message::check("trueExam");
+        <div class="col-md-6"><?php /*echo Message::check("trueExam");
                                     echo Message::check("examDegreeT");
                                     echo Message::check("falseExam");
                                     echo Message::check("examDegreeF");
-                                ?>
+                                */?>
         </div>
         <div class="col-md-3"></div>
     </div>
@@ -271,50 +257,7 @@
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
-<!DOCTYPE HTML>
-
-<p id="demo"></p>
-
 <script>
-    // Set the date we're counting down to
-    var countDownDate = new Date("Jan 5, 2021 15:37:25").getTime();
-
-    // Update the count down every 1 second
-    var x = setInterval(function() {
-
-        // Get today's date and time
-        var now = new Date().getTime();
-
-        // Find the distance between now and the count down date
-        var distance = countDownDate - now;
-
-        // Time calculations for days, hours, minutes and seconds
-        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-        // Output the result in an element with id="demo"
-        document.getElementById("demo").innerHTML = days + "d " + hours + "h "
-            + minutes + "m " + seconds + "s ";
-
-        // If the count down is over, write some text
-        if (distance < 0) {
-            clearInterval(x);
-            document.getElementById("demo").innerHTML = "EXPIRED";
-        }
-    }, 1000);
-</script>
-
-
-<script>
-    var ifSubmit=<?php echo $this->view_data["ifSubmit"]?>;
-    if(ifSubmit==1){
-        $("#goback").show();
-        $("#endExam").hide();
-
-    }
-
     // simple radio - sets up shop
     /*$( '.simple-radio li' ).click(function(){
 
