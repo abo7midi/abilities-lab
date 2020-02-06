@@ -7,6 +7,7 @@
       <change beforePath="$PROJECT_DIR$/app/controller/userController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controller/userController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/model/Exam.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/model/Exam.php" afterDir="false" />
     </list>
+
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,12 +47,13 @@
     <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\xamppNew\htdocs\abilities lab\public" />
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\xamppNew\htdocs\abilities lab\app\view\home" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">      <recent name="C:\xamppNew\htdocs\abilities lab\public" />
       <recent name="C:\xamppNew\htdocs\abilities lab\app\view\admin" />
       <recent name="C:\xamppNew\htdocs\abilities lab\app\view\home" />
       <recent name="C:\xamppNew\htdocs\abilities lab\app\controller" />
-      <recent name="C:\xamppNew\htdocs\abilities lab\public\js" />
     </key>
   </component>
   <component name="RunDashboard">

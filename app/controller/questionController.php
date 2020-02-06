@@ -8,7 +8,7 @@ class questionController extends Controller
     public function index()
     {
         $this->model('Question');
-        $this->view('admin'.DIRECTORY_SEPARATOR.'addQuestion',['question'=>$this->model->all()]);
+        $this->view('home'.DIRECTORY_SEPARATOR.'addQuestion',['question'=>$this->model->all()]);
         $this->view->pageTitle='admin question';
         $this->view->render();
 
@@ -31,7 +31,6 @@ class questionController extends Controller
                 if ($validate['status'] == 1) {
                     $q_degree = $_POST["q_degree$i"];
                     $total_degree += $q_degree;
-
                 }
             }
             if ($total_degree != $_SESSION['total_mark']) {
@@ -46,6 +45,7 @@ class questionController extends Controller
                 $Q_data = [
                     $qid,
                     $q_content,
+                    "no image",
                     $q_degree,
                     $sample_id
                 ];
@@ -68,12 +68,10 @@ class questionController extends Controller
 
                 $b = $_POST[$i . '2'];
                 $data2 = [
-
                     $obid,
                     $b,
                     '0',
                     $qid
-
                 ];
 
                 $quez = $this->model->addChoice($data2);
@@ -129,7 +127,7 @@ class questionController extends Controller
                 $sample->add($sampleNum);
             }
         }
-        $this->view('admin'.DIRECTORY_SEPARATOR.'addQuestion');
+        $this->view('home'.DIRECTORY_SEPARATOR.'addQuestion');
         $this->view->pageTitle='admin question';
         $this->view->render();
 
