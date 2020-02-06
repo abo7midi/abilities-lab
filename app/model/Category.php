@@ -16,7 +16,7 @@ class Category
 //
 public function allSubCate()
 {
-  return $this->db->query("select * from categories where cat_main_cat != 0 and cat_state = 1");
+  return $this->db->query("select * from categories where cat_main_cat = 0");
 }
 
 

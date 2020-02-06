@@ -9,7 +9,7 @@ class categoryController extends Controller
   public function index()
   {
     $this->model('Category');
-    $this->view('admin'.DIRECTORY_SEPARATOR.'category',['categories'=>$this->model->all()]);
+    $this->view('admin'.DIRECTORY_SEPARATOR.'category',['categories'=>$this->model->allSubCate()]);
 
     $this->view->pageTitle='admin category';
     $this->view->render();

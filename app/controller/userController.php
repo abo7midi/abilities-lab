@@ -98,14 +98,7 @@ class userController extends Controller
 
     /*********************************************************************************/
 
-    public function dashboard()
-    {
-        $this->view('admin'.DIRECTORY_SEPARATOR.'dashboard');
-        $this->view->pageTitle='dashboard';
-        $this->view->render();
 
-
-    }
 //---------------------------------------login---------------------------------------------------------------------------------
     public function login()
     {
