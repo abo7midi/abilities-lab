@@ -211,5 +211,51 @@ class examController extends Controller
         $this->view->pageTitle='this page of index';
         $this->view->render();
     }
+
+    /* details for examiner */
+     public function details()
+    {
+
+        $exam=$this->model('Exam');
+        $sample=$this->model('Sample');
+
+
+        $u_id = Session::get("userID");
+
+       $ex_exams= $exam->getExaminer_exams([$u_id]);
+
+       foreach ($ex_exams as $ex){
+
+           $samples=$sample->getExamSamples([$ex['exam_id']]);
+
+
+       }
+
+        $this->view('admin'.DIRECTORY_SEPARATOR.'details_for_examiner',["ex_exams"=>$ex_exams,"samples_ex"=>$samples]);
+        $this->view->pageTitle='Details for examiner';
+        $this->view->render();
+
+    }
+
+    public function who_do_exam($s_id){
+
+        $exam=$this->model('Exam');
+        $u_exams= $exam->getExamDetails([$s_id]);
+
+
+        $this->view('admin'.DIRECTORY_SEPARATOR.'who_do_exam',["u_exams"=>$u_exams]);
+        $this->view->pageTitle='who_do_exam';
+        $this->view->render();
+
+     }
+
+     public function dismit_exam($e_id){
+
+         $exam=$this->model('Exam');
+         $e= $exam->dismit_exam([$e_id]);
+
+         header("Location:/exam/details");
+     }
+
 }
 ?>
