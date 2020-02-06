@@ -41,7 +41,6 @@ body{
 
 .navbar-inverse{
     background-color: #002435;
-    margin-top: -20px;
 }
 .navbar-inverse .navbar-brand{
     color: #ffffff;
@@ -69,6 +68,7 @@ body{
 .dropdown-menu ,
 .dropdown-menu>li>a{
     background-color: #002435;
+    margin-top: 9px;
 }
 
 .navbar-right {
@@ -127,9 +127,9 @@ body{
 
 .home-stats .stat .fa{
     position: absolute;
-    font-size: 30px;
-    top: 30px;
-    left: 30px;
+    font-size: 58px;
+    top: 20px;
+    left: 9px;
 }
 
 .home-stats .stat .info{
@@ -260,7 +260,7 @@ h1{
 }
 
 .main-table tr:first-child td { /* You Can Use T Head */
-    background-color: #45ad79;
+    background-color: #002435;
     color: #ffffff;
     font-weight: bold;
 }

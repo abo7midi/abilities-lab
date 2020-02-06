@@ -1,0 +1,104 @@
+<?php
+//include "side_bar.php";
+
+include "init.php";
+
+$accounts=$this->view_data['accounts'];
+?>
+<link rel="stylesheet" type="text/css" href="/layout/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="/layout/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="/layout/css/backend.css">
+<link rel="stylesheet" type="text/css" href="/layout/css/main.css">
+
+   <h1 class="text-center">Edit Member</h1>
+        <div class="container-fluid">
+            <form role="form" class="form-horizontal" method='post' action='/user/edit/<?php echo $accounts['user_id'];?>' enctype="multipart/form-data">
+                 <div class="box-body">
+                    <input type="hidden" name="id" value="<?php echo $accounts['user_id'];?>">
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label label-edit" for="exampleInputEmail1">fullname</label>
+                        <div class="col-sm-10">
+                              <input type="text" class="form-control input-edit" onkeyup="lettersOnlyTwo(this)" value="<?php echo $accounts['full_name']; ?>"  name="full_name">
+                              <?php echo Message::check('fullname');  ?>
+                    </div>
+                    </div>
+
+                      <div class="form-group">
+                          <label class="col-sm-2 control-label label-edit" for="exampleInputEmail1">username</label>
+                          <div class="col-sm-10">
+                          <input type="text" class="form-control input-edit" onkeyup="lettersOnly(this)" value="<?php echo $accounts['user_name']; ?>"  name="username">
+<!--                          --><?php //echo Message::check('username');  ?>
+                      </div>
+                      </div>
+
+                      <div class="form-group">
+                          <label class="col-sm-2 control-label label-edit" for="exampleInputEmail1">email</label>
+                          <div class="col-sm-10">
+                          <input type="email" class="form-control input-edit" value="<?php echo $accounts['user_email']; ?>"  name="email">
+                        <?php echo Message::check('email');  ?>
+                      </div>
+                      </div>
+
+                      <div class="form-group">
+                          <label class="col-sm-2 control-label label-edit" for="exampleInputPassword1">password</label>
+                          <div class="col-sm-10">
+                          <input type="password" class="form-control input-edit" value="<?php echo $accounts['password']; ?>"  name="password">
+                          <?php echo Message::check('password');  ?>
+                      </div>
+                      </div>
+<!--                      <div class="form-group">-->
+<!--                          <label for="exampleInputPassword2">تاكيد كلمة السر:</label>-->
+<!--                          <input type="password" value="--><?php //echo $accounts['password']; ?><!--"  name="password">-->
+<!--                          --><?php //echo Message::check('passwordConfirm');  ?>
+<!--                      </div>-->
+
+                      <div class="form-group">
+                          <label class="col-sm-2 control-label label-edit" for="exampleInputPassword2">phone</label>
+                          <div class="col-sm-10">
+                          <input type="text" class="form-control input-edit" onkeyup="numbersOnly(this)" value="<?php echo $accounts['phone']; ?>"  name="phone">
+                          <?php echo Message::check('phone');  ?>
+                      </div>
+                      </div>
+
+                      <div class="form-group">
+                          <label class="col-sm-2 control-label label-edit" for="exampleInputPassword2">Yor Image</label>
+                          <div class="col-sm-10">
+                          <input type="file" value="<?php echo $accounts['image']; ?>"  name="fileToUpload">
+                          <?php echo Message::check('phone');  ?>
+                      </div>
+                      </div>
+
+                     <div class="form-group">
+                        <label for="Select" class="col-sm-2 control-label label-edit" >Type Of User</label>
+                         <div class="col-sm-10">
+                          <select id="Select" class="form-control" name="type">
+                            <option value="2" <?php  if($accounts['group_id']=='2')echo 'selected'; ?>>exmainer</option>
+                            <option value="3"<?php  if($accounts['group_id']=='3')echo 'selected'; ?>>User</option>
+                          </select>
+                          <?php echo Message::check('type');  ?>
+                         </div>
+                     </div>
+                  <div class="checkbox">
+
+<!--                                                            </div>-->
+<!--                                                                                                                      </div>-->
+
+              </div><!-- /.box-body -->
+
+              <div class="form-group">
+                  <div class="col-sm-offset-2 col-sm-10">
+                  <button type="submit" class="btn btn-primary"  value="register" name="submit">Save Update</button>
+                  </div>
+              </div>
+          </form>
+        </div>
+                                                  </div>
+                                                    <br/>
+
+                                                        <div class="push"></div>
+                                                    </div>
+                                                  </div><!-- /.box-body -->
+                                              </div>
+                </section><!-- /.content -->
+
+
