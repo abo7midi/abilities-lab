@@ -3,11 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="6a7219bf-f161-44d8-8f52-80819c55d6ea" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controller/examController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controller/examController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controller/userController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controller/userController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/model/Exam.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/model/Exam.php" afterDir="false" />
     </list>
-
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,7 +46,8 @@
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\xamppNew\htdocs\abilities lab\app\view\home" />
     </key>
-    <key name="CopyFile.RECENT_KEYS">      <recent name="C:\xamppNew\htdocs\abilities lab\public" />
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xamppNew\htdocs\abilities lab\public" />
       <recent name="C:\xamppNew\htdocs\abilities lab\app\view\admin" />
       <recent name="C:\xamppNew\htdocs\abilities lab\app\view\home" />
       <recent name="C:\xamppNew\htdocs\abilities lab\app\controller" />
@@ -132,6 +129,7 @@
       <workItem from="1580902219070" duration="83000" />
       <workItem from="1580903567009" duration="1983000" />
       <workItem from="1580970798038" duration="2000" />
+      <workItem from="1580987701815" duration="2034000" />
     </task>
     <servers />
   </component>
