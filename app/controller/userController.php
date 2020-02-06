@@ -91,7 +91,7 @@ class userController extends Controller
 
         }
         # show form view  to add new user
-        $this->view('admin'.DIRECTORY_SEPARATOR.'addUser');
+        $this->view('admin'.DIRECTORY_SEPARATOR.'index');
         $this->view->pageTitle='Add New User';
         $this->view->render();
     }

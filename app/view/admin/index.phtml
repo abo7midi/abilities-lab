@@ -1,73 +1,252 @@
-<?php include "top.phtml" ?>
-                <section class="content">
-
-                  <div class="box">
-                                                  <div class="box-header">
-                                                      <h3 class="box-title">عرض جميع المقالات والاخبار</h3>
-                                                  </div><!-- /.box-header -->
-                                                  <div class="box-body table-responsive">
-                                                      <div id="example1_wrapper" class="dataTables_wrapper form-inline" role="grid"><div class="row"><div class="col-xs-6"><div id="example1_length" class="dataTables_length"><label><select size="1" name="example1_length" aria-controls="example1"><option value="10" selected="selected">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select> سجل او صف لكل صفحة</label></div></div><div class="col-xs-6"><div class="dataTables_filter" id="example1_filter"><label>بحث: <input type="text" aria-controls="example1"></label></div></div></div><table id="example1" class="table table-bordered table-striped dataTable" aria-describedby="example1_info">
-                                                          <thead>
-                                                              <tr role="row">
-                                                                <th class="sorting_asc" role="columnheader" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending" style="width: 187px;">العنوان</th>
-                                                                <th class="sorting" role="columnheader" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending" style="width: 272px;">المحتوى</th>
-                                                                <th class="sorting" role="columnheader" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 253px;">الصورة</th>
-                                                                <th class="sorting" role="columnheader" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending" style="width: 160px;">الفئات</th>
-                                                                <th class="sorting" role="columnheader" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending" style="width: 116px;">هاشتاقات</th>
-                                                                  <th class="sorting" role="columnheader" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending" style="width: 116px;">الحدث</th>
-                                                              </tr>
-                                                          </thead>
-
-                                                          <!-- <tfoot>
-                                                              <tr><th rowspan="1" colspan="1">Rendering engine</th>
-                                                                <th rowspan="1" colspan="1">Browser</th>
-                                                                <th rowspan="1" colspan="1">Platform(s)</th>
-                                                                <th rowspan="1" colspan="1">Engine version</th>
-                                                                <th rowspan="1" colspan="1">CSS grade</th></tr>
-                                                          </tfoot> -->
-                                                      <tbody role="alert" aria-live="polite" aria-relevant="all">
-                                                        <?php
-                                                         if (array_key_exists('news',$this->view_data)){
-
-                                                          $table='';
-
-                                                          foreach ($this->view_data['news'] as $new) {
+<?php
+include "header.phtml";
+?>
+<!--navbar-------------------------------------------------------------->
 
 
-                                                                  $table.='<tr class="odd">';
-                                                                  $table.=' <td class="  sorting_1">'.$new["title"].'</td>';
-                                                                  $table.=' <td class="  ">'.$new["text"].'</td>';
-                                                                  $table.=' <td class="  ">'.$new["picture"].'</td>';
-                                                                  $table.=' <td class="  ">'.$new["category"].'</td>';
-                                                                  $table.=' <td class="  ">'.$new["tags"].'</td>';
-
-                                                                  $table.=' <td><a href="/news/edit/'.$new["id"].'">Edit</a> / <a href="/news/delete/'.$new["id"].'">Delete</a></td>';
-                                                          }
-
-
-                                                        echo $table;
-                                                        }
+<!-- end navbar-------------------------------------------------------------->
+<!-- slider-------------------------------------------------------------->
+<div class="slider">
 
 
 
+    <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+            <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
+            <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
+            <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="/static/img/1.jpeg" class="d-block w-100" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>First slide label</h5>
+                    <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                    <a href="#work">Check Our Work</a>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="/static/img/1.jpeg" class="d-block w-100" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>Second slide label</h5>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="/static/img/1.jpeg "class="d-block w-100" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>Third slide label</h5>
+                    <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+                </div>
+            </div>
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+
+</div>
 
 
 
-                                                          ?>
+
+<!-- end slider-------------------------------------------------------------->
+
+    <div class="container">
+        <center> <h2>Our  students</h2></center>
 
 
-                                                              </tbody></table><div class="row">
-                                                                <div class="col-xs-6">
-                                                                  <div class="dataTables_info" id="example1_info">
-                                                                    Showing 1 to 10 of 57 entries</div></div>
-                                                                    <div class="col-xs-6">
-                                                                      <div class="dataTables_paginate paging_bootstrap">
-                                                                        <ul class="pagination"><li class="prev disabled">
-                                                                          <a href="#">← Previous</a></li><li class="active">
-                                                                            <a href="#">1</a></li><li><a href="#">2</a></li><li>
-                                                                              <a href="#">3</a></li><li><a href="#">4</a></li><li><a href="#">5</a></li><li class="next"><a href="#">Next → </a></li></ul></div></div></div></div>
-                                                  </div><!-- /.box-body -->
-                                              </div>
-                </section><!-- /.content -->
+        <section class="best_student slider ">
+            <div class="row" >
 
-      <?php include "buttom.phtml" ?>
+                <div class="col-lg-1 col-sm-3 col-6">
+                    <div class="slide">
+                        <img src="/./static/img/2.jpeg">
+                        <h5 >student1</h5>
+                    </div>
+                </div>
+
+                <div class="col-lg-1 col-sm-3 col-6">
+                    <div class="slide">
+                        <img src="/./static/img/2.jpeg">
+                        <h5 >student2</h5>
+                    </div>
+                </div>
+
+
+                <div class="col-lg-1 col-sm-3 col-6">
+                    <div class="slide">
+                        <img src="/./static/img/2.jpeg">
+                        <h5 >student3</h5>
+                    </div>
+                </div>
+
+
+                <div class="col-lg-1 col-sm-3 col-6">
+                    <div class="slide">
+                        <img src="/./static/img/2.jpeg">
+                        <h5 >student4</h5>
+                    </div>
+                </div>
+
+
+                <div class="col-lg-1 col-sm-3 col-6">
+                    <div class="slide">
+                        <img src="/./static/img/2.jpeg">
+                        <h5 >student5</h5>
+                    </div>
+                </div>
+
+                <div class="col-lg-1 col-sm-3 col-6">
+                    <div class="slide">
+                        <img src="/./static/img/2.jpeg">
+                        <h5 >student6</h5>
+                    </div>
+                </div>
+
+                <div class="col-lg-1 col-sm-3 col-6">
+                    <div class="slide">
+                        <img src="/./static/img/2.jpeg">
+                        <h5 >student7</h5>
+                    </div>
+                </div>
+
+
+                <div class="col-lg-1 col-sm-3 col-6">
+                    <div class="slide">
+                        <img src="/./static/img/2.jpeg">
+                        <h5 >student8</h5>
+                    </div>
+                </div>
+
+                <div class="col-lg-1 col-sm-3 col-6">
+                    <div class="slide">
+                        <img src="/./static/img/2.jpeg">
+                        <h5 >student9</h5>
+                    </div>
+                </div>
+
+                <div class="col-lg-1 col-sm-3 col-6">
+                    <div class="slide">
+                        <img src="/./static/img/2.jpeg">
+                        <h5 >student10</h5>
+                    </div>
+                </div>
+
+
+                <div class="col-lg-1 col-sm-3 col-6">
+                    <div class="slide">
+                        <img src="/./static/img/2.jpeg">
+                        <h5 >student11</h5>
+                    </div>
+                </div>
+
+
+                <div class="col-lg-1 col-sm-3 col-6">
+                    <div class="slide">
+                        <img src="/./static/img/2.jpeg">
+                        <h5 >student12</h5>
+                    </div>
+                </div>
+
+
+
+            </div>
+        </section>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="container">
+    <center> <h2> clases</h2></center>
+    <div class="row">
+
+        <div class=" col-md-4 col-sm-6">
+            <div class="card">
+                <img src="/static/img/1.jpeg" >
+                <div class="card-text">
+                    <h3> plqiess</h3>
+                    <h5>Designer</h5>
+
+                </div>
+            </div>
+        </div>
+        <div class=" col-md-4 col-sm-6">
+            <div class="card">
+                <img src="/static/img/1.jpeg">
+                <div class="card-text">
+                    <h3> plqiess</h3>
+                    <h5>Designer</h5>
+
+                </div>
+            </div>
+        </div>
+        <div class=" col-md-4 col-sm-6">
+            <div class="card">
+                <img src="/static/img/1.jpeg">
+                <div class="card-text">
+                    <h3> plqiess</h3>
+                    <h5>Designer</h5>
+
+                </div>
+            </div>
+        </div>
+        <div class=" col-md-4 col-sm-6">
+            <div class="card">
+                <img src="/static/img/1.jpeg">
+                <div class="card-text">
+                    <h3> plqiess</h3>
+                    <h5>Designer</h5>
+
+                </div>
+            </div>
+        </div>
+        <div class=" col-md-4 col-sm-6">
+            <div class="card">
+                <img src="/static/img/1.jpeg">
+                <div class="card-text">
+                    <h3> plqiess</h3>
+                    <h5>Designer</h5>
+
+                </div>
+            </div>
+        </div>
+        <div class=" col-md-4 col-sm-6">
+            <div class="card">
+                <img src="/static/img/1.jpeg">
+                <div class="card-text">
+                    <h3> plqiess</h3>
+                    <h5>Designer</h5>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<?php
+require_once "footer.phtml";

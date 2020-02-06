@@ -29,7 +29,7 @@
            $upload_ok = 0;
        }
    // Check file size
-       if ($file_size > 9000000000) {
+       if ($file_size > 5000000) {
            $uploadErr .= "Sorry, your file is too large.";
            $upload_ok = 0;
        }
