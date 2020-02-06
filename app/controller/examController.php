@@ -242,8 +242,15 @@ class examController extends Controller
         $this->view->pageTitle='who_do_exam';
         $this->view->render();
 
-    }
+     }
 
+     public function dismit_exam($e_id){
+
+         $exam=$this->model('Exam');
+         $e= $exam->dismit_exam([$e_id]);
+
+         header("Location:/exam/details");
+     }
 
 }
 ?>

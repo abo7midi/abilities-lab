@@ -14,19 +14,19 @@
         <tr>
             <td><h4>User_id</h4></td>
             <td><h4>Marks</h4></td>
-            <td><h4>Exam ID</h4></td>
+            <td><h4>User Exam Date</h4></td>
 
         </tr>
         <?php
         foreach($this->view_data['u_exams'] as $row ){
-            $user_name =$row['user_name'];
-            $ex_id =$row['exam_id'];
+            $user_name =$row['full_name'];
             $marks =$row['degrees'];
+            $user_exam_date =$row['user_exam_date'];
             ?>
             <tr>
                 <td><?php echo $user_name?></td>
                 <td><?php echo $marks ?></td>
-                <td><?php echo $ex_id ?></td>
+                <td><?php echo $user_exam_date ?></td>
             </tr>
         <?php } ?>
 
