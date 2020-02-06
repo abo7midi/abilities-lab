@@ -2,10 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6a7219bf-f161-44d8-8f52-80819c55d6ea" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/app/controller/activityController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controller/carController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controller/commentController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controller/newsController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controller/examController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controller/examController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controller/userController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controller/userController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/model/Exam.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/model/Exam.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -42,7 +42,7 @@
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/public" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="RecentsManager">
@@ -117,6 +117,19 @@
       <workItem from="1580644916252" duration="882000" />
       <workItem from="1580646241171" duration="629000" />
       <workItem from="1580648327656" duration="1244000" />
+      <workItem from="1580714855605" duration="2680000" />
+      <workItem from="1580732325648" duration="957000" />
+      <workItem from="1580842345609" duration="1715000" />
+      <workItem from="1580844096635" duration="1790000" />
+      <workItem from="1580845916608" duration="1571000" />
+      <workItem from="1580883875269" duration="1694000" />
+      <workItem from="1580885817468" duration="311000" />
+      <workItem from="1580886157074" duration="1792000" />
+      <workItem from="1580888229061" duration="2134000" />
+      <workItem from="1580899349866" duration="767000" />
+      <workItem from="1580902219070" duration="83000" />
+      <workItem from="1580903567009" duration="1983000" />
+      <workItem from="1580970798038" duration="2000" />
     </task>
     <servers />
   </component>

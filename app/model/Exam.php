@@ -76,6 +76,21 @@ class Exam
 
     }
 
+    public function getExaminer_exams($u_id){
+        $Stmt = $this->db->preparation("select * from exams where user_id=?");
+        $Stmt->execute($u_id);
+        return $Stmt->fetchAll();
+
+
+    }
+    public function getExamDetails($s_id){
+        $Stmt = $this->db->preparation("select user_exam.user_id as e_u_id,user_exam.exam_id as exam_id,users.user_name as user_name,SUM(user_exam_result) as degrees from user_exam left join users on users.user_id=user_exam.user_id  where user_exam.sample_id=? GROUP BY user_exam.user_id ORDER BY degrees DESC");
+        $Stmt->execute($s_id);
+        return $Stmt->fetchAll();
+
+
+    }
+
 }
 
 

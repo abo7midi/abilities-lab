@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title>Exam Details</title>
+</head>
+
+
+<div id="time" ></div>
+<div class="container">
+
+
+    <table class="table" style="width:100%; border-spacing: 5px;">
+        <tr>
+            <td><h4>Exam_id</h4></td>
+            <td><h4>Sample_id</h4></td>
+
+
+
+        </tr>
+        <?php
+
+
+        foreach($this->view_data['ex_exams'] as $row ){
+
+            $ex_id =$row['exam_id'];
+        foreach($this->view_data['samples_ex'] as $s ){
+            ?>
+
+            <tr>
+                <td><?php echo $ex_id ?></td>
+                <td><a href="/exam/who_do_exam/<?php echo $s['sample_id'] ?>"><?php echo $s['sample_id'] ?></a></td>
+
+            </tr>
+        <?php }} ?>
+
+
+    </table>
+
+</div>
+
+
+</body>
+</html>

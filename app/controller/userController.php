@@ -138,7 +138,7 @@ class userController extends Controller
                     echo "ur examiner";
 
                 } elseif  ($user[0]["group_id"] == 3 && $user[0]["user_state"]==1 ){
-                    header("location:/exam/takeExam/5e366a4921621");
+                    header("location:/exam/takeExam/5e39d0544399b");
                     echo "ur members";
                 }elseif  ($user[0]["group_id"] == 1 && $user[0]["user_state"]==1 ) {
                     header('Location:/user/dashboard');
