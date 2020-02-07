@@ -38,11 +38,11 @@ public static function getMessage($msg)
      * @param $key
      * @param $msg
      */
-public static function setMessage($key,$msg)
+public static function setMessage($state,$key,$msg)
 {
 
     Session::set($key,$msg);
-//    Session::set('msgState',$state);
+    Session::set('msgState',$state);
 
 }
 

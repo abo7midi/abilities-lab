@@ -5,7 +5,7 @@
 
 class Category
 {
-  protected  $data_file;
+  protected $data_file;
   protected $db;
 
 
@@ -26,7 +26,7 @@ public function allSubCate()
 public function add(array $aData)
 {
 
-      $oStmt = $this->db->preparation('insert into exams values(?,?,?,?,?,?,?,?,?,?,?,?,?)');
+      $oStmt = $this->db->preparation('insert into categories(cat_name,cat_description,cat_created_at,cat_main_cat) values(?,?,now(),?)');
 
           return $oStmt->execute($aData);
 

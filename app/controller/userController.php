@@ -68,8 +68,6 @@ class userController extends Controller
                 if (checkemail($_POST["username"], $_POST["email"]) == true) {
                     echo "This Is Existing";
                 } else {
-
-
                     $post = array(
                         ':full_name' => htmlentities($_REQUEST['full_name']),
                         ':user_name' => htmlentities($_REQUEST['username']),
@@ -141,29 +139,7 @@ class userController extends Controller
                     echo "error";
                 }
 
-
-
-
-
-//               $session_data = array(
-//                   'user_id'=>$user['user_id'],
-//                  'user_name'=> $user['user_name'],
-//                  'group_id'=>  $user['group_id']);
-//
-//              Session::loggIn($session_data);
-//
-//               header("location:/index");
-//                echo "success";
-
             }
-
-// else {
-////               header("location:/user/addUser");
-//                echo "error";
-//
-//            }
-//        }
-            # show form view  to add new user
 
 
             $this->view('admin'.DIRECTORY_SEPARATOR.'addUser');

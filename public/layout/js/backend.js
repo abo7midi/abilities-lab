@@ -4,6 +4,17 @@ $(function(){
 
     // Dashboard
 
+    $('.main_cat').click(function () {
+
+        $('.categories').prop('disabled', true);
+    });
+
+    $('.sub_cat').click(function () {
+        $('.categories').prop('disabled', false);
+    });
+
+
+
     $('.toggle-info').click(function () {
 
         $(this).toggleClass('selected').parent().next('.panel-body').fadeToggle(100);
@@ -127,6 +138,8 @@ $(function(){
 
     ///////////////////////////////////////////////////////////
 
-
-
 });
+
+function getValueFromOptionToInput(element) {
+    document.getElementById("cat-sub").value = element;
+}
