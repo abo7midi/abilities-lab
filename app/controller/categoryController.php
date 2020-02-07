@@ -30,32 +30,39 @@ class categoryController extends Controller
 
             if ($validate['status'] == 1)
             {
-//                $id = null;
-                $name = $_POST['name'];
-                $desc = $_POST['description'];
-//                $created_By = $_SESSION['user_id'];
-//                $created_At = now();
-                $c = $_POST['cat'];
-                $cat = $_POST['categories'];
+                 function checkcat($cn)
+                {
+                    $oStmt = DB::init()->preparation("select cat_name from categories WHERE cat_name = ? ");
+                    $oStmt->execute([$cn]);
+                    $r=$oStmt->fetchAll();
 
-                $category = [
-//                    $id,
-                    $name,
-                    $desc,
-//                   $created_By,
-//                    $created_At,
-                    $c,
-//                    $cat
-                ];
-
-
-
-                $this->model('Category');
-                if ($this->model->add($category)) {
-                    Message::setMessage('msgState',1,'');
-                    Message::setMessage('','main',' تم اضفة الفئة بنجاح');
+                    if (sizeof( $r)>0) {
+                        return true;
+                    } else {
+                        return false;
+                    }
                 }
 
+                if (checkcat($_POST["name"]) == true) {
+                    echo "This Is Existing";
+
+                } else {
+                    $name = $_POST['name'];
+                    $desc = $_POST['description'];
+                    $c = $_POST['cat'];
+
+                    $category = [
+                        $name,
+                        $desc,
+                        $c,
+                    ];
+
+                    $this->model('Category');
+                    if ($this->model->add($category)) {
+                        Message::setMessage('msgState', 1, '');
+                        Message::setMessage('', 'main', ' تم اضفة الفئة بنجاح');
+                    }
+                }
             }
         }
 //        $this->view('admin'.DIRECTORY_SEPARATOR.'addCategory');

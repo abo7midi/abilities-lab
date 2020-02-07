@@ -5,12 +5,6 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/controller/adminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controller/adminController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/controller/categoryController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controller/categoryController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controller/userController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controller/userController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/core/Message.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/core/Message.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/model/Category.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/model/Category.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/view/admin/addCategory.phtml" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/admin/addCategory.phtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/view/admin/category.phtml" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/admin/category.phtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/layout/js/backend.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/layout/js/backend.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
