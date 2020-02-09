@@ -6,7 +6,6 @@ include "side_bar.phtml";
 <link rel="stylesheet" type="text/css" href="/layout/css/backend.css">
 <link rel="stylesheet" type="text/css" href="/layout/css/main.css">
 
-
 <h1 class="text-center"> Add New Category </h1>
 <div class="container-fluid">
     <form class="form-horizontal" action="/category/add" method="POST">
@@ -15,7 +14,7 @@ include "side_bar.phtml";
         <div class="form-group">
             <label class="col-sm-2 control-label label-edit"> Name </label>
             <div class="col-sm-10">
-                <input type="text" name="name" class="form-control input-edit" autocomplete="off" required="required" placeholder="Name Of The Categories"/>
+                <input type="text" name="name" class="form-control input-edit category_name " onkeyup="lettersOnlyTwo(this)" autocomplete="off" required="required" placeholder="Name Of The Categories"/>
             </div>
         </div>
         <!-- End Name Field -->
@@ -32,13 +31,12 @@ include "side_bar.phtml";
 
 
 
-        <!-- Start Ads Field -->
         <div class="form-group">
             <label class="col-sm-2 control-label label-edit"> Type Of Category </label>
-            <div class="col-sm-10">
+            <div class="col-sm-10" id="type_category">
 
                 <div>
-                    <input class="main_cat" type="radio" name="cat" id="cat-main" value="0">
+                    <input class="main_cat" type="radio" name="cat" id="cat-main" value="0" onkeyup="lettersOnlyTwo(this)">
                     <label for="cat-main">Main Category</label>
                 </div>
 
@@ -49,7 +47,6 @@ include "side_bar.phtml";
 
             </div>
         </div>
-        <!-- End Ads Field -->
 
         <label class="col-sm-2 control-label label-edit"> Choose The Main Category </label>
         <div class="col-sm-10">
@@ -78,3 +75,5 @@ include "side_bar.phtml";
 <script src="/layout/js/bootstrap.min.js"></script>
 <script src="/layout/js/backend.js"></script>
 <script src="/layout/js/main.js"></script>
+<script src="/js/jquery.validate.js"></script>
+<script src="/js/script.js"></script>
