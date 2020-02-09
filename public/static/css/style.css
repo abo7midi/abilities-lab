@@ -205,4 +205,10 @@ a:hover {
 }
 .footer a i {
     font-size: 20px;
+
+}
+
+.carousel{
+    z-index: 0;
+
 }

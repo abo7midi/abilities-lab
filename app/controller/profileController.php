@@ -5,20 +5,22 @@
  * Date: 03/02/2020
  * Time: 09:40 م
  */
-
 class profileController extends Controller
 {
     public function index()
     {
-//        if (!empty($user)) {
-//            Session::loggIn([$user[0]['user_id']]);
+
+
+            $id=Session::get('userID');
+
+//           return var_dump($id);
         $this->model('Profile');
-        $this->view('admin'.DIRECTORY_SEPARATOR.'showProfile',['Profile'=>$this->model->all()]);
+        $this->view('admin'.DIRECTORY_SEPARATOR.'showProfile',['Profile'=>$this->model->all($id)]);
         $this->view->pageTitle='admin showProfile';
         $this->view->render();
 
     }
-//}
+
 
 //    edit profile
 ////controller for adding user by admin

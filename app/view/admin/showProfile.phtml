@@ -1,0 +1,62 @@
+
+
+
+<h1 class="text-center"> Manage Members </h1>
+<div class="container-fluid">
+    <div class="table-responsive">
+        <table class="main-table text-center table table-bordered">
+            <tr>
+
+                <td>FullNmae</td>
+                <td>Phone</td>
+                <td>Email</td>
+                <td>Image</td>
+                <td>degree</td>
+            </tr>
+            <?php
+            if (array_key_exists('Profile',$this->view_data)){
+
+                $table='';
+
+                foreach ($this->view_data['Profile'] as $pro) {
+
+
+                    $table.='<tr class="bel">';
+                    $table.=' <td >'.$pro["fullname"].'</td>';
+                    $table.=' <td >'.$pro["mobile"].'</td>';
+                    $table.=' <td >'.$pro["email"].'</td>';
+                    $table.=' <td><img src="/pictures/' . $pro['pacture'] .'" style="width: 50px;height: 20px"></td>';
+
+                    $table.=' <td >'.$pro["degree"].'</td>';
+            $table.=" <td><a href='/Profile/editProfile/".$pro["user_id"]. "'class='glyphicon glyphicon-edit edit'>tttttp</a>&nbsp;&nbsp;&nbsp;</td>";
+
+
+                    $table.="</td>";
+                    $table.="</tr>";
+
+                }
+
+                echo $table;
+            }
+            ?>
+        </table>
+    </div>
+</div>
+<?php
+//$modifying=$this->view_data['Profile']
+//?>
+<!---->
+<!--<form action="/profile/editProfile/--><?php //echo $modifying['user_id'];?><!--" method="post" enctype="multipart/form-data">-->
+<!--    <input type="hidden" name="id" value="--><?php //echo $modifying['user_id'];?><!--">-->
+<!--    <input type="text" name="full" value="--><?php //echo $modifying['full_name'];?><!--">-->
+<!--    <input type="text" name="mobile" value="--><?php //echo $modifying['phone'];?><!--">-->
+<!--    <input type="email" name="email" value="--><?php //echo $modifying['email'];?><!--">-->
+<!--    <input type="password" name="password" value="--><?php //echo $modifying['user_pwd'];?><!--">-->
+<!--    <input type="file" name="profileuplode" value="--><?php //echo $modifying['image'];?><!--">-->
+<!--    <button type="submit" name="modify">modify</button>-->
+<!---->
+<!---->
+<!---->
+<!---->
+<!--</form>-->
+
