@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6a7219bf-f161-44d8-8f52-80819c55d6ea" name="Default Changelist" comment="">
+    <list default="true" id="180df6e7-5c4f-4158-a258-1be38c9a4091" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controller/examController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controller/examController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/model/Exam.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/model/Exam.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/view/admin/details_for_examiner.phtml" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/admin/details_for_examiner.phtml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -28,9 +31,6 @@
     </option>
     <expand />
     <select />
-  </component>
-  <component name="FavoritesManager">
-    <favorites_list name="Refat" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -70,7 +70,7 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="6a7219bf-f161-44d8-8f52-80819c55d6ea" name="Default Changelist" comment="" />
+      <changelist id="180df6e7-5c4f-4158-a258-1be38c9a4091" name="Default Changelist" comment="" />
       <created>1579588484211</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -130,6 +130,8 @@
       <workItem from="1580903567009" duration="1983000" />
       <workItem from="1580970798038" duration="2000" />
       <workItem from="1580987701815" duration="2034000" />
+      <workItem from="1581232133769" duration="1666000" />
+      <workItem from="1581233951500" duration="1316000" />
     </task>
     <servers />
   </component>

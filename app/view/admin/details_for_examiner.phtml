@@ -20,21 +20,33 @@
 
         </tr>
         <?php
+        echo "<pre>";
+print_r($this->view_data['ex_exams']);
 
-
+print_r($this->view_data['samples_ex']);
+        echo "</pre>";
         foreach($this->view_data['ex_exams'] as $row ){
-
             $ex_id =$row['exam_id'];
-        foreach($this->view_data['samples_ex'] as $s ){
             ?>
-
             <tr>
-                <td><?php echo $ex_id ?></td>
-                <td><a href="/exam/who_do_exam/<?php echo $s['sample_id'] ?>"><?php echo $s['sample_id'] ?></a></td>
-                <td><a href="/exam/dismit_exam/<?php echo $s['exam_id'] ?>">Dismit exam</a></td>
+            <td><?php echo $ex_id ?></td>
+                <td>
+                   <ul>
+                <?php
+        foreach($this->view_data['samples_ex'] as $s ){
+            foreach ($s as $sam){
+                if($ex_id==$sam['exam_id']){
+            ?>
+                <li><a href="/exam/who_do_exam/<?php echo $sam['sample_id'] ?>"><?php echo $sam['sample_id'] ?></a></li>
 
-            </tr>
-        <?php }} ?>
+        <?php }}}
+        echo "</ul></td>";
+      ?>
+                       <td><a href="/exam/dismit_exam/<?php echo $sam['exam_id'] ?>">Dismit exam</a></td>
+
+                       <?php
+            echo"</tr>";
+        } ?>
 
 
     </table>
