@@ -88,18 +88,6 @@ $(function(){
     });
 
 
-    $('.post-trash').click(function () {
-        return confirm('Are You Sure You Want To Delete This Post ?');
-    });
-
-    $('.post-non-active').click(function () {
-        return confirm('Are You Sure You Want To Activate This Post ?');
-    });
-
-    $('.post-actived').click(function () {
-        return confirm('Are You Sure You Want To NonActivate This Post ?');
-    });
-
 
 
     // Category Show Option

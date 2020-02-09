@@ -251,8 +251,6 @@ h1{
     height: 45px;
 }
 
-
-
 .table-bordered>tbody>tr>td{
     border: none;
     border:1px solid #ffffff;
@@ -282,7 +280,7 @@ h1{
 
 .main-table tr td .non-active,
 .admins .admin .non-active,
-.main-table tr td .post-non-active,
+.main-table tr td .cat-non-active,
 .latest-user .glyphicon-remove-sign,
 .categories .cat .hidden-buttons .non-active{
     font-size: 22px;
@@ -292,7 +290,7 @@ h1{
 }
 
 .main-table tr td .actived,
-.main-table tr td .post-actived,
+.main-table tr td .cat-actived,
 .latest-user .glyphicon-ok-sign{
     font-size: 22px;
     color: #1e9600;

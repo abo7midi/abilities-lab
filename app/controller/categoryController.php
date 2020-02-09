@@ -44,7 +44,9 @@ class categoryController extends Controller
                 }
 
                 if (checkcat($_POST["name"]) == true) {
+                    echo '<div class="container-fluid">';
                     echo "This Is Existing";
+                    echo '</div>';
 
                 } else {
                     $name = $_POST['name'];
@@ -79,8 +81,8 @@ public function delete($id)
 {
   $this->model('Category');
   $this->model->delete( array(0 => $id ));
-  Message::setMessage('status',1);
-  Message::setMessage('main','تم حذف الفئة بنجاح ّ!');
+  Message::setMessage('status',1,'');
+  Message::setMessage('','main','تم حذف الفئة بنجاح ّ!');
   header('Location:/category/index');
 
 }
@@ -130,5 +132,26 @@ $this->view->pageTitle='this page of index';
 
 $this->view->render();}
 
+
+
+   public function active($id)
+    {
+        $this->model('Category');
+        $this->model->updateActive( array(0 => $id ));
+        Message::setMessage('status',1,'');
+        Message::setMessage('','main','الحساب بنجاحّ!');
+        header('Location:/category');
+
+    }
+
+    public function nonactive($id)
+    {
+        $this->model('Category');
+        $this->model->updatedisActive( array(0 => $id ));
+        Message::setMessage('status',1,'');
+        Message::setMessage('','main','تقفلّ الحساب!');
+        header('Location:/category');
+
+    }
 }
  ?>

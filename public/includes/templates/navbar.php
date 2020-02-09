@@ -21,7 +21,7 @@
                 <li><a class="text-center" href="/category"><i class="glyphicon glyphicon-th" style="font-size: 22px;"></i></br><?php echo lang('CATEGORIES')?></a></li>
                 <li><a class="text-center" href="#"><i class="glyphicon glyphicon-star"  style="font-size: 22px;"></i></br><?php echo lang('STARS')?></a></li>
                 <li><a class="text-center" href="/user"><i class="fa fa-users"  style="font-size: 22px;"></i></br><?php echo lang('MEMBERS')?></a></li>
-                <li><a class="text-center" href="comment.php"><i class="glyphicon glyphicon-info-sign"  style="font-size: 22px;"></i></br><?php echo lang('ABOUT_US')?></a></li>
+                <li><a class="text-center" href="#"><i class="glyphicon glyphicon-info-sign"  style="font-size: 22px;"></i></br><?php echo lang('ABOUT_US')?></a></li>
                 <li><a class="text-center" href="#"><i class="glyphicon glyphicon-signal"  style="font-size: 22px;"></i></br><?php echo lang('STATISTICS')?></a></li>
               </ul>
 
@@ -30,7 +30,7 @@
                 <li><a class="text-center" href="#"><i class="glyphicon glyphicon-bell" style="font-size: 18px;"></i><span>98</span></a></li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <?php echo "username"; ?> </a>
-                    <ul class="dropdown-menu">
+                    <ul class="dropdown-menu" >
                         <li><a href="/user/edit/"><i class="glyphicon glyphicon-edit"></i> Edit Profile</a></li>
                         <li><a href="#"><i class="glyphicon glyphicon-cog"></i> Settings</a></li>
                         <li><a href="/user/logout"><i class="glyphicon glyphicon-log-out"></i> Logout</a></li>
@@ -40,3 +40,9 @@
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
 </nav>
+<script src="/layout/js/jquery-2.1.3.min.js"></script>
+<script src="/layout/js/bootstrap.min.js"></script>
+<script src="/layout/js/backend.js"></script>
+<script src="/layout/js/main.js"></script>
+<script src="/js/jquery.validate.js"></script>
+<script src="/js/script.js"></script>
