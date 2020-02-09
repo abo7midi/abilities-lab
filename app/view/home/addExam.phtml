@@ -1,9 +1,6 @@
 <?php include VIEW . "header.phtml" ?>
 
   <div class="container">
-            
-       
-              
                <div class="disc ">
                    
                 <div class="row" >
@@ -11,14 +8,12 @@
                    </div>
       </div>
              </div>
-
-
 <!--////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
 <div class="container">
     <div class="row">
         <div class="col-md-2"></div>
         <div class="col-md-8">
-            <form class="form_exam" method="post">
+            <form class="form_exam" method="post" id="addexamform">
                 <div class="row">
                     <div class="col-md-12">
                         <div class="div_name"><h5>New Exam</h5></div>
@@ -26,9 +21,9 @@
                     <?php echo Message::check("logicError   "); ?>
                 </div>
                 <div class="form-group row">
-                    <label for="exam_name" class="col-sm-2 col-form-label"> Exam Name</label>
+                    <label for="exam_name" class="col-sm-2 col-form-label" > Exam Name</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" id="inputExam_name" name="name">
+                        <input type="text" class="form-control" id="inputExam_name" name="name" placeholder=" * REQUIRED">
                     </div>
                     <?php echo Message::check("name"); ?>
                 </div>
@@ -43,7 +38,7 @@
                 <div class="form-group row">
                     <label for="inputPassword3" class="col-sm-2 col-form-label">full mark</label>
                     <div class="col-sm-10">
-                        <input type="number" class="form-control" id="inputDateEnd" name="total_mark">
+                        <input type="number" class="form-control" id="total_mark" name="total_mark">
                     </div>
                     <?php echo Message::check("total_mark"); ?>
                 </div>
@@ -58,7 +53,7 @@
                 <div class="form-group row">
                     <label for="inputPassword3" class="col-sm-2 col-form-label">Enter Time Limit of Exam</label>
                     <div class="col-sm-10">
-                        <input type="number" class="form-control" id="inputDateEnd" name="duration" max="60">
+                        <input type="number" class="form-control" id="inputDateEnd" name="duration">
                     </div>
                     <?php echo Message::check("duration"); ?>
                 </div>
@@ -103,8 +98,6 @@
                         <input type="textarea" class="form-control" id="inputDateEnd" name="desc">
                     </div>
                 </div>
-
-
                 <div class="form-group row">
                     <div class="col-sm-12">
                         <button type="submit" class="btn btn-primary btn-block" style=" background-color:#1abc9c;">submit</button>
@@ -119,4 +112,72 @@
     </div>
 </div>
 <?php include VIEW . "footer.phtml" ?>
+<script type="application/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.js"></script>
+<script type="application/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script>
+<script type="application/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/additional-methods.js"></script>
+<script type="application/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/additional-methods.min.js"></script>
+<script>
+    $(document).ready(function(){
+        $("#addexamform").validate({
+            rules: {
+                name: {
+                    required: true,
+                },
+                no_q:{
+                    required:true,
+                    max:100,
+                    min:1
+                },
+                total_mark:{
+                    required:true,
+                    min:1,
 
+                },
+                pass_mark:{
+                    required:true,
+                    min:1,
+                    max:("#total_mark").val();
+                },
+                duration:{
+                    required:true,
+                    min:1,
+                    max:300
+                },
+                price:{
+                        max:1000,
+                        digits:true
+                     }
+
+            },
+            messages: {
+                name: {
+                    required: "this field is required"
+                },
+                no_q: {
+                    required:"this field is required",
+                        max:100,
+                        min:1
+                },
+                total_mark:{
+                    required:"this field is required",
+                    min:1,
+
+                },
+                pass_mark:{
+                    required:"this field is required",
+                        min:1,
+                        max:("#total_mark").val();
+                },
+                duration:{
+                    required:"this field is required",
+                        min:1,
+                        max:300
+                },
+                price:{
+                    max:1000,
+                    digits:true
+                }
+            }
+        });
+    });
+</script>

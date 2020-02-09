@@ -4,8 +4,12 @@
     <list default="true" id="180df6e7-5c4f-4158-a258-1be38c9a4091" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/controller/examController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controller/examController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controller/userController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controller/userController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/model/Exam.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/model/Exam.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/view/admin/details_for_examiner.phtml" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/admin/details_for_examiner.phtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/view/home/addExam.phtml" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/home/addExam.phtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/view/home/addQuestion.phtml" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/home/addQuestion.phtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/static/css/styleexam.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/static/css/styleexam.css" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -132,6 +136,7 @@
       <workItem from="1580987701815" duration="2034000" />
       <workItem from="1581232133769" duration="1666000" />
       <workItem from="1581233951500" duration="1316000" />
+      <workItem from="1581235990235" duration="9622000" />
     </task>
     <servers />
   </component>

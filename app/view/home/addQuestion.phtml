@@ -26,7 +26,7 @@ echo '
         <form class="form_exam" id="form_exam" method="POST">
          <div class="row">
                     <div class="col-md-12">
-                        <div class="div_name"><h5> insert Quewstions</h5></div>
+                        <div class="div_name"><h5> insert Questions</h5></div>
                     </div>
                     <div class="col-md-12">
                      '.Message::check('quez Degree').'
@@ -47,6 +47,14 @@ echo '
                     </div>
                 </div>
                     '.Message::check("qns$i").'
+                <!-- Text input-->
+                <div class="form-group row">
+                    <label class="col-sm-1 col-form-label" for="image"></label>
+                    <div class="col-sm-11">
+                        <input id="q_degree" name="q_image'.$i.'" placeholder="Enter degree of Question " class="form-control input-md" min="1" type="number">
+                    </div>
+                    '.Message::check("q_degree$i").'
+                </div>
                 <!-- Text input-->
                 <div class="form-group row">
                     <label class="col-sm-1 col-form-label" for="time"></label>

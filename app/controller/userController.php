@@ -100,6 +100,10 @@ class userController extends Controller
 
     public function dashboard()
     {
+
+        if(Session::get("type")!=1){
+            header("location:/home/index");
+        }
         $this->view('admin'.DIRECTORY_SEPARATOR.'dashboard');
         $this->view->pageTitle='dashboard';
         $this->view->render();

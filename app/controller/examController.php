@@ -17,7 +17,9 @@ class examController extends Controller
 
     public function add()
     {
-
+        if(Session::get("type")!=2){
+            header("location:/home/index");
+        }
         $category=$this->model('Category');
         // check if there submit
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -136,7 +138,7 @@ class examController extends Controller
                         Message::setMessage(0,'falseExam','Try again...! You faild in this exam');
                         Message::setMessage(0,'examDegreeF','Your Mark : '.$st_degree." /".$exam->getSpecificExam([$Examid])[0]['exam_total_mark']);
                     }
-                    $exam->addUserExam([1/*Session::get("userID")*/,$Examid,$st_degree]);
+                    $exam->addUserExam([1/*Session::get("userID")*/,$Examid,$st_degree,$samples[$oneSample]['sample_id']]);
             $this->view('home'.DIRECTORY_SEPARATOR.'showResult',["studentDegree"=>$st_degree,"trueChoice"=>$trueChoice,"falseChoice"=>$falseChoice,"emptyChoice"=>$emptyChoice,"totalMark"=>$exam->getSpecificExam([$Examid])[0]['exam_total_mark'],"numberQ"=>$_POST['q_num']]);
             $this->view->pageTitle='exam result';
             $this->view->render();

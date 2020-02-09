@@ -40,7 +40,7 @@ class Exam
     public function addUserExam(array $aData)
     {
 
-        $oStmt = $this->db->preparation('INSERT INTO user_exam( user_id , exam_id , user_exam_state , user_exam_date , user_exam_result , user_exam_finish_time) VALUES (?,?,1,now(),?,now())');
+        $oStmt = $this->db->preparation('INSERT INTO user_exam( user_id , exam_id , user_exam_state , user_exam_date , user_exam_result , user_exam_finish_time,sample_id) VALUES (?,?,1,now(),?,now(),?)');
 
         return $oStmt->execute($aData);
 
