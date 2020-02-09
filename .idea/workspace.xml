@@ -4,14 +4,7 @@
     <list default="true" id="a2edf0e9-0bf3-4cf4-8d0e-2f64b439b8d5" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/controller/adminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controller/adminController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controller/categoryController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controller/categoryController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/model/Category.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/model/Category.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/view/admin/accounts.phtml" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/admin/accounts.phtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/view/admin/addCategory.phtml" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/admin/addCategory.phtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/view/admin/category.phtml" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/admin/category.phtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/view/admin/dashboard.phtml" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/admin/dashboard.phtml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/view/admin/editCategory.phtml" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/admin/editCategory.phtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/script.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -128,6 +121,7 @@
       <workItem from="1581197879502" duration="89000" />
       <workItem from="1581233094658" duration="18053000" />
       <workItem from="1581273448573" duration="348000" />
+      <workItem from="1581274125363" duration="1468000" />
     </task>
     <servers />
   </component>

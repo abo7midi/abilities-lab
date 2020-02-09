@@ -45,14 +45,14 @@ $category = $this->view_data['categories'];
                 <div class="col-sm-10" id="type_category">
 
                     <div>
-                        <input class="main_cat" type="radio" name="cat" id="cat-main" value="0" <?php if ($category['cat_main_cat'] == 0) {
+                        <input class="main_cat" type="radio" name="cat" id="cat-main" value="0" onkeyup="lettersOnlyTwo(this)" <?php if ($category['cat_main_cat'] == 0) {
                             echo 'checked';
                         } ?>>
                         <label for="cat-main">Main Category</label>
                     </div>
 
                     <div>
-                        <input class="sub_cat" type="radio" name="cat" id="cat-sub" value="0"
+                        <input class="sub_cat" type="radio" name="cat" id="cat-sub" value="<?php echo $category['cat_main_cat'];?>"
                             <?php
                                 if ($category['cat_main_cat'] > 0) {
                                     echo 'checked';
