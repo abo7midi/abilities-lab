@@ -1,13 +1,13 @@
 <?php include VIEW . "header.phtml" ?>
 
-  <div class="container">
-               <div class="disc ">
-                   
-                <div class="row" >
-                     <h2>Our  students</h2>
-                   </div>
-      </div>
-             </div>
+<div class="container">
+    <div class="disc ">
+
+        <div class="row">
+            <h2>Our students</h2>
+        </div>
+    </div>
+</div>
 <!--////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
 <div class="container">
     <div class="row">
@@ -21,50 +21,53 @@
                     <?php echo Message::check("logicError   "); ?>
                 </div>
                 <div class="form-group row">
-                    <label for="exam_name" class="col-sm-2 col-form-label" > Exam Name</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" id="inputExam_name" name="name" placeholder=" * REQUIRED">
+                    <label for="exam_name" class="col-sm-3 col-form-label"> Exam Name</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" id="inputExam_name" name="name">
                     </div>
                     <?php echo Message::check("name"); ?>
                 </div>
                 <div class="form-group row">
-                    <label for="inputPassword3" class="col-sm-2 col-form-label">Question No.</label>
-                    <div class="col-sm-10">
+                    <label for="inputPassword3" class="col-sm-3 col-form-label">Question No.</label>
+                    <div class="col-sm-9">
                         <input type="number" class="form-control" id="inputDateEnd" name="no_q">
+                        <small>you have range for question from 1 to 500</small>
                     </div>
                     <?php echo Message::check("no_q"); ?>
                 </div>
 
                 <div class="form-group row">
-                    <label for="inputPassword3" class="col-sm-2 col-form-label">full mark</label>
-                    <div class="col-sm-10">
+                    <label for="inputPassword3" class="col-sm-3 col-form-label">full mark</label>
+                    <div class="col-sm-9">
                         <input type="number" class="form-control" id="total_mark" name="total_mark">
                     </div>
                     <?php echo Message::check("total_mark"); ?>
                 </div>
                 <div class="form-group row">
-                    <label for="inputPassword3" class="col-sm-2 col-form-label">pass mark</label>
-                    <div class="col-sm-10">
+                    <label for="inputPassword3" class="col-sm-3 col-form-label">pass mark</label>
+                    <div class="col-sm-9">
                         <input type="number" class="form-control" id="inputDateEnd" name="pass_mark">
+                        <small>the value should be equal or smaller than full mark</small>
                     </div>
                     <?php echo Message::check("pass_mark"); ?>
                 </div>
 
                 <div class="form-group row">
-                    <label for="inputPassword3" class="col-sm-2 col-form-label">Enter Time Limit of Exam</label>
-                    <div class="col-sm-10">
+                    <label for="inputPassword3" class="col-sm-3 col-form-label">Duration</label>
+                    <div class="col-sm-9">
                         <input type="number" class="form-control" id="inputDateEnd" name="duration">
+                        <small>you have range for duration from 1 minute to 300 minute (5 hours)</small>
                     </div>
                     <?php echo Message::check("duration"); ?>
                 </div>
 
                 <div class="form-group row">
-                    <label for="inputPassword3" class="col-sm-2 col-form-label">Enter category of Exam</label>
-                    <div class="col-sm-10">
+                    <label for="inputPassword3" class="col-sm-3 col-form-label">Category</label>
+                    <div class="col-sm-9">
                         <select name="category" class="form-control input-md">
                             <?php
-                            foreach ($this->view_data["category"] as $row){
-                                echo ' <option value="'.$row['cat_id'].'" > '.$row['cat_name'].'';
+                            foreach ($this->view_data["category"] as $row) {
+                                echo ' <option value="' . $row['cat_id'] . '" > ' . $row['cat_name'] . '';
                             }
                             ?>
                         </select>
@@ -73,109 +76,113 @@
                 </div>
 
                 <div class="form-group row">
-                    <label for="inputPassword3" class="col-sm-2 col-form-label">Price</label>
-                    <div class="col-sm-10">
+                    <label for="inputPassword3" class="col-sm-3 col-form-label">Price</label>
+                    <div class="col-sm-9">
                         <input type="number" class="form-control" id="inputDateEnd" name="price">
+                        <small>1000 $ is the maximum value and you can make it free</small>
                     </div>
                     <?php echo Message::check("price"); ?>
                 </div>
 
                 <div class="form-group row">
-                    <label for="inputPassword3" class="col-sm-2 col-form-label">Select level of exam</label>
-                    <div class="col-sm-10">
-                    <select id="level" name="level" placeholder="Choose correct answer " class="form-control input-md" >
+                    <label for="inputPassword3" class="col-sm-3  col-form-label">Hardness</label>
+                    <div class="col-sm-9">
+                        <select id="level" name="level" class="form-control input-md">
 
-                        <option value="h">Hard</option>
-                        <option value="m">medium</option>
-                        <option value="e" selected>Easy</option>
-                    </select>
+                            <option value="h">Hard</option>
+                            <option value="m">medium</option>
+                            <option value="e" selected>Easy</option>
+                        </select>
                     </div>
                 </div>
 
                 <div class="form-group row">
-                    <label for="inputPassword3" class="col-sm-2 col-form-label">Discrption</label>
-                    <div class="col-sm-10">
+                    <label for="inputPassword3" class="col-sm-3 col-form-label">Discrption</label>
+                    <div class="col-sm-9">
                         <input type="textarea" class="form-control" id="inputDateEnd" name="desc">
                     </div>
                 </div>
-                <div class="form-group row">
+                <div class="form-group  row">
                     <div class="col-sm-12">
-                        <button type="submit" class="btn btn-primary btn-block" style=" background-color:#1abc9c;">submit</button>
+                        <button type="submit" class="btn btn-primary btn-block" style=" background-color:#1abc9c;">
+                            submit
+                        </button>
                     </div>
                 </div>
             </form>
-
         </div>
         <div class="col-md-2"></div>
-
-
     </div>
 </div>
 <?php include VIEW . "footer.phtml" ?>
-<script type="application/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.js"></script>
-<script type="application/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script>
-<script type="application/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/additional-methods.js"></script>
-<script type="application/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/additional-methods.min.js"></script>
+<script type="application/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.js"></script>
+<script type="application/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script>
+<script type="application/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/additional-methods.js"></script>
+<script type="application/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/additional-methods.min.js"></script>
 <script>
-    $(document).ready(function(){
+    $(document).ready(function () {
         $("#addexamform").validate({
             rules: {
                 name: {
                     required: true,
                 },
-                no_q:{
-                    required:true,
-                    max:100,
-                    min:1
+                no_q: {
+                    required: true,
+                    digits: true,
+                    range: [1, 500]
                 },
-                total_mark:{
-                    required:true,
-                    min:1,
+                total_mark: {
+                    required: true,
+                    digits: true,
+                    min: 1,
 
                 },
-                pass_mark:{
-                    required:true,
-                    min:1,
-                    max:("#total_mark").val();
+                pass_mark: {
+                    required: true,
+                    digits: true,
+                    min: 1,
+                    max: ("#total_mark").value
                 },
-                duration:{
-                    required:true,
-                    min:1,
-                    max:300
+                duration: {
+                    required: true,
+                    digits: true,
+                    range: [1, 300]
                 },
-                price:{
-                        max:1000,
-                        digits:true
-                     }
-
+                price: {
+                    max: 1000,
+                    digits: true
+                }
             },
             messages: {
                 name: {
                     required: "this field is required"
                 },
                 no_q: {
-                    required:"this field is required",
-                        max:100,
-                        min:1
+                    required: "this field is required",
+                    range: "you are enter unvalid value"
                 },
-                total_mark:{
-                    required:"this field is required",
-                    min:1,
-
+                total_mark: {
+                    required: "this field is required",
+                    min: "smallest value is one degree"
                 },
-                pass_mark:{
-                    required:"this field is required",
-                        min:1,
-                        max:("#total_mark").val();
+                pass_mark: {
+                    required: "this field is required",
+                    digits: "the value should be digits",
+                    min: "the value should be positive",
+                    max: "you are passed full mark"
                 },
-                duration:{
-                    required:"this field is required",
-                        min:1,
-                        max:300
+                duration: {
+                    required: "this field is required",
+                    digits: "the value should be digits",
+                    range: "you are enter unvalid value"
                 },
-                price:{
-                    max:1000,
-                    digits:true
+                price: {
+                    max: "you passed 1000 $",
+                    digits: "the value should be digits"
                 }
             }
         });

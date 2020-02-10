@@ -18,7 +18,7 @@ abstract class Session
     {
             $_SESSION['userID'] = $user[0];
             $_SESSION['userName'] = $user[1];
-            $_SESSION['type'] = $user[2];
+            $_SESSION['userGroup'] = $user[2];
 
 
     }

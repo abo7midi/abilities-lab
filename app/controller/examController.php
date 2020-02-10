@@ -1,5 +1,4 @@
 <?php
-
 /**
  *
  */
@@ -17,7 +16,7 @@ class examController extends Controller
 
     public function add()
     {
-        if(Session::get("type")!=2){
+        if(!(Session::get("userGroup")==2)){
             header("location:/home/index");
         }
         $category=$this->model('Category');
@@ -60,10 +59,8 @@ class examController extends Controller
                         default:
                             $lv ='';
                     }
-
                     if (!$price==''){
                         $paid='1';
-
                     }else{
                         $paid='0';
                     }
