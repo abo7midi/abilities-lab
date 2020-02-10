@@ -17,7 +17,7 @@ class Profile
 //
 
         return $this->db->query("select  users.user_id,full_name as fullname,phone as mobile,user_email as email ,image as pacture,exams.exam_pass_mark as degree 
-                     from exams INNER JOIN users on exams.user_id= users.user_id WHERE users.user_id=$id ");
+                     from exams RIGHT JOIN users on exams.user_id= users.user_id WHERE users.user_id=$id ");
     }
 
 
