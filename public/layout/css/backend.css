@@ -22,19 +22,44 @@ body{
     margin: 100px auto;
 }
 
-.login h4{
-    color: #ffffff;
+.login h3{
+    color: #44b7b9;
     font-weight: bold;
-    font-size: 20px;
+    font-size: 25px;
+    margin-top: 35px;
 }
 
 .login input{
-    margin-bottom: 10px;
+    padding-bottom: 20px;
+    padding-top: 20px;
+}
+
+
+.login label{
+    color: #44b7b9;
+    font-size: 15px;
+    margin-top: 20px;
+    font-weight: bold;
 }
 
 .login .btn{
-    background-color:#002435;
+    background-color:#44b7b9;
+    color: #ffff;
+    font-weight: bold;
+    font-size: 20px;
+    border: 0px;
+    margin-top: 15px;
 }
+
+.login-div {
+    /*border: 1px solid #002435 ;*/
+    border-radius: 10px;
+    box-shadow: 0px 0px 30px 0px #44b7b9;
+    margin: -80px;
+    margin-top: 1px;
+    padding: 20px;
+}
+
 /* End Login Form*/
 
 /* Start Bootstrap Edit */
@@ -425,5 +450,7 @@ hr{
 .upload-image {
     display: block;
 }
+
+
 
 /***************************************************************************/

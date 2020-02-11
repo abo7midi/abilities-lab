@@ -7,7 +7,6 @@ include "side_bar.phtml";
 <link rel="stylesheet" type="text/css" href="/layout/css/main.css">
 
 <?php
-//$cid = isset($_GET['']) && is_numeric($_GET['']) ? intval($_GET['']): 0;
 
 $category = $this->view_data['categories'];
 
@@ -15,7 +14,7 @@ $category = $this->view_data['categories'];
 
     <h1 class="text-center"> Edit Category </h1>
     <div class="container-fluid">
-        <form class="form-horizontal" action="?do=Update" method="POST">
+        <form class="form-horizontal" action="" method="POST">
             <input type="hidden" name="catid" value="<?php echo $category['cat_id']; ?>">
             <!-- Start Name Field -->
             <div class="form-group">

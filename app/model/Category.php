@@ -30,7 +30,7 @@ public function allSubCate()
 public function add(array $aData)
 {
 
-      $oStmt = $this->db->preparation('insert into categories(cat_name,cat_description,cat_created_at,cat_main_cat) values(?,?,now(),?)');
+      $oStmt = $this->db->preparation('insert into categories(cat_name,cat_description,cat_created_at,cat_main_cat,user_id) values(?,?,now(),?,?)');
 
           return $oStmt->execute($aData);
 

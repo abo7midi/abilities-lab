@@ -19,15 +19,13 @@ abstract class Session
             $_SESSION['userID'] = $user[0];
             $_SESSION['userName'] = $user[1];
             $_SESSION['type'] = $user[2];
-
-
     }
 
     public static function  logged()
     {
 
-      if (self::has('userID')) {
-          return $_SESSION['userID'];
+      if (self::has('user_id')) {
+          return $_SESSION['user_id'];
       }
       return null;
     }
