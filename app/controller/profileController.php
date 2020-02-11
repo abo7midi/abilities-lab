@@ -71,7 +71,7 @@ class profileController extends Controller
         # show form view  to add new user
 
 
-        $this->view('admin'.DIRECTORY_SEPARATOR.'modifyProfile',['profile'=>$x->find( array(0 =>$id))]);
+        $this->view('admin'.DIRECTORY_SEPARATOR.'editpro',['editPro'=>$x->find( array(0 =>$id))]);
 
         $this->view->pageTitle='edit Profile';
         $this->view->render();
