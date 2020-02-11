@@ -38,6 +38,19 @@ jQuery(document).ready(function($){
         }
     });
 
+    $('#proedit').validate({
+        rules: {
+            fullname: "required",
+            password: {required: true, minlength: 6},
+            email: { required: true, email: true },
+        },
+        messages:{
+            fullname: "Your fullname Is Required",
+            password: {required: "Please Provide a password", minlength: "Your Password Must Be At Least 6 characters"},
+            email: { required: "Please Enter Your Email", email: "Success email" },
+        }
+    });
+
 	//open modal
 	$main_nav.on('click', function(event){
 
@@ -224,4 +237,14 @@ function ValidateEmail(inputText)
 function numbersOnly(input){
 	var reg = /[^0-9]/gi;
 	input.value = input.value.replace(reg,"");
+}
+
+function  maxlength(input) {
+    var word =5;
+    var len = input.value.split(/[\s]+/gi);
+    if(len.length>word){
+        document.getElementById("proedit").elements[word].focus(len);
+        input.preventDefault();
+    }
+
 }
