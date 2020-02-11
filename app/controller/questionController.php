@@ -25,14 +25,14 @@ class questionController extends Controller
 
             $this->model('question');
             $total_degree=0;
-
             for($i=1;$i<=$_SESSION['number_que'];$i++) {
-                $validate=Validation::required(["qns$i","q_degree$i","$i"."1","$i"."2","$i"."3","$i"."4","ans"."$i"]);
+                $validate=Validation::required(["qns$i","q_degree$i",'txt1'.$i,'txt2'.$i,'txt3'.$i,'txt4'.$i,'radio'.$i]);
                 if ($validate['status'] == 1) {
                     $q_degree = $_POST["q_degree$i"];
                     $total_degree += $q_degree;
                 }
             }
+
             if ($total_degree != $_SESSION['total_mark']) {
                 Message::setMessage(0, 'quez Degree', 'the total degrees of question should equal full mark of exam...');
                 header("location:/question/add");
@@ -41,11 +41,12 @@ class questionController extends Controller
             for($i=1;$i<=$_SESSION['number_que'];$i++){
                 $qid = uniqid();
                 $q_content = $_POST['qns' . $i];
+                $q_img = $_POST['q_image'.$i];
                 $q_degree = $_POST['q_degree' . $i];
                 $Q_data = [
                     $qid,
                     $q_content,
-                    "no image",
+                    $q_img,
                     $q_degree,
                     $sample_id
                 ];
@@ -56,7 +57,7 @@ class questionController extends Controller
                 $ocid = uniqid();
                 $odid = uniqid();
 
-                $a = $_POST[$i . '1'];
+                $a = $_POST['txt1'.$i];
                 $data1 = [
                     $oaid,
                     $a,
@@ -66,7 +67,7 @@ class questionController extends Controller
 
                 $quez = $this->model->addChoice($data1);
 
-                $b = $_POST[$i . '2'];
+                $b = $_POST['txt2'.$i];
                 $data2 = [
                     $obid,
                     $b,
@@ -75,7 +76,7 @@ class questionController extends Controller
                 ];
 
                 $quez = $this->model->addChoice($data2);
-                $c = $_POST[$i . '3'];
+                $c = $_POST['txt3'.$i];
                 $data3 = [
 
                     $ocid,
@@ -86,7 +87,7 @@ class questionController extends Controller
                 ];
 
                 $quez = $this->model->addChoice($data3);
-                $d = $_POST[$i . '4'];
+                $d = $_POST['txt4'.$i];
                 $data4 = [
 
                     $odid,
@@ -98,7 +99,7 @@ class questionController extends Controller
 
                 $quez = $this->model->addChoice($data4);
 
-                $e = $_POST['ans' . $i];    /*  يعني الـ id حق الإجابة الصحيحة */  /* = ans*/
+                $e = $_POST['radio'.$i];    /*  يعني الـ id حق الإجابة الصحيحة */  /* = ans*/
                 switch ($e) {
                     case 'a':
                         $this->model->correctAnsower([$oaid]);
@@ -120,7 +121,7 @@ class questionController extends Controller
                 $this->sampleNum = 2;
                 header("location:/exam/add");
 
-            } else if ($_POST['next'] == "next") {
+            } else if ($_POST['NewSample'] == "New Sample") {
                 static $sampleNum = 1;
                 ++$sampleNum;
                 $sample = new sampleController();
@@ -150,16 +151,10 @@ class questionController extends Controller
     public function edit($id)
     {
         // check if there submit
-        if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            $postErr=0;
-
-
+        if ($_SERVER["REQUEST_METHOD"] == "POST"){
             //do validation to POST
 
             $validate=Validation::required(['','title']);
-
-
-
             # add new record to the database
 
             if ($validate['status'] == 1)

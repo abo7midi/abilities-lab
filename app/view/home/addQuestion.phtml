@@ -1,173 +1,486 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="/css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
     <title>Q</title>
+    <style>
+        /*custom font*/
+        @import url(https://fonts.googleapis.com/css?family=Montserrat);
+
+        /*basic reset*/
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            /*Image only BG fallback*/
+
+            /*background = gradient + image pattern combo*/
+            background: linear-gradient(338deg, rgba(79, 202, 205, 1) 0%, rgba(71, 175, 177, 1) 47%, rgba(40, 149, 152, 1) 100%);
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        /*form styles*/
+        #msform {
+            width: 860px;
+            margin: 10px auto;
+            text-align: center;
+            position: relative;
+        }
+
+        #msform fieldset {
+            background: white;
+            border: 0 none;
+            border-radius: 3px;
+            box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
+            padding: 20px 30px;
+            box-sizing: border-box;
+            width: 80%;
+            margin: 0 10%;
+
+            /*stacking fieldsets above each other*/
+            position: relative;
+        }
+
+        /*Hide all except first fieldset*/
+        #msform fieldset:not(:first-of-type) {
+            display: none;
+        }
+
+        /*inputs*/
+        #msform input, #msform textarea {
+            padding: 15px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            margin-bottom: 10px;
+            width: 100%;
+            box-sizing: border-box;
+            font-family: montserrat;
+            color: #2C3E50;
+            font-size: 13px;
+        }
+
+        #msform .option {
+            width: 90%;
+            float: left;
+            display: inline;
+        }
+
+        #msform .radio {
+            width: 10%;
+            float: right;
+            display: inline;
+            margin-top: 20px;
+        }
+
+        /*buttons*/
+        #msform .action-button {
+            width: 100px;
+            background: #27AE60;
+            font-weight: bold;
+            color: white;
+            border: 0 none;
+            border-radius: 1px;
+            cursor: pointer;
+            padding: 10px 5px;
+            margin: 10px 5px;
+        }
+
+        #msform .action-button:hover, #msform .action-button:focus {
+            box-shadow: 0 0 0 2px white, 0 0 0 3px #27AE60;
+        }
+
+        /*headings*/
+        .fs-title {
+            font-size: 15px;
+            text-transform: uppercase;
+            color: #2C3E50;
+            margin-bottom: 10px;
+        }
+
+        .fs-subtitle {
+            font-weight: normal;
+            font-size: 13px;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        /*progressbar*/
+        #progressbar {
+            margin-bottom: 30px;
+            overflow: hidden;
+            /*CSS counters to number the steps*/
+            counter-reset: step;
+        }
+
+        #progressbar li {
+            list-style-type: none;
+            color: white;
+            text-transform: uppercase;
+            font-size: 9px;
+            width: 15.33%;
+            float: left;
+            position: relative;
+            padding: 20px;
+        }
+
+        #progressbar li:before {
+            content: counter(step);
+            counter-increment: step;
+            width: 20px;
+            line-height: 20px;
+            display: block;
+            font-size: 10px;
+            color: #333;
+            background: white;
+            border-radius: 3px;
+            margin: 0 auto 5px auto;
+        }
+
+        /*progressbar connectors*/
+        #progressbar li:after {
+            content: '';
+            width: 100%;
+            height: 2px;
+            background: white;
+            position: absolute;
+            left: -50%;
+            top: 9px;
+            z-index: -1; /*put it behind the numbers*/
+        }
+
+        #progressbar li:first-child:after {
+            /*connector not needed before the first step*/
+            content: none;
+        }
+
+        /*marking active/completed steps green*/
+        /*The number of the step and the connector before it = green*/
+        #progressbar li.active:before, #progressbar li.active:after {
+            background: #27AE60;
+            color: white;
+        }
+    </style>
 </head>
 
 
 <body>
+<div class="content">
+    <div style="text-align: center"><?php echo Message::check('quez Degree'); ?></div>
+    <!--////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
+    <form id="msform" method="post">
+        <!-- progressbar -->
+        <ul id="progressbar">
+            <?php
+            $n = $_SESSION['number_que'];
+            for ($i = 1; $i <= $n; $i++) {
+                echo '<li>Q' . $i . '</li>';
+            }
+            ?>
+        </ul>
 
+        <!-- fieldsets -->
+        <?php
+        for ($i = 1; $i <= $n; $i++) {
+            echo ' <fieldset>
+            <h2 class="fs-title">add question ' . $i . '</h2>
+            <h3 class="fs-subtitle">...............</h3>
+            <input type="text" name="qns' . $i . '" placeholder="question content" />
+            ' . Message::check("qns$i") . '
+            <input type="file" name="q_image' . $i . '" placeholder="question image" />
+            <input type="text" class="option" name="txt1 '.$i .'"  placeholder="option 1" />
+            ' . Message::check("txt1"."$i"  ) . '  
+            <input type="radio" class="radio" name="radio' . $i . '" value="a" />
+            <input type="text" class="option" name="txt2 '.$i .'" placeholder="option 2" />
+            ' . Message::check("txt2"."$i") . '
+            <input type="radio" class="radio" name="radio' . $i . '" value="b"  />
+            <input type="text" class="option" name="txt3 '.$i .'" placeholder="option 3" />
+            ' . Message::check("txt3"."$i") . '
+            <input type="radio" class="radio" name="radio' . $i . '" value="c"  />
+            <input type="text" class="option" name="txt4 '.$i .'" placeholder="option 4"  />
+            ' . Message::check("txt4"."$i") . '
+            <input type="radio" class="radio" name="radio' . $i . '" value="c"  />
+            <input type="number" name="q_degree' . $i . '" placeholder="question degree" />
+            ' . Message::check("q_degree$i");
+            if ($i != 1) {
+                echo '<input type="button" name="previous" class="previous action-button" value="Previous" />';
+            }
+            if ($i != $n) {
+                echo '<input type="button" name="next" id="next" class="next action-button" value="Next" />';
+            } else {
+                echo '<input type="submit" id="save" class="submit action-button" name="save" value="save" />';
+                echo '<input type="submit" id="newsample" class="submit action-button" name="NewSample" value="New Sample" />';
+            }
+            echo '</fieldset>';
+        }
 
-
-
-<!--////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
-<div class="container">
-<h2>add q </h2>
-
-<?php
-
-echo '
-<div class="row">
-        <div class="col-md-2"></div>
-        <div class="col-md-8">
-        <form class="form_exam" id="form_exam" method="POST">
-         <div class="row">
-                    <div class="col-md-12">
-                        <div class="div_name"><h5> insert Questions</h5></div>
-                    </div>
-                    <div class="col-md-12">
-                     '.Message::check('quez Degree').'
-                    </div>  
-                </div>
-            <fieldset>
-                
-                ';
-                $n=$_SESSION['number_que'];
-
-                for($i=1;$i<=$n;$i++)
-                {
-                echo '<b>Question number&nbsp;'.$i.'&nbsp;:</><br /><!-- Text input-->
-                <div class="form-group row">
-                    <label class="col-sm-1 col-form-label" for="qns'.$i.' "></label>
-                    <div class="col-sm-11">
-                        <textarea rows="3" cols="5" name="qns'.$i.'" class="form-control" placeholder="Write question number '.$i.' here..."></textarea>
-                    </div>
-                </div>
-                    '.Message::check("qns$i").'
-                <!-- Text input-->
-                <div class="form-group row">
-                    <label class="col-sm-1 col-form-label" for="image"></label>
-                    <div class="col-sm-11">
-                        <input id="q_degree" name="q_image'.$i.'" placeholder="Enter degree of Question " class="form-control input-md" min="1" type="number">
-                    </div>
-                    '.Message::check("q_degree$i").'
-                </div>
-                <!-- Text input-->
-                <div class="form-group row">
-                    <label class="col-sm-1 col-form-label" for="time"></label>
-                    <div class="col-sm-11">
-                        <input id="q_degree" name="q_degree'.$i.'" placeholder="Enter degree of Question " class="form-control input-md" min="1" type="number">
-                    </div>
-                    '.Message::check("q_degree$i").'
-                </div>
-
-                <!-- Text input-->
-                <div class="form-group row">
-                    <label class="col-sm-1 col-form-label" for="'.$i.'1"></label>
-                    <div class="col-sm-11">
-                        <input id="'.$i.'1" name="'.$i.'1" placeholder="Enter option a" class="form-control input-md" type="text">
-                    </div>
-                    '.Message::check("$i"."1").'
-                </div>
-                <!-- Text input-->
-                <div class="form-group row">
-                    <label class="col-sm-1 col-form-label" for="'.$i.'2"></label>
-                    <div class="col-sm-11">
-                        <input id="'.$i.'2" name="'.$i.'2" placeholder="Enter option b" class="form-control input-md" type="text">
-                    </div>
-                    '.Message::check("$i"."2").'
-                </div>
-                <!-- Text input-->
-                <div class="form-group row">
-                    <label class="col-sm-1 col-form-label" for="'.$i.'3"></label>
-                    <div class="col-sm-11">
-                        <input id="'.$i.'3" name="'.$i.'3" placeholder="Enter option c" class="form-control input-md" type="text">
-                    </div>
-                    '.Message::check("$i"."3").'
-                </div>
-                <!-- Text input-->
-                <div class="form-group row">
-                    <label class="col-sm-1 col-form-label" for="'.$i.'4"></label>
-                    <div class="col-sm-11">
-                        <input id="'.$i.'4" name="'.$i.'4" placeholder="Enter option d" class="form-control input-md" type="text">
-                    </div>
-                    '.Message::check("$i"."4").'
-                </div>
-                <br />
-                 <div class="form-group row">
-                 <label class="col-sm-12 col-form-label" for="">Correct answe for question '.$i.'r</label>
-                  <label class="col-sm-1 col-form-label" ></label>
-                  <div class="col-sm-11">
-                <select id="ans'.$i.'" name="ans'.$i.'" placeholder="Choose correct answer " class="form-control input-md" >
-                    <option value="a" selected>option a</option>
-                    <option value="b">option b</option>
-                    <option value="c">option c</option>
-                    <option value="d">option d</option> 
-                    </select> 
-                    </div>
-                    </div>
-                    <br /><br />';
-                }
-
-                echo '  <div class="form-group row">
-                 <label class="col-sm-1 col-form-label" for=""></label>
-                  <div class="col-sm-11">
-                        <input type="submit" class="form-control btn btn-outline-success" name="next"  value="next"></input>
-                  </div>
-                  </div> 
-                   <div class="form-group row">
-                 <label class="col-sm-1 col-form-label" for=""></label>
-                  <div class="col-sm-11">
-                    <input type="submit" class="form-control btn btn-outline-primary"  name="save" value="save"></input>                      
-                  </div>
-                </div>
-            </fieldset>
-        </form>
-        </div>
-   ';
-
-                ?>
-
+        ?>
+    </form>
 </div>
+<!--************************************************************************************-->
 
-<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
 
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js'></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+<script type="application/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.js"></script>
+<script type="application/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script>
+<script type="application/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/additional-methods.js"></script>
+<script type="application/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/additional-methods.min.js"></script>
 <script>
     /************************************************************************/
-    $(document).ready(function(){
-        $(".new").click(function(){
-            $("#phoneArea").append('  <li>\n' +
-                '                                <div class="input-group">\n' +
-                '                                <div class="input-group-prepend">\n' +
+    $(document).ready(function () {
+/*********************************** validation ************************************************/
+var qNo=<?php echo $_SESSION['number_que']?>;
 
-                '                                  </div>\n' +
-                '                                    <input  class=" form-control" id="phone" type="text">\n' +
-                '                                </div>\n' +
-                '                            </li>');
-        });
+        // checkVal();
+function checkVal($nnn=1)
+{
 
-
-
-        $('form[id="form_exam"]').validate({
+    for(var i=1;i<=$nnn;i++) {
+        console.log($nnn);
+        var Q="qns"+i,
+            choice1="txt1"+i,
+            choice2="txt2"+i,
+            choice3="txt3"+i,
+            choice4="txt4"+i,
+            degree="q_degree"+i,
+            radio="radio"+i;
+        console.log(Q);
+        console.log(choice1);
+        console.log(choice2);
+        console.log(choice3);
+        console.log(choice4);
+        console.log(degree);
+        console.log(radio);
+        $("#msform").validate({
             rules: {
-                qcontent: 'required'
+                Q: {
+                    required: true,
+                },
+                choice1: {
+                    required: true,
+                },
 
+                choice2: {
+                    required: true,
+                },
+                choice3: {
+                    required: true,
+                },
+                choice4: {
+                    required: true,
+                },
+                q_degree1: {
+                    required: true,
+                    digits: true,
+                    min: 1,
+                },
+                radio: {
+                    required: true,
+                }
             },
             messages: {
-                qcontent: 'This field is required'
-
-            },
-            submitHandler: function(form) {
-                form.submit();
+                Q: {
+                    required: "this field is required"
+                },
+                choice1: {
+                    required: "this field is required",
+                },
+                choice2: {
+                    required: "this field is required",
+                },
+                choice3: {
+                    required: "this field is required",
+                },
+                choice4: {
+                    required: "this field is required",
+                },
+                q_degree1: {
+                    required: "this field is required",
+                    digits:"this value should be numeric value",
+                    min: "smallest value is one degree"
+                },
+                radio: {
+                    required: "this field is required",
+                }
             }
         });
+    }
+    $('#next').attr('disabled', false);
+}
+        $('#save').on('click', function() {
+            if($("#msform").valid()==false){
+                $('#save').prop('disabled', true);
+            }else{
+                $('#save').prop('disabled', false);
+            }
+        });
+        $('#newsample').on('click', function() {
+            if($("#msform").valid()==false){
+                $('#newsample').off('click');
+            }
+        });
+        var n=1;
 
+        $(document).on('click','#next', function() {
+            checkVal(n);
+            if($("#msform").valid()==false){
+                alert('fale');
+                $('#next').attr('disabled', true);
+            }
+            else{
+                n++;
+                $('#next').attr('disabled', false);
+
+                alert('true');
+                if (animating) return false;
+                animating = true;
+                current_fs = $(this).parent();
+                next_fs = $(this).parent().next();
+
+                //activate next step on progressbar using the index of next_fs
+                $("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
+
+                //show the next fieldset
+                next_fs.show();
+                //hide the current fieldset with style
+                current_fs.animate({opacity: 0}, {
+                    step: function (now, mx) {
+                        //as the opacity of current_fs reduces to 0 - stored in "now"
+                        //1. scale current_fs down to 80%
+                        scale = 1 - (1 - now) * 0.2;
+                        //2. bring next_fs from the right(50%)
+                        left = (now * 50) + "%";
+                        //3. increase opacity of next_fs to 1 as it moves in
+                        opacity = 1 - now;
+                        current_fs.css({
+                            'transform': 'scale(' + scale + ')',
+                            'position': 'absolute'
+                        });
+                        next_fs.css({'left': left, 'opacity': opacity});
+                    },
+                    duration: 800,
+                    complete: function () {
+                        current_fs.hide();
+                        animating = false;
+                    },
+                    //this comes from the custom easing plugin
+                    easing: 'easeInOutBack'
+                });
+            }
+        });
+/*
+        $('#save').off('click', function() {
+            if($("#msform").valid()==false){
+                $('#save').off('click');
+            }else{
+                $('#save').on('click');
+            }
+        });
+        $('#newsample').off('click', function() {
+            if($("#msform").valid()==false){
+                $('#newsample').off('click');
+            }
+        });
+        $('#next').off('click', function() {
+            if($("#msform").valid()==false){
+                $('#next').off('click');
+            }
+            else{
+                $('#next').on('click');
+                if (animating) return false;
+                animating = true;
+                current_fs = $(this).parent();
+                next_fs = $(this).parent().next();
+
+                //activate next step on progressbar using the index of next_fs
+                $("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
+
+                //show the next fieldset
+                next_fs.show();
+                //hide the current fieldset with style
+                current_fs.animate({opacity: 0}, {
+                    step: function (now, mx) {
+                        //as the opacity of current_fs reduces to 0 - stored in "now"
+                        //1. scale current_fs down to 80%
+                        scale = 1 - (1 - now) * 0.2;
+                        //2. bring next_fs from the right(50%)
+                        left = (now * 50) + "%";
+                        //3. increase opacity of next_fs to 1 as it moves in
+                        opacity = 1 - now;
+                        current_fs.css({
+                            'transform': 'scale(' + scale + ')',
+                            'position': 'absolute'
+                        });
+                        next_fs.css({'left': left, 'opacity': opacity});
+                    },
+                    duration: 800,
+                    complete: function () {
+                        current_fs.hide();
+                        animating = false;
+                    },
+                    //this comes from the custom easing plugin
+                    easing: 'easeInOutBack'
+                });
+            }
+        });*/
+        /*****************************************************************************************/
+//jQuery time
+        var current_fs, next_fs, previous_fs; //fieldsets
+        var left, opacity, scale; //fieldset properties which we will animate
+        var animating; //flag to prevent quick multi-click glitches
+
+        $(".previous").click(function () {
+
+            if (animating) return false;
+            animating = true;
+
+            current_fs = $(this).parent();
+            previous_fs = $(this).parent().prev();
+
+            //de-activate current step on progressbar
+            $("#progressbar li").eq($("fieldset").index(current_fs)).removeClass("active");
+
+            //show the previous fieldset
+            previous_fs.show();
+            //hide the current fieldset with style
+            current_fs.animate({opacity: 0}, {
+                step: function (now, mx) {
+                    //as the opacity of current_fs reduces to 0 - stored in "now"
+                    //1. scale previous_fs from 80% to 100%
+                    scale = 0.8 + (1 - now) * 0.2;
+                    //2. take current_fs to the right(50%) - from 0%
+                    left = ((1 - now) * 50) + "%";
+                    //3. increase opacity of previous_fs to 1 as it moves in
+                    opacity = 1 - now;
+                    current_fs.css({'left': left});
+                    previous_fs.css({'transform': 'scale(' + scale + ')', 'opacity': opacity});
+                },
+                duration: 800,
+                complete: function () {
+                    current_fs.hide();
+                    animating = false;
+                },
+                //this comes from the custom easing plugin
+                easing: 'easeInOutBack'
+            });
+        });
+
+        /*********************************************************************************/
     });
 
 </script>
