@@ -1,7 +1,10 @@
-
 <?php
 include "side_bar.phtml";
 ?>
+<link rel="stylesheet" type="text/css" href="/layout/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="/layout/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="/layout/css/backend.css">
+<link rel="stylesheet" type="text/css" href="/layout/css/main.css">
 
     <h1 class="text-center"> Manage Members </h1>
     <div class="container-fluid">
@@ -36,8 +39,8 @@ include "side_bar.phtml";
                               $table.=' <td >'.$account["user_entry_date"]. '</td>';
                               $table.=' <td><img src="/pictures/' . $account['image'] .'" style="width: 50px;height: 20px"></td>';
 
-                              $table.=" <td><a href='/user/edit/".$account["user_id"]. "'class='glyphicon glyphicon-edit edit'></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                            <a href='/user/delete/".$account["user_id"]. "'class='glyphicon glyphicon-trash trash'></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp";
+                              $table.=" <td><a href='/user/edit/".$account["user_id"]. "'class='glyphicon glyphicon-edit edit'></a>&nbsp;&nbsp;&nbsp;
+                                            <a href='/user/delete/".$account["user_id"]. "'class='glyphicon glyphicon-trash trash'></a>&nbsp;&nbsp;&nbsp;";
 //
                           if ($account["user_state"] == 0) {
                               $table.= ' <a href="/user/active/'.$account["user_id"].'" class=" glyphicon glyphicon-remove-sign non-active"></a></td>';
@@ -58,3 +61,7 @@ include "side_bar.phtml";
         </div>
     </div>
 
+<script src="/js/jquery-2.1.3.min.js"></script>
+<script src="=/js/bootstrap.min.js"></script>
+<script src="/js/backend.js"></script>
+<script src="/js/main.js"></script>

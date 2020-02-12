@@ -4,6 +4,17 @@ $(function(){
 
     // Dashboard
 
+    $('.main_cat').click(function () {
+
+        $('.categories').prop('disabled', true);
+    });
+
+    $('.sub_cat').click(function () {
+        $('.categories').prop('disabled', false);
+    });
+
+
+
     $('.toggle-info').click(function () {
 
         $(this).toggleClass('selected').parent().next('.panel-body').fadeToggle(100);
@@ -77,18 +88,6 @@ $(function(){
     });
 
 
-    $('.post-trash').click(function () {
-        return confirm('Are You Sure You Want To Delete This Post ?');
-    });
-
-    $('.post-non-active').click(function () {
-        return confirm('Are You Sure You Want To Activate This Post ?');
-    });
-
-    $('.post-actived').click(function () {
-        return confirm('Are You Sure You Want To NonActivate This Post ?');
-    });
-
 
 
     // Category Show Option
@@ -127,6 +126,8 @@ $(function(){
 
     ///////////////////////////////////////////////////////////
 
-
-
 });
+
+function getValueFromOptionToInput(element) {
+    document.getElementById("cat-sub").value = element;
+}

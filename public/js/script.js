@@ -38,6 +38,24 @@ jQuery(document).ready(function($){
         }
     });
 
+    $('.category_name').validate({
+		rules:{
+			name :{required : true, minlength: 3}
+		},
+		messages:{
+			name: { required: "Please Enter Category_name"},
+		}
+	});
+
+    $('#type_category').validate({
+		rules:{
+			cat :{required : true}
+		},
+		messages:{
+			cat: { required: "Choose Type Of Category"},
+		}
+	});
+
 	//open modal
 	$main_nav.on('click', function(event){
 
@@ -52,7 +70,6 @@ jQuery(document).ready(function($){
 			//show the selected form
 			( $(event.target).is('.cd-signup') ) ? signup_selected() : login_selected();
 		}
-
 	});
 
 	//close modal
