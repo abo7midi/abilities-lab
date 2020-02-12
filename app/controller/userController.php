@@ -102,7 +102,8 @@ class userController extends Controller
         // check if there submit
 
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            $validate = Validation::required(['username', 'password']); //sure that first element in array most be null
+            $validate = Validation::required(['username', 'password']);
+            //sure that first element in array most be null
 
 
             $login = array(

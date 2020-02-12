@@ -14,12 +14,13 @@ class Category
        $this->db=new Model();
   }
 //
-public function allSubCate()
-{
-  return $this->db->query("select * from categories WHERE Existing = 1");
-}
-
+    public function allSubCate()
+    {
+      return $this->db->query("select * from categories WHERE cat_main_cat != 0 AND cat_state = 1");
+    }
 //
+
+
 
 //public function selfjoin(){
 //      return $this->db->query("SELECT A.cat_id AS main_id, A.cat_name AS main_name ,B.cat_name AS sub_name, B.cat_main_cat AS sub_of_main_id FROM categories A, categories B WHERE A.cat_id = B.cat_main_cat AND A.cat_main_cat = 0");
@@ -51,7 +52,8 @@ public function add(array $aData)
           $oStmt = $this->db->preparation('UPDATE categories
                                           SET cat_name=:name , cat_description=:description,
                                           cat_updated_at=now(),
-                                          cat_main_cat=:cat
+                                          cat_main_cat=:cat,
+                                          user_id=:userID
                                           WHERE cat_id=:id ');
           return $oStmt->execute($aData);
 

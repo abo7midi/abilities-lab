@@ -10,20 +10,18 @@ abstract class Session
     public static function set($key, $value)
     {
             $_SESSION[$key] = $value;
-
     }
 
 
     public static function loggIn(array $user)
     {
-            $_SESSION['userID'] = $user[0];
-            $_SESSION['userName'] = $user[1];
-            $_SESSION['type'] = $user[2];
+            $_SESSION['user_id'] = $user[0];
+            $_SESSION['user_name'] = $user[1];
+            $_SESSION['group_id'] = $user[2];
     }
 
     public static function  logged()
     {
-
       if (self::has('user_id')) {
           return $_SESSION['user_id'];
       }
