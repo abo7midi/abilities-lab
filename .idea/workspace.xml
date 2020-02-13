@@ -2,28 +2,44 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a2edf0e9-0bf3-4cf4-8d0e-2f64b439b8d5" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/view/admin/exams.phtml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controller/adminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controller/adminController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controller/categoryController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controller/categoryController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controller/examController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controller/examController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controller/userController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controller/userController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/core/DB.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/core/DB.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/core/Session.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/core/Session.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/model/Admin.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/model/Admin.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/model/Category.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/model/Category.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/model/Exam.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/model/Exam.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/model/Users.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/model/Users.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/view/admin/accounts.phtml" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/admin/accounts.phtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/view/admin/addExam.phtml" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/admin/addExam.phtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/view/admin/addUser.phtml" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/admin/addUser.phtml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/view/admin/category.phtml" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/admin/category.phtml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/view/admin/dashboard.phtml" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/admin/dashboard.phtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/view/admin/editUser.phtml" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/admin/editUser.phtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/view/admin/init.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/admin/init.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/view/admin/login.phtml" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/admin/login.phtml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/view/admin/side_bar.phtml" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/admin/side_bar.phtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/includes/templates/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/public/includes/templates/header.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/includes/templates/navbar.php" beforeDir="false" afterPath="$PROJECT_DIR$/public/includes/templates/navbar.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/view/footer.phtml" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/footer.phtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/view/header.phtml" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/header.phtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/includes/functions/function.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/includes/languages/arabic.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/includes/languages/english.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/includes/templates/footer.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/includes/templates/header.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/includes/templates/navbar.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/includes/templates/site_db.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/script.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/layout/css/backend.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/layout/css/backend.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/layout/css/bootstrap.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/layout/css/bootstrap.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/layout/css/font-awesome.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/layout/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/layout/css/main.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/layout/fonts/FontAwesome.otf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/layout/fonts/fontawesome-webfont.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/layout/fonts/fontawesome-webfont.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/layout/fonts/fontawesome-webfont.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/layout/fonts/fontawesome-webfont.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/layout/fonts/fontawesome-webfont.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/layout/fonts/glyphicons-halflings-regular.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/layout/fonts/glyphicons-halflings-regular.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/layout/fonts/glyphicons-halflings-regular.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/layout/fonts/glyphicons-halflings-regular.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/layout/fonts/glyphicons-halflings-regular.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/layout/images/user.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/layout/images/userPending.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/layout/js/bootstrap.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/layout/js/jquery-2.1.3.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/layout/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/layout/js/main.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -142,7 +158,9 @@
       <workItem from="1581273448573" duration="348000" />
       <workItem from="1581274125363" duration="6023000" />
       <workItem from="1581353443055" duration="12242000" />
-      <workItem from="1581410473013" duration="29635000" />
+      <workItem from="1581410473013" duration="29799000" />
+      <workItem from="1581512635598" duration="34981000" />
+      <workItem from="1581605963599" duration="5846000" />
     </task>
     <servers />
   </component>

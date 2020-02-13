@@ -61,6 +61,113 @@ $(function(){
         $('.password').attr('type','password');
     });
 
+    $('.b').hover(function () {
+        $('.b').css('background-color','#ffffff');
+        $('.nav-item').css('color','#44b7b9');
+    }, function () {
+        $('.b').css('background-color','#44b7b9');
+        $('.nav-item').css('color','#ffffff');
+    });
+
+    $('.n1').hover(function () {
+        $('.n1').css('background-color','#ffffff');
+        $('.nav-item1').css('color','#44b7b9');
+    }, function () {
+        $('.n1').css('background-color','#44b7b9');
+        $('.nav-item1').css('color','#ffffff');
+    });
+
+    $('.n2').hover(function () {
+        $('.n2').css('background-color','#ffffff');
+        $('.nav-item2').css('color','#44b7b9');
+    }, function () {
+        $('.n2').css('background-color','#44b7b9');
+        $('.nav-item2').css('color','#ffffff');
+    });
+
+    $('.n3').hover(function () {
+        $('.n3').css('background-color','#ffffff');
+        $('.nav-item3').css('color','#44b7b9');
+    }, function () {
+        $('.n3').css('background-color','#44b7b9');
+        $('.nav-item3').css('color','#ffffff');
+    });
+
+    $('.n4').hover(function () {
+        $('.n4').css('background-color','#ffffff');
+        $('.nav-item4').css('color','#44b7b9');
+    }, function () {
+        $('.n4').css('background-color','#44b7b9');
+        $('.nav-item4').css('color','#ffffff');
+    });
+
+    $('.n5').hover(function () {
+        $('.n5').css('background-color','#ffffff');
+        $('.nav-item5').css('color','#44b7b9');
+    }, function () {
+        $('.n5').css('background-color','#44b7b9');
+        $('.nav-item5').css('color','#ffffff');
+    });
+
+    $('.n6').hover(function () {
+        $('.n6').css('background-color','#ffffff');
+        $('.nav-item6').css('color','#44b7b9');
+    }, function () {
+        $('.n6').css('background-color','#44b7b9');
+        $('.nav-item6').css('color','#ffffff');
+    });
+
+    $('.n7').hover(function () {
+        $('.n7').css('background-color','#ffffff');
+        $('.nav-item7').css('color','#44b7b9');
+    }, function () {
+        $('.n7').css('background-color','#44b7b9');
+        $('.nav-item7').css('color','#ffffff');
+    });
+
+    $('.n8').hover(function () {
+        $('.n8').css('background-color','#ffffff');
+        $('.nav-item8').css('color','#44b7b9');
+    }, function () {
+        $('.n8').css('background-color','#44b7b9');
+        $('.nav-item8').css('color','#ffffff');
+    });
+
+    $('.dropdown').hover(function () {
+        $('.dropdown').css('background-color','#ffffff');
+        $('.nav-link').css('color','#44b7b9');
+    }, function () {
+        $('.dropdown').css('background-color','#44b7b9');
+        $('.nav-link').css('color','#ffffff');
+    });
+
+    $('.d1').hover(function () {
+        $('.d1').css('background-color','#ffffff');
+        $('.da1').css('color','#44b7b9');
+    }, function () {
+        $('.d1').css('background-color','#44b7b9');
+        $('.da1').css('color','#ffffff');
+    });
+
+    $('.d2').hover(function () {
+        $('.d2').css('background-color','#ffffff');
+        $('.da2').css('color','#44b7b9');
+    }, function () {
+        $('.d2').css('background-color','#44b7b9');
+        $('.da2').css('color','#ffffff');
+    });
+
+    $('.d3').hover(function () {
+        $('.d3').css('background-color','#ffffff');
+        $('.da3').css('color','#44b7b9');
+    }, function () {
+        $('.d3').css('background-color','#44b7b9');
+        $('.da3').css('color','#ffffff');
+    });
+
+
+
+
     // Confirmation Message On Button
 
     $('.trash').click(function () {

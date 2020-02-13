@@ -69,45 +69,52 @@ body{
 }
 
 .navbar-inverse{
-    background-color: #002435;
+    background-color: #44b7b9;
 }
 .navbar-inverse .navbar-brand{
     color: #ffffff;
     font-weight: bold;
 }
 
-.navbar-inverse .navbar-nav>li>a:hover{
+.navbar-inverse .navbar-nav>li>a{
+    color: #ffffff;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+/*.navbar-inverse .navbar-nav>li:hover,.navbar-inverse .navbar-nav>li>a:hover*/
+/*{    background-color: #ffffff;*/
+/*    color: #44b7b9;*/
+/*}*/
+
+.dropdown-menu>li>a:hover{
+    color: #44b7b9;
     background-color: #ffffff;
-    color: #002435;
 }
 
 .navbar-inverse .navbar-nav>.open>a,
 .navbar-inverse .navbar-nav>.open>a:focus,
 .navbar-inverse .navbar-nav>.open>a:hover{
     background-color: #ffffff;
-    color: #002435;
+    color: #44b7b9;
     font-weight: bold;
 }
 
 .navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form{
-    padding-right: 120px ;
+    padding-right: 50px ;
 }
 
 .navbar-inverse .navbar-right > li > a ,
 .dropdown-menu ,
-.dropdown-menu>li>a{
-    background-color: #002435;
-    margin-top: 9px;
+.dropdown-menu>li{
+    background-color: #44b7b9;
 }
 
 .navbar-right {
     margin-right: -40px !important;
 }
 
-.navbar-inverse .navbar-nav>li>a{
-    color: #ffffff;
-    font-weight: bold;
-}
+
 
 .dropdown-menu{
     min-width: 180px;
@@ -118,23 +125,27 @@ body{
 
 .dropdown-menu>li>a{
     color: #ffffff;
-    padding: 10px 15px;
+    padding: 0px 15px;
+    text-decoration: none;
 }
 
-.dropdown-menu > li > a:hover{
-    background-color: #ffffff;
-    color: #002435;
-}
+
 
 .navbar{
     border-radius: 0 ;
     margin-bottom: 0 ;
+    padding-bottom: 0;
+    padding-top: 0;
     border: none;
 }
 
-.nav > li > a, .navbar-brand{
-    padding: 15px 12px;
+
+
+
+.nav > li, .navbar-brand{
+    padding: 0px 12px;
 }
+
 
 .navbar-brand{
     font-size: 16px;
@@ -453,4 +464,27 @@ hr{
 
 
 
+/***************************************************************************/
+.navbar-nav .n{
+    padding-right: 10px;
+    padding-top: 10px;
+}
+
+
+.navbar-nav .n8{
+    padding-top: 20px;
+    margin-left: 0px;
+}
+
+.statis .four-div{
+    text-decoration: none;
+}
+
+@media (min-width: 992px){
+    .navbar-expand-lg .navbar-nav .nav-link {
+        padding-right: .5rem;
+        padding-left: .5rem;
+        padding-top: 20px;
+    }
+}
 /***************************************************************************/

@@ -1,4 +1,5 @@
-jQuery(document).ready(function($){
+jQuery(function($)
+{
 	var $form_modal = $('.cd-user-modal'),
 		$form_login = $form_modal.find('#cd-login'),
 		$form_signup = $form_modal.find('#cd-signup'),
@@ -12,54 +13,61 @@ jQuery(document).ready(function($){
 
 	$('#signupForm').validate({
 		rules: {
-			username: {required : true, minlength: 3 , maxlength: 25},
+			username: {required: true, minlength: 3, maxlength: 25},
 			fullname: "required",
 			password: {required: true, minlength: 6},
-			confirm_password: {required: true, minlength: 6 , equalTo:"#password"},
-			email: { required: true, email: true },
+			confirm_password: {required: true, minlength: 6, equalTo: "#password"},
+			email: {required: true, email: true},
 		},
-		messages:{
-			username: {required : "Your username Is Required", minlength: "You Username must consist 3 letters at less", maxlength: "You Username must consist 25 letters at more" },
+		messages: {
+			username: {
+				required: "Your username Is Required",
+				minlength: "You Username must consist 3 letters at less",
+				maxlength: "You Username must consist 25 letters at more"
+			},
 			fullname: "Your fullname Is Required",
 			password: {required: "Please Provide a password", minlength: "Your Password Must Be At Least 6 characters"},
-			confirm_password: {required: "Please Confirm a password", minlength: "Your Password Must Be At Least 6 characters" , equalTo:"Please Enter The Same Password Above"},
-			email: { required: "Please Enter Your Email", email: "Success email" },
+			confirm_password: {
+				required: "Please Confirm a password",
+				minlength: "Your Password Must Be At Least 6 characters",
+				equalTo: "Please Enter The Same Password Above"
+			},
+			email: {required: "Please Enter Your Email", email: "Success email"},
 		}
 	});
 
 
-
-    $('#signinForm').validate({
-        rules: {
-            email: { required: true, email: true },
-        },
-        messages:{
-           email: { required: "Please Enter Your Email", email: "Success email" },
-        }
-    });
-
-    $('.category_name').validate({
-		rules:{
-			name :{required : true, minlength: 3}
+	$('#signinForm').validate({
+		rules: {
+			email: {required: true, email: true},
 		},
-		messages:{
-			name: { required: "Please Enter Category_name"},
+		messages: {
+			email: {required: "Please Enter Your Email", email: "Success email"},
 		}
 	});
 
-    $('#type_category').validate({
-		rules:{
-			cat :{required : true}
+	$('.category_name').validate({
+		rules: {
+			name: {required: true, minlength: 3}
 		},
-		messages:{
-			cat: { required: "Choose Type Of Category"},
+		messages: {
+			name: {required: "Please Enter Category_name"},
+		}
+	});
+
+	$('#type_category').validate({
+		rules: {
+			cat: {required: true}
+		},
+		messages: {
+			cat: {required: "Choose Type Of Category"},
 		}
 	});
 
 	//open modal
-	$main_nav.on('click', function(event){
+	$main_nav.on('click', function (event) {
 
-		if( $(event.target).is($main_nav) ) {
+		if ($(event.target).is($main_nav)) {
 			// on mobile open the submenu
 			$(this).children('ul').toggleClass('is-visible');
 		} else {
@@ -68,31 +76,31 @@ jQuery(document).ready(function($){
 			//show modal layer
 			$form_modal.addClass('is-visible');
 			//show the selected form
-			( $(event.target).is('.cd-signup') ) ? signup_selected() : login_selected();
+			($(event.target).is('.cd-signup')) ? signup_selected() : login_selected();
 		}
 	});
 
 	//close modal
-	$('.cd-user-modal').on('click', function(event){
-		if( $(event.target).is($form_modal) || $(event.target).is('.cd-close-form') ) {
+	$('.cd-user-modal').on('click', function (event) {
+		if ($(event.target).is($form_modal) || $(event.target).is('.cd-close-form')) {
 			$form_modal.removeClass('is-visible');
 		}
 	});
 	//close modal when clicking the esc keyboard button
-	$(document).keyup(function(event){
-    	if(event.which=='27'){
-    		$form_modal.removeClass('is-visible');
-	    }
-    });
-    
-    
-$(".preview").click(function(){
-  $("#upload").click();
-});
+	$(document).keyup(function (event) {
+		if (event.which == '27') {
+			$form_modal.removeClass('is-visible');
+		}
+	});
 
-$("#upload").change(function(){
-  preview(this);
-});
+
+	$(".preview").click(function () {
+		$("#upload").click();
+	});
+
+	$("#upload").change(function () {
+		preview(this);
+	});
 
 function preview(input) {
   if (input.files && input.files[0]) {
@@ -167,27 +175,6 @@ function preview(input) {
 	});
 
 
-	if(!Modernizr.input.placeholder){
-		$('[placeholder]').focus(function() {
-			var input = $(this);
-			if (input.val() == input.attr('placeholder')) {
-				input.val('');
-		  	}
-		}).blur(function() {
-		 	var input = $(this);
-		  	if (input.val() == '' || input.val() == input.attr('placeholder')) {
-				input.val(input.attr('placeholder'));
-		  	}
-		}).blur();
-		$('[placeholder]').parents('form').submit(function() {
-		  	$(this).find('[placeholder]').each(function() {
-				var input = $(this);
-				if (input.val() == input.attr('placeholder')) {
-			 		input.val('');
-				}
-		  	})
-		});
-	}
 
 });
 

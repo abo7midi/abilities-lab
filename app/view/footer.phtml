@@ -1,121 +1,126 @@
+<div class="footer">
 
-
-
-<!--Footer-->
-<footer id="footer">
-    <div class="container">
-        <div class="row-fluid">
-            <div class="span5 cp">
-                &copy; 2013 <a target="_blank" href="http://shapebootstrap.net/" title="Free Twitter Bootstrap WordPress Themes and HTML templates">اخبار الاسبوع</a>. كل الحقوق محفوظة.
-            </div>
-            <!--/Copyright-->
-
-            <div class="span6">
-                <ul class="social pull-right">
-                    <li><a href="#"><i class="icon-facebook"></i></a></li>
-                    <li><a href="#"><i class="icon-twitter"></i></a></li>
-                    <li><a href="#"><i class="icon-pinterest"></i></a></li>
-                    <li><a href="#"><i class="icon-linkedin"></i></a></li>
-                    <li><a href="#"><i class="icon-google-plus"></i></a></li>
-                    <li><a href="#"><i class="icon-youtube"></i></a></li>
-                    <li><a href="#"><i class="icon-tumblr"></i></a></li>
-                    <li><a href="#"><i class="icon-dribbble"></i></a></li>
-                    <li><a href="#"><i class="icon-rss"></i></a></li>
-                    <li><a href="#"><i class="icon-github-alt"></i></a></li>
-                    <li><a href="#"><i class="icon-instagram"></i></a></li>
-                </ul>
-            </div>
-
-            <div class="span1">
-                <a id="gototop" class="gototop pull-right" href="#"><i class="icon-angle-up"></i></a>
-            </div>
-            <!--/Goto Top-->
-        </div>
-    </div>
-</footer>
-<!--/Footer-->
-
-<!--  Login form -->
-<div class="modal hide fade in" id="loginForm" aria-hidden="false">
-    <div class="modal-header">
-        <i class="icon-remove" data-dismiss="modal" aria-hidden="true"></i>
-        <h4>تسجيل الخول</h4>
-    </div>
-    <!--Modal Body-->
-    <div class="modal-body">
-        <form class="form-inline" action="/home/loggin" method="post" id="form-login">
-            <input type="text" class="input-small" placeholder="Email" name="email">
-            <input type="password" class="input-small" placeholder="Password" name="password">
-            <label class="checkbox">
-                <input type="checkbox"> تذكرني
-            </label>
-            <button type="submit" class="btn btn-primary">تسجيل الدخول</button>
-        </form>
-        <a href="#">هل نسيت كلمة السر?</a>
-    </div>
-    <!--/Modal Body-->
 </div>
-<!--  /Login form -->
-
-<script src="/js/vendor/jquery-1.9.1.min.js"></script>
-<script src="/js/vendor/bootstrap.min.js"></script>
-<script src="/js/main.js"></script>
-<!-- Required javascript files for Slider -->
-<script src="/js/jquery.ba-cond.min.js"></script>
-<script src="/js/jquery.slitslider.js"></script>
-<!-- /Required javascript files for Slider -->
-
-<!-- SL Slider -->
-<script type="text/javascript">
-
-$(function() {
-    var Page = (function() {
-
-        var $navArrows = $( '#nav-arrows' ),
-        slitslider = $( '#slider' ).slitslider( {
-            autoplay : true
-        } ),
-
-        init = function() {
-            initEvents();
-        },
-        initEvents = function() {
-            $navArrows.children( ':last' ).on( 'click', function() {
-                slitslider.next();
-                return false;
-            });
-
-            $navArrows.children( ':first' ).on( 'click', function() {
-                slitslider.previous();
-                return false;
-            });
-        };
-
-        return { init : init };
-
-    })();
-
-    Page.init();
-});
-
-
-</script>
-<script type="text/javascript">
-function myFunction(x) {
-  x.classList.toggle("fa-thumbs-down");
-  var input = $(this).find('.qty1');
-  var submit =$(this).find('.activity');
-  if (input.val()=='' or input.val()='dislike') {
-    input.val('likes');
-
-  }
-  else {
-    input.val('dislike');
-  }
-
-
-}
-</script>
-<!-- /SL Slider -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/js/fontawesome.min.js"></script>
+<script src="/layout/js/jquery.validate.js"></script>
+<script src="/layout/js/backend.js"></script>
+<script src="/layout/js/main.js"></script>
+<script src="/js/script.js"></script>
 </body>
 </html>
+
+
+
+
+<!---->
+<!---->
+<!---->
+<!--<footer id="footer">-->
+<!--    <div class="container">-->
+<!--        <div class="row-fluid">-->
+<!--            <div class="span5 cp">-->
+<!--                &copy; 2013 <a target="_blank" href="http://shapebootstrap.net/" title="Free Twitter Bootstrap WordPress Themes and HTML templates">اخبار الاسبوع</a>. كل الحقوق محفوظة.-->
+<!--            </div>-->
+<!---->
+<!--            <div class="span6">-->
+<!--                <ul class="social pull-right">-->
+<!--                    <li><a href="#"><i class="icon-facebook"></i></a></li>-->
+<!--                    <li><a href="#"><i class="icon-twitter"></i></a></li>-->
+<!--                    <li><a href="#"><i class="icon-pinterest"></i></a></li>-->
+<!--                    <li><a href="#"><i class="icon-linkedin"></i></a></li>-->
+<!--                    <li><a href="#"><i class="icon-google-plus"></i></a></li>-->
+<!--                    <li><a href="#"><i class="icon-youtube"></i></a></li>-->
+<!--                    <li><a href="#"><i class="icon-tumblr"></i></a></li>-->
+<!--                    <li><a href="#"><i class="icon-dribbble"></i></a></li>-->
+<!--                    <li><a href="#"><i class="icon-rss"></i></a></li>-->
+<!--                    <li><a href="#"><i class="icon-github-alt"></i></a></li>-->
+<!--                    <li><a href="#"><i class="icon-instagram"></i></a></li>-->
+<!--                </ul>-->
+<!--            </div>-->
+<!---->
+<!--            <div class="span1">-->
+<!--                <a id="gototop" class="gototop pull-right" href="#"><i class="icon-angle-up"></i></a>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</footer>-->
+<!---->
+<!--<div class="modal hide fade in" id="loginForm" aria-hidden="false">-->
+<!--    <div class="modal-header">-->
+<!--        <i class="icon-remove" data-dismiss="modal" aria-hidden="true"></i>-->
+<!--        <h4>تسجيل الخول</h4>-->
+<!--    </div>-->
+<!--    <div class="modal-body">-->
+<!--        <form class="form-inline" action="/home/loggin" method="post" id="form-login">-->
+<!--            <input type="text" class="input-small" placeholder="Email" name="email">-->
+<!--            <input type="password" class="input-small" placeholder="Password" name="password">-->
+<!--            <label class="checkbox">-->
+<!--                <input type="checkbox"> تذكرني-->
+<!--            </label>-->
+<!--            <button type="submit" class="btn btn-primary">تسجيل الدخول</button>-->
+<!--        </form>-->
+<!--        <a href="#">هل نسيت كلمة السر?</a>-->
+<!--    </div>-->
+<!--</div>-->
+<!---->
+<!--<script src="/js/vendor/jquery-1.9.1.min.js"></script>-->
+<!--<script src="/js/vendor/bootstrap.min.js"></script>-->
+<!--<script src="/js/main.js"></script>-->
+<!--<script src="/js/jquery.ba-cond.min.js"></script>-->
+<!--<script src="/js/jquery.slitslider.js"></script>-->
+<!---->
+<!--<script type="text/javascript">-->
+<!---->
+<!--$(function() {-->
+<!--    var Page = (function() {-->
+<!---->
+<!--        var $navArrows = $( '#nav-arrows' ),-->
+<!--        slitslider = $( '#slider' ).slitslider( {-->
+<!--            autoplay : true-->
+<!--        } ),-->
+<!---->
+<!--        init = function() {-->
+<!--            initEvents();-->
+<!--        },-->
+<!--        initEvents = function() {-->
+<!--            $navArrows.children( ':last' ).on( 'click', function() {-->
+<!--                slitslider.next();-->
+<!--                return false;-->
+<!--            });-->
+<!---->
+<!--            $navArrows.children( ':first' ).on( 'click', function() {-->
+<!--                slitslider.previous();-->
+<!--                return false;-->
+<!--            });-->
+<!--        };-->
+<!---->
+<!--        return { init : init };-->
+<!---->
+<!--    })();-->
+<!---->
+<!--    Page.init();-->
+<!--});-->
+<!---->
+<!---->
+<!--</script>-->
+<!--<script type="text/javascript">-->
+<!--function myFunction(x) {-->
+<!--  x.classList.toggle("fa-thumbs-down");-->
+<!--  var input = $(this).find('.qty1');-->
+<!--  var submit =$(this).find('.activity');-->
+<!--  if (input.val()=='' or input.val()='dislike') {-->
+<!--    input.val('likes');-->
+<!---->
+<!--  }-->
+<!--  else {-->
+<!--    input.val('dislike');-->
+<!--  }-->
+<!---->
+<!---->
+<!--}-->
+<!--</script>-->
+<!--</body>-->
+<!--</html>-->

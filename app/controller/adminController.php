@@ -102,6 +102,14 @@ class adminController extends Controller
 
 
 
+    public function error()
+    {
+        $this->model('Admin');
+        $this->view('admin'.DIRECTORY_SEPARATOR.'errorPage');
+        $this->view->pageTitle='Error Page';
+        $this->view->render();
+    }
+
 
 }
 
