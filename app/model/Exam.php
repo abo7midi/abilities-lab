@@ -98,6 +98,50 @@ class Exam
     return $oStmt->execute($e_id);
     }
 
+    public function get_certification($data)
+    {
+        $Stmt = $this->db->preparation('select *,exams.user_id as exam_user_id,user_exam.user_id as e_u_id,user_exam.exam_id as exam_id,user_exam_date,users.full_name as full_name,user_exam_result as degrees 
+                                            from user_exam left join users on users.user_id=user_exam.user_id join exams on exams.exam_id=user_exam.exam_id 
+                                            where user_exam.sample_id=? and user_exam.user_id=?');
+
+        $Stmt->execute($data);
+        return $Stmt->fetchAll();
+
+    }
+
+    public function get_examiner($user_id)
+    {
+        $Stmt = $this->db->preparation('select * from users where user_id=?');
+
+        $Stmt->execute($user_id);
+        return $Stmt->fetchAll();
+
+    }
+
+    public function top_members()
+    {
+        $Stmt = $this->db->preparation('select SUM(user_exam_result) as degrees , user_name , user_exam.user_id from user_exam left join users on users.user_id=user_exam.user_id GROUP BY user_exam.user_id ORDER BY degrees DESC ');
+
+        $Stmt->execute();
+        return $Stmt->fetchAll();
+
+    }
+
+    public function top_members_one_exam($exam_id)
+    {
+
+
+        $Stmt = $this->db->preparation('SELECT t1.*,user_exam_result as degrees ,t1.user_id,user_name
+                                            FROM user_exam t1 left join users on users.user_id=t1.user_id
+                                            WHERE t1.user_exam_date = (SELECT MAX(t2.user_exam_date)
+                                            FROM user_exam t2
+                                            WHERE t2.user_id = t1.user_id) and t1.exam_id=? GROUP BY t1.user_id ORDER BY degrees DESC  ');
+
+        $Stmt->execute($exam_id);
+        return $Stmt->fetchAll();
+
+    }
+
 }
 
 

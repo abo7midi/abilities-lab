@@ -26,15 +26,27 @@ class questionController extends Controller
             $this->model('question');
             $total_degree=0;
             for($i=1;$i<=$_SESSION['number_que'];$i++) {
-                $validate=Validation::required(["qns$i","q_degree$i",'txt1'.$i,'txt2'.$i,'txt3'.$i,'txt4'.$i,'radio'.$i]);
-                if ($validate['status'] == 1) {
+                $validate = \Validation::validate( [
+                    'qns'.$i => array(['required' => 'required']),
+                    'q_degree'.$i => array(['required' => 'required', 'minVal' => 1]),
+                    'txt1'.$i => array(['required' => 'required']),
+                    'txt2'.$i => array(['required' => 'required']),
+                    'txt3'.$i => array(['required' => 'required']),
+                    'txt4'.$i => array(['required' => 'required'])
+                ]);
+
+//                $validate=Validation::required(["qns$i","q_degree$i",'txt1'.$i,'txt2'.$i,'txt3'.$i,'txt4'.$i,'radio'.$i]);
+
+                # add new record to the database
+
+                if (count($validate) == 0){
                     $q_degree = $_POST["q_degree$i"];
                     $total_degree += $q_degree;
                 }
             }
 
             if ($total_degree != $_SESSION['total_mark']) {
-                Message::setMessage(0, 'quez Degree', 'the total degrees of question should equal full mark of exam...');
+                Message::setMessage('quez Degree',  'the total degrees of question should equal full mark of exam...',0);
                 header("location:/question/add");
                 return '';
             }
@@ -160,19 +172,13 @@ class questionController extends Controller
             if ($validate['status'] == 1)
             {
                 # prepare the array of post to send it to News model to insert to news table
-
-
                 $category= array(':title' => htmlentities($_REQUEST['title']),':id'=>$id);
-
-
-
                 $this->model('Category');
                 if ($this->model->update($category)) {
                     Message::setMessage('msgState',1);
                     Message::setMessage('main',' تم تحديث الفئة بنجاح');
                 }
             }
-
         }
         $category=isset($this->model)?$this->model: $this->model('Category');
         $this->view('admin'.DIRECTORY_SEPARATOR.'editCategory',['categories'=>$category->find( array(0 =>$id))]);

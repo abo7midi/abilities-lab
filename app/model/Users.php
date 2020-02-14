@@ -64,9 +64,18 @@ class Users
     public function getUserById($username){
         $this->db->query('SELECT *  FROM users WHERE user_name = :username  ' );
         $this->db->bind(':username', $username);
-
         $row = $this->db->single();
 
+        return $row;
+    }
+
+//--------------------------------------start select ----------------------------
+
+
+    public function getUserId($ID){
+        $this->db->query('SELECT *  FROM users WHERE user_id = :id  ' );
+        $this->db->bind(':id', $ID);
+        $row = $this->db->single();
         return $row;
     }
 

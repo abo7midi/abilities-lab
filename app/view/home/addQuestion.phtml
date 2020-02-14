@@ -170,9 +170,10 @@
 
 <body>
 <div class="content">
-    <div style="text-align: center"><?php echo Message::check('quez Degree'); ?></div>
     <!--////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
     <form id="msform" method="post">
+
+        <div style="text-align: center"><?php echo Message::check('quez Degree'); ?></div>
         <!-- progressbar -->
         <ul id="progressbar">
             <?php
@@ -189,23 +190,23 @@
             echo ' <fieldset>
             <h2 class="fs-title">add question ' . $i . '</h2>
             <h3 class="fs-subtitle">...............</h3>
-            <input type="text" name="qns' . $i . '" placeholder="question content" />
-            ' . Message::check("qns$i") . '
+            <input type="text" name="qns' . $i . '" value="'.Helper::old("qns".$i,"auth").'" placeholder="question content" />
+            ' .Message::getInputErrorMessage("qns".$i). '
             <input type="file" name="q_image' . $i . '" placeholder="question image" />
-            <input type="text" class="option" name="txt1 '.$i .'"  placeholder="option 1" />
-            ' . Message::check("txt1"."$i"  ) . '  
+            <input type="text" class="option" name="txt1'.$i .'" value="'.Helper::old("txt1 ".$i,"auth").'" placeholder="option 1" />
+            ' .Message::getInputErrorMessage("txt1".$i) . '  
             <input type="radio" class="radio" name="radio' . $i . '" value="a" />
-            <input type="text" class="option" name="txt2 '.$i .'" placeholder="option 2" />
-            ' . Message::check("txt2"."$i") . '
+            <input type="text" class="option" name="txt2'.$i .'" value="'.Helper::old("txt2 ".$i,"auth").'" placeholder="option 2" />
+            ' .Message::getInputErrorMessage("txt2".$i). '
             <input type="radio" class="radio" name="radio' . $i . '" value="b"  />
-            <input type="text" class="option" name="txt3 '.$i .'" placeholder="option 3" />
-            ' . Message::check("txt3"."$i") . '
+            <input type="text" class="option" name="txt3'.$i .'" value="'.Helper::old("txt3 ".$i,"auth").'" placeholder="option 3" />
+            ' .Message::getInputErrorMessage("txt3".$i). '
             <input type="radio" class="radio" name="radio' . $i . '" value="c"  />
-            <input type="text" class="option" name="txt4 '.$i .'" placeholder="option 4"  />
-            ' . Message::check("txt4"."$i") . '
+            <input type="text" class="option" name="txt4'.$i .'" value="'.Helper::old("txt4 ".$i,"auth").'" placeholder="option 4"  />
+            ' .Message::getInputErrorMessage("txt4".$i). '
             <input type="radio" class="radio" name="radio' . $i . '" value="c"  />
-            <input type="number" name="q_degree' . $i . '" placeholder="question degree" />
-            ' . Message::check("q_degree$i");
+            <input type="number" name="q_degree' . $i . '" value="'.Helper::old("q_degree".$i,"auth").'" placeholder="question degree" />
+            ' .Message::getInputErrorMessage("q_degree".$i);
             if ($i != 1) {
                 echo '<input type="button" name="previous" class="previous action-button" value="Previous" />';
             }
@@ -217,13 +218,10 @@
             }
             echo '</fieldset>';
         }
-
         ?>
     </form>
 </div>
 <!--************************************************************************************-->
-
-
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
         integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
         crossorigin="anonymous"></script>
@@ -242,14 +240,12 @@
         src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/additional-methods.min.js"></script>
 <script>
     /************************************************************************/
-    $(document).ready(function () {
+$(document).ready(function () {
 /*********************************** validation ************************************************/
 var qNo=<?php echo $_SESSION['number_que']?>;
-
         // checkVal();
 function checkVal($nnn=1)
 {
-
     for(var i=1;i<=$nnn;i++) {
         console.log($nnn);
         var Q="qns"+i,
@@ -484,5 +480,7 @@ function checkVal($nnn=1)
     });
 
 </script>
+
+<?php (Message::getMessage('errors'));?>
 </body>
 </html>

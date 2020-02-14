@@ -19,7 +19,14 @@ class homeController extends Controller
     $this->view->render();
   }
 
-public function back()
+    public function error()
+    {
+        $this->view('home'.DIRECTORY_SEPARATOR.'error');
+        $this->view->pageTitle='Not Found';
+        $this->view->render();
+    }
+
+    public function back()
 {
   header('Location:'.$_SERVER['HTTP_REFERER']);
   exit;

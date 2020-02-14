@@ -48,10 +48,7 @@ class userController extends Controller
                 $filename = Helper::uploadFile($target_dir, $file, $file_tmp, $file_size);
             }
 
-
-
             if ($validate['status']==1) {
-
                 function checkemail($us,$ue)
                 {
                     $oStmt = DB::init()->preparation("select user_name,user_email from users WHERE user_name = ? or user_email = ?");
@@ -102,57 +99,42 @@ class userController extends Controller
         // check if there submit
 
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            $validate = Validation::required(['username', 'password']); //sure that first element in array most be null
-
-
+           // $validate = Validation::required(['username', 'password']); //sure that first element in array most be null
             $login = array(
                 ':username' => htmlentities($_REQUEST['username']),
                 ':password' => Hashing::init($_POST['password'])
             );
-
-
             $users=$this->model('Users');
-
             $user=$users->checkLogin($login);
-
             if (!empty($user)) {
                 Session::loggIn([$user[0]['user_id'],
                     $user[0]['user_name'],
-                    $user[0]['group_id']]);
+                    $user[0]['group_id'],
+                    $user[0]['image']]);
 
                 if ($user[0]["group_id"] == 2 && $user[0]["user_state"]==1 ) {
-
                     header("location:/exam/add");
-
-
                     echo "ur examiner";
 
                 } elseif  ($user[0]["group_id"] == 3 && $user[0]["user_state"]==1 ){
-                    header("location:/exam/takeExam/5e39d0544399b");
+                    header("location:/exam/takeExam/5e42642ce4f6c");
                     echo "ur members";
                 }elseif  ($user[0]["group_id"] == 1 && $user[0]["user_state"]==1 ) {
                     header('Location:/user/dashboard');
-
                 }
                 else{
                     echo "error";
                 }
 
             }
-
-
             $this->view('admin'.DIRECTORY_SEPARATOR.'addUser');
-
             $this->view->pageTitle='login User';
             $this->view->render();
 
-
-
-        }}
+        }
+    }
     public function logout(){
-
-  session_destroy();
-
+        session_destroy();
         header("location:/user/add");
     }
 //---------------------------------------------------start update user----------------------------------------------------------------------

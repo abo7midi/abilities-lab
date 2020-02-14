@@ -1,13 +1,4 @@
 <?php include VIEW . "header.phtml" ?>
-
-<div class="container">
-    <div class="disc ">
-
-        <div class="row">
-            <h2>Our students</h2>
-        </div>
-    </div>
-</div>
 <!--////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
 <div class="container">
     <div class="row">
@@ -18,49 +9,46 @@
                     <div class="col-md-12">
                         <div class="div_name"><h5>New Exam</h5></div>
                     </div>
-                    <?php echo Message::check("logicError   "); ?>
                 </div>
                 <div class="form-group row">
                     <label for="exam_name" class="col-sm-3 col-form-label"> Exam Name</label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control" id="inputExam_name" name="name">
+                        <input type="text" class="form-control" id="inputExam_name"
+                               value="<?php Helper::old('name',"auth")?>" name="name">
                     </div>
-                    <?php echo Message::check("name"); ?>
+                    <?php echo Message::getInputErrorMessage("name"); ?>
                 </div>
                 <div class="form-group row">
                     <label for="inputPassword3" class="col-sm-3 col-form-label">Question No.</label>
                     <div class="col-sm-9">
-                        <input type="number" class="form-control" id="inputDateEnd" name="no_q">
-                        <small>you have range for question from 1 to 500</small>
+                        <input type="number" class="form-control" id="inputDateEnd" value="<?php Helper::old('no_q',"auth")?>" name="no_q">
+                        <small>you have range for question from 1 to 100</small>
                     </div>
-                    <?php echo Message::check("no_q"); ?>
+                    <?php echo Message::getInputErrorMessage("no_q"); ?>
                 </div>
-
                 <div class="form-group row">
                     <label for="inputPassword3" class="col-sm-3 col-form-label">full mark</label>
                     <div class="col-sm-9">
-                        <input type="number" class="form-control" id="total_mark" name="total_mark">
+                        <input type="number" class="form-control" id="total_mark" name="total_mark" value="<?php Helper::old('total_mark',"auth")?>">
                     </div>
-                    <?php echo Message::check("total_mark"); ?>
+                    <?php echo Message::getInputErrorMessage("total_mark"); ?>
                 </div>
                 <div class="form-group row">
                     <label for="inputPassword3" class="col-sm-3 col-form-label">pass mark</label>
                     <div class="col-sm-9">
-                        <input type="number" class="form-control" id="inputDateEnd" name="pass_mark">
+                        <input type="number" class="form-control" id="inputDateEnd" name="pass_mark" value="<?php Helper::old('pass_mark',"auth")?>">
                         <small>the value should be equal or smaller than full mark</small>
                     </div>
-                    <?php echo Message::check("pass_mark"); ?>
+                    <?php echo Message::getInputErrorMessage("pass_mark"); ?>
                 </div>
-
                 <div class="form-group row">
                     <label for="inputPassword3" class="col-sm-3 col-form-label">Duration</label>
                     <div class="col-sm-9">
-                        <input type="number" class="form-control" id="inputDateEnd" name="duration">
+                        <input type="number" class="form-control" id="inputDateEnd" name="duration" value="<?php Helper::old('duration',"auth")?>">
                         <small>you have range for duration from 1 minute to 300 minute (5 hours)</small>
                     </div>
-                    <?php echo Message::check("duration"); ?>
+                    <?php echo Message::getInputErrorMessage("pass_mark"); ?>
                 </div>
-
                 <div class="form-group row">
                     <label for="inputPassword3" class="col-sm-3 col-form-label">Category</label>
                     <div class="col-sm-9">
@@ -72,34 +60,29 @@
                             ?>
                         </select>
                     </div>
-                    <?php echo Message::check("category"); ?>
                 </div>
-
                 <div class="form-group row">
                     <label for="inputPassword3" class="col-sm-3 col-form-label">Price</label>
                     <div class="col-sm-9">
-                        <input type="number" class="form-control" id="inputDateEnd" name="price">
+                        <input type="number" class="form-control" id="inputDateEnd" name="price" value="<?php Helper::old('no_q',"auth")?>">
                         <small>1000 $ is the maximum value and you can make it free</small>
                     </div>
-                    <?php echo Message::check("price"); ?>
+                    <?php echo Message::getInputErrorMessage("price"); ?>
                 </div>
-
                 <div class="form-group row">
                     <label for="inputPassword3" class="col-sm-3  col-form-label">Hardness</label>
                     <div class="col-sm-9">
                         <select id="level" name="level" class="form-control input-md">
-
                             <option value="h">Hard</option>
                             <option value="m">medium</option>
                             <option value="e" selected>Easy</option>
                         </select>
                     </div>
                 </div>
-
                 <div class="form-group row">
                     <label for="inputPassword3" class="col-sm-3 col-form-label">Discrption</label>
                     <div class="col-sm-9">
-                        <input type="textarea" class="form-control" id="inputDateEnd" name="desc">
+                        <input type="textarea" class="form-control" id="inputDateEnd" name="desc" value="<?php Helper::old('desc',"auth")?>">
                     </div>
                 </div>
                 <div class="form-group  row">
@@ -124,7 +107,7 @@
 <script type="application/javascript"
         src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/additional-methods.min.js"></script>
 <script>
-    $(document).ready(function () {
+    /*$(document).ready(function () {
         $("#addexamform").validate({
             rules: {
                 name: {
@@ -186,5 +169,6 @@
                 }
             }
         });
-    });
+    });*/
 </script>
+<?php (Message::getMessage('errors'));?>
