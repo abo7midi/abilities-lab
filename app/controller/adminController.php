@@ -17,26 +17,44 @@ class adminController extends Controller
 
     public function dashboard()
     {
-        $this->model('Admin');
-        $this->view('admin'.DIRECTORY_SEPARATOR.'dashboard',['admins'=>$this->model->all()]);
-        $this->view->pageTitle='admin index';
-        $this->view->render();
+        if(isset($_SERVER['HTTP_REFERER'])) {
+            $this->model('Admin');
+            $this->view('admin' . DIRECTORY_SEPARATOR . 'dashboard', ['admins' => $this->model->all()]);
+            $this->view->pageTitle = 'admin index';
+            $this->view->render();
+        } else {
+            $this->view('admin'.DIRECTORY_SEPARATOR.'errorPage');
+            $this->view->pageTitle='Error';
+            $this->view->render();
+        }
     }
 
     public function member()
     {
-        $this->model('Admin');
-        $this->view('admin'.DIRECTORY_SEPARATOR.'accounts',['accounts'=>$this->model->all()]);
-        $this->view->pageTitle='admin index';
-        $this->view->render();
+        if(isset($_SERVER['HTTP_REFERER'])) {
+            $this->model('Admin');
+            $this->view('admin'.DIRECTORY_SEPARATOR.'accounts',['accounts'=>$this->model->all()]);
+            $this->view->pageTitle='admin index';
+            $this->view->render();
+        } else {
+            $this->view('admin'.DIRECTORY_SEPARATOR.'errorPage');
+            $this->view->pageTitle='Error';
+            $this->view->render();
+        }
     }
 
     public function category()
     {
-        $this->model('Admin');
-        $this->view('admin'.DIRECTORY_SEPARATOR.'category',['categories'=>$this->model->allCategories(),'cates'=>$this->model->allCategories()]);
-        $this->view->pageTitle='admin index';
-        $this->view->render();
+        if(isset($_SERVER['HTTP_REFERER'])) {
+            $this->model('Admin');
+            $this->view('admin'.DIRECTORY_SEPARATOR.'category',['categories'=>$this->model->allCategories(),'cates'=>$this->model->allCategories()]);
+            $this->view->pageTitle='admin index';
+            $this->view->render();
+        } else {
+            $this->view('admin'.DIRECTORY_SEPARATOR.'errorPage');
+            $this->view->pageTitle='Error';
+            $this->view->render();
+         }
     }
 
 
@@ -46,7 +64,6 @@ class adminController extends Controller
     public function login()
         {
             // check if there submit
-
             if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $validate = Validation::required(['username', 'password']); //sure that first element in array most be null
 
@@ -88,6 +105,10 @@ class adminController extends Controller
                 $this->view->render();?>
                 <script>alert("You Are Not Exist And An Authorization");</script>
                 <?php
+            } else {
+                $this->view('admin'.DIRECTORY_SEPARATOR.'errorPage');
+                $this->view->pageTitle='Error';
+                $this->view->render();
             }
     }
 

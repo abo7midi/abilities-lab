@@ -148,7 +148,13 @@ class userController extends Controller
 
 
 
-        }}
+        } else {
+            $this->model('Admin');
+            $this->view('admin'.DIRECTORY_SEPARATOR.'errorPage');
+            $this->view->pageTitle='Error';
+            $this->view->render();
+        }
+    }
     public function logout(){
 
   session_destroy();
