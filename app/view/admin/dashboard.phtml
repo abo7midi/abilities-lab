@@ -4,6 +4,7 @@ include "side_bar.phtml";
 <section class='statis text-center'>
     <div class="container-fluid">
 <!--        <h1>cPanel</h1>-->
+        <?php  echo "<h1>".Session::logged()."</h1>"; ?>
         <div class="row">
             <div class="col-md-3">
                 <a href="/user" class="four-div">

@@ -15,15 +15,16 @@ abstract class Session
 
     public static function loggIn(array $user)
     {
-            $_SESSION['user_id'] = $user[0];
-            $_SESSION['user_name'] = $user[1];
-            $_SESSION['group_id'] = $user[2];
+            $_SESSION['userID'] = $user[0];
+            $_SESSION['userName'] = $user[1];
+            $_SESSION['userGroup'] = $user[2];
+            $_SESSION['userImg'] = $user[3];
     }
 
     public static function  logged()
     {
-      if (self::has('user_id')) {
-          return $_SESSION['user_id'];
+      if (self::has('userID')) {
+          return $_SESSION['userID'];
       }
       return null;
     }
