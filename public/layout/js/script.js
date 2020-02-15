@@ -54,6 +54,8 @@ jQuery(function($)
 			name: {required: "Please Enter Category_name"},
 		}
 	});
+	
+	
 
 	$('#type_category').validate({
 		rules: {
