@@ -15,7 +15,6 @@ class userController extends Controller
     {
         $this->model('Users');
         $this->view('admin'.DIRECTORY_SEPARATOR.'accounts',['accounts'=>$this->model->all()]);
-
         $this->view->pageTitle='admin index';
         $this->view->render();
     }
@@ -120,7 +119,7 @@ class userController extends Controller
                     header("location:/exam/takeExam/5e42642ce4f6c");
                     echo "ur members";
                 }elseif  ($user[0]["group_id"] == 1 && $user[0]["user_state"]==1 ) {
-                    header('Location:/user/dashboard');
+                    header('Location:/admin/dashboard');
                 }
                 else{
                     echo "error";

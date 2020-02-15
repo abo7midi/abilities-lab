@@ -157,7 +157,7 @@ print_r($_REQUEST);
 public function categoryItem($id)
 {
 
-  $news= $this->model('News');
+  $news= $this->model('ADMIN');
   $category= $this->model('Category');
 
  $categories= array('cat_title' =>Helper::catName($id) ,'id'=>$id );

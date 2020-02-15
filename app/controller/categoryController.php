@@ -53,6 +53,7 @@ class categoryController extends Controller
                     $desc = $_POST['description'];
                     $c = $_POST['cat'];
 
+
                     $category = [
                         $name,
                         $desc,
@@ -108,7 +109,8 @@ public function edit($id)
             ':name' => $_POST['name'],
             ':description' => $_POST['description'],
             ':cat' => $_POST['cat'],
-            ':id'=>$id
+            ':id'=>$id,
+             Session::logged()
         ];
 
 
@@ -126,7 +128,7 @@ public function edit($id)
 $category=isset($this->model)?$this->model: $this->model('Category');
 
 
-$this->view('admin'.DIRECTORY_SEPARATOR.'editCategory',['categories'=>$category->find( array(0 =>$id)),'cats'=>$this->model->allSubCate(),'catJoins'=>$this->model->selfjoin()]);
+$this->view('admin'.DIRECTORY_SEPARATOR.'editCategory',['categories'=>$category->find( array(0 =>$id)),'cats'=>$this->model->allSubCate()]);
 
 $this->view->pageTitle='this page of index';
 

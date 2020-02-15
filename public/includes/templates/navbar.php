@@ -12,15 +12,15 @@
 
                 <li><a href="#" class="text-center"><i data-show="show-side-navigation1" class="fa fa-bars show-side-btn" style="font-size: 22px;"></i></a></li>
             </ul>
-            <a class="navbar-brand text-center" href="/admin"><i class="glyphicon glyphicon-home"  style="font-size: 22px;"></i> </br><?php echo lang('HOME_ADMIN')?></a>
+            <a class="navbar-brand text-center" href="/admin/dashboard"><i class="glyphicon glyphicon-home"  style="font-size: 22px;"></i> </br><?php echo lang('HOME_ADMIN')?></a>
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="app-nav">
             <ul class="nav navbar-nav">
 
-                <li><a class="text-center" href="/category"><i class="glyphicon glyphicon-th" style="font-size: 22px;"></i></br><?php echo lang('CATEGORIES')?></a></li>
+                <li><a class="text-center" href="/admin/category"><i class="glyphicon glyphicon-th" style="font-size: 22px;"></i></br><?php echo lang('CATEGORIES')?></a></li>
                 <li><a class="text-center" href="#"><i class="glyphicon glyphicon-star"  style="font-size: 22px;"></i></br><?php echo lang('STARS')?></a></li>
-                <li><a class="text-center" href="/user"><i class="fa fa-users"  style="font-size: 22px;"></i></br><?php echo lang('MEMBERS')?></a></li>
+                <li><a class="text-center" href="/admin/member"><i class="fa fa-users"  style="font-size: 22px;"></i></br><?php echo lang('MEMBERS')?></a></li>
                 <li><a class="text-center" href="#"><i class="glyphicon glyphicon-info-sign"  style="font-size: 22px;"></i></br><?php echo lang('ABOUT_US')?></a></li>
                 <li><a class="text-center" href="#"><i class="glyphicon glyphicon-signal"  style="font-size: 22px;"></i></br><?php echo lang('STATISTICS')?></a></li>
               </ul>
