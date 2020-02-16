@@ -73,8 +73,6 @@ abstract class Session
           return false;
         }
     }
-
-
     /**
      * destroy
      */

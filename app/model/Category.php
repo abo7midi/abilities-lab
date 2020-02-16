@@ -14,10 +14,11 @@ class Category
        $this->db=new Model();
   }
 //
-    public function allSubCate()
-    {
-      return $this->db->query("select * from categories WHERE cat_main_cat != 0 AND cat_state = 1");
-    }
+public function allSubCate()
+{
+    return $this->db->query("select * from categories where cat_main_cat != 0 and cat_state = 1");
+}
+
 //
 
 

@@ -6,7 +6,6 @@
 class adminController extends Controller
 {
 
-
   public function index()
   {
     $this->model('Admin');
@@ -119,10 +118,6 @@ class adminController extends Controller
         header("location:/admin");
     }
 
-
-
-
-
     public function error()
     {
         $this->model('Admin');
@@ -133,25 +128,5 @@ class adminController extends Controller
 
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
  ?>

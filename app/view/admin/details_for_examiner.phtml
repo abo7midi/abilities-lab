@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title>Exam Details</title>
+</head>
+
+
+<div id="time" ></div>
+<div class="container">
+
+
+    <table class="table" style="width:100%; border-spacing: 5px;">
+        <tr>
+            <td><h4>Exam_id</h4></td>
+            <td><h4>Sample_id</h4></td>
+            <td><h4>Dismit Exam</h4></td>
+
+
+
+        </tr>
+        <?php
+        echo "<pre>";
+print_r($this->view_data['ex_exams']);
+
+print_r($this->view_data['samples_ex']);
+        echo "</pre>";
+        foreach($this->view_data['ex_exams'] as $row ){
+            $ex_id =$row['exam_id'];
+            ?>
+            <tr>
+            <td><?php echo $ex_id ?></td>
+                <td>
+                   <ul>
+                <?php
+        foreach($this->view_data['samples_ex'] as $s ){
+            foreach ($s as $sam){
+                if($ex_id==$sam['exam_id']){
+            ?>
+                <li><a href="/exam/who_do_exam/<?php echo $sam['sample_id'] ?>"><?php echo $sam['sample_id'] ?></a></li>
+
+        <?php }}}
+        echo "</ul></td>";
+      ?>
+                       <td><a href="/exam/dismit_exam/<?php echo $sam['exam_id'] ?>">Dismit exam</a></td>
+
+                       <?php
+            echo"</tr>";
+        } ?>
+
+
+    </table>
+
+</div>
+
+
+</body>
+</html>

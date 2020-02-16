@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title>All Top Members</title>
+</head>
+
+
+<div id="time" ></div>
+<div class="container">
+
+
+    <table class="table" style="width:100%; border-spacing: 5px;">
+        <tr>
+            <td><h4>User_name</h4></td>
+            <td><h4>Marks</h4></td>
+
+
+
+        </tr>
+        <?php
+        foreach($this->view_data['top'] as $row ){
+            $user_name =$row['user_name'];
+            $user_id =$row['user_id'];
+            $marks =$row['degrees'];
+
+//            $exam_name =$row['exam_name'];
+            ?>
+            <tr>
+                <td><?php echo $user_name?></td>
+                <td><?php echo $marks ?></td>
+
+
+
+            </tr>
+        <?php }
+
+        ?>
+
+
+    </table>
+
+</div>
+
+
+</body>
+</html>

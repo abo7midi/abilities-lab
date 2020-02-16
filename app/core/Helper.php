@@ -5,7 +5,42 @@
   */
  class Helper
  {
-  public static function uploadFile($target_dir, $name, $file_tmp, $file_size)
+     public static function uniqueFild($data)
+     {
+
+         $like = $data['input'] . " like '%" . $data['data'] . "%' ";
+         $counter = DB::init()->query("SELECT COUNT(*)  As count FROM " . $data['table'] . " WHERE user_id <>" . $data['id'] . " and " . $like);
+         return @($counter[0]['count'] > 0) ? true : false;
+//        return false;
+     }
+
+     public static function back($url, $message='', $status='')
+     {
+         Session::set('oldFormData', $_REQUEST);
+         Message::setMessage('main', $message, $status);
+         header("Location: " . $url);
+         return;
+     }
+
+     public static function old($key, $type = 'public')
+     {
+         if ($type == 'auth')
+             echo isset($_REQUEST[$key]) ? $_REQUEST[$key] : '';
+         else {
+             if (Session::has('oldFormData')) {
+                 if (isset($_SESSION['oldFormData'][$key]) and is_array($_SESSION['oldFormData'][$key]))
+                     return $_SESSION['oldFormData'][$key];
+                 else
+//                echo $_SESSION['oldFormData'][$key];
+                     echo isset($_SESSION['oldFormData'][$key]) ? $_SESSION['oldFormData'][$key] : '';
+             } else
+                 echo '';
+         }
+
+
+     }
+
+     public static function uploadFile($target_dir, $name, $file_tmp, $file_size)
 
    {
      $uploadErr='';
@@ -29,7 +64,7 @@
            $upload_ok = 0;
        }
    // Check file size
-       if ($file_size > 9000000000) {
+       if ($file_size > 5000000) {
            $uploadErr .= "Sorry, your file is too large.";
            $upload_ok = 0;
        }
