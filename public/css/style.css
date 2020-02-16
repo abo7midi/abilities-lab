@@ -638,3 +638,16 @@ xsigin/signup popup
   font-size: 18px;
 }
 
+
+/*******************************************************************/
+.btn-outline-success{
+  color: #44b7b9 !important;
+  border-color: #44b7b9;
+}
+
+.btn-outline-success:hover{
+  color: #ffffff !important;
+  background-color: #44b7b9;
+  border-color: #44b7b9;
+}
+/*******************************************************************/
