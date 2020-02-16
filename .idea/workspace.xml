@@ -3,29 +3,10 @@
   <component name="ChangeListManager">
 <<<<<<< Updated upstream
     <list default="true" id="180df6e7-5c4f-4158-a258-1be38c9a4091" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/view/home/error.phtml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/view/home/top_members.phtml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/view/home/top_members_one_exam.phtml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/notfound.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/js/validation.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controller/examController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controller/examController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controller/homeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controller/homeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controller/questionController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controller/questionController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controller/userController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controller/userController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/core/Application.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/core/Application.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/core/Helper.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/core/Helper.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/core/Message.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/core/Message.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/core/Session.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/core/Session.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/core/Validation.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/core/Validation.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/model/Category.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/model/Category.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/model/Exam.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/model/Exam.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/model/Users.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/model/Users.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/view/header.phtml" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/header.phtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/view/home/addExam.phtml" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/home/addExam.phtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/view/home/addQuestion.phtml" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/home/addQuestion.phtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/view/home/showResult.phtml" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/home/showResult.phtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/pictures/.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/public/pictures/1.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/style1.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/style1.css" afterDir="false" />
     </list>
 =======
     <list default="true" id="180df6e7-5c4f-4158-a258-1be38c9a4091" name="Default Changelist" comment="" />

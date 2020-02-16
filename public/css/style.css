@@ -506,3 +506,16 @@ xsigin/signup popup
   top: 1%;
 }
 
+
+/*******************************************************************/
+.btn-outline-success{
+  color: #44b7b9 !important;
+  border-color: #44b7b9;
+}
+
+.btn-outline-success:hover{
+  color: #ffffff !important;
+  background-color: #44b7b9;
+  border-color: #44b7b9;
+}
+/*******************************************************************/
