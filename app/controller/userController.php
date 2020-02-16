@@ -15,6 +15,7 @@ class userController extends Controller
     {
         $this->model('Users');
         $this->view('admin'.DIRECTORY_SEPARATOR.'index',['accounts'=>$this->model->all()]);
+
         $this->view->pageTitle='admin index';
         $this->view->render();
     }
@@ -84,8 +85,12 @@ class userController extends Controller
             }
 
         }
+
+        $category=  $this->model('Category');
+        $cat = $category->get_category();
+
         # show form view  to add new user
-        $this->view('admin'.DIRECTORY_SEPARATOR.'index');
+        $this->view('home'.DIRECTORY_SEPARATOR.'index',["cat" => $cat,"form_id"=>1]);
         $this->view->pageTitle='Add New User';
         $this->view->render();
     }
@@ -117,7 +122,7 @@ class userController extends Controller
                     echo "ur examiner";
 
                 } elseif  ($user[0]["group_id"] == 3 && $user[0]["user_state"]==1 ){
-                    header("location:/exam/takeExam/5e42642ce4f6c");
+                    header("location:/home/index");
                     echo "ur members";
                 }elseif  ($user[0]["group_id"] == 1 && $user[0]["user_state"]==1 ) {
                     header('Location:/admin/dashboard');

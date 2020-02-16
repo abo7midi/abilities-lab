@@ -1,0 +1,262 @@
+body {
+    font-family: 'Cairo', sans-serif;
+}
+.table {
+    display: table;
+    widows: 100%;
+    height: 100%;
+}
+.table-cell {
+    width: 100%;
+    height: 100%;
+    display: table-cell;
+    vertical-align: middle;
+}
+a:hover {
+    text-decoration: none;
+}
+img {
+    max-width: 100%;
+}
+.title {
+    margin-bottom: 20px;
+}
+.title h1 {
+    color: #37B2B5;
+    font-weight: bold;
+}
+.title .border {
+    width: 50px;
+    height: 3px;
+    background: #37B2B5;
+    margin: 20px auto 0px auto;
+}
+
+
+
+/* Navbar */
+.navbar {
+    background: #fff;
+    border: 0px;
+    border-radius: 0px;
+    box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.46);
+    margin: 0px;
+}
+.navbar-default {
+    background: #fff;
+}
+.navbar-brand {
+    padding: 30px 15px;
+}
+.navbar-default .navbar-brand {
+    color: #37B2B5;
+}
+.navbar-nav>li>a {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    color: #37B2B5 !important;
+}
+.navbar-default .navbar-nav>li>a {
+    color: #37B2B5;
+}
+.navbar-default .navbar-nav>li>a:hover {
+    color: #37B2B5;
+}
+.dropdown-menu a{
+    color: #37B2B5;
+}
+
+/* Hero Section */
+
+/*  slider  */
+.slider img{
+    height: 650px;
+    border-radius: 2px;
+}
+
+
+
+/*best student*/
+.best_student{
+    height: auto;
+     display: inherit;
+    position: relative;
+    overflow: hidden;
+    padding-right: 29px;
+     margin: 10px;
+}
+.best_student img{
+     width: 90px;
+   padding: 1px;
+    border-radius:50%;
+    height: 90px;
+    border: 2px solid #37B2B5;
+}
+.best_student h3{
+    margin: 5px;
+    padding: 5px;
+}
+
+
+
+
+/*end best student*/
+.container{
+    margin-top:10px;
+    
+}
+.card{
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 20px;
+    
+}
+.card:before{
+    position: absolute;
+    content:'' ;
+    width: 80%;
+    height: 380%;
+    background: #37B2B5;
+    opacity: 0.5;
+    top:-50%;
+    left:-100%;
+    z-index:1;
+    transform: rotate(25deg);
+    transform-origin: center top 0;
+    transition: -5s;
+      
+}
+.card:hover:before{
+    left:10%;
+} 
+.card img{
+    width: 100%;
+    height: 400px;
+    
+}
+.card-text{
+    width: 100%;
+    padding:  0.20px;
+    position: absolute;
+    top:-100%;
+    color: #fff;
+    left: :0px;
+    z-index: 2px;
+    transform: 1.1s;
+}
+.card-text h3{
+    font-family: poppins;
+}
+.card:hover .card-text{
+    top:80px;
+    padding: 10px;
+}
+
+
+/* Contact Us Section */
+
+.contact input, textarea {
+    margin-bottom: 20px;
+    margin-left: 100px;
+}
+.con{
+    background: url('../img/1.jpg') fixed;
+    background-size: cover;
+    background-position: center center;
+    padding: 40px;
+}
+.contact{
+    background: #fff;
+    padding:20px 0px;
+    width: 70%;
+    margin: auto;
+    border-radius: 6px;
+}
+
+/* Footer */
+.footer {
+    background: #fff;
+    padding: 40px 0px;
+}
+.footer p {
+    color: #37B2B5;
+    font-size: 16px;
+}
+.footer a {
+    color: #37B2B5;
+    margin-right: 10px;
+}
+.footer a:hover {
+    color: #37B2B5;
+}
+.footer a i {
+    font-size: 20px;
+}
+
+/*home style*/
+.middle{
+    /*
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%,-50%);
+    */
+    }
+    .card1{
+      cursor: pointer;
+      width: 340px;
+      height: 480px;
+       ;
+    }
+    .front,.back{
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      backface-visibility: hidden;
+      position: absolute;
+      transition: transform .6s linear;
+        
+    }
+    .front img{
+      height: 100%;
+        width: 100%;
+        padding: 7px;
+      
+    }
+    .front{
+      transform: perspective(600px) rotateY(0deg);
+    }
+    .back{
+      background: #f1f1f1;
+      transform: perspective(600px) rotateY(180deg);
+    }
+    .back-content{
+      color: #1abc9c;;
+      text-align: center;
+      width: 100%;
+        padding-top: 100px;
+    }
+    .sm{
+      margin: 20px 0;
+    }
+    .sm a{
+      display: inline-flex;
+      width: 40px;
+      height: 40px;
+      justify-content: center;
+      align-items: center;
+      color: #1abc9c;;
+      font-size: 18px;
+      transition: 0.4s;
+      border-radius: 50%
+    }
+    .sm a:hover{
+      background:  #37B2B5;
+      color: white;
+    }
+    .card:hover > .front{
+      transform: perspective(600px) rotateY(-180deg);
+    }
+    .card1:hover > .back{
+      transform: perspective(600px) rotateY(0deg);
+    }
