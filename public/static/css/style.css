@@ -11,7 +11,7 @@ a{
     color: #37B2B5;
 }
 a:hover {
-    color: #16a085;
+    color: #44b7b9;
 }
 
 .navbar-default {
@@ -27,15 +27,15 @@ a:hover {
 }
 
 .navbar-default .navbar-brand {
-    color: #1abc9c;
+    color: #44b7b9;
 }
 .navbar-nav>li>a {
     padding-top: 30px;
     padding-bottom: 30px;
 }
 .navbar-default .navbar-nav>li>a {
-    color: #1abc9c;
-    color: #1abc9c;
+    color: #44b7b9;
+    color: #44b7b9;
 }
 
 /*end navbar*/
@@ -163,7 +163,7 @@ a:hover {
   transform: perspective(600px) rotateY(180deg);
 }
 .back-content{
-  color: #1abc9c;;
+  color: #44b7b9;
   text-align: center;
   width: 100%;
     padding-top: 100px;
@@ -177,13 +177,13 @@ a:hover {
   height: 40px;
   justify-content: center;
   align-items: center;
-  color: #1abc9c;;
+  color: #44b7b9;;
   font-size: 18px;
   transition: 0.4s;
   border-radius: 50%
 }
 .sm a:hover{
-  background:  #37B2B5;
+  background:  #44b7b9;
   color: white;
 }
 .card:hover > .front{
@@ -203,11 +203,11 @@ a:hover {
     font-size: 16px;
 }
 .footer a {
-    color: #1abc9c;
+    color: #44b7b9;
     margin-right: 10px;
 }
 .footer a:hover {
-    color: #16a085;
+    color: #44b7b9;
 }
 .footer a i {
     font-size: 20px;
