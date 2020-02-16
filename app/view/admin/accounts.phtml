@@ -1,61 +1,59 @@
-
 <?php
-include "side_bar.php";
+include "side_bar.phtml";
 ?>
 
-                                        <h1 class="text-center"> Manage Members </h1>
-                                        <div class="container-fluid">
-                                            <div class="table-responsive">
-                                                <table class="main-table text-center table table-bordered">
-                                                    <tr>
-                                                        <td>#ID</td>
-                                                        <td>FullNmae</td>
-                                                        <td>Username</td>
-                                                        <td>Phone</td>
-                                                        <td>Email</td>
-                                                        <td>Type</td>
-                                                        <td>Registered Date</td>
-                                                        <td>Image</td>
-                                                        <td>Control</td>
-                                                    </tr>
-                                                        <?php
-                                                         if (array_key_exists('accounts',$this->view_data)){
+    <h1 class="text-center"> Manage Members</h1>
+    <div class="container-fluid">
+        <div class="table-responsive">
+            <table class="main-table text-center table table-bordered">
+                <tr>
+                    <td>#ID</td>
+                    <td>FullName</td>
+                    <td>Username</td>
+                    <td>Phone</td>
+                    <td>Email</td>
+                    <td>Type</td>
+                    <td>Registered Date</td>
+                    <td>Image</td>
+                    <td>Control</td>
+                </tr>
+                    <?php
+                     if (array_key_exists('accounts',$this->view_data)){
 
-                                                          $table='';
+                      $table='';
 
-                                                          foreach ($this->view_data['accounts'] as $account) {
+                      foreach ($this->view_data['accounts'] as $account) {
 
 
-                                                                  $table.='<tr class="bel">';
-                                                                  $table.=' <td>'.$account["user_id"].'</td>';
-                                                                  $table.=' <td >'.$account["full_name"].'</td>';
-                                                                  $table.=' <td>'.$account["user_name"].'</td>';
-                                                                  $table.=' <td>'.$account["phone"].'</td>';
-                                                                  $table.=' <td >'.$account["user_email"].'</td>';
-                                                                  $table.=' <td >'.$account["groupName"].'</td>';
-                                                                  $table.=' <td >'.$account["user_entry_date"]. '</td>';
-                                                                  $table.=' <td><img src="/pictures/' . $account['image'] .'" style="width: 50px;height: 20px"></td>';
+                              $table.='<tr class="bel">';
+                              $table.=' <td>'.$account["user_id"].'</td>';
+                              $table.=' <td >'.$account["full_name"].'</td>';
+                              $table.=' <td>'.$account["user_name"].'</td>';
+                              $table.=' <td>'.$account["phone"].'</td>';
+                              $table.=' <td >'.$account["user_email"].'</td>';
+                              $table.=' <td >'.$account["groupName"].'</td>';
+                              $table.=' <td >'.$account["user_entry_date"]. '</td>';
+                              $table.=' <td><img src="/pictures/' . $account['image'] .'" style="width: 50px;height: 20px"></td>';
 
-                                                                  $table.=" <td><a href='/user/edit/".$account["user_id"]. "'class='glyphicon glyphicon-edit edit'></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                                                                <a href='/user/delete/".$account["user_id"]. "'class='glyphicon glyphicon-trash trash'></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp";
+                              $table.=" <td><a href='/user/edit/".$account["user_id"]. "'class='glyphicon glyphicon-edit edit'></a>&nbsp;&nbsp;&nbsp;
+                                            <a href='/user/delete/".$account["user_id"]. "'class='glyphicon glyphicon-trash trash'></a>&nbsp;&nbsp;&nbsp;";
 //
-                                                              if ($account["user_state"] == 0) {
-                                                                  $table.= ' <a href="/user/active/'.$account["user_id"].'" class=" glyphicon glyphicon-remove-sign non-active"></a></td>';
+                          if ($account["user_state"] == 0) {
+                              $table.= ' <a href="/user/active/'.$account["user_id"].'" class=" glyphicon glyphicon-remove-sign non-active"></a></td>';
 
-                                                              }elseif ($account["user_state"] == 1){
-                                                                  $table.='<a href="/user/nonactive/'.$account["user_id"].'" class="glyphicon glyphicon-ok-sign active">
-</a>';
-                                                              }
+                          }elseif ($account["user_state"] == 1){
+                              $table.='<a href="/user/nonactive/'.$account["user_id"].'" class="glyphicon glyphicon-ok-sign actived"></a>';
+                          }
 
-                                                                  $table.="</td>";
-                                                                  $table.="</tr>";
+                              $table.="</td>";
+                              $table.="</tr>";
 
-                                                          }
+                      }
 
-                                                        echo $table;
-                                                        }
-                                                          ?>
-                                                </table>
-                                            </div>
-                                        </div>
+                    echo $table;
+                    }
+                      ?>
+            </table>
+        </div>
+    </div>
 

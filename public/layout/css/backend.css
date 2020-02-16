@@ -22,63 +22,99 @@ body{
     margin: 100px auto;
 }
 
-.login h4{
-    color: #ffffff;
+.login h3{
+    color: #44b7b9;
     font-weight: bold;
-    font-size: 20px;
+    font-size: 25px;
+    margin-top: 35px;
 }
 
 .login input{
-    margin-bottom: 10px;
+    padding-bottom: 20px;
+    padding-top: 20px;
+}
+
+
+.login label{
+    color: #44b7b9;
+    font-size: 15px;
+    margin-top: 20px;
+    font-weight: bold;
 }
 
 .login .btn{
-    background-color:#002435;
+    background-color:#44b7b9;
+    color: #ffff;
+    font-weight: bold;
+    font-size: 20px;
+    border: 0px;
+    margin-top: 15px;
 }
+
+.login-div {
+    /*border: 1px solid #002435 ;*/
+    border-radius: 10px;
+    box-shadow: 0px 0px 30px 0px #44b7b9;
+    margin: -80px;
+    margin-top: 1px;
+    padding: 20px;
+}
+
 /* End Login Form*/
 
 /* Start Bootstrap Edit */
 
+.navbar-inverse .navbar-toggle{
+    margin-left: 436px;
+}
+
 .navbar-inverse{
-    background-color: #002435;
-    margin-top: -20px;
+    background-color: #44b7b9;
 }
 .navbar-inverse .navbar-brand{
     color: #ffffff;
     font-weight: bold;
 }
 
-.navbar-inverse .navbar-nav>li>a:hover{
+.navbar-inverse .navbar-nav>li>a{
+    color: #ffffff;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+/*.navbar-inverse .navbar-nav>li:hover,.navbar-inverse .navbar-nav>li>a:hover*/
+/*{    background-color: #ffffff;*/
+/*    color: #44b7b9;*/
+/*}*/
+
+.dropdown-menu>li>a:hover{
+    color: #44b7b9;
     background-color: #ffffff;
-    color: #002435;
 }
 
 .navbar-inverse .navbar-nav>.open>a,
 .navbar-inverse .navbar-nav>.open>a:focus,
 .navbar-inverse .navbar-nav>.open>a:hover{
     background-color: #ffffff;
-    color: #002435;
+    color: #44b7b9;
     font-weight: bold;
 }
 
 .navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form{
-    padding-right: 120px ;
+    padding-right: 50px ;
 }
 
 .navbar-inverse .navbar-right > li > a ,
 .dropdown-menu ,
-.dropdown-menu>li>a{
-    background-color: #002435;
+.dropdown-menu>li{
+    background-color: #44b7b9;
 }
 
 .navbar-right {
     margin-right: -40px !important;
 }
 
-.navbar-inverse .navbar-nav>li>a{
-    color: #ffffff;
-    font-weight: bold;
-}
+
 
 .dropdown-menu{
     min-width: 180px;
@@ -89,23 +125,27 @@ body{
 
 .dropdown-menu>li>a{
     color: #ffffff;
-    padding: 10px 15px;
+    padding: 0px 15px;
+    text-decoration: none;
 }
 
-.dropdown-menu > li > a:hover{
-    background-color: #ffffff;
-    color: #002435;
-}
+
 
 .navbar{
     border-radius: 0 ;
     margin-bottom: 0 ;
+    padding-bottom: 0;
+    padding-top: 0;
     border: none;
 }
 
-.nav > li > a, .navbar-brand{
-    padding: 15px 12px;
+
+
+
+.nav > li, .navbar-brand{
+    padding: 0px 12px;
 }
+
 
 .navbar-brand{
     font-size: 16px;
@@ -127,9 +167,9 @@ body{
 
 .home-stats .stat .fa{
     position: absolute;
-    font-size: 30px;
-    top: 30px;
-    left: 30px;
+    font-size: 58px;
+    top: 20px;
+    left: 9px;
 }
 
 .home-stats .stat .info{
@@ -247,8 +287,6 @@ h1{
     height: 45px;
 }
 
-
-
 .table-bordered>tbody>tr>td{
     border: none;
     border:1px solid #ffffff;
@@ -260,7 +298,7 @@ h1{
 }
 
 .main-table tr:first-child td { /* You Can Use T Head */
-    background-color: #45ad79;
+    background-color: #002435;
     color: #ffffff;
     font-weight: bold;
 }
@@ -278,7 +316,7 @@ h1{
 
 .main-table tr td .non-active,
 .admins .admin .non-active,
-.main-table tr td .post-non-active,
+.main-table tr td .cat-non-active,
 .latest-user .glyphicon-remove-sign,
 .categories .cat .hidden-buttons .non-active{
     font-size: 22px;
@@ -288,7 +326,7 @@ h1{
 }
 
 .main-table tr td .actived,
-.main-table tr td .post-actived,
+.main-table tr td .cat-actived,
 .latest-user .glyphicon-ok-sign{
     font-size: 22px;
     color: #1e9600;
@@ -424,4 +462,29 @@ hr{
     display: block;
 }
 
+
+
+/***************************************************************************/
+.navbar-nav .n{
+    padding-right: 10px;
+    padding-top: 10px;
+}
+
+
+.navbar-nav .n8{
+    padding-top: 20px;
+    margin-left: 0px;
+}
+
+.statis .four-div{
+    text-decoration: none;
+}
+
+@media (min-width: 992px){
+    .navbar-expand-lg .navbar-nav .nav-link {
+        padding-right: .5rem;
+        padding-left: .5rem;
+        padding-top: 20px;
+    }
+}
 /***************************************************************************/

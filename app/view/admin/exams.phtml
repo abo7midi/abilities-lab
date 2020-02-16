@@ -1,0 +1,69 @@
+
+<?php
+include "side_bar.phtml";
+?>
+<link rel="icon" href="images/logo.png" type="image/png" sizes="16x16">
+<link rel="stylesheet" type="text/css" href="/layout/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="/layout/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="/layout/css/backend.css">
+<link rel="stylesheet" type="text/css" href="/layout/css/main.css">
+
+
+<h1 class="text-center"> Manage Exam </h1>
+<div class="container-fluid">
+    <div class="table-responsive">
+        <table class="main-table text-center table table-bordered">
+            <tr>
+<!--                <td>#ID</td>-->
+                <td>exam_name</td>
+                <td>exam_description</td>
+                <td>exam_level</td>
+                <td>exam_q_num </td>
+                <td>exam_duration</td>
+                <td>exam_price </td>
+<!--                <td>exam_paid </td>-->
+                <td>cat_name </td>
+                <td>exam_total_mark</td>
+                <td>control</td>
+
+
+            </tr>
+            <?php
+            if (array_key_exists('examsAdmin',$this->view_data)){
+
+                $table='';
+
+                foreach ($this->view_data['examsAdmin'] as $examExaminer) {
+
+
+                    $table.='<tr class="bel">';
+//                    $table.=' <td>'.$examExaminer["exam_id"].'</td>';
+                    $table.=' <td >'.$examExaminer["exam_name"].'</td>';
+                    $table.=' <td>'.$examExaminer["exam_description"].'</td>';
+                    $table.=' <td>'.$examExaminer["exam_level"].'</td>';
+                    $table.=' <td >'.$examExaminer["exam_q_num"].'</td>';
+                    $table.=' <td >'.$examExaminer["exam_duration"].'</td>';
+                    $table.=' <td >'.$examExaminer["exam_price"]. '</td>';
+//                    $table.=' <td >'.$examExaminer["exam_paid"]. '</td>';
+                    $table.=' <td >'.$examExaminer["cat_name"]. '</td>';
+                    $table.=' <td >'.$examExaminer["exam_total_mark"]. '</td>';
+
+
+                    $table.="<td>";
+                    if ($examExaminer["exam_state"] == 0) {
+                        $table.= ' <a href="/exam/activeExamner/'.$examExaminer["exam_id"].'" class=" glyphicon glyphicon-remove-sign non-active">active</a></td>';
+
+                    }elseif ($examExaminer["exam_state"] == 1){
+                        $table.='<a href="/exam/nonActiveExamner/'.$examExaminer["exam_id"].'" class="glyphicon glyphicon-ok-sign active">nonactive
+</a>';
+                    }
+                    $table.="</td>";
+                    $table.="</tr>";
+                }
+                echo $table;
+            }
+            ?>
+        </table>
+    </div>
+</div>
+

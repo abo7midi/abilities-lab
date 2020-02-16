@@ -5,7 +5,7 @@
 
 class Category
 {
-  protected  $data_file;
+  protected $data_file;
   protected $db;
 
 
@@ -16,17 +16,23 @@ class Category
 //
 public function allSubCate()
 {
-  return $this->db->query("select * from categories where cat_main_cat != 0 and cat_state = 1");
+    return $this->db->query("select * from categories where cat_main_cat != 0 and cat_state = 1");
 }
 
+//
 
+
+
+//public function selfjoin(){
+//      return $this->db->query("SELECT A.cat_id AS main_id, A.cat_name AS main_name ,B.cat_name AS sub_name, B.cat_main_cat AS sub_of_main_id FROM categories A, categories B WHERE A.cat_id = B.cat_main_cat AND A.cat_main_cat = 0");
+//}
 
 //
 
 public function add(array $aData)
 {
 
-      $oStmt = $this->db->preparation('insert into exams values(?,?,?,?,?,?,?,?,?,?,?,?,?)');
+      $oStmt = $this->db->preparation('insert into categories(cat_name,cat_description,cat_created_at,cat_main_cat,user_id) values(?,?,now(),?,?)');
 
           return $oStmt->execute($aData);
 
@@ -35,8 +41,7 @@ public function add(array $aData)
   //
   public function delete($id)
   {
-    $oStmt = $this->db->preparation('DELETE FROM categories WHERE id=?');
-
+    $oStmt = $this->db->preparation('UPDATE categories SET Existing = 0 WHERE cat_id = ?');
         return $oStmt->execute($id);
   }
 
@@ -45,9 +50,12 @@ public function add(array $aData)
 
   public function update($aData)
   {
-          $oStmt = $this->db->preparation('UPDATE  categories
-                                          SET   cat_title=:title
-                                          WHERE id=:id ');
+          $oStmt = $this->db->preparation('UPDATE categories
+                                          SET cat_name=:name , cat_description=:description,
+                                          cat_updated_at=now(),
+                                          cat_main_cat=:cat,
+                                          user_id=:userID
+                                          WHERE cat_id=:id ');
           return $oStmt->execute($aData);
 
   }
@@ -56,11 +64,24 @@ public function add(array $aData)
 
   public function find($aData)
   {
-    $oStmt = $this->db->preparation('SELECT * FROM categories WHERE id =?');
+    $oStmt = $this->db->preparation('SELECT * FROM categories WHERE cat_id =?');
   $oStmt->execute($aData);
         return $oStmt->fetch();
 
   }
+
+    public function updateActive($aData)
+    {
+        $oStmt = $this->db->preparation('UPDATE categories set cat_state=1 where cat_id=? ');
+        return $oStmt->execute($aData);
+
+    }
+    public function updatedisActive($aData)
+    {
+        $oStmt = $this->db->preparation('UPDATE categories set cat_state=0 where cat_id=? ');
+        return $oStmt->execute($aData);
+
+    }
 
 }
 

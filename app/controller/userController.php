@@ -15,7 +15,6 @@ class userController extends Controller
     {
         $this->model('Users');
         $this->view('admin'.DIRECTORY_SEPARATOR.'accounts',['accounts'=>$this->model->all()]);
-
         $this->view->pageTitle='admin index';
         $this->view->render();
     }
@@ -48,10 +47,7 @@ class userController extends Controller
                 $filename = Helper::uploadFile($target_dir, $file, $file_tmp, $file_size);
             }
 
-
-
             if ($validate['status']==1) {
-
                 function checkemail($us,$ue)
                 {
                     $oStmt = DB::init()->preparation("select user_name,user_email from users WHERE user_name = ? or user_email = ?");
@@ -68,8 +64,6 @@ class userController extends Controller
                 if (checkemail($_POST["username"], $_POST["email"]) == true) {
                     echo "This Is Existing";
                 } else {
-
-
                     $post = array(
                         ':full_name' => htmlentities($_REQUEST['full_name']),
                         ':user_name' => htmlentities($_REQUEST['username']),
@@ -91,100 +85,63 @@ class userController extends Controller
 
         }
         # show form view  to add new user
-        $this->view('admin'.DIRECTORY_SEPARATOR.'addUser');
+        $this->view('admin'.DIRECTORY_SEPARATOR.'index');
         $this->view->pageTitle='Add New User';
         $this->view->render();
     }
 
     /*********************************************************************************/
 
-    public function dashboard()
-    {
-        $this->view('admin'.DIRECTORY_SEPARATOR.'dashboard');
-        $this->view->pageTitle='dashboard';
-        $this->view->render();
-
-
-    }
 //---------------------------------------login---------------------------------------------------------------------------------
     public function login()
     {
         // check if there submit
 
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            $validate = Validation::required(['username', 'password']); //sure that first element in array most be null
-
-
+            $validate = Validation::required(['username', 'password']);
+            //sure that first element in array most be null
             $login = array(
                 ':username' => htmlentities($_REQUEST['username']),
-                ':password' => Hashing::init($_POST['password'])
+                ':password' => Hashing::init($_REQUEST['password'])
             );
-
-
             $users=$this->model('Users');
-
             $user=$users->checkLogin($login);
-
             if (!empty($user)) {
                 Session::loggIn([$user[0]['user_id'],
                     $user[0]['user_name'],
-                    $user[0]['group_id']]);
+                    $user[0]['group_id'],
+                    $user[0]['image']]);
 
                 if ($user[0]["group_id"] == 2 && $user[0]["user_state"]==1 ) {
-
                     header("location:/exam/add");
-
-
                     echo "ur examiner";
 
                 } elseif  ($user[0]["group_id"] == 3 && $user[0]["user_state"]==1 ){
-                    header("location:/exam/takeExam/5e366a4921621");
+                    header("location:/exam/takeExam/5e42642ce4f6c");
                     echo "ur members";
                 }elseif  ($user[0]["group_id"] == 1 && $user[0]["user_state"]==1 ) {
-                    header('Location:/user/dashboard');
-
+                    header('Location:/admin/dashboard');
                 }
                 else{
                     echo "error";
                 }
 
-
-
-
-
-//               $session_data = array(
-//                   'user_id'=>$user['user_id'],
-//                  'user_name'=> $user['user_name'],
-//                  'group_id'=>  $user['group_id']);
-//
-//              Session::loggIn($session_data);
-//
-//               header("location:/index");
-//                echo "success";
-
             }
-
-// else {
-////               header("location:/user/addUser");
-//                echo "error";
-//
-//            }
-//        }
-            # show form view  to add new user
-
-
             $this->view('admin'.DIRECTORY_SEPARATOR.'addUser');
-
             $this->view->pageTitle='login User';
             $this->view->render();
 
 
+        } else {
+            $this->model('Admin');
+            $this->view('admin'.DIRECTORY_SEPARATOR.'errorPage');
+            $this->view->pageTitle='Error';
+            $this->view->render();
 
-        }}
+        }
+    }
     public function logout(){
-
-  session_destroy();
-
+        session_destroy();
         header("location:/user/add");
     }
 //---------------------------------------------------start update user----------------------------------------------------------------------

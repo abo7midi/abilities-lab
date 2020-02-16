@@ -1,35 +1,105 @@
-<?php include "top.phtml";
-$categoryErr='';
-$category=$this->view_data['categories'];
- ?>
+<?php
+include "side_bar.phtml";
+?>
+<link rel="stylesheet" type="text/css" href="/layout/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="/layout/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="/layout/css/backend.css">
+<link rel="stylesheet" type="text/css" href="/layout/css/main.css">
 
-                <section class="content">
+<?php
 
-                  <div class="box">
-                                                  <div class="box-header">
-                                                    <h2 class="card-header info-color white-text text-center py-4">
-                                                        <strong>تحرير فئة </strong>
-                                                    </h2>
-                                                  </div><!-- /.box-header -->
-                                                  <div class="box-body table-responsive">
-                  <div class="card">
+$category = $this->view_data['categories'];
 
+    ?>
 
-
-                      <form id='newcategory' method='post' action='' enctype='multipart/form-data'>
-                          <div class="newArt">
-
-                          <div class="md-form mt-3">
-                            <label for="materialContactFormName"><h4> العنوان * </h4></label>
-                              <input type="text" value="<?php echo $category['cat_title']; ?>" name="title" placeholder="Title" id="materialContactFormName" class="form-control"><br><br>
-
-                          </div>
-                          <button type="submit" name="submit" class="btn btn-primary" value="submit">اضافة الفئة</button>
-                          </div>
-                      </form>
-                    </div>
-                  </div>
+    <h1 class="text-center"> Edit Category </h1>
+    <div class="container-fluid">
+        <form class="form-horizontal" action="" method="POST">
+            <input type="hidden" name="catid" value="<?php echo $category['cat_id']; ?>">
+            <!-- Start Name Field -->
+            <div class="form-group">
+                <label class="col-sm-2 control-label label-edit"> Name </label>
+                <div class="col-sm-10">
+                    <input type="text" name="name" class="form-control input-edit"
+                           value="<?php echo $category['cat_name']; ?>" autocomplete="off" required="required"
+                           placeholder="Name Of The Categories"/>
                 </div>
-                </section><!-- /.content -->
+            </div>
+            <!-- End Name Field -->
 
-      <?php include "buttom.phtml" ?>
+            <!-- Start Description Field -->
+            <div class="form-group">
+                <label class="col-sm-2 control-label label-edit"> Description </label>
+                <div class="col-sm-10">
+                    <input type="text" name="description" class="form-control input-edit"
+                           value="<?php echo $category['cat_description']; ?>" placeholder="Describe The Category"/>
+                </div>
+            </div>
+            <!-- End Description Field -->
+
+
+<!-------------------------------------------------------------------------------------------->
+            <div class="form-group">
+                <label class="col-sm-2 control-label label-edit"> Type Of Category </label>
+                <div class="col-sm-10" id="type_category">
+
+                    <div>
+                        <input class="main_cat" type="radio" name="cat" id="cat-main" value="0" onkeyup="lettersOnlyTwo(this)" <?php if ($category['cat_main_cat'] == 0) {
+                            echo 'checked';
+                        } ?>>
+                        <label for="cat-main">Main Category</label>
+                    </div>
+
+                    <div>
+                        <input class="sub_cat" type="radio" name="cat" id="cat-sub" value="<?php echo $category['cat_main_cat'];?>"
+                            <?php
+                                if ($category['cat_main_cat'] > 0) {
+                                    echo 'checked';
+                                }
+                            ?>
+                        >
+                        <label for="cat-sub">Sub Category</label>
+                    </div>
+
+                </div>
+            </div>
+
+            <label class="col-sm-2 control-label label-edit"> Choose The Main Category </label>
+            <div class="col-sm-10">
+                <select name="categories" class="categories form-control select-option" onchange="getValueFromOptionToInput(this.value);">
+
+                    <?php
+                    foreach ($this->view_data['cats'] as $cat) {
+                        echo "<option value='" . $cat['cat_id'] . "'";
+                        if($category['cat_main_cat'] == $cat['cat_id']){
+                            echo 'selected';
+                        }
+                         echo ">".$cat['cat_name'] . "</option>";
+                    }
+
+                    ?>
+                </select>
+            </div>
+
+            <!-------------------------------------------------------------------------------------------->
+
+
+
+
+            <!-- Start Submit Field -->
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <input type="submit" value="Update Category" class="btn btn-primary"/>
+                </div>
+            </div>
+            <!-- End Submit Field -->
+
+        </form>
+    </div>
+
+<script src="/layout/js/jquery-2.1.3.min.js"></script>
+<script src="/layout/js/bootstrap.min.js"></script>
+<script src="/layout/js/backend.js"></script>
+<script src="/layout/js/main.js"></script>
+<script src="/js/jquery.validate.js"></script>
+<script src="/js/script.js"></script>
