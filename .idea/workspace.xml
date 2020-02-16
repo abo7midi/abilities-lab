@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
+<<<<<<< Updated upstream
     <list default="true" id="180df6e7-5c4f-4158-a258-1be38c9a4091" name="Default Changelist" comment="">
       <change afterPath="$PROJECT_DIR$/app/view/home/error.phtml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/app/view/home/top_members.phtml" afterDir="false" />
@@ -26,6 +27,9 @@
       <change beforePath="$PROJECT_DIR$/app/view/home/showResult.phtml" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/home/showResult.phtml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/pictures/.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/public/pictures/1.jpg" afterDir="false" />
     </list>
+=======
+    <list default="true" id="180df6e7-5c4f-4158-a258-1be38c9a4091" name="Default Changelist" comment="" />
+>>>>>>> Stashed changes
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

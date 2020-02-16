@@ -22,7 +22,6 @@ class questionController extends Controller
         // check if there submit
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $sample_id = $_SESSION['sample_id'];
-
             $this->model('question');
             $total_degree=0;
             for($i=1;$i<=$_SESSION['number_que'];$i++) {
@@ -53,7 +52,7 @@ class questionController extends Controller
             for($i=1;$i<=$_SESSION['number_que'];$i++){
                 $qid = uniqid();
                 $q_content = $_POST['qns' . $i];
-                $q_img = $_POST['q_image'.$i];
+                $q_img =Helper::uploadFile(ROOT."public/images/examsImg/",$_FILES['q_image'.$i]['name'],$_FILES['q_image'.$i]['tmp_name'],$_FILES['q_image'.$i]['size']);
                 $q_degree = $_POST['q_degree' . $i];
                 $Q_data = [
                     $qid,
