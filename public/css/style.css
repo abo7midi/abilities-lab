@@ -40,9 +40,9 @@ input::-ms-clear, textarea::-ms-clear {
   display: none;
 }
 
-/* -------------------------------- 
+/* --------------------------------
 
-Main components 
+Main components
 
 -------------------------------- */
 header[role=banner] {
@@ -171,9 +171,9 @@ header[role=banner]::after {
   }
 }
 
-/* -------------------------------- 
+/* --------------------------------
 
-xsigin/signup popup 
+xsigin/signup popup
 
 -------------------------------- */
 .cd-user-modal {
@@ -210,7 +210,7 @@ xsigin/signup popup
 .cd-user-modal-container {
   position: relative;
   width: 90%;
-  max-width: 600px;
+  max-width:488px;
   background: #FFF;
   margin: 3em auto 4em;
   cursor: auto;
@@ -287,7 +287,7 @@ xsigin/signup popup
   display: inline-block;
   position: absolute;
   left: 15px;
-  top: 50%;
+  top: 37%;
   bottom: auto;
   -webkit-transform: translateY(-50%);
   -moz-transform: translateY(-50%);
@@ -368,7 +368,7 @@ xsigin/signup popup
   top: 0;
   padding: 6px 15px;
   border-left: 1px solid #d2d8d8;
-  top: 50%;
+  top: 37%;
   bottom: auto;
   -webkit-transform: translateY(-50%);
   -moz-transform: translateY(-50%);
@@ -494,8 +494,8 @@ xsigin/signup popup
 }
 
 .preview {
-  width : 150px;
-  height : 150px;
+  width: 109px;
+  height: 109px;
   max-width : 150px;
   max-heigth : 150px;
   border-radius : 50%;
@@ -535,7 +535,7 @@ xsigin/signup popup
   font-size: 15px;
 }
 .form-control{
-  font-size: 2rem;
+  font-size: 1rem;
   color: #333333;
 }
 
