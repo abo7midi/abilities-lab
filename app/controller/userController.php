@@ -98,10 +98,11 @@ class userController extends Controller
         // check if there submit
 
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
-           // $validate = Validation::required(['username', 'password']); //sure that first element in array most be null
+            $validate = Validation::required(['username', 'password']);
+            //sure that first element in array most be null
             $login = array(
                 ':username' => htmlentities($_REQUEST['username']),
-                ':password' => Hashing::init($_POST['password'])
+                ':password' => Hashing::init($_REQUEST['password'])
             );
             $users=$this->model('Users');
             $user=$users->checkLogin($login);
@@ -128,6 +129,13 @@ class userController extends Controller
             }
             $this->view('admin'.DIRECTORY_SEPARATOR.'addUser');
             $this->view->pageTitle='login User';
+            $this->view->render();
+
+
+        } else {
+            $this->model('Admin');
+            $this->view('admin'.DIRECTORY_SEPARATOR.'errorPage');
+            $this->view->pageTitle='Error';
             $this->view->render();
 
         }

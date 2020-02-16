@@ -10,7 +10,6 @@ abstract class Session
     public static function set($key, $value)
     {
             $_SESSION[$key] = $value;
-
     }
 
 
@@ -20,17 +19,12 @@ abstract class Session
             $_SESSION['userName'] = $user[1];
             $_SESSION['userGroup'] = $user[2];
             $_SESSION['userImg'] = $user[3];
-
-          //  $_SESSION['type'] = $user[2];            REVIEW
     }
 
     public static function  logged()
     {
       if (self::has('userID')) {
           return $_SESSION['userID'];
-
-//      if (self::has('user_id')) {                    REview
-//          return $_SESSION['user_id'];
       }
       return null;
     }

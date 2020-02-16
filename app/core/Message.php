@@ -34,7 +34,7 @@ abstract class Message
         $all = '';
         $m = '';
         if (Session::has('errors')) {
-            $all = Session::get('errors')['value'];
+            $all = Session::get('errors');
             if (isset($all[$input])) {
                 $m = '<span class="btn-block badge badge-danger">';
                 foreach ($all[$input] as $error)

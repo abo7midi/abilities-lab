@@ -19,6 +19,17 @@ class Exam
         return $this->db->query("select * from exams");
     }
 
+    public  function  allExamAdmin(){
+        return $this->db->query("select
+                                          exams.`exam_id`,`exam_name`,`exam_description`,`exam_level`,
+                                          `exam_q_num`,`exam_duration`,`exam_price`,`exam_paid`,`exam_total_mark`,exam_state, categories.cat_name
+                                                 FROM 
+                                                   exams 
+                                                   INNER JOIN 
+                                                     categories on exams.cat_id = categories.cat_id");
+
+    }
+
     public function getSpecificExam(array $Data){
         $oStmt = $this->db->preparation("select * from exams where exam_id=?");
         $oStmt->execute($Data);
@@ -139,6 +150,17 @@ class Exam
 
         $Stmt->execute($exam_id);
         return $Stmt->fetchAll();
+    }
+    public function activeExamner($aData)
+    {
+        $oStmt = $this->db->preparation('UPDATE exams set exam_state=1 where exam_id=? ');
+        return $oStmt->execute($aData);
+
+    }
+    public function nonActiveExamner($aData)
+    {
+        $oStmt = $this->db->preparation('UPDATE exams set exam_state=0 where exam_id=? ');
+        return $oStmt->execute($aData);
 
     }
 

@@ -11,7 +11,13 @@ class examController extends Controller
 
         $this->view->pageTitle='exam';
         $this->view->render();
+    }
 
+    public function exama(){
+        $this->model('Exam');
+        $this->view('admin'.DIRECTORY_SEPARATOR.'exams',['examsAdmin'=>$this->model->allExamAdmin()]);
+        $this->view->pageTitle='exam';
+        $this->view->render();
     }
 
     public function add()
@@ -321,5 +327,23 @@ class examController extends Controller
 
     }
 
+    public function activeExamner($id)
+    {
+        $this->model('Exam');
+        $this->model->activeExamner( array(0 => $id ));
+        Message::setMessage('status',1);
+        Message::setMessage('main',' OK!');
+        header('Location:/exam/all');
+
+    }
+
+    public function nonactiveExamner($id)
+    {
+        $this->model('Exam');
+        $this->model->nonActiveExamner( array(0 => $id ));
+        Message::setMessage(1,'status',1);
+        Message::setMessage(1,'main',' No!');
+        header('Location:/exam/all');
+    }
 }
 ?>
