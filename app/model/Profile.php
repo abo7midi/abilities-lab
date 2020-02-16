@@ -24,7 +24,7 @@ class Profile
     public function updateProfile($aData)
     {
 
-        $oStmt = $this->db->preparation('UPDATE `users` SET `full_name`=:fullname,`user_pwd`=:password,`user_email`=:email,`phone`=:mobile,image=:picture WHERE user_id=:id
+        $oStmt = $this->db->preparation('UPDATE `users` SET `full_name`=:fullname,`user_pwd`=:password,`user_email`=:email,`phone`=:mobile,image=:picture,user_name=:username WHERE user_id=:id
 ');
       return $oStmt->execute($aData);
 
