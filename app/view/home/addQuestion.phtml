@@ -244,9 +244,7 @@ $(document).ready(function () {
 /*********************************** validation ************************************************/
 var qNo=<?php echo $_SESSION['number_que']?>;
         // checkVal();
-function checkVal($nnn=1)
-{
-    for(var i=1;i<=$nnn;i++) {
+for(var i=1;i<=qNo;i++) {
         console.log($nnn);
         var Q="qns"+i,
             choice1="txt1"+i,
@@ -255,13 +253,6 @@ function checkVal($nnn=1)
             choice4="txt4"+i,
             degree="q_degree"+i,
             radio="radio"+i;
-        console.log(Q);
-        console.log(choice1);
-        console.log(choice2);
-        console.log(choice3);
-        console.log(choice4);
-        console.log(degree);
-        console.log(radio);
         $("#msform").validate({
             rules: {
                 Q: {
@@ -316,8 +307,7 @@ function checkVal($nnn=1)
             }
         });
     }
-    $('#next').attr('disabled', false);
-}
+
         $('#save').on('click', function() {
             if($("#msform").valid()==false){
                 $('#save').prop('disabled', true);
@@ -333,51 +323,41 @@ function checkVal($nnn=1)
         var n=1;
 
         $(document).on('click','#next', function() {
-            checkVal(n);
-            if($("#msform").valid()==false){
-                alert('fale');
-                $('#next').attr('disabled', true);
-            }
-            else{
-                n++;
-                $('#next').attr('disabled', false);
+            if (animating) return false;
+            animating = true;
+            current_fs = $(this).parent();
+            next_fs = $(this).parent().next();
 
-                alert('true');
-                if (animating) return false;
-                animating = true;
-                current_fs = $(this).parent();
-                next_fs = $(this).parent().next();
+            //activate next step on progressbar using the index of next_fs
+            $("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
 
-                //activate next step on progressbar using the index of next_fs
-                $("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
+            //show the next fieldset
+            next_fs.show();
+            //hide the current fieldset with style
+            current_fs.animate({opacity: 0}, {
+                step: function (now, mx) {
+                    //as the opacity of current_fs reduces to 0 - stored in "now"
+                    //1. scale current_fs down to 80%
+                    scale = 1 - (1 - now) * 0.2;
+                    //2. bring next_fs from the right(50%)
+                    left = (now * 50) + "%";
+                    //3. increase opacity of next_fs to 1 as it moves in
+                    opacity = 1 - now;
+                    current_fs.css({
+                        'transform': 'scale(' + scale + ')',
+                        'position': 'absolute'
+                    });
+                    next_fs.css({'left': left, 'opacity': opacity});
+                },
+                duration: 800,
+                complete: function () {
+                    current_fs.hide();
+                    animating = false;
+                },
+                //this comes from the custom easing plugin
+                easing: 'easeInOutBack'
+            });
 
-                //show the next fieldset
-                next_fs.show();
-                //hide the current fieldset with style
-                current_fs.animate({opacity: 0}, {
-                    step: function (now, mx) {
-                        //as the opacity of current_fs reduces to 0 - stored in "now"
-                        //1. scale current_fs down to 80%
-                        scale = 1 - (1 - now) * 0.2;
-                        //2. bring next_fs from the right(50%)
-                        left = (now * 50) + "%";
-                        //3. increase opacity of next_fs to 1 as it moves in
-                        opacity = 1 - now;
-                        current_fs.css({
-                            'transform': 'scale(' + scale + ')',
-                            'position': 'absolute'
-                        });
-                        next_fs.css({'left': left, 'opacity': opacity});
-                    },
-                    duration: 800,
-                    complete: function () {
-                        current_fs.hide();
-                        animating = false;
-                    },
-                    //this comes from the custom easing plugin
-                    easing: 'easeInOutBack'
-                });
-            }
         });
 /*
         $('#save').off('click', function() {

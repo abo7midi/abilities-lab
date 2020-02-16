@@ -36,7 +36,7 @@
                 <div class="form-group row">
                     <label for="inputPassword3" class="col-sm-3 col-form-label">pass mark</label>
                     <div class="col-sm-9">
-                        <input type="number" class="form-control" id="inputDateEnd" name="pass_mark" value="<?php Helper::old('pass_mark',"auth")?>">
+                        <input type="number" class="form-control" id="pass_mark" name="pass_mark" value="<?php Helper::old('pass_mark',"auth")?>">
                         <small>the value should be equal or smaller than full mark</small>
                     </div>
                     <?php echo Message::getInputErrorMessage("pass_mark"); ?>
@@ -107,7 +107,7 @@
 <script type="application/javascript"
         src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/additional-methods.min.js"></script>
 <script>
-    /*$(document).ready(function () {
+ $(document).ready(function () {
         $("#addexamform").validate({
             rules: {
                 name: {
@@ -116,7 +116,7 @@
                 no_q: {
                     required: true,
                     digits: true,
-                    range: [1, 500]
+                    range: [1, 100]
                 },
                 total_mark: {
                     required: true,
@@ -128,7 +128,7 @@
                     required: true,
                     digits: true,
                     min: 1,
-                    max: ("#total_mark").value
+                    max: $("#total_mark").val()
                 },
                 duration: {
                     required: true,
@@ -154,21 +154,25 @@
                 },
                 pass_mark: {
                     required: "this field is required",
-                    digits: "the value should be digits",
+                    digits: "the value should be positive digits",
                     min: "the value should be positive",
                     max: "you are passed full mark"
                 },
                 duration: {
                     required: "this field is required",
-                    digits: "the value should be digits",
+                    digits: "the value should be positive digits",
                     range: "you are enter unvalid value"
                 },
                 price: {
                     max: "you passed 1000 $",
-                    digits: "the value should be digits"
+                    digits: "the value should be positive digits"
                 }
             }
         });
-    });*/
+        $("form").submit(function () {
+
+            console.log( $("#total_mark").val());
+        });
+    });
 </script>
 <?php (Message::getMessage('errors'));?>

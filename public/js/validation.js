@@ -1,5 +1,4 @@
-function stringlength(inputText, minlength, maxlength,msg)
-              {
+function stringlength(inputText, minlength, maxlength,msg){
   var field = inputText.value;
   var mnlen = minlength;
   var mxlen = maxlength;
@@ -16,8 +15,26 @@ function stringlength(inputText, minlength, maxlength,msg)
   }
 }
 
-function preventSpace(inputText, minSpace, maxSpace)
-             {
+function inputValue(inputText, minValue, maxValue,msg)
+{
+    var field = inputText.value;
+    var mnlen = minValue;
+    var mxlen = maxValue;
+    var Errspan = inputText.name + 'Error';
+
+    if (field.value < mnlen || field.Value > mxlen)
+    {
+        document.getElementById(Errspan).innerHTML ="<i class='fas fa-exclamation-circle error-icon'></i>"+ msg  + mnlen + ' , ' + mxlen + ' ';
+        return false;
+    } else
+    {
+        document.getElementById(Errspan).innerHTML='';
+        return true;
+    }
+}
+
+
+function preventSpace(inputText, minSpace, maxSpace) {
   var field = inputText.value;
   var mnChar = minSpace;
   var mxChar = maxSpace;
@@ -57,7 +74,6 @@ function allLetter(inputText)
 
 function Requirevalidation(inputText)
 {
-
   var empt =inputText.value;
   var Errspan = inputText.name + 'Error';
 
@@ -70,9 +86,8 @@ function Requirevalidation(inputText)
     document.getElementById(Errspan).innerHTML='';
       return true;
   }
-
-
 }
+
    function ValidateEmail(inputText)
                 {
                 var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
@@ -90,6 +105,24 @@ function Requirevalidation(inputText)
                     return false;
                 }
                 }
+
+function positiveInteger(inputText)
+{
+    var Errspan=inputText.name+'Error';
+
+    var positiveInt =/^[1-9]\d*$/;
+    if(inputText.value.match(positiveInt))
+    {
+        document.getElementById(Errspan).innerHTML='';
+
+        return true;
+    }
+    else
+    {
+        document.getElementById(Errspan).innerHTML="<i class='fas fa-exclamation-circle error-icon'></i>"+ msg;
+        return false;
+    }
+}
     function phonenumber(inputText)
                 {
                   var Errspan=inputText.name+'Error';
