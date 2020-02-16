@@ -19,7 +19,14 @@ class homeController extends Controller
     $this->view->render();
   }
 
-public function back()
+    public function error()
+    {
+        $this->view('home'.DIRECTORY_SEPARATOR.'error');
+        $this->view->pageTitle='Not Found';
+        $this->view->render();
+    }
+
+    public function back()
 {
   header('Location:'.$_SERVER['HTTP_REFERER']);
   exit;
@@ -150,7 +157,7 @@ print_r($_REQUEST);
 public function categoryItem($id)
 {
 
-  $news= $this->model('News');
+  $news= $this->model('ADMIN');
   $category= $this->model('Category');
 
  $categories= array('cat_title' =>Helper::catName($id) ,'id'=>$id );

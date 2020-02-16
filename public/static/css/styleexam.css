@@ -1,0 +1,80 @@
+body{
+    box-sizing: border-box;
+    font-family: Arial;
+    font-style:normal;
+    font-weight: bold;
+}
+
+.disc{
+    height: 150px;
+    width: 100%;
+    background-color: #FFF;
+    border: 2px solid #1abc9c;
+/*  padding: 28px;*/
+  border-radius: 0px  0px 25px 25px;
+    box-shadow: 0 6px  #1abc9c;
+}
+
+
+.disc h2{
+    margin-left: 450px;
+    margin-top: 50px;
+}
+
+
+.div_name{
+    border-radius: 10px 10px 0 0;
+    text-align: center;
+    padding: 15px;
+    background: #1ABC9C;
+    color: white;
+    font-weight: bolder;
+    margin-bottom: 30px;
+    width: 100%;
+
+}
+.form_exam{
+    background-color: #f9f9f9;
+    padding-bottom: 20px;
+    width: 95%;
+    margin: 36px;
+    border-radius: 10px 10px 0 0;
+}
+input:hover{
+    box-shadow: .5px .5px 5px #1abc9c;
+}
+.form_exam label{
+    padding-left:8%;
+    font-weight: lighter;
+    font-size: 14px;
+}
+.form_exam input,.form_exam select{
+    float: right;
+    margin-right: 5%;
+    width: 95%;
+}
+
+.form_exam small{
+    color: #9f9f9f;
+}
+::placeholder {
+    color: red;
+    opacity: .7; /* Firefox */
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: red;
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+    color: red;
+}
+.btn-block {
+    width: 90%;
+    margin: 0 auto;
+    margin-top: 30px;
+
+}
+p{
+    padding: 20px;
+}

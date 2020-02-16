@@ -14,6 +14,7 @@ class Users
         $this->db=new Model();
     }
 // return all row of table of users
+
     public function all()
     {
         return $this->db->query("select users.*, groups.group_name as groupName from users INNER JOIN groups on users.group_id = groups.group_id WHERE Existing =-1");
@@ -64,9 +65,18 @@ class Users
     public function getUserById($username){
         $this->db->query('SELECT *  FROM users WHERE user_name = :username  ' );
         $this->db->bind(':username', $username);
-
         $row = $this->db->single();
 
+        return $row;
+    }
+
+//--------------------------------------start select ----------------------------
+
+
+    public function getUserId($ID){
+        $this->db->query('SELECT *  FROM users WHERE user_id = :id  ' );
+        $this->db->bind(':id', $ID);
+        $row = $this->db->single();
         return $row;
     }
 

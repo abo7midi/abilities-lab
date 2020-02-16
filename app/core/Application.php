@@ -24,22 +24,19 @@ class Application
 //      Message::setMessage('main','لاتملك صلاحية وصول');
 //      }
 //      else {
-
-              $this->controller=new $this->controller;
+            $this->controller=new $this->controller;
             if (method_exists($this->controller,$this->action)) {
-
               call_user_func_array([$this->controller,$this->action],$this->params);
             }
             else {
-              call_user_func_array([$this->controller,'index'],$this->params);
+              $this->controller=new homeController;
+              call_user_func_array([$this->controller,'error'],$this->params);
             }
       }
-
-
 //    }
     else {
       $this->controller=new homeController;
-    call_user_func_array([$this->controller,'index'],$this->params);
+    call_user_func_array([$this->controller,'error'],$this->params);
     }
   }
   #process of prepare url and take controller , action and another parameters and assign thim

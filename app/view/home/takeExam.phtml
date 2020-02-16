@@ -39,7 +39,10 @@
             padding:20px;
         }
 
-
+    .examStudentIMG{
+        width:98%;
+        margin:0 auto;
+    }
         .txt-ctr {
             padding: 10px 0;
             margin-bottom: 0;
@@ -205,7 +208,6 @@
 <body onload="timeout()">
 <div id="time" ></div>
 <div class="container">
-    <center><?php echo $_SESSION['testcomplete']?>/center>
     <div class="row">
         <div class="col-md-2"></div>
         <div class="col-md-8">
@@ -215,6 +217,7 @@
     $i=0;
     foreach($this->view_data['q'] as $ques ){
         echo "<p>".$ques["q_content"]."</p>
+              <img class='examStudentIMG rounded mx-auto d-block' src='/images/examsImg/".$ques["q_img"]."'
                 <ul class='que'  id=\"sr1\">
                 <input type='hidden' name='q_id".$i."'  value=".$ques["q_id"]."> ";
         foreach ($this->view_data['choice'] as $choice){

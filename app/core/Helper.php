@@ -5,14 +5,50 @@
   */
  class Helper
  {
-  public static function uploadFile($target_dir, $name, $file_tmp, $file_size)
+     public static function uniqueFild($data)
+     {
+
+         $like = $data['input'] . " like '%" . $data['data'] . "%' ";
+         $counter = DB::init()->query("SELECT COUNT(*)  As count FROM " . $data['table'] . " WHERE user_id <>" . $data['id'] . " and " . $like);
+         return @($counter[0]['count'] > 0) ? true : false;
+//        return false;
+     }
+
+     public static function back($url, $message='', $status='')
+     {
+         Session::set('oldFormData', $_REQUEST);
+         Message::setMessage('main', $message, $status);
+         header("Location: " . $url);
+         return;
+     }
+
+     public static function old($key, $type = 'public')
+     {
+         if ($type == 'auth')
+             echo isset($_REQUEST[$key]) ? $_REQUEST[$key] : '';
+         else {
+             if (Session::has('oldFormData')) {
+                 if (isset($_SESSION['oldFormData'][$key]) and is_array($_SESSION['oldFormData'][$key]))
+                     return $_SESSION['oldFormData'][$key];
+                 else
+//                echo $_SESSION['oldFormData'][$key];
+                     echo isset($_SESSION['oldFormData'][$key]) ? $_SESSION['oldFormData'][$key] : '';
+             } else
+                 echo '';
+         }
+
+
+     }
+
+     public static function uploadFile($target_dir, $name, $file_tmp, $file_size)
 
    {
      $uploadErr='';
-       $file = strtolower(preg_replace('/[^a-zA-Z0-9.\']/', "", $name));;
-       $target_file = $target_dir . basename($file);
+       $imageFileType = pathinfo($name, PATHINFO_EXTENSION);
+       $file = md5(uniqid()).'.'.$imageFileType;
+       $target_file = $target_dir . $file;
        $upload_ok = 1;
-       $imageFileType = pathinfo($target_file, PATHINFO_EXTENSION);
+
    // Check if image file is a actual image or fake image
        if ($_FILES) {
            $check = getimagesize($file_tmp);

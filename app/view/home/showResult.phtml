@@ -1,37 +1,86 @@
-
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<style>
+    .certificate-btn{
+        width: 50%;
+        margin: 5% auto;
+        background: #37b2b5;
+    }
+    .certificate-btn:hover{
+        background: #1e8a8c;
+    }
+    .result-table{
+        margin-top: 5%;
+        border-radius:10px;
+        border-color: #37b2b5;
+    }
 
-<table class="table table-striped">
-    <thead>
-    <tr>
-        <th scope="col">#</th>
-        <th scope="col">/<?php echo $this->view_data['numberQ']; ?></th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr>
-        <th scope="row">True Choices</th>
-        <td><?php echo $this->view_data['trueChoice']; ?></td>
-    </tr>
-    <tr>
-        <th scope="row">False Choices</th>
-        <td><?php echo $this->view_data['falseChoice']; ?></td>
-    </tr>
-    <tr>
-        <th scope="row">Unchoiced Choices</th>
-        <td><?php echo $this->view_data['emptyChoice']; ?></td>
-    </tr>
-    <tr>
-        <th scope="row">Your Mark </th>
-        <td><?php echo $this->view_data['studentDegree']." / ".$this->view_data['totalMark']; ?></td>
-    </tr>
-    <tr>
-        <th scope="row" colspan="2"> <?php echo Message::check("falseExam");
-                            echo Message::check("trueExam");?> </th>
-    </tr>
-    </tbody>
-    <center><?php echo $_SESSION['testcomplete']?>/center>
-</table>
+    .result-table .table-title{
+        background: #37b2b5;
+        color: #fff;
+    }
+
+    .result-table tfoot{
+        color: #37b2b5;
+        text-align: center;
+    }
+
+    .result-table tbody{
+        color: #555;
+    }
+</style>
+<div class="container">
+    <div class="row">
+        <table class="table table-bordered table-hover result-table">
+            <thead>
+            <tr>
+                <th class="table-title" colspan="2"> Exam Result</th>
+            </tr>
+            <tr>
+                <th scope="col">Result</th>
+                <th scope="col">* / <?php echo $this->view_data['numberQ']; ?>   </th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td scope="row">True Choices</td>
+                <td><?php echo $this->view_data['trueChoice']; ?></td>
+            </tr>
+            <tr>
+                <td scope="row">False Choices</td>
+                <td><?php echo $this->view_data['falseChoice']; ?></td>
+            </tr>
+            <tr>
+                <td scope="row">Unchoiced Choices</td>
+                <td><?php echo $this->view_data['emptyChoice']; ?></td>
+            </tr>
+            <tr>
+                <td scope="row">Your Mark </td>
+                <td><?php echo $this->view_data['studentDegree']." / ".$this->view_data['totalMark']; ?></td>
+            </tr>
+            </tbody>
+            <tfoot>
+            <tr>
+                <th scope="row" colspan="2"> <?php echo $this->view_data['resultWord'];?> </th>
+            </tr>
+            </tfoot>
+        </table>
+   </div>
+    <div class="row">
+    <?php
+        if($this->view_data['examState']==true)
+        {
+            echo '<a class="btn btn-primary certificate-btn"  role="button" href="/exam/get_certification/'.$this->view_data['user_id'].'/'.$this->view_data['sample_id'].'">Get Certification</a>';
+        }else{
+            echo '<a class="btn btn-primary certificate-btn disabled"  role="button" href="/exam/get_certification/'.$this->view_data['user_id'].'/'.$this->view_data['sample_id'].'" disabled="">Get Certification</a>';
+        }
+    ?>
+
+
+    </div>
+</div>
+
+
+
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
