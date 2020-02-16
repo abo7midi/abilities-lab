@@ -11,16 +11,22 @@ class profileController extends Controller
     {
 
 
-            $id=Session::get('userID');
-
+        if(isset($_SERVER['HTTP_REFERER']))
+        {
+            $id = Session::get('userID');
 //           return var_dump($id);
-        $this->model('Profile');
-        $this->view('admin'.DIRECTORY_SEPARATOR.'showProfile',['Profile'=>$this->model->all($id)]);
-        $this->view->pageTitle='admin showProfile';
-        $this->view->render();
+            $this->model('Profile');
+            $this->view('admin' . DIRECTORY_SEPARATOR . 'showProfile', ['Profile' => $this->model->all($id)]);
+            $this->view->pageTitle = 'admin showProfile';
+            $this->view->render();
+        } else {
+            $this->model('Profile');
+            $this->view('home' . DIRECTORY_SEPARATOR . 'error');
+            $this->view->pageTitle = 'Error';
+            $this->view->render();
+        }
 
     }
-
 
 //    edit profile
 ////controller for adding user by admin
