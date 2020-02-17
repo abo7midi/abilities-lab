@@ -10,6 +10,7 @@
     <link rel="stylesheet" type="text/css" href="/layout/css/main.css">
 
 <!------------------------------------------ Start-->
+
     <nav class="navbar navbar-inverse navbar-expand-lg">
         <div class="container-fluid">
         <ul class="nav navbar-nav">
@@ -35,7 +36,18 @@
 
                 <li class="dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <?php echo "username"; ?>
+                        <?php
+                        if (array_key_exists('admins',$this->view_data)) {
+                            foreach ($this->view_data['admins'] as $admin) {
+                                if ($admin['user_id'] == Session::logged()) {
+                                    echo $admin['user_name'];
+                                }
+                            }
+                        } else {
+                            echo "error";
+                        }
+
+                        ?>
                     </a>
 
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">

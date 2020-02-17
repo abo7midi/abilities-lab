@@ -168,10 +168,10 @@ class userController extends Controller
                 ':fullname' => htmlentities($_REQUEST['full_name']),
                 ':username' => htmlentities($_REQUEST['username']),
                 ':password' =>  Hashing::init($_REQUEST['password']),
-                ':email' => htmlentities($_REQUEST['email']),
-                ':mobile' => htmlentities($_REQUEST['phone']),
-                ':type' =>  htmlentities($_REQUEST['type']),
-                ':picture' => $updatefile,
+                ':email'    => htmlentities($_REQUEST['email']),
+                ':mobile'   => htmlentities($_REQUEST['phone']),
+                ':type'     =>  htmlentities($_REQUEST['type']),
+                ':picture'  => $updatefile,
                 ':id'=>$id
 
             );

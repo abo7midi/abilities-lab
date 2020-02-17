@@ -64,7 +64,7 @@ class categoryController extends Controller
             }
         }
 //        $this->view('admin'.DIRECTORY_SEPARATOR.'addCategory');
-        $this->model('Category');
+        $this->model('Admin');
         $this->view('admin'.DIRECTORY_SEPARATOR.'addCategory',['categories'=>$this->model->allCategories()]);
 
 
@@ -89,7 +89,6 @@ public function edit($id)
 {
   // check if there submit
   if ($_SERVER["REQUEST_METHOD"] == "POST") {
-
 
       //do validation to POST
 

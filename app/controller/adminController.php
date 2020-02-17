@@ -28,11 +28,13 @@ class adminController extends Controller
         }
     }
 
+
+
     public function member()
     {
         if(isset($_SERVER['HTTP_REFERER'])) {
             $this->model('Admin');
-            $this->view('admin'.DIRECTORY_SEPARATOR.'accounts',['accounts'=>$this->model->all()]);
+            $this->view('admin'.DIRECTORY_SEPARATOR.'accounts',['accounts'=>$this->model->all(),'admins' => $this->model->all()]);
             $this->view->pageTitle='admin index';
             $this->view->render();
         } else {
@@ -46,7 +48,7 @@ class adminController extends Controller
     {
         if(isset($_SERVER['HTTP_REFERER'])) {
             $this->model('Admin');
-            $this->view('admin'.DIRECTORY_SEPARATOR.'category',['categories'=>$this->model->allCategories(),'cates'=>$this->model->allCategories()]);
+            $this->view('admin'.DIRECTORY_SEPARATOR.'category',['categories'=>$this->model->allCategories(),'cates'=>$this->model->allCategories(),'admins' => $this->model->all()]);
             $this->view->pageTitle='admin index';
             $this->view->render();
         } else {
