@@ -75,57 +75,53 @@ class categoryController extends Controller
 
 public function delete($id)
 {
-  $this->model('Category');
-  $this->model->delete( array(0 => $id ));
-  Message::setMessage('status',1,'');
-  Message::setMessage('','main','تم حذف الفئة بنجاح ّ!');
-  header('Location:/category/index');
-
+    $this->model('Category');
+    $this->model->delete(array(0 => $id));
+    Message::setMessage('status', 1, '');
+    Message::setMessage('', 'main', 'تم حذف الفئة بنجاح ّ!');
+    header('Location:/category/index');
 }
-
-
-//
 public function edit($id)
-{
-  // check if there submit
-  if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    {
+        // check if there submit
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
-      //do validation to POST
+            //do validation to POST
 
-       $validate=Validation::required(['','name']);
+            $validate=Validation::required(['','name']);
 
-        # add new record to the database
+            # add new record to the database
 
-        if ($validate['status'] == 1)
-        {
-            $category= [
-                ':name' => $_POST['name'],
-                ':description' => $_POST['description'],
-                ':cat' => $_POST['cat'],
-                ':id'=>$id,
-                ':userID' => Session::logged()
-            ];
+            if ($validate['status'] == 1)
+            {
+                $category= [
+                    ':name' => $_POST['name'],
+                    ':description' => $_POST['description'],
+                    ':cat' => $_POST['cat'],
+                    ':id'=>$id,
+                    ':userID' => Session::logged()
+                ];
 
-            $this->model('Category');
-            if ($this->model->update($category)) {
-                Message::setMessage('msgState',1,'');
-                Message::setMessage('','main',' تم تحديث الفئة بنجاح');
+                $this->model('Category');
+                if ($this->model->update($category)) {
+                    Message::setMessage('msgState',1,'');
+                    Message::setMessage('','main',' تم تحديث الفئة بنجاح');
+                }
             }
         }
+
+
+        $category=isset($this->model)?$this->model: $this->model('Category');
+        $this->view('admin'.DIRECTORY_SEPARATOR.'editCategory',
+            ['categories'=>$category->find( array(0 =>$id)),'cats'=>$this->model->allCategories()]);
+        $this->view->pageTitle='this page of index';
+        $this->view->render();
     }
 
 
-    $category=isset($this->model)?$this->model: $this->model('Category');
-    $this->view('admin'.DIRECTORY_SEPARATOR.'editCategory',
-                    ['categories'=>$category->find( array(0 =>$id)),'cats'=>$this->model->allCategories()]);
-    $this->view->pageTitle='this page of index';
-    $this->view->render();
-}
 
-
-
-   public function active($id)
+    public function active($id)
     {
         $this->model('Category');
         $this->model->updateActive( array(0 => $id ));
@@ -138,11 +134,19 @@ public function edit($id)
     public function nonactive($id)
     {
         $this->model('Category');
-        $this->model->updatedisActive( array(0 => $id ));
-        Message::setMessage('status',1,'');
-        Message::setMessage('','main','تقفلّ الحساب!');
+        $this->model->updatedisActive(array(0 => $id));
+        Message::setMessage('status', 1, '');
+        Message::setMessage('', 'main', 'تقفلّ الحساب!');
         header('Location:/category');
+    }
 
+    public function show_sub_cat($cat_id){
+        $category=  $this->model('Category');
+        $cat = $category->get_sub_cat([$cat_id]);
+
+        $this->view('home' . DIRECTORY_SEPARATOR . 'index', ["cat" => $cat,"form_id"=>2]);
+        $this->view->pageTitle = 'Top Members in One Exam';
+        $this->view->render();
     }
 }
- ?>
+?>

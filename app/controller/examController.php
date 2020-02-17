@@ -110,7 +110,7 @@ class examController extends Controller
         $this->view->render();
     }
 
-/**********************************     take Exam    ******************************/
+    /**********************************     take Exam    ******************************/
     public function takeExam($Examid)
     {
         $exam=$this->model('Exam');
@@ -180,10 +180,10 @@ class examController extends Controller
             }
         }
     }
-/***************************************************************************************/
+    /***************************************************************************************/
 
 
-/************************************************************************************/
+    /************************************************************************************/
 //
     public function delete($id)
     {
@@ -230,7 +230,7 @@ class examController extends Controller
         $sample=$this->model('Sample');
         $u_id = Session::get("userID");
         $ex_exams= $exam->getExaminer_exams([$u_id]);
-  $samples=array();
+        $samples=array();
         foreach ($ex_exams as $ex){
             array_push($samples,$sample->getExamSamples([$ex['exam_id']]));
         }
@@ -251,6 +251,7 @@ class examController extends Controller
         $e= $exam->dismit_exam([$e_id]);
         header("Location:/exam/details");
     }
+
     public function get_certification($user_id, $sample_id)
     {
 
@@ -345,5 +346,15 @@ class examController extends Controller
         Message::setMessage(1,'main',' No!');
         header('Location:/exam/all');
     }
+
+    public function show_exams($sub_cat_id){
+        $exam = $this->model('Exam');
+        $exams = $exam->get_exams([$sub_cat_id]);
+        $this->view('home' . DIRECTORY_SEPARATOR . 'index', ["exams" => $exams ,"form_id"=>3]);
+        $this->view->pageTitle = 'Top Members in One Exam';
+        $this->view->render();
+
+    }
+
 }
 ?>
