@@ -1,13 +1,10 @@
 <?php
 include "header.phtml";
 ?>
-    <body>
+<body>
 
 
 <div class="slider">
-
-
-
     <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel" >
         <ol class="carousel-indicators">
             <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
@@ -54,7 +51,51 @@ include "header.phtml";
 
 
 <!-- end slider-------------------------------------------------------------->
+<style>
+    .mainCat{
+        background: #2f9598;
+        color: #fff;
+        text-align: center;
+        margin-top:2%;
+        height: 50px;
+        padding-top: 13px;
+    }
+    .examContent{
+        border: 1px solid #35B1B4;
+        background: #fff;
+        margin: 1%;
 
+
+    }
+
+.examContent .titleExam,
+.examContent p,
+.examContent button{
+    text-align: center;
+    margin: 0 auto;
+}
+.examContent p{
+color: #919aa3;
+font-size: 14px;
+font-weight: lighter;
+}
+
+.examContent .titleExam{
+color: #fff;
+font-size: 18px;
+background: #35B1B4;
+padding: 10px;
+border-radius: 0 0 10px 10px;
+}
+.examContent a{
+    width: 50%;
+    margin: 5%;
+    color: #fff;
+}
+.examsPlace{
+    margin-top: 5%;
+}
+</style>
 <div class="container">
     <?php   if ($this->view_data['form_id'] == 3){  ?>
         <div class="title text-center">
@@ -121,86 +162,53 @@ include "header.phtml";
         </section>
     <?php   }?>
 </div>
-
-<footer class="footer">
-    <div class="container">
-        <div class="row">
-            <div class="col-xs-12 col-sm-6">
-                <p>&copy; 2020 By
-                    <a href="#"> ability lab</a>
-                </p>
-            </div>
-            <div class="col-xs-12 col-sm-6 text-right">
-                <a href="#">
-                    <i class="fa fa-facebook"></i>
-                </a>
-                <a href="#">
-                    <i class="fa fa-instagram"></i>
-                </a>
-                <a href="#">
-                    <i class="fa fa-twitter"></i>
-                </a>
-                <a href="#">
-                    <i class="fa fa-youtube"></i>
-                </a>
-            </div>
-        </div>
-    </div>
-</footer>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <div class="container">
     <div class="title text-center">
         <h1>Our Class</h1>
 
         <div class="border"></div>
     </div>
-    <div class="row">
+    <div class="row d-flex justify-content-between">
+
         <?php
         if ($this->view_data['form_id'] == 1){
-            foreach($this->view_data['cat'] as $row ){
-                $cat_id = $row['cat_id'];
-
+            foreach($this->view_data['cat'] as $row1 ){
+                $cat_id = $row1['cat_id'];
                 ?>
-                <div class=" col-md-4 col-sm-6">
+                <div class="col-sm-3">
+                <div class="mainCat col-sm-12">
+                  <?php  echo $row1['cat_name'];
+                  echo "</div>
+                        <form method='post'>
+                        <select id='subcat' onChange='this.form.submit()' name='subCat' class='form-control'>
+                        <option></option>";
+                  foreach($this->view_data['sub_cat'] as $row2 ){
+                      foreach ($row2 as $r){
+                          if($row1['cat_id']==$r['cat_main_cat'])
+                          echo '<option value="'.$r['cat_id'].'%'.$r['cat_name'].'">'.$r['cat_name'].'</option>';
+                      }
+                  }
+                  echo "</select></form></div>";
+                    ?>
+              <!--  <div class=" col-md-4 col-sm-6">
                     <div class="card">
                         <img src="img/1.jpg" >
                         <div class="card-text">
                             <?php
-                            echo '<a role="button" href="/Category/show_sub_cat/'.$row['cat_id'].'" disabled=""><h3>'.$row['cat_name'].'<h3></h3></a>';
+/*                            echo '<a role="button" href="/Category/show_sub_cat/'.$row['cat_id'].'" disabled=""><h3>'.$row['cat_name'].'<h3></h3></a>';
 
-                            ?>
-
-
-
+                            */?>
                         </div>
                     </div>
-                </div>
+                </div>-->
 
             <?php }}?>
 
         <?php
         if ($this->view_data['form_id'] == 2){
-            foreach($this->view_data['cat'] as $row ){
+            foreach($this->view_data['cat'] as $row ) {
                 $cat_id = $row['cat_id'];
-
+            }
                 ?>
                 <div class=" col-md-4 col-sm-6">
                     <div class="card">
@@ -208,22 +216,16 @@ include "header.phtml";
                         <div class="card-text">
                             <?php
                             echo '<a role="button" href="/exam/show_exams/'.$row['cat_id'].'" disabled=""><h3>'.$row['cat_name'].'<h3></h3></a>';
-
                             ?>
-
-
-
                         </div>
                     </div>
                 </div>
 
-            <?php }}?>
+            <?php }?>
 
         <?php
         if ($this->view_data['form_id'] == 3){
             foreach($this->view_data['exams'] as $row ){
-
-
                 ?>
                 <div class=" col-md-4 col-sm-6">
                     <div class="card">
@@ -231,26 +233,52 @@ include "header.phtml";
                         <div class="card-text">
                             <?php
                             echo '<a role="button" href="/exam/takeExam/'.$row['exam_id'].'" disabled=""><h3>'.$row['exam_name'].'<h3></h3></a>';
-
                             ?>
                         </div>
-
                         <div class="">
                             <?php
                             echo '<a role="button" href="/exam/top_members_one_exam/'.$row['exam_id'].'" disabled=""><h3>Top Members<h3></h3></a>';
-
                             ?>
                         </div>
                     </div>
                 </div>
-
-            <?php }}?>
+            <?php }
+        }?>
 
 
 
     </div>
 </div>
+<div class="examsPlace">
+    <div class="container">
+        <div class="row d-flex justify-content-between">
+    <?php
+        if(!empty($this->view_data['exams'])){
+            echo "<div class='col-sm-12 text-center examsTitle'><h1>".$this->view_data['selectedCat']."</h1></div>";
+            foreach ($this->view_data['exams'] as $exam){
+                echo '<div class="col-sm-3 examContent">
+                <div class="titleExam">'.$exam['exam_name'].'</div>
+                <p>'.$exam['exam_description'].'</p>
+                <p>';
+                switch ($exam['exam_level']){
+                    case 1: echo'<span style="float: left">level : Hard</span>';break;
+                    case 2: echo'<span style="float: left">level : Mediam</span>';break;
+                    case 3: echo'<span style="float: left">level : Easy</span>';break;
+                }
+                switch ($exam['exam_price']){
+                    case 0: echo'<span style="float: right">price : Free</span>';break;
+                    default:echo'<span style="float: right">price : '.$exam['exam_price'].' $</span>';break;
+                }
 
+                echo'</p><a type="button" href="/exam/takeExam/'.$exam['exam_id'].'" class="btn btn-info">Get Start</a>
+            </div>
+            ';
+            }
+        }
+ ?>
+        </div>
+    </div>
+</div>
 <div class="con">
     <section class="about contact" id="contact">
         <div class="container">
@@ -300,11 +328,6 @@ include "header.phtml";
         </div>
     </div>
 </footer>
-
-
-
-
-
 <?php
 
 include "footer.phtml";

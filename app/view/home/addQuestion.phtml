@@ -74,6 +74,7 @@
             width: 10%;
             float: right;
             display: inline;
+
             margin-top: 20px;
         }
 
@@ -164,6 +165,12 @@
             background: #27AE60;
             color: white;
         }
+
+        /*The number of the step and the connector before it = green*/
+        .pro {
+            background: #27AE60;
+            color: white;
+        }
     </style>
 </head>
 
@@ -171,55 +178,76 @@
 <body>
 <div class="content">
     <!--////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
-    <form id="msform" method="post" enctype="multipart/form-data" >
 
-        <div style="text-align: center"><?php echo Message::check('quez Degree'); ?></div>
-        <!-- progressbar -->
-        <ul id="progressbar">
-            <?php
-            $n = $_SESSION['number_que'];
-            for ($i = 1; $i <= $n; $i++) {
-                echo '<li>Q' . $i . '</li>';
-            }
-            ?>
-        </ul>
+    <!--    --><?php //return var_dump($_SESSION) ?>
 
-        <!-- fieldsets -->
-        <?php
-        for ($i = 1; $i <= $n; $i++) {
-            echo ' <fieldset>
-            <h2 class="fs-title">add question ' . $i . '</h2>
-            <h3 class="fs-subtitle">...............</h3>
-            <input type="text" name="qns' . $i . '" value="'.Helper::old("qns".$i,"auth").'" placeholder="question content" />
-            ' .Message::getInputErrorMessage("qns".$i). '
-            <input type="file" name="q_image' . $i . '" placeholder="question image" />
-            <input type="text" class="option" name="txt1'.$i .'" value="'.Helper::old("txt1 ".$i,"auth").'" placeholder="option 1" />
-            ' .Message::getInputErrorMessage("txt1".$i) . '  
-            <input type="radio" class="radio" name="radio' . $i . '" value="a" />
-            <input type="text" class="option" name="txt2'.$i .'" value="'.Helper::old("txt2 ".$i,"auth").'" placeholder="option 2" />
-            ' .Message::getInputErrorMessage("txt2".$i). '
-            <input type="radio" class="radio" name="radio' . $i . '" value="b"  />
-            <input type="text" class="option" name="txt3'.$i .'" value="'.Helper::old("txt3 ".$i,"auth").'" placeholder="option 3" />
-            ' .Message::getInputErrorMessage("txt3".$i). '
-            <input type="radio" class="radio" name="radio' . $i . '" value="c"  />
-            <input type="text" class="option" name="txt4'.$i .'" value="'.Helper::old("txt4 ".$i,"auth").'" placeholder="option 4"  />
-            ' .Message::getInputErrorMessage("txt4".$i). '
-            <input type="radio" class="radio" name="radio' . $i . '" value="c"  />
-            <input type="number" name="q_degree' . $i . '" value="'.Helper::old("q_degree".$i,"auth").'" placeholder="question degree" />
-            ' .Message::getInputErrorMessage("q_degree".$i);
-            if ($i != 1) {
-                echo '<input type="button" name="previous" class="previous action-button" value="Previous" />';
-            }
-            if ($i != $n) {
-                echo '<input type="button" name="next" id="next" class="next action-button" value="Next" />';
-            } else {
-                echo '<input type="submit" id="save" class="submit action-button" name="save" value="save" />';
-                echo '<input type="submit" id="newsample" class="submit action-button" name="NewSample" value="New Sample" />';
-            }
-            echo '</fieldset>';
-        }
-        ?>
-    </form>
+    <?php if (isset($_SESSION['qns_n'])?$_SESSION['qns_n']:1 < $_SESSION['number_que']){ ?>
+    <div id="div_form">
+        <form id="msform" method="post" enctype="multipart/form-data">
+            <input type="hidden" name="exam_id" value="<?php echo $_SESSION['exam_id'] ?>">
+            <input type="hidden" name="sample_id" value="<?php echo $_SESSION['sample_id'] ?>">
+            <input type="hidden" name="qns_n" value="<?php echo isset($_SESSION['qns_n']) ? $_SESSION['qns_n'] : 1 ?>">
+
+            <div style="text-align: center"><?php echo Message::check('quez Degree'); ?></div>
+            <!-- progressbar -->
+            <ul id="progressbar">
+                <?php
+                $n = $_SESSION['number_que'];
+                for ($i = 1; $i <= $n; $i++) {
+                    echo '<li id="labal_qus_' . $i . '">Q' . $i . '</li>';
+                }
+                //            ?>
+            </ul>
+
+            <!-- fieldsets -->
+
+
+            <fieldset>
+                <h2 class="fs-title">add question </h2>
+                <h3 class="fs-subtitle">Q <span
+                            id="num_of_question"> <?php echo isset($_SESSION['qns_n']) ? $_SESSION['qns_n'] : 1 ?></span>
+                </h3>
+                <input type="text" name="qns" placeholder="question content"/>
+
+                <input type="file" name="q_image" placeholder="question image"/>
+                <input type="text" class="option" name="txt1" placeholder="option 1"/>
+                <input type="radio" class="radio" name="radio" value="a"/>
+                <input type="text" class="option" name="txt2"/>
+                <input type="radio" class="radio" name="radio" value="b"/>
+                <input type="text" class="option" name="txt3" placeholder="option 3"/>
+                <input type="radio" class="radio" name="radio" value="c"/>
+                <input type="text" class="option" name="txt4" placeholder="option 4"/>
+                <input type="radio" class="radio" name="radio" value="c"/>
+                <input type="number" name="q_degree" placeholder="question degree"/>
+                <!--            <input id="btn_save" class="submit action-button" disabled name="save" value="save"/>-->
+                <input type="button" name="save_btn" id="btn_save" value="save">
+
+                <!--            --><?php //
+                //              if ($i != 1) {
+                //                echo '<input type="button" name="previous" class="previous action-button" value="Previous" />';
+                //            }
+                //            if ($i != $n) {
+                //                echo '<input type="button" name="next" id="next" class="next action-button" value="Next" />';
+                //            } else {
+                //                echo '<input type="submit" id="save" class="submit action-button" name="save" value="save" />';
+                //                echo '<input type="submit" id="newsample" class="submit action-button" name="NewSample" value="New Sample" />';
+                //            }
+                //            echo '</fieldset>';
+                //        }
+                //        ?>
+        </form>
+    </div>
+    <div id="div_new_sample">
+        <?php } else { ?>
+            <form id="msform" action="/exam/endExam" method="post" enctype="multipart/form-data">
+
+                <input type="submit" id="save" name="save" value="end exam "/>
+                <input id="btn_newsample" class=" action-button" name="NewSample" value="New Sample"/>
+
+            </form>
+        <?php } ?>
+    </div>
+
 </div>
 <!--************************************************************************************-->
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
@@ -238,21 +266,134 @@
         src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/additional-methods.js"></script>
 <script type="application/javascript"
         src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/additional-methods.min.js"></script>
+<!--<script type="application/javascript" src="/js/jquery-3.3.1.mini.js"></script>-->
+
 <script>
     /************************************************************************/
-$(document).ready(function () {
-/*********************************** validation ************************************************/
-var qNo=<?php echo $_SESSION['number_que']?>;
-        // checkVal();
-for(var i=1;i<=qNo;i++) {
-        console.log($nnn);
-        var Q="qns"+i,
-            choice1="txt1"+i,
-            choice2="txt2"+i,
-            choice3="txt3"+i,
-            choice4="txt4"+i,
-            degree="q_degree"+i,
-            radio="radio"+i;
+
+    var num_ofQuestion = $('#num_of_question');
+    var qns = $('input[name$="qns"]');
+    var qns_n = $('input[name$="qns_n"]');
+    var txt1 = $('input[name$="txt1"]');
+    var txt2 = $('input[name$="txt2"]');
+    var txt3 = $('input[name$="txt3"]');
+    var txt4 = $('input[name$="txt4"]');
+    var radio = $('input[name$="radio"]');
+    var q_degree = $('input[name$="q_degree"]');
+    var sample_id = $('input[name$="sample_id"]');
+    var exam_id = $('input[name$="exam_id"]');
+
+    function addQuestion() {
+
+        var data = 'qns=' + encodeURIComponent(qns.val()) +
+            '&qns_n=' + encodeURIComponent(qns_n.val()) +
+            '&txt1=' + encodeURIComponent(txt1.val()) +
+            '&txt2=' + encodeURIComponent(txt2.val()) +
+            '&txt2=' + encodeURIComponent(txt2.val()) +
+            '&txt3=' + encodeURIComponent(txt3.val()) +
+            '&txt4=' + encodeURIComponent(txt4.val()) +
+            '&radio=' + encodeURIComponent(radio.val()) +
+            '&q_degree=' + encodeURIComponent(q_degree.val()) +
+            '&sample_id=' + encodeURIComponent(sample_id.val()) +
+            '&exam_id=' + encodeURIComponent(exam_id.val());
+
+        // alert(data);
+        var div_sample = $('#div_new_sample');
+        var url = '/question/saveQuestion';
+        $.ajax({
+            url: url,//   var url=$('#news').attr('action');
+            method: 'POST',
+            dataType: 'json',// data type that i want to return
+            data: data,// var form=$('#news').serialize();
+            success: function (data) {
+                if (data == 0) {
+                    // $('#btn_save').attr('disabled', 'true');
+
+                    div_sample.html('<form id="msform"  action="/exam/endExam" method="post" enctype="multipart/form-data">\n' +
+                        '\n' +
+                        '            <input type="submit" id="save"  name="save" value="end exam "/>\n' +
+                        '            <input id="btn_newsample" class=" action-button" name="NewSample" value="New Sample"/>\n' +
+                        '\n' +
+                        '        </form>\n' +
+                        '\n');
+                }
+                // alert(data);
+                else if (data > 0) {
+                    qns_n.val(data);
+                    qns.val('');
+                    txt1.val('');
+                    txt2.val('');
+                    txt3.val('');
+                    txt4.val('');
+                    radio.val('');
+                    q_degree.val('');
+                    num_ofQuestion.text(data);
+
+                } else {
+
+                }
+            },
+            error: function (xhr, status, error) {
+                alert(xhr.responseText);
+            }
+        });
+
+    }
+
+
+    function addSample() {
+
+        var data = 'exam_id=' + encodeURIComponent(exam_id.val());
+        var div_sample = $('#div_new_sample');
+        var url = '/question/addNameSample';
+        $.ajax({
+            url: url,//   var url=$('#news').attr('action');
+            method: 'POST',
+            dataType: 'json',// data type that i want to return
+            data: data,// var form=$('#news').serialize();
+            success: function (data) {
+                alert(data)
+                // qns_n.val('1');
+                // qns.val('');
+                // $('#labal_qus_'.data).addClass('pro');
+                // txt1.val('');
+                // txt2.val('');
+                // txt3.val('');
+                // txt4.val('');
+                // radio.val('');
+                // q_degree.val('');
+                // sample_id.val(data);
+                // num_ofQuestion.text('1');
+            },
+            error: function (xhr, status, error) {
+                alert(xhr.responseText);
+                // $("#div_form").html('')
+                qns_n.val('1');
+                // $('#btn_save').attr('disabled', 'false');
+                div_sample.html('');
+                qns.val('');
+                $('#labal_qus_'.data).addClass('pro');
+                txt1.val('');
+                txt2.val('');
+                txt3.val('');
+                txt4.val('');
+                radio.val('');
+                q_degree.val('');
+                sample_id.val(data);
+                num_ofQuestion.text('1');
+            }
+        });
+
+    }
+
+    function validateForm() {
+        var Q = "qns",
+            choice1 = "txt1",
+            choice2 = "txt2",
+            choice3 = "txt3",
+            choice4 = "txt4",
+            q_degree = "q_degree",
+            radio = "radio";
         $("#msform").validate({
             rules: {
                 Q: {
@@ -271,7 +412,7 @@ for(var i=1;i<=qNo;i++) {
                 choice4: {
                     required: true,
                 },
-                q_degree1: {
+                q_degree: {
                     required: true,
                     digits: true,
                     min: 1,
@@ -298,7 +439,7 @@ for(var i=1;i<=qNo;i++) {
                 },
                 q_degree1: {
                     required: "this field is required",
-                    digits:"this value should be numeric value",
+                    digits: "this value should be numeric value",
                     min: "smallest value is one degree"
                 },
                 radio: {
@@ -306,161 +447,186 @@ for(var i=1;i<=qNo;i++) {
                 }
             }
         });
+        return $("#msform").valid();
     }
 
-        $('#save').on('click', function() {
-            if($("#msform").valid()==false){
-                $('#save').prop('disabled', true);
-            }else{
-                $('#save').prop('disabled', false);
-            }
-        });
-        $('#newsample').on('click', function() {
-            if($("#msform").valid()==false){
-                $('#newsample').off('click');
-            }
-        });
-        var n=1;
+    $('#btn_save').on('click', function () {
 
-        $(document).on('click','#next', function() {
-            if (animating) return false;
-            animating = true;
-            current_fs = $(this).parent();
-            next_fs = $(this).parent().next();
+        if (validateForm() == false)
+            alert('يرجى ملى جميع الحقول يا استاذ ');
+        else {
+            addQuestion();
+        }
 
-            //activate next step on progressbar using the index of next_fs
-            $("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
-
-            //show the next fieldset
-            next_fs.show();
-            //hide the current fieldset with style
-            current_fs.animate({opacity: 0}, {
-                step: function (now, mx) {
-                    //as the opacity of current_fs reduces to 0 - stored in "now"
-                    //1. scale current_fs down to 80%
-                    scale = 1 - (1 - now) * 0.2;
-                    //2. bring next_fs from the right(50%)
-                    left = (now * 50) + "%";
-                    //3. increase opacity of next_fs to 1 as it moves in
-                    opacity = 1 - now;
-                    current_fs.css({
-                        'transform': 'scale(' + scale + ')',
-                        'position': 'absolute'
-                    });
-                    next_fs.css({'left': left, 'opacity': opacity});
-                },
-                duration: 800,
-                complete: function () {
-                    current_fs.hide();
-                    animating = false;
-                },
-                //this comes from the custom easing plugin
-                easing: 'easeInOutBack'
-            });
-
-        });
-/*
-        $('#save').off('click', function() {
-            if($("#msform").valid()==false){
-                $('#save').off('click');
-            }else{
-                $('#save').on('click');
-            }
-        });
-        $('#newsample').off('click', function() {
-            if($("#msform").valid()==false){
-                $('#newsample').off('click');
-            }
-        });
-        $('#next').off('click', function() {
-            if($("#msform").valid()==false){
-                $('#next').off('click');
-            }
-            else{
-                $('#next').on('click');
-                if (animating) return false;
-                animating = true;
-                current_fs = $(this).parent();
-                next_fs = $(this).parent().next();
-
-                //activate next step on progressbar using the index of next_fs
-                $("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
-
-                //show the next fieldset
-                next_fs.show();
-                //hide the current fieldset with style
-                current_fs.animate({opacity: 0}, {
-                    step: function (now, mx) {
-                        //as the opacity of current_fs reduces to 0 - stored in "now"
-                        //1. scale current_fs down to 80%
-                        scale = 1 - (1 - now) * 0.2;
-                        //2. bring next_fs from the right(50%)
-                        left = (now * 50) + "%";
-                        //3. increase opacity of next_fs to 1 as it moves in
-                        opacity = 1 - now;
-                        current_fs.css({
-                            'transform': 'scale(' + scale + ')',
-                            'position': 'absolute'
-                        });
-                        next_fs.css({'left': left, 'opacity': opacity});
-                    },
-                    duration: 800,
-                    complete: function () {
-                        current_fs.hide();
-                        animating = false;
-                    },
-                    //this comes from the custom easing plugin
-                    easing: 'easeInOutBack'
-                });
-            }
-        });*/
-        /*****************************************************************************************/
-//jQuery time
-        var current_fs, next_fs, previous_fs; //fieldsets
-        var left, opacity, scale; //fieldset properties which we will animate
-        var animating; //flag to prevent quick multi-click glitches
-
-        $(".previous").click(function () {
-
-            if (animating) return false;
-            animating = true;
-
-            current_fs = $(this).parent();
-            previous_fs = $(this).parent().prev();
-
-            //de-activate current step on progressbar
-            $("#progressbar li").eq($("fieldset").index(current_fs)).removeClass("active");
-
-            //show the previous fieldset
-            previous_fs.show();
-            //hide the current fieldset with style
-            current_fs.animate({opacity: 0}, {
-                step: function (now, mx) {
-                    //as the opacity of current_fs reduces to 0 - stored in "now"
-                    //1. scale previous_fs from 80% to 100%
-                    scale = 0.8 + (1 - now) * 0.2;
-                    //2. take current_fs to the right(50%) - from 0%
-                    left = ((1 - now) * 50) + "%";
-                    //3. increase opacity of previous_fs to 1 as it moves in
-                    opacity = 1 - now;
-                    current_fs.css({'left': left});
-                    previous_fs.css({'transform': 'scale(' + scale + ')', 'opacity': opacity});
-                },
-                duration: 800,
-                complete: function () {
-                    current_fs.hide();
-                    animating = false;
-                },
-                //this comes from the custom easing plugin
-                easing: 'easeInOutBack'
-            });
-        });
-
-        /*********************************************************************************/
     });
+
+    $(document).on('click', '#btn_newsample', function () {
+        // alert('xdddddddddddd');
+        addSample();
+    })
+
+    //    $(document).ready(function () {
+    //        /*********************************** validation ************************************************/
+    //        var qNo =<?php //echo $_SESSION['number_que']?>//;
+    // // checkVal();
+    //
+    // // $('')
+    // // $('#btn_save').on('click', function () {
+    // // alert('sss');
+    // // // if ($("#msform").valid() == false) {
+    // // // $('#save').prop('disabled', true);
+    // // // } else {
+    // // // $('#save').prop('disabled', false);
+    // // // }
+    // // });
+    //
+    //
+    // $('#newsample').on('click', function () {
+    // if ($("#msform").valid() == false) {
+    // $('#newsample').off('click');
+    // }
+    // });
+    // var n = 1;
+    //
+    // $(document).on('click', '#next', function () {
+    // if (animating) return false;
+    // animating = true;
+    // current_fs = $(this).parent();
+    // next_fs = $(this).parent().next();
+    //
+    // //activate next step on progressbar using the index of next_fs
+    // $("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
+    //
+    // //show the next fieldset
+    // next_fs.show();
+    // //hide the current fieldset with style
+    // current_fs.animate({opacity: 0}, {
+    // step: function (now, mx) {
+    // //as the opacity of current_fs reduces to 0 - stored in "now"
+    // //1. scale current_fs down to 80%
+    // scale = 1 - (1 - now) * 0.2;
+    // //2. bring next_fs from the right(50%)
+    // left = (now * 50) + "%";
+    // //3. increase opacity of next_fs to 1 as it moves in
+    // opacity = 1 - now;
+    // current_fs.css({
+    // 'transform': 'scale(' + scale + ')',
+    // 'position': 'absolute'
+    // });
+    // next_fs.css({'left': left, 'opacity': opacity});
+    // },
+    // duration: 800,
+    // complete: function () {
+    // current_fs.hide();
+    // animating = false;
+    // },
+    // //this comes from the custom easing plugin
+    // easing: 'easeInOutBack'
+    // });
+    //
+    // });
+    // /*
+    // $('#save').off('click', function() {
+    // if($("#msform").valid()==false){
+    // $('#save').off('click');
+    // }else{
+    // $('#save').on('click');
+    // }
+    // });
+    // $('#newsample').off('click', function() {
+    // if($("#msform").valid()==false){
+    // $('#newsample').off('click');
+    // }
+    // });
+    // $('#next').off('click', function() {
+    // if($("#msform").valid()==false){
+    // $('#next').off('click');
+    // }
+    // else{
+    // $('#next').on('click');
+    // if (animating) return false;
+    // animating = true;
+    // current_fs = $(this).parent();
+    // next_fs = $(this).parent().next();
+    //
+    // //activate next step on progressbar using the index of next_fs
+    // $("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
+    //
+    // //show the next fieldset
+    // next_fs.show();
+    // //hide the current fieldset with style
+    // current_fs.animate({opacity: 0}, {
+    // step: function (now, mx) {
+    // //as the opacity of current_fs reduces to 0 - stored in "now"
+    // //1. scale current_fs down to 80%
+    // scale = 1 - (1 - now) * 0.2;
+    // //2. bring next_fs from the right(50%)
+    // left = (now * 50) + "%";
+    // //3. increase opacity of next_fs to 1 as it moves in
+    // opacity = 1 - now;
+    // current_fs.css({
+    // 'transform': 'scale(' + scale + ')',
+    // 'position': 'absolute'
+    // });
+    // next_fs.css({'left': left, 'opacity': opacity});
+    // },
+    // duration: 800,
+    // complete: function () {
+    // current_fs.hide();
+    // animating = false;
+    // },
+    // //this comes from the custom easing plugin
+    // easing: 'easeInOutBack'
+    // });
+    // }
+    // });*/
+    //// /*****************************************************************************************/
+    //////jQuery time
+    // var current_fs, next_fs, previous_fs; //fieldsets
+    // var left, opacity, scale; //fieldset properties which we will animate
+    // var animating; //flag to prevent quick multi-click glitches
+    //
+    // $(".previous").click(function () {
+    //
+    // if (animating) return false;
+    // animating = true;
+    //
+    // current_fs = $(this).parent();
+    // previous_fs = $(this).parent().prev();
+    //
+    // //de-activate current step on progressbar
+    // $("#progressbar li").eq($("fieldset").index(current_fs)).removeClass("active");
+    //
+    // //show the previous fieldset
+    // previous_fs.show();
+    // //hide the current fieldset with style
+    // current_fs.animate({opacity: 0}, {
+    // step: function (now, mx) {
+    // //as the opacity of current_fs reduces to 0 - stored in "now"
+    // //1. scale previous_fs from 80% to 100%
+    // scale = 0.8 + (1 - now) * 0.2;
+    // //2. take current_fs to the right(50%) - from 0%
+    // left = ((1 - now) * 50) + "%";
+    // //3. increase opacity of previous_fs to 1 as it moves in
+    // opacity = 1 - now;
+    // current_fs.css({'left': left});
+    // previous_fs.css({'transform': 'scale(' + scale + ')', 'opacity': opacity});
+    // },
+    // duration: 800,
+    // complete: function () {
+    // current_fs.hide();
+    // animating = false;
+    // },
+    // //this comes from the custom easing plugin
+    // easing: 'easeInOutBack'
+    // });
+    // });
+    //
+    // /*********************************************************************************/
+    // });
 
 </script>
 
-<?php (Message::getMessage('errors'));?>
+<?php (Message::getMessage('errors')); ?>
 </body>
 </html>

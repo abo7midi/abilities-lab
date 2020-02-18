@@ -8,13 +8,23 @@ class homeController extends Controller
 
   public function index($id='',$name='')
   {
-    // echo 'i am in '.__CLASS__.'<br>method '.__METHOD__.'';
-    // echo 'i am is '.$id.' my name is '.$name;
-  $exam= $this->model('exam');
-  $category= $this->model('Category');
 
-    $this->view('home'.DIRECTORY_SEPARATOR.'index');
-    $this->view->pageTitle='this page of index';
+      $exam= $this->model('exam');
+  $category= $this->model('Category');
+   $cat = $category->get_category();
+      $sub_cat=array();
+      foreach ($cat as $parent){
+          array_push($sub_cat,$category->get_sub_cat([$parent['cat_id']]));
+      }
+      $exams="";
+      $catArray=array("0","0");
+      if($_SERVER["REQUEST_METHOD"]=="POST"){
+          $catArray=explode("%",$_POST['subCat']);
+          $exams = $exam->get_exams([$catArray[0]]);
+
+      }
+      $this->view('home'.DIRECTORY_SEPARATOR.'index',["sub_cat" => $sub_cat,"cat" => $cat,"form_id"=>1,"exams"=>$exams,"selectedCat"=>$catArray[1]]);
+      $this->view->pageTitle='this page of index';
 
     $this->view->render();
   }

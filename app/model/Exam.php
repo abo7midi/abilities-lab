@@ -111,9 +111,7 @@ class Exam
 
     public function get_certification($data)
     {
-        $Stmt = $this->db->preparation('select *,exams.user_id as exam_user_id,user_exam.user_id as e_u_id,user_exam.exam_id as exam_id,user_exam_date,users.full_name as full_name,user_exam_result as degrees 
-                                            from user_exam left join users on users.user_id=user_exam.user_id join exams on exams.exam_id=user_exam.exam_id 
-                                            where user_exam.sample_id=? and user_exam.user_id=?');
+        $Stmt = $this->db->preparation('select *,exams.user_id as exam_user_id,user_exam.user_id as e_u_id,user_exam.exam_id as exam_id,user_exam_date,users.full_name as full_name,user_exam_result as degrees from user_exam left join users on users.user_id=user_exam.user_id join exams on exams.exam_id=user_exam.exam_id where user_exam.sample_id=? and user_exam.user_id=? ORDER BY user_exam_id DESC LIMIT 1');
 
         $Stmt->execute($data);
         return $Stmt->fetchAll();
@@ -173,6 +171,4 @@ class Exam
 
     }
 }
-
-
 ?>

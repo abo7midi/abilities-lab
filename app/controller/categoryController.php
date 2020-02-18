@@ -144,7 +144,7 @@ public function edit($id)
         $category=  $this->model('Category');
         $cat = $category->get_sub_cat([$cat_id]);
 
-        $this->view('home' . DIRECTORY_SEPARATOR . 'index', ["cat" => $cat,"form_id"=>2]);
+        $this->view('home' . DIRECTORY_SEPARATOR . 'index', ["sub_cat" => $cat,"form_id"=>2]);
         $this->view->pageTitle = 'Top Members in One Exam';
         $this->view->render();
     }
