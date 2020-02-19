@@ -178,16 +178,17 @@
 <body>
 <div class="content">
     <!--////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
-
+    <?php echo $_SESSION['sample_id'] ?>
     <!--    --><?php //return var_dump($_SESSION) ?>
 
-    <?php if (isset($_SESSION['qns_n'])?$_SESSION['qns_n']:1 < $_SESSION['number_que']){ ?>
+    <?php
+    if (($_SESSION['qns_n']) < $_SESSION['number_que'] )
+    { ?>
     <div id="div_form">
         <form id="msform" method="post" enctype="multipart/form-data">
             <input type="hidden" name="exam_id" value="<?php echo $_SESSION['exam_id'] ?>">
             <input type="hidden" name="sample_id" value="<?php echo $_SESSION['sample_id'] ?>">
             <input type="hidden" name="qns_n" value="<?php echo isset($_SESSION['qns_n']) ? $_SESSION['qns_n'] : 1 ?>">
-
             <div style="text-align: center"><?php echo Message::check('quez Degree'); ?></div>
             <!-- progressbar -->
             <ul id="progressbar">
@@ -196,7 +197,7 @@
                 for ($i = 1; $i <= $n; $i++) {
                     echo '<li id="labal_qus_' . $i . '">Q' . $i . '</li>';
                 }
-                //            ?>
+                // ?>
             </ul>
 
             <!-- fieldsets -->
@@ -204,11 +205,9 @@
 
             <fieldset>
                 <h2 class="fs-title">add question </h2>
-                <h3 class="fs-subtitle">Q <span
-                            id="num_of_question"> <?php echo isset($_SESSION['qns_n']) ? $_SESSION['qns_n'] : 1 ?></span>
+                <h3 class="fs-subtitle">Q <span id="num_of_question"> <?php echo isset($_SESSION['qns_n']) ? $_SESSION['qns_n'] : 1 ?></span>
                 </h3>
                 <input type="text" name="qns" placeholder="question content"/>
-
                 <input type="file" name="q_image" placeholder="question image"/>
                 <input type="text" class="option" name="txt1" placeholder="option 1"/>
                 <input type="radio" class="radio" name="radio" value="a"/>
@@ -217,11 +216,10 @@
                 <input type="text" class="option" name="txt3" placeholder="option 3"/>
                 <input type="radio" class="radio" name="radio" value="c"/>
                 <input type="text" class="option" name="txt4" placeholder="option 4"/>
-                <input type="radio" class="radio" name="radio" value="c"/>
+                <input type="radio" class="radio" name="radio" value="d"/>
                 <input type="number" name="q_degree" placeholder="question degree"/>
                 <!--            <input id="btn_save" class="submit action-button" disabled name="save" value="save"/>-->
                 <input type="button" name="save_btn" id="btn_save" value="save">
-
                 <!--            --><?php //
                 //              if ($i != 1) {
                 //                echo '<input type="button" name="previous" class="previous action-button" value="Previous" />';
@@ -278,13 +276,13 @@
     var txt2 = $('input[name$="txt2"]');
     var txt3 = $('input[name$="txt3"]');
     var txt4 = $('input[name$="txt4"]');
-    var radio = $('input[name$="radio"]');
+    var radio = $('input[name$="radio"]:checked');
     var q_degree = $('input[name$="q_degree"]');
     var sample_id = $('input[name$="sample_id"]');
     var exam_id = $('input[name$="exam_id"]');
 
     function addQuestion() {
-
+        radio = $('input[name$="radio"]:checked')
         var data = 'qns=' + encodeURIComponent(qns.val()) +
             '&qns_n=' + encodeURIComponent(qns_n.val()) +
             '&txt1=' + encodeURIComponent(txt1.val()) +
@@ -297,7 +295,7 @@
             '&sample_id=' + encodeURIComponent(sample_id.val()) +
             '&exam_id=' + encodeURIComponent(exam_id.val());
 
-        // alert(data);
+        alert(radio.val());
         var div_sample = $('#div_new_sample');
         var url = '/question/saveQuestion';
         $.ajax({
@@ -306,6 +304,7 @@
             dataType: 'json',// data type that i want to return
             data: data,// var form=$('#news').serialize();
             success: function (data) {
+                // alert(data);
                 if (data == 0) {
                     // $('#btn_save').attr('disabled', 'true');
 
@@ -325,7 +324,6 @@
                     txt2.val('');
                     txt3.val('');
                     txt4.val('');
-                    radio.val('');
                     q_degree.val('');
                     num_ofQuestion.text(data);
 
@@ -343,7 +341,7 @@
 
     function addSample() {
 
-        var data = 'exam_id=' + encodeURIComponent(exam_id.val());
+        var data = '';
         var div_sample = $('#div_new_sample');
         var url = '/question/addNameSample';
         $.ajax({
@@ -352,7 +350,7 @@
             dataType: 'json',// data type that i want to return
             data: data,// var form=$('#news').serialize();
             success: function (data) {
-                alert(data)
+                // alert(data)
                 // qns_n.val('1');
                 // qns.val('');
                 // $('#labal_qus_'.data).addClass('pro');
@@ -377,7 +375,7 @@
                 txt2.val('');
                 txt3.val('');
                 txt4.val('');
-                radio.val('');
+
                 q_degree.val('');
                 sample_id.val(data);
                 num_ofQuestion.text('1');

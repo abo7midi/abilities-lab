@@ -16,9 +16,10 @@ class questionController extends Controller
 
     public function add()
     {
+       // return var_dump(  $_SESSION['sample_id']);
         $sample = new sampleController();
 
-        // check if there submit
+      /*  // check if there submit
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $sample_id = $_SESSION['sample_id'];
             $this->model('question');
@@ -110,7 +111,7 @@ class questionController extends Controller
                 $quez = $this->model->addChoice($data4);
 
                 $e = $_POST['radio' . $i];    /*  يعني الـ id حق الإجابة الصحيحة */  /* = ans*/
-                switch ($e) {
+              /*  switch ($e) {
                     case 'a':
                         $this->model->correctAnsower([$oaid]);
                         break;
@@ -136,8 +137,8 @@ class questionController extends Controller
                 ++$sampleNum;
                 $sample = new sampleController();
                 $sample->add($sampleNum);
-            }
-        }
+            }*/
+        /*}*/
         $this->view('home' . DIRECTORY_SEPARATOR . 'addQuestion');
         $this->view->pageTitle = 'admin question';
         $this->view->render();
@@ -185,7 +186,8 @@ class questionController extends Controller
 //            $q_img = Helper::uploadFile(ROOT . "public/images/examsImg/", $_FILES['q_image' . $i]['name'], $_FILES['q_image' . $i]['tmp_name'], $_FILES['q_image' . $i]['size']);
             $q_img = 'mm';
             $q_degree = $_REQUEST['q_degree'];
-            $sample_id = $_REQUEST['exam_id'];
+            $sample_id = $_SESSION['sample_id'];
+//            echo $sample_id;
             $Q_data = [
                 $qid,
                 $q_content,
@@ -274,9 +276,9 @@ class questionController extends Controller
         $sample_state = 1;
         $exam_id = $_SESSION['exam_id'];
         $t_mark = $_SESSION['total_mark'];
-        $_SESSION['sample_id'] = $s_id = uniqid();
+        $_SESSION['sample_id']  = uniqid();
         $sample = [
-            $s_id,
+            $_SESSION['sample_id'],
             $sample_name,
             $sample_state,
             $exam_id

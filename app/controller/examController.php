@@ -12,9 +12,10 @@ class examController extends Controller
         $this->view->pageTitle = 'exam';
         $this->view->render();
     }
-
+/**/
     public function endExam()
     {
+        $_SESSION['qns_n']=1;
         return var_dump('xxxxxxxxxxxxxxx');
 
 ////        $this->model('Exam');
@@ -40,8 +41,7 @@ class examController extends Controller
         $category = $this->model('Category');
         // check if there submit
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            $postErr = 0;
-
+            $_SESSION['qns_n']=1;
             //$validate=Validation::required(['name','no_q','total_mark','pass_mark','duration','category','level']);
             $validate = \Validation::validate([
                 'name' => array(['required' => 'required']),
@@ -68,6 +68,7 @@ class examController extends Controller
                     $desc = Validation::test_input($_POST['desc']);
                     $price = Validation::test_input($_POST['price']);
                     $_SESSION['exam_id'] = $id = uniqid();
+
 
                     switch ($level) {
                         case 'h':
@@ -128,10 +129,14 @@ class examController extends Controller
         $Q = $this->model('Question');
         $oneExam = $exam->getSpecificExam([$Examid]);
         $oneExamTime = $exam->getSpecificExam([$Examid])[0]['exam_duration'];
-        $samples = $sample->getExamSamples([$Examid]);
-        $oneSample = array_rand($samples);
-        $Questions = $Q->getQofSample([$samples[$oneSample]['sample_id']]);
-        $sample_id = $samples[$oneSample]['sample_id'];
+        $samples = $sample->getUserExamSamples([$Examid,Session::get("userID"),$Examid]);
+        if(empty($samples)){
+            Message::setMessage("No Exam","you examed all chances of this exam before...",0);
+            header("location:/home/index");
+
+        }
+        $Questions = $Q->getQofSample([$samples[0]['sample_id']]);
+        $sample_id = $samples[0]['sample_id'];
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION[$Examid] = "yes";
             $st_degree = 0;
@@ -166,8 +171,8 @@ class examController extends Controller
                 $_SESSION['resultWord'] = "Try again...! You faild in this exam";
                 $_SESSION['success'] = false;
             }
-            $exam->addUserExam([Session::get("userID"), $Examid, $st_degree, $samples[$oneSample]['sample_id']]);
-            $this->view('home' . DIRECTORY_SEPARATOR . 'showResult', ["user_id" => Session::get('userID'), "sample_id" => $samples[$oneSample]['sample_id'], "studentDegree" => $_SESSION['studentdegree'], "trueChoice" => $_SESSION['truechoice'], "falseChoice" => $_SESSION['falsechoice'], "emptyChoice" => $_SESSION['unchoice'], "totalMark" => $exam->getSpecificExam([$Examid])[0]['exam_total_mark'], "numberQ" => $_SESSION['QNO'], "resultWord" => $_SESSION['resultWord'], "examState" => $_SESSION['success']]);
+            $exam->addUserExam([Session::get("userID"), $Examid, $st_degree, $samples[0]['sample_id']]);
+            $this->view('home' . DIRECTORY_SEPARATOR . 'showResult', ["user_id" => Session::get('userID'), "sample_id" => $samples[0]['sample_id'], "studentDegree" => $_SESSION['studentdegree'], "trueChoice" => $_SESSION['truechoice'], "falseChoice" => $_SESSION['falsechoice'], "emptyChoice" => $_SESSION['unchoice'], "totalMark" => $exam->getSpecificExam([$Examid])[0]['exam_total_mark'], "numberQ" => $_SESSION['QNO'], "resultWord" => $_SESSION['resultWord'], "examState" => $_SESSION['success']]);
             $this->view->pageTitle = 'exam result';
             $this->view->render();
             return "";
@@ -181,9 +186,8 @@ class examController extends Controller
                 $this->view->render();
                 return "";
             } else {
-                $this->view('home' . DIRECTORY_SEPARATOR . 'showResult', ["user_id" => Session::get('userID'), "sample_id" => $samples[$oneSample]['sample_id'], "studentDegree" => $_SESSION['studentdegree'], "trueChoice" => $_SESSION['truechoice'], "falseChoice" => $_SESSION['falsechoice'], "emptyChoice" => $_SESSION['unchoice'], "totalMark" => $exam->getSpecificExam([$Examid])[0]['exam_total_mark'], "numberQ" => $_SESSION['QNO'], "resultWord" => $_SESSION['resultWord'], "examState" => $_SESSION['success']]);
-                $this->view->pageTitle = 'exam result';
-                $this->view->render();
+                Session::delete($Examid);
+                header("location:/home/index");
                 return "";
             }
         }
