@@ -164,11 +164,19 @@ class Exam
 
     public function get_exams($cat_id)
     {
-        $Stmt = $this->db->preparation('select * from exams where cat_id=? and exam_state=1');
-
+        $Stmt = $this->db->preparation('select * from exams where cat_id=? or exam_id=? and exam_state=1');
         $Stmt->execute($cat_id);
         return $Stmt->fetchAll();
 
     }
+
+    public function search_exams($examName)
+    {
+        $Stmt = $this->db->preparation('select exam_name,exam_id from exams where exam_name like ? and exam_state=1');
+        $Stmt->execute($examName);
+        return $Stmt->fetchAll();
+
+    }
+
 }
 ?>

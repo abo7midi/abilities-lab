@@ -3,7 +3,7 @@ include "header.phtml";
 ?>
 <body>
 
-
+<?php include "search.phtml";?>
 <div class="slider">
     <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel" >
         <ol class="carousel-indicators">
@@ -340,13 +340,10 @@ border-radius: 0 0 10px 10px;
                     },
                     beforeSend:function() {
                         jq('#loadingDiv').html(loading);
-
                     }
                     ,
                     success:function(data)
                     {
-
-
                         html='';
                         var exams=JSON.parse(data);
                         // alert(d)

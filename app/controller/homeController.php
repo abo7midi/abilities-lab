@@ -36,18 +36,40 @@ class homeController extends Controller
       $sub_cat=array();
 
       if($_SERVER["REQUEST_METHOD"]=="POST"){
-          $catArray=explode("%",$_POST['subcat']);
-          $exams = $exam->get_exams([$catArray[0]]);
-          foreach ($exams as $e){
-              $temp=array_merge($e,
-                  array('studentSample'=>count($sample->getUserExamSamples([$e['exam_id'],Session::get("userID"),$e['exam_id']]))),
-                  array('allSample'=>count($sample->getExamSamples([$e['exam_id']])))
-              );
-              $results[]=$temp;
+          if(isset($_POST['subcat'])){
+              $catArray=explode("%",$_POST['subcat']);
+              $exams = $exam->get_exams([$catArray[0],""]);
+              foreach ($exams as $e){
+                  $temp=array_merge($e,
+                      array('studentSample'=>count($sample->getUserExamSamples([$e['exam_id'],Session::get("userID"),$e['exam_id']]))),
+                      array('allSample'=>count($sample->getExamSamples([$e['exam_id']])))
+                  );
+                  $results[]=$temp;
+              }
+          }
+          else if(isset($_POST['resultSelect'])){
+              $exams = $exam->get_exams(["",$_POST['resultSelect']]);
+              foreach ($exams as $e){
+                  $temp=array_merge($e,
+                      array('studentSample'=>count($sample->getUserExamSamples([$e['exam_id'],Session::get("userID"),$e['exam_id']]))),
+                      array('allSample'=>count($sample->getExamSamples([$e['exam_id']])))
+                  );
+                  $results[]=$temp;
+              }
           }
       }
       echo json_encode(['statusCode'=>200,'data'=>  $results]);
 }
+    public function search()
+    {
+        $exam = $this->model('exam');
+        $sample = $this->model('sample');
+        $category = $this->model('Category');
+        if (isset($_POST['search'])) {
+            $exams = $exam->search_exams(["%".$_POST['search']."%"]);
+            echo json_encode(['statusCode' => 200, 'data' => $exams]);
+        }
+    }
 
     public function error()
     {

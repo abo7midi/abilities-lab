@@ -129,6 +129,7 @@ class examController extends Controller
         $Q = $this->model('Question');
         $oneExam = $exam->getSpecificExam([$Examid]);
         $oneExamTime = $exam->getSpecificExam([$Examid])[0]['exam_duration'];
+        $oneExamID = $exam->getSpecificExam([$Examid])[0]['exam_id'];
         $samples = $sample->getUserExamSamples([$Examid,Session::get("userID"),$Examid]);
         if(empty($samples)){
             Message::setMessage("No Exam","you examed all chances of this exam before...",0);
@@ -181,7 +182,7 @@ class examController extends Controller
             header("location:/home/error");
         } else {
             if (!isset($_SESSION[$Examid])) {
-                $this->view('home' . DIRECTORY_SEPARATOR . 'takeExam', ["q" => $Questions, "choice" => Helper::getChoicesOfQuestions($Questions), "duration" => $oneExamTime]);
+                $this->view('home' . DIRECTORY_SEPARATOR . 'takeExam', ["exam_name"=>$oneExam[0]["exam_name"],"q" => $Questions, "choice" => Helper::getChoicesOfQuestions($Questions), "duration" => $oneExamTime,"exam_id" =>$Examid]);
                 $this->view->pageTitle = 'take Exam';
                 $this->view->render();
                 return "";
