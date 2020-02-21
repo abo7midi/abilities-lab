@@ -1,3 +1,4 @@
+<html>
 <link rel="icon" href="images/logo.png" type="image/png" sizes="16x16">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -5,6 +6,7 @@
 <link rel="stylesheet" type="text/css" href="/layout/css/backend.css">
 <link rel="stylesheet" type="text/css" href="/layout/css/main.css">
 
+<body class="login-body">
 <form class="login" action="/admin/login" method="POST">
 
 
@@ -20,8 +22,9 @@
         <?php echo Message::check('username');  ?>
 
         <label for="exampleInputPassword1">password:</label>
-        <input type="password" class="form-control"  name="password" placeholder="Password"  autocomplete="new-password">
-        <?php echo Message::check('password');  ?>
+        <input type="password" class="password form-control"  name="password" placeholder="Password"  autocomplete="new-password">
+        <i class="show-pass fa fa-eye fa-1x"></i>
+            <?php echo Message::check('password');  ?>
 
         <button type="submit" class="btn btn-primary btn-block" name="login"  value="login"> login</button>
     </div>
@@ -35,3 +38,6 @@
 <script src="/layout/js/backend.js"></script>
 <script src="/layout/js/main.js"></script>
 <script src="/layout/js/script.js"></script>
+
+</body>
+</html>

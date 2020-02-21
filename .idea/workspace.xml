@@ -3,10 +3,21 @@
   <component name="ChangeListManager">
 <<<<<<< Updated upstream
     <list default="true" id="180df6e7-5c4f-4158-a258-1be38c9a4091" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/app/view/admin/accountsNonActive.phtml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/view/header.phtml" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/header.phtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/style1.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/style1.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controller/adminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controller/adminController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controller/categoryController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controller/categoryController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controller/userController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controller/userController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/model/Admin.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/model/Admin.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/model/Category.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/model/Category.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/model/Users.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/model/Users.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/view/admin/accounts.phtml" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/admin/accounts.phtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/view/admin/dashboard.phtml" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/admin/dashboard.phtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/view/admin/login.phtml" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/admin/login.phtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/view/admin/side_bar.phtml" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/admin/side_bar.phtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/layout/css/backend.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/layout/css/backend.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/layout/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/layout/css/main.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/layout/js/backend.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/layout/js/backend.js" afterDir="false" />
     </list>
 =======
     <list default="true" id="180df6e7-5c4f-4158-a258-1be38c9a4091" name="Default Changelist" comment="" />
@@ -160,6 +171,7 @@
       <workItem from="1581577643792" duration="16216000" />
       <workItem from="1581653465985" duration="5007000" />
       <workItem from="1581687157912" duration="14400000" />
+      <workItem from="1582024813242" duration="19048000" />
     </task>
     <servers />
   </component>

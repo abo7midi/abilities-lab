@@ -64,8 +64,8 @@ class categoryController extends Controller
             }
         }
 //        $this->view('admin'.DIRECTORY_SEPARATOR.'addCategory');
-        $this->model('Category');
-        $this->view('admin'.DIRECTORY_SEPARATOR.'addCategory',['categories'=>$this->model->allCategories()]);
+        $this->model('Admin');
+        $this->view('admin'.DIRECTORY_SEPARATOR.'addCategory',['categories'=>$this->model->allCategories(),'admins' => $this->model->all()]);
 
 
         $this->view->pageTitle='admin category';
@@ -81,10 +81,10 @@ public function delete($id)
     Message::setMessage('', 'main', 'تم حذف الفئة بنجاح ّ!');
     header('Location:/category/index');
 }
-public function edit($id)
-    {
+public function edit($id) {
         // check if there submit
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
 
 
             //do validation to POST
