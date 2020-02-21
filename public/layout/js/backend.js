@@ -221,19 +221,59 @@ $(function(){
         preview(this);
     });
 
-    function preview(input) {
-        if (input.files && input.files[0]) {
-            var reader = new FileReader();
-            reader.onload = function(e) {
-                $('.preview').attr('src', e.target.result);
-            };
-            reader.readAsDataURL(input.files[0]);
-        }
-    }
+
+    $('#button1').click(function(){
+        $('.content-div2').hide();
+        $('#button2').css('background-color','#17a2b8');
+
+        $('.content-div3').hide();
+        $('#button3').css('background-color','#17a2b8');
+
+        $('.content-div1').show();
+        $('#button1').css('background-color','#28a745');
+    });
+
+    $('#button2').click(function(){
+        $('.content-div1').hide();
+        $('#button1').css('background-color','#17a2b8');
+
+        $('.content-div3').hide();
+        $('#button3').css('background-color','#17a2b8');
+
+        $('.content-div2').show();
+        $('#button2').css('background-color','#28a745');
+    });
+
+    $('#button3').click(function(){
+        $('.content-div1').hide();
+        $('#button1').css('background-color','#17a2b8');
+
+        $('.content-div2').hide();
+        $('#button2').css('background-color','#17a2b8');
+
+        $('.content-div3').show();
+        $('#button3').css('background-color','#28a745');
+    });
+
+
+
+
+
+
 
     ///////////////////////////////////////////////////////////
 
 });
+
+function preview(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function(e) {
+            $('.preview').attr('src', e.target.result);
+        };
+        reader.readAsDataURL(input.files[0]);
+    }
+}
 
 function getValueFromOptionToInput(element) {
     document.getElementById("cat-sub").value = element;

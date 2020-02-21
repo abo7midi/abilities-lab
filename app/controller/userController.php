@@ -181,8 +181,8 @@ class userController extends Controller
 
             $this->model('Users');
             if ($this->model->update($account)) {
-                Message::setMessage('msgState',1);
-                Message::setMessage('main','تم تحديث بيانات الحساب بنجاح');
+                Message::setMessage('msgState',1,'');
+                Message::setMessage('','main','تم تحديث بيانات الحساب بنجاح');
             }
         }
 
@@ -211,8 +211,8 @@ class userController extends Controller
     {
         $this->model('Users');
         $this->model->delete( array(0 => $id ));
-        Message::setMessage('status',1);
-        Message::setMessage('main','تم حذف الحساب بنجاحّ!');
+        Message::setMessage('status',1,'');
+        Message::setMessage('','main','تم حذف الحساب بنجاحّ!');
         header('Location:/user');
 
     }
@@ -222,8 +222,8 @@ class userController extends Controller
     {
         $this->model('Users');
         $this->model->updateActive( array(0 => $id ));
-        Message::setMessage('status',1);
-        Message::setMessage('main','الحساب بنجاحّ!');
+        Message::setMessage('status',1,'');
+        Message::setMessage('','main','الحساب بنجاحّ!');
         header('Location:/user');
 
     }
@@ -232,8 +232,8 @@ class userController extends Controller
     {
         $this->model('Users');
         $this->model->updatedisActive( array(0 => $id ));
-        Message::setMessage('status',1);
-        Message::setMessage('main','تقفلّ الحساب!');
+        Message::setMessage('status',1,'');
+        Message::setMessage('','main','تقفلّ الحساب!');
         header('Location:/user');
 
     }

@@ -34,7 +34,9 @@ class adminController extends Controller
     {
         if(isset($_SERVER['HTTP_REFERER'])) {
             $this->model('Admin');
-            $this->view('admin'.DIRECTORY_SEPARATOR.'accounts',['accounts'=>$this->model->all(),'admins' => $this->model->all()]);
+            $this->view('admin'.DIRECTORY_SEPARATOR.'accounts',['admins' => $this->model->allAdmin(),
+                                                                            'examiners'=>$this->model->allExaminer(),
+                                                                            'members'=>$this->model->allMember()]);
             $this->view->pageTitle='admin index';
             $this->view->render();
         } else {
@@ -43,6 +45,26 @@ class adminController extends Controller
             $this->view->render();
         }
     }
+
+
+    public function memberPending()
+    {
+        if(isset($_SERVER['HTTP_REFERER'])) {
+            $this->model('Admin');
+            $this->view('admin'.DIRECTORY_SEPARATOR.'accountsNonActive',['admins' => $this->model->allAdminPending(),
+                                                                            'examiners'=>$this->model->allExaminerPending(),
+                                                                            'members'=>$this->model->allMemberPending()]);
+            $this->view->pageTitle='admin index';
+            $this->view->render();
+        } else {
+            $this->view('admin'.DIRECTORY_SEPARATOR.'errorPage');
+            $this->view->pageTitle='Error';
+            $this->view->render();
+        }
+    }
+
+
+
 
     public function category()
     {
@@ -126,6 +148,37 @@ class adminController extends Controller
         $this->view('admin'.DIRECTORY_SEPARATOR.'errorPage');
         $this->view->pageTitle='Error Page';
         $this->view->render();
+    }
+
+    public function delete($id)
+    {
+        $this->model('Admin');
+        $this->model->delete( array(0 => $id ));
+        Message::setMessage('status',1,'');
+        Message::setMessage('','main','تم حذف الحساب بنجاحّ!');
+        header('Location:/admin/member');
+
+    }
+//---------------------------------------------------end delete user----------------------------------------------------------------------
+//---------------------------------------------------start active user----------------------------------------------------------------------
+    public function active($id)
+    {
+        $this->model('Admin');
+        $this->model->updateActive( array(0 => $id ));
+        Message::setMessage('status',1,'');
+        Message::setMessage('','main','الحساب بنجاحّ!');
+        header('Location:/admin/member');
+
+    }
+
+    public function nonactive($id)
+    {
+        $this->model('Admin');
+        $this->model->updatedisActive( array(0 => $id ));
+        Message::setMessage('status',1,'');
+        Message::setMessage('','main','تقفلّ الحساب!');
+        header('Location:/admin/member');
+
     }
 
 

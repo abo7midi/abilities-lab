@@ -20,6 +20,7 @@ class Users
         return $this->db->query("select users.*, groups.group_name as groupName from users INNER JOIN groups on users.group_id = groups.group_id WHERE Existing =-1");
     }
 
+
 //add new row to users table
     public function add(array $aData)
     {
