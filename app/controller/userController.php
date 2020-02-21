@@ -3,18 +3,13 @@
 /**
  *
  */
-
-
-
-
 class userController extends Controller
 {
-
-
     public function index()
     {
         $this->model('Users');
         $this->view('admin'.DIRECTORY_SEPARATOR.'index',['accounts'=>$this->model->all()]);
+
         $this->view->pageTitle='admin index';
         $this->view->render();
     }
@@ -84,8 +79,17 @@ class userController extends Controller
             }
 
         }
+
+        $category=  $this->model('Category');
+        $cat = $category->get_category();
+        $sub_cat=array();
+        foreach ($cat as $parent){
+            array_push($sub_cat,$category->get_sub_cat([$parent['cat_id']]));
+        }
+        print_r($sub_cat);
+
         # show form view  to add new user
-        $this->view('admin'.DIRECTORY_SEPARATOR.'index');
+        $this->view('home'.DIRECTORY_SEPARATOR.'index',["sub_cat" => $sub_cat,"cat" => $cat,"form_id"=>1]);
         $this->view->pageTitle='Add New User';
         $this->view->render();
     }
@@ -117,7 +121,7 @@ class userController extends Controller
                     echo "ur examiner";
 
                 } elseif  ($user[0]["group_id"] == 3 && $user[0]["user_state"]==1 ){
-                    header("location:/exam/takeExam/5e42642ce4f6c");
+                    header("location:/home/index");
                     echo "ur members";
                 }elseif  ($user[0]["group_id"] == 1 && $user[0]["user_state"]==1 ) {
                     header('Location:/admin/dashboard');
@@ -142,7 +146,7 @@ class userController extends Controller
     }
     public function logout(){
         session_destroy();
-        header("location:/user/add");
+        header("location:/user/index");
     }
 //---------------------------------------------------start update user----------------------------------------------------------------------
 

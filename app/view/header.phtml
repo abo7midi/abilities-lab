@@ -11,15 +11,14 @@
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/fontawesome.min.css">
         <link rel="stylesheet" href="/static/css/style.css">
     <link rel="stylesheet" href="/css/style.css">
+    <!--<link rel="stylesheet" href="/css/index.css">-->
     <link rel="stylesheet" href="/static/css/styleexam.css">
-
     <title>ability lab</title>
 </head>
 <body>
 
 <!--navbar-------------------------------------------------------------->
 <nav class="navbar navbar-expand-lg ">
-
     <a class="navbar-brand" href="#"><img src="/static/img/logo.png"  width="70px" class="rounded-circle" style="margin-bottom: 18px;"></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -27,7 +26,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="/home/index">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="/home/index">Home<span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">Talents</a>
@@ -39,9 +38,9 @@
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <?php
                     $category=new Category();
-                        foreach ($category->allSubCate() as $subcat){
-                      echo '<a class="dropdown-item" href="#">'.$subcat["cat_name"].'</a>';
-                        }
+                    foreach ($category->allSubCate() as $subcat){
+                        echo '<a class="dropdown-item" href="#">'.$subcat["cat_name"].'</a>';
+                    }
                     ?>
                 </div>
             </li>
@@ -57,8 +56,9 @@
                     <img class="" src="/pictures/'.Session::get('userImg').'" style=" width:100%; height:100%; border-radius: 50% "></li>
                 <li><a class="btn btn-outline-secondary my-2 my-sm-0" href="/user/logout" style="color:gray; margin-right: 10px; padding: 10px;">Log Out</a></li>';
                 }else{
-                    echo '<li><a class="btn btn-outline-success my-2 my-sm-0" href="#0" style=" color:green; margin-right: 10px; padding: 10px;">Sign in</a></li>
-                <li><a class="btn btn-outline-success my-2 my-sm-0" href="#0" style=" color:green; margin-right: 10px; padding: 10px;">Sign up</a></li>';
+
+                    echo '<li><a class="btn btn-outline-success my-2 my-sm-0" href="#0" style=" color:green; margin-right: 10px; padding: 10px;">Sign in</a></li>';
+       //         <li><a class="btn btn-outline-success my-2 my-sm-0" href="#0" style=" color:green; margin-right: 10px; padding: 10px;">Sign Out</a></li>'
                 }
                 ?>
             </ul>
@@ -69,51 +69,37 @@
                     <li><a href="#0">Sign in</a></li>
                     <li><a href="#0">New account</a></li>
                 </ul>
-
                 <div id="cd-login"> <!-- log in form -->
                     <form class="cd-form"  method="post" action="/user/login">
 
-                        <p class="fieldset">
-                        <div class="input-group mb-3">
-                            <input class="form-control"  id="signin-email" type="text" name="username" placeholder="  Enter Your Email" >
-                            <?php// echo Message::check('username');  ?>
-                            <div class="input-group-append">
-                                <span class="input-group-text" style="background: #ffffff; color: #007bff">@gmail.com</span>
+                        <div class="fieldset">
+                            <div class="input-group mb-3">
+                                <div class="input-group-append">
+                                    <span class="input-group-text" style="background: #ffffff;"><img src="/image/email (4).png" width="20px" height="20px"></span>
+                                </div>
+                                <input class="form-control"  id="signin-email" type="text" name="username" placeholder="  Enter Your Email" >
+                                <?php echo Message::check('username');?>
                             </div>
                         </div>
-                        </p>
-
-                        <p class="fieldset">
+                        <div class="fieldset">
+                            <!--                        <div class="input-group mb-3">-->
                             <label class="image-replace cd-password" for="signin-password">Password</label>
-                            <input class="full-width has-padding has-border" id="signin-password" name="password" type="password"  placeholder="Enter Your Password">
+                            <input class=" form-control full-width has-padding has-border" id="signin-password" name="password" type="password"  placeholder="Enter Your Password">
                             <?php// echo Message::check('password');  ?>
                             <a href="#0" class="hide-password">Show</a>
+                        </div>
+                        <!--                    </div>-->
 
-                        </p>
-
-
-                        <!--                <p class="fieldset">-->
-                        <!--                    <input type="checkbox" id="remember-me" checked>-->
-                        <!--                    <label for="remember-me">Remember me</label>-->
-                        <!--                </p>-->
-
-                        <p class="fieldset">
+                        <div class="fieldset">
                             <button type="submit" class="btn btn-primary" name="login"  value="login"> login</button>
-                            <!--                    <input class="full-width has-padding btn btn-primary" type="submit" name="login" value="login">-->
-                        </p>
+
+                        </div>
                     </form>
 
 
-                    <div class="col-lg-1 col-sm-3 col-6">
-                        <div class="slide">
-                            <img src="/./static/img/2.jpeg">
-                            <h5 >student10</h5>
-                        </div>
-                    </div>
 
-                    <!--            <p class="cd-form-bottom-message"><a href="#0">Forgot your password?</a></p>-->
-                    <!-- <a href="#0" class="cd-close-form">Close</a> -->
-                </div> <!-- cd-login -->
+                </div>
+                <!--           ---------------------end login----------------------------------------->
 
 
                 <div id="cd-signup"> <!-- sign up form -->
@@ -123,9 +109,13 @@
                         <div id="preview-container">
                             <div class="text-center">
                                 <h4> Your Image Profile </h4>
-                                <img class="preview" src="/image/avatar.png"/>
+                                <img class="preview" src="/image/email (5).png"/>
                                 <!--  <input type="button" value="Upload" class="upload-image btn-default"/>-->
                                 <input id="upload" type="file" name="fileToUpload" accept="image/*"/>
+                                <img class="preview" src="/image/download (2).jpg"style="    width: 31px;
+    height: 28px;
+    margin-left: -30px;
+    margin-bottom: -60px;">
                             </div>
                         </div>
 
@@ -133,8 +123,9 @@
                         <p class="fieldset">
                         <div class="input-group mb-3">
                             <div class="input-group-append">
-                                <span class="input-group-text" style="background: #ffffff;"><img src="/image/user.png" width="20px" height="20px"></span>
+                                <span class="input-group-text" style="background: #ffffff;"><img src="/image/images (1).png" width="20px" height="20px"></span>
                             </div>
+
                             <input class="form-control" id="username" type="text" name="username" onkeyup="lettersOnly(this)" placeholder="   Enter Your UserName" >
                             <?php// echo Message::check('username');  ?>
                         </div>
@@ -143,7 +134,7 @@
                         <p class="fieldset">
                         <div class="input-group mb-3">
                             <div class="input-group-append">
-                                <span class="input-group-text" style="background: #ffffff;"><img src="/image/user.png" width="20px" height="20px"></span>
+                                <span class="input-group-text" style="background: #ffffff;"><img src="/image/email (4).png" width="20px" height="20px"></span>
                             </div>
                             <input class="form-control" id="fullname" type="text" name="full_name" onkeyup="lettersOnlyTwo(this)" placeholder="   Enter Your FullName" >
                             <?php// echo Message::check('full_name');  ?>
@@ -168,55 +159,29 @@
 
                         <p class="fieldset">
                         <div class="input-group mb-3">
+                            <div class="input-group-append">
+                                <span class="input-group-text" style="background: #ffffff;"><img src="/image/download (4).png" width="20px" height="20px"></span>
+                            </div>
                             <input class="form-control" id="email" type="email" name="email" placeholder="  Enter Your Email" >
                             <div class="input-group-append">
-                                <!--                        --><?php //echo Message::check('email');  ?>
+                                <?php echo Message::check('email');  ?>
 
-                                <span class="input-group-text" style="background: #ffffff; color: #007bff">@gmail.com</span>
                             </div>
 
                         </div>
                         </p>
 
                         <p class="fieldset">
-                            <label class="image-replace cd-password" for="password">Password</label>
-                            <input class="full-width has-padding has-border" id="password" name="password" type="password"  placeholder="Enter Your Password">
+
+                            <label class="image-replace cd-password" for="signin-password">Password</label>
+                            <input class=" form-control full-width has-padding has-border" id="password" name="password" type="password"  placeholder="Enter Your Password">
                             <a href="#0" class="hide-password">Show</a>
                             <?php //echo Message::check('password');  ?>
-                        </p>
 
-                        <p class="fieldset">
-                            <label class="image-replace cd-password" for="confirm-password"> Confirm Password</label>
-                            <input class="full-width has-padding has-border" id="confirm-password" name="confirm_password" type="password"  placeholder="Confirm Your Password">
-                            <a href="#0" class="hide-password">Show</a>
-                            <?php// echo Message::check('passwordConfirm');  ?>
-
-                        </p>
-
-                        <!--                                <p class="fieldset">-->
-                        <!--                                <p>Register as:</p>-->
-                        <!---->
-                        <!--                                <div class="form-check">-->
-                        <!--                                    <label class="form-check-label" for="radio1">-->
-                        <!--                                        <input type="radio"  id="individual" name="individual" value="Individual" checked> Individual-->
-                        <!--                                    </label>-->
-                        <!--                                </div>-->
-                        <!---->
-                        <!--                                <div class="form-check">-->
-                        <!--                                    <label for="radio2">-->
-                        <!--                                        <input type="radio" id="company" name="company" value="Company"> Company-->
-                        <!--                                    </label>-->
-                        <!--                                </div>-->
-
-                        <!--                                <div class="form-check">-->
-                        <!--                                    <label for="radio2">-->
-                        <!--                                        <input type="radio" id="teacher" name="teacher" value="Teacher"> Teacher-->
-                        <!--                                    </label>-->
-                        <!--                                </div>-->
                         </p>
 
                         <div class="form-group">
-                            <label for="Select" class="col-sm-2 control-label">type user</label>
+                            <label for="Select" class="col-sm-2 control-label">Type</label>
 
                             <select id="Select" class="form-control" name="type">
                                 <option value="3">User</option>
@@ -261,7 +226,6 @@
             </div> <!-- cd-user-modal-container -->
         </div> <!-- cd-user-modal -->
         <!----------------------------- end trying------------------------------------------------>
-
     </div>
 </nav>
 

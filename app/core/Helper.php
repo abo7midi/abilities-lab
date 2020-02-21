@@ -44,10 +44,11 @@
 
    {
      $uploadErr='';
-       $file = strtolower(preg_replace('/[^a-zA-Z0-9.\']/', "", $name));;
-       $target_file = $target_dir . basename($file);
+       $imageFileType = pathinfo($name, PATHINFO_EXTENSION);
+       $file = md5(uniqid()).'.'.$imageFileType;
+       $target_file = $target_dir . $file;
        $upload_ok = 1;
-       $imageFileType = pathinfo($target_file, PATHINFO_EXTENSION);
+
    // Check if image file is a actual image or fake image
        if ($_FILES) {
            $check = getimagesize($file_tmp);

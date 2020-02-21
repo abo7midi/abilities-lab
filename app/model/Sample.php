@@ -26,8 +26,13 @@ class Sample
         return $oStmt->fetchAll();
     }
 
+    public function getUserExamSamples(array $Data){
+        $oStmt = $this->db->preparation("SELECT * FROM `samples` WHERE exam_id=? AND sample_id not in (SELECT sample_id from user_exam WHERE user_id =? and exam_id =?)");
+        $oStmt->execute($Data);
+        return $oStmt->fetchAll();
+    }
 
-
+/*select e.*,COUNT(s.sample_id) from exams e INNER join samples s USING (exam_id) GROUP BY e.exam_id having cat_id=3 and exam_state=1*/
 //
 
     public function add(array $aData)
