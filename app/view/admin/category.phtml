@@ -1,5 +1,5 @@
 <?php
-
+Session::logged();
 include "side_bar.phtml";
 ?>
 
@@ -17,13 +17,13 @@ include "side_bar.phtml";
                 <td>Control</td>
             </tr>
             <?php
-            if (array_key_exists('cates',$this->view_data)){
-                foreach ($this->view_data['cates'] as $category) {
+            if (array_key_exists('mainCategories',$this->view_data)){
+                foreach ($this->view_data['mainCategories'] as $category) {
 
 
                     echo '<tr class="bel">';
                     echo ' <td>'.$category["cat_id"].'</td>';
-                    echo ' <td >'.$category["cat_name"].'</td>';
+                    echo ' <td><a href="/admin/subCategory/'.$category['cat_id'].'">'.$category["cat_name"].'</a></td>';
                     echo ' <td>'.$category["Created_By"].'</td>';
                     echo ' <td>'.$category["cat_created_at"].'</td>';
                     echo ' <td>'.$category["Created_By"].'</td>';
