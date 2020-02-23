@@ -1,9 +1,5 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-    <title>Q</title>
+<?php include VIEW . "header.phtml" ?>
     <style>
         /*custom font*/
         @import url(https://fonts.googleapis.com/css?family=Montserrat);
@@ -79,6 +75,17 @@
         }
 
         /*buttons*/
+        input#save,input#btn_newsample{
+            background: #37B2B5;
+            color: #fff;
+        }
+
+        input#save:hover,input#btn_newsample:hover{
+            background: #2f9598;
+        }
+        #msform2{
+            margin-bottom: 2%;
+        }
         #msform .action-button {
             width: 100px;
             background: #27AE60;
@@ -237,11 +244,11 @@
     </div>
     <div id="div_new_sample">
         <?php } else { ?>
-            <form id="msform" action="/exam/endExam" method="post" enctype="multipart/form-data">
-
-                <input type="submit" id="save" name="save" value="end exam "/>
-                <input id="btn_newsample" class=" action-button" name="NewSample" value="New Sample"/>
-
+            <form id="msform2" action="/exam/endExam" align="center" method="post" enctype="multipart/form-data">
+                <div class="btn-group" role="group" aria-label="Basic example">
+                    <input type="submit" id="save" class="btn " name="save" value="end exam "/>
+                    <input id="btn_newsample" class="btn " name="NewSample" value="New Sample"/>
+                </div>
             </form>
         <?php } ?>
     </div>
@@ -307,12 +314,11 @@
                 // alert(data);
                 if (data == 0) {
                     // $('#btn_save').attr('disabled', 'true');
-
-                    div_sample.html('<form id="msform"  action="/exam/endExam" method="post" enctype="multipart/form-data">\n' +
-                        '\n' +
-                        '            <input type="submit" id="save"  name="save" value="end exam "/>\n' +
-                        '            <input id="btn_newsample" class=" action-button" name="NewSample" value="New Sample"/>\n' +
-                        '\n' +
+                    div_sample.html('<form id="msform2" action="/exam/endExam" align="center" method="post" enctype="multipart/form-data">\n' +
+                        '<div class="btn-group" role="group" aria-label="Basic example">\n' +
+                        '            <input type="submit" id="save" class="btn " name="save" value="end exam "/>\n' +
+                        '            <input id="btn_newsample" class="btn " name="NewSample" value="New Sample"/>\n' +
+                        '</div>\n' +
                         '        </form>\n' +
                         '\n');
                 }
@@ -626,5 +632,5 @@
 </script>
 
 <?php (Message::getMessage('errors')); ?>
-</body>
-</html>
+
+<?php include VIEW . "footer.phtml" ?>

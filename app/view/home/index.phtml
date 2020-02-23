@@ -3,48 +3,30 @@ include "header.phtml";
 ?>
 <body>
 
-<?php include "search.phtml";?>
-<div class="slider">
-    <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel" >
-        <ol class="carousel-indicators">
-            <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
-            <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
-            <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
-        </ol>
-        <div class="carousel-inner" >
-            <div class="carousel-item active" >
-                <img src="/static/img/1.jpeg" class="d-block w-100" alt="...">
-                <div class="carousel-caption d-none d-md-block">
-                    <h5>First slide label</h5>
-                    <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-                    <a href="#work">Check Our Work</a>
+<!-- ********************************** START ERROR MESSAGE ******************************** -->
+<!-- Button HTML (to Trigger Modal) -->
+<a href="#myModal" class="trigger-btn" data-toggle="modal"  id="trigger-btn" style="display: none;">Click to Open Error Modal</a>
+<!-- Modal HTML -->
+<div id="myModal" class="modal fade ">
+    <div class="modal-dialog modal-confirm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="icon-box">
+                    <i class="material-icons">&#xE5CD;</i>
                 </div>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
             </div>
-            <div class="carousel-item">
-                <img src="/static/img/1.jpeg" class="d-block w-100" alt="...">
-                <div class="carousel-caption d-none d-md-block">
-                    <h5>Second slide label</h5>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <img src="/static/img/1.jpeg "class="d-block w-100" alt="...">
-                <div class="carousel-caption d-none d-md-block">
-                    <h5>Third slide label</h5>
-                    <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
-                </div>
+            <div class="modal-body text-center">
+                <h4>Ooops!</h4>
+                <p id="errorContent"></p>
+                <button class="btn btn-success" data-dismiss="modal">Exit</button>
             </div>
         </div>
-        <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-        </a>
-        <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-        </a>
     </div>
 </div>
+<!-- ********************************** END ERROR MESSAGE ******************************** -->
+
+<?php include "search.phtml";?>
 
 
 
@@ -329,6 +311,13 @@ border-radius: 0 0 10px 10px;
 
         <script>
             var jq = $.noConflict();
+            var errorMessage="<?php echo Message::check("unauth")?>";
+            console.log(errorMessage);
+            if(errorMessage!=''){
+                jq("#errorContent").html(errorMessage);
+                document.getElementById("trigger-btn").click();
+            }
+
             function load_Exams(){
                 var selectd=jq("select#subcat").children("option:selected").val();
                 var loading="<button class='btn btn-primary' disabled><span class='spinner-border spinner-border-sm'></span>Loading..</button>";

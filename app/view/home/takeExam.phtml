@@ -8,13 +8,29 @@
     <title>take Exam</title>
     <script typy="text/javascript">
 
+        window.addEventListener('beforeunload', (event) => {
+            //localStorage.removeItem('timimg');
+            event.preventDefault();
+            event.returnValue = `Are you sure you want to leave?,we will save the Exam Mark`;
+            document.getElementById("endExam").click();
+
+        });
+
         var duration=<?php echo $this->view_data["duration"]?>;
+        var examId="<?php echo $this->view_data["exam_id"]?>";
         var timeLeft=1*duration*60;
         function timeout()
         {
+            console.log();
             if (!localStorage.timimg) {
                 localStorage.timimg=timeLeft;
+                localStorage.examId=examId;
             }
+            if(localStorage.examId!=examId){
+                localStorage.timimg=timeLeft;
+                localStorage.examId=examId;
+            }
+
             var hours=Math.floor(Number(localStorage.timimg)/3600);
             var minute=Math.floor(Number((localStorage.timimg-(hours*60*60)))/60);
             var second=Number(localStorage.timimg)%60;
@@ -31,7 +47,7 @@
             else
             {
                 // document.getElementById("time").innerHTML=hrs+":"+mint+":"+sec;
-                document.getElementById("time").innerHTML=hrs+":"+mint+":"+sec;
+                document.getElementById("time").innerHTML="<div class='hour'>"+hrs+"<small>h</small></div>"+"<div class='minute'>"+":"+mint+"<small>min</small></div>"+"<div class='second'>"+":"+sec+"<small>sec</small></div>";
                 localStorage.timimg--;
             }
             var tm= setTimeout(function(){timeout()},1000);
@@ -45,10 +61,8 @@
             return msg;
         };
 
-        window.addEventListener('beforeunload', (event) => {
-            localStorage.removeItem('timimg');
-            event.returnValue = `Are you sure you want to leave?`;
-        });
+
+
     </script>
 </head>
 <body onload="timeout()" oncontextmenu="return false;">
@@ -113,7 +127,6 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
 <script>
-    
 </script>
 
 </body>
