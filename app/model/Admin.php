@@ -67,12 +67,20 @@ class Admin
     }
 
 
-    public function allCategories()
+    public function allMainCategories()
     {
-        return $this->db->query("select *, users.user_name AS Created_By 
+        return $this->db->query("select categories.*, users.user_name AS Created_By 
                                         from categories 
                                         INNER JOIN users 
-                                        ON categories.user_id = users.user_id ");
+                                        ON categories.user_id = users.user_id WHERE categories.cat_main_cat = 0");
+    }
+
+    public function allSubCategories()
+    {
+        return $this->db->query("select categories.*, users.user_name AS Created_By 
+                                        from categories 
+                                        INNER JOIN users 
+                                        ON categories.user_id = users.user_id WHERE categories.cat_main_cat != 0");
     }
 
     public function adminUser()
