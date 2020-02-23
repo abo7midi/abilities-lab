@@ -12,7 +12,7 @@ class Model {
 
       public function __construct() {
         try {
-          $this->dsn="mysql:host=localhost;dbname=examination";
+          $this->dsn="mysql:host=localhost;dbname=examinations";
             $this->pdoObject=new PDO($this->dsn,Model::DB_USER,Model::DB_PASS);
             
             $this->pdoObject->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
