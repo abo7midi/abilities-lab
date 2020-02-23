@@ -240,17 +240,16 @@ class examController extends Controller
         foreach ($ex_exams as $ex) {
             array_push($samples, $sample->getExamSamples([$ex['exam_id']]));
         }
-        $this->view('admin' . DIRECTORY_SEPARATOR . 'details_for_examiner', ["ex_exams" => $ex_exams, "samples_ex" => $samples]);
-        $this->view->pageTitle = 'Details for examiner';
+
+        $this->view('home'.DIRECTORY_SEPARATOR.'details_for_examiner',["ex_exams"=>$ex_exams,"samples_ex"=>$samples]);
+        $this->view->pageTitle='Details for examiner';
         $this->view->render();
     }
-
-    public function who_do_exam($s_id)
-    {
-        $exam = $this->model('Exam');
-        $u_exams = $exam->getExamDetails([$s_id]);
-        $this->view('admin' . DIRECTORY_SEPARATOR . 'who_do_exam', ["u_exams" => $u_exams]);
-        $this->view->pageTitle = 'who_do_exam';
+    public function who_do_exam($s_id){
+        $exam=$this->model('Exam');
+        $u_exams= $exam->getExamDetails([$s_id]);
+        $this->view('home'.DIRECTORY_SEPARATOR.'who_do_exam',["u_exams"=>$u_exams]);
+        $this->view->pageTitle='who_do_exam';
         $this->view->render();
     }
 
@@ -366,6 +365,14 @@ class examController extends Controller
 
     }
 
+    public function student_profile($u_id){
+        $exam = $this->model('Exam');
+        $exams = $exam->student_profile([$u_id]);
+
+        $this->view('home' . DIRECTORY_SEPARATOR . 'student_profile', ["student" => $exams]);
+        $this->view->pageTitle = 'student_profile';
+        $this->view->render();
+    }
 }
 
 ?>

@@ -1,4 +1,7 @@
 <!DOCTYPE html>
+<?php
+include "header.phtml";
+?>
 <html>
 <head>
 
@@ -13,23 +16,19 @@
     <table class="table" style="width:100%; border-spacing: 5px;">
         <tr>
             <td><h4>Exam_id</h4></td>
-            <td><h4>Sample_id</h4></td>
+            <td><h4>Samples</h4></td>
             <td><h4>Dismit Exam</h4></td>
 
 
 
         </tr>
         <?php
-        echo "<pre>";
-print_r($this->view_data['ex_exams']);
-
-print_r($this->view_data['samples_ex']);
-        echo "</pre>";
         foreach($this->view_data['ex_exams'] as $row ){
             $ex_id =$row['exam_id'];
             ?>
             <tr>
-            <td><?php echo $ex_id ?></td>
+<!--            <td>--><?php //echo $ex_id ?><!--</td>-->
+            <td><a href="/exam/top_members_one_exam/<?php echo $ex_id ?>"><?php echo $row['exam_name'] ?></a></td>
                 <td>
                    <ul>
                 <?php
@@ -37,7 +36,7 @@ print_r($this->view_data['samples_ex']);
             foreach ($s as $sam){
                 if($ex_id==$sam['exam_id']){
             ?>
-                <li><a href="/exam/who_do_exam/<?php echo $sam['sample_id'] ?>"><?php echo $sam['sample_id'] ?></a></li>
+                <li><?php echo $sam['sample_name'] ?></li>
 
         <?php }}}
         echo "</ul></td>";
