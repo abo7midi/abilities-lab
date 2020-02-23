@@ -146,19 +146,15 @@ include "side_bar.phtml";
                     <div class="modal-body">
 
 
-<?php
+                        <div class="modal-body">
+                            <?php
+
+                            echo '<p>'.$exams["user_exam_id"].'</p>';
+                            echo '<p>'.$exams["user_exam_finish_time"].'</p>';
+                            echo '<p>'.$exams["user_exam_date"].'</p>';
 
 
-$table = '';
-
-foreach ($this->view_data['Date'] as $exams) {
-
-    $table .= ' <td >' . $exams["user_exam_id"] . '</td>';
-    $table .= ' <td >' . $exams["user_exam_finish_time"] . '</td>';
-    $table .= ' <td >' . $exams["user_exam_date "] . '</td>';
-}
-
-?>
+                            ?>
                     </div>
                     <div class="modal-footer">
                         <button data-dismiss="modal" class="btn btn-success" type="button">ok</button>
