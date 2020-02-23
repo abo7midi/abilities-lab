@@ -1,0 +1,131 @@
+<?php
+if (array_key_exists('eProfile',$this->view_data)) {
+foreach ($this->view_data['eProfile'] as $pro) {
+
+?>
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+
+
+
+<link rel="stylesheet" href="/css/style.css">
+<br>
+
+
+<div class="container"  >
+    <div class="row" >
+        <div class="col-lg-12" >
+
+
+            <div class="wrapper" >
+                <div class="left">
+                    <img src="/pictures/<?php echo $pro['image']; ?>"
+                         alt="user" width="100">
+                    <h4><?php echo $pro['user_name']; ?></h4>
+                    <p> Developer</p>
+                </div>
+
+                <div class="right" id="info">
+                    <div class="info">
+
+                        <h3>Information</h3>
+                        <div class="info_data">
+                            <div class="data">
+                                <h4>FulNmae</h4>
+
+
+                                <p><?php echo $pro['fullname']; ?></p>
+                                <input class="editInput fname form-control input-sm"
+                                       type="text"
+                                       name="first_name"
+                                       value="<?php echo $pro['ful_name']; ?>"
+                                       style="display: none;">
+
+
+
+                            </div>
+                            <div class="data">
+                                <h4>Email</h4>
+                                <p><?php echo $pro['email']; ?></p>
+                            </div>
+                            <div class="data">
+                                <h4>Phone</h4>
+                                <p><?php echo $pro['phone']; ?></p>
+
+                            </div>
+                            <div class="social_media" id="social_media">
+                                <ul>
+                                    <li><a  href='/Profile/editProfile/<?php echo $pro['user_id'];?>' class="glyphicon glyphicon-pencil" style="top: 11px;"></a></li>
+
+                                </ul>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="projects" >
+                        <h3>Projects</h3>
+                        <div class="projects_data">
+                            <div class="data">
+                                <h4>Exam Name</h4>
+                                <p><?php echo $pro['exam_name']; ?></p>
+                            </div>
+                            <div class="data">
+                                <h4>Exam Mark</h4>
+                                <p><?php echo $pro['exam_pass_mark']; ?></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <?php
+                    }
+
+                    }?>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+</div >
+
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

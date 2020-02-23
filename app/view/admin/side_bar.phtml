@@ -10,14 +10,15 @@
     <link rel="stylesheet" type="text/css" href="/layout/css/main.css">
 
 <!------------------------------------------ Start-->
+
     <nav class="navbar navbar-inverse navbar-expand-lg">
         <div class="container-fluid">
         <ul class="nav navbar-nav">
-            <li class="b"><a href="#" class="nav-item text-center"><i data-show="show-side-navigation1" class="fa fa-bars show-side-btn" style="font-size: 22px;"></i></a></li>
+            <li class="b"><a href="#" class="nav-item text-center"><i data-show="show-side-navigation1" class="fa fa-align-left show-side-btn" style="font-size: 22px;"></i></a></li>
         </ul>
-<!--        <a class="navbar-brand" href="#"><img src="/images/logo.png" width="50px" height="50px"></a>-->
+            <!--        <a class="navbar-brand" href="#"><img src="/images/logo.png" width="50px" height="50px"></a>-->
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
+            <span class="fa fa-align-center show-side-btn" style="color: #ffffff;"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <center>
@@ -29,13 +30,24 @@
                 <li class="n n4"><a class="nav-item4" href="/admin/member"><i class="fa fa-users"  style="font-size: 22px;"></i></br><?php echo lang('MEMBERS')?></a></li>
                 <li class="n n5"><a class="nav-item5" href="#"><i class="fa fa-info-circle"  style="font-size: 22px;"></i></br><?php echo lang('ABOUT_US')?></a></li>
                 <li class="n n6"><a class="nav-item6" href="#"><i class="fa fa-signal"  style="font-size: 22px;"></i></br><?php echo lang('STATISTICS')?></a></li>
-                <li class="n n7"><a class="nav-item7" href="/exam/exama"><i class="fa fa-signal"  style="font-size: 22px;"></i></br>Exam</a></li>
+                <li class="n n7"><a class="nav-item7" href="/examadmin"><i class="fa fa-signal"  style="font-size: 22px;"></i></br>Exam</a></li>
 <!--                <li><a class="nav-item text-center" href="#"><i class="fa fa-comment" style="font-size: 18px;"></i><span>23</span></a></li>-->
                 <li class="n n8"><a class="nav-item8" href="#"><i class="fa fa-bell" style="font-size: 22px;"></i>98</a></li>
 
                 <li class="dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <?php echo "username"; ?>
+                        <?php
+                        if (array_key_exists('admins',$this->view_data)) {
+                            foreach ($this->view_data['admins'] as $admin) {
+                                if ($admin['user_id'] == Session::logged()) {
+                                    echo $admin['user_name'];
+                                }
+                            }
+                        } else {
+                            echo "error";
+                        }
+
+                        ?>
                     </a>
 
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
@@ -51,7 +63,7 @@
     </nav>
 
     <aside class="side-nav" id="show-side-navigation1">
-        <i class="fa fa-bars close-aside hidden-sm hidden-md hidden-lg" data-close="show-side-navigation1"></i>
+        <i class="fa fa-align-right close-aside hidden-sm hidden-md hidden-lg" data-close="show-side-navigation1"></i>
         <div class="heading">
             <img src="https://uniim1.shutterfly.com/ng/services/mediarender/THISLIFE/021036514417/media/23148907008/medium/1501685726/enhance" alt="">
             <div class="info">

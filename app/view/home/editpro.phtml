@@ -26,8 +26,12 @@ $modifying=$this->view_data['editPro'];
 
             <div class="wrapper" >
                 <div class="left">
-                    <img src="/pictures/<?php echo $modifying['image']; ?>"
+
+                    <img class="preview" src="/pictures/<?php echo $modifying['image']; ?>"
                          alt="user" width="200">
+                    <!--  <input type="button" value="Upload" class="upload-image btn-default"/>-->
+                    <input id="upload" type="file" name="fileToUpload" accept="image/*"/>
+
                     <h4 name="username"><?php echo $modifying['user_name']; ?></h4>
                     <p> Developer</p>
                 </div>
@@ -67,7 +71,10 @@ $modifying=$this->view_data['editPro'];
                                         <div class="form-group">
                                             <label class="col-sm-2 control-label label-edit" for="exampleInputPassword1">password</label>
                                             <div class="col-sm-10">
-                                                <input type="password" class="form-control input-edit" value="<?php echo $modifying['password']; ?>"  name="password">
+                                                <input type="hidden" name="old_pass" class="form-control input-edit" value="<?php echo $modifying['user_pwd']; ?>" >
+
+                                                <input type="password" class="form-control input-edit" value=""  name="password">
+
                                                 <?php echo Message::check('password');  ?>
                                             </div>
                                         </div>
@@ -84,7 +91,8 @@ $modifying=$this->view_data['editPro'];
                                         <div class="form-group">
                                             <label class="col-sm-2 control-label label-edit" for="exampleInputPassword2">Your Image</label>
                                             <div class="col-sm-10">
-                                                <input type="file" value="<?php echo $modifying['pacture']; ?>"  name="fileToUpload">
+                                                <input type="hidden"  value="<?php echo $modifying['image']; ?>" name="old_image">
+                                                <input type="file" value="" name="fileToUpload">
                                                 <?php echo Message::check('fileToUpload');  ?>
                                             </div>
                                         </div>

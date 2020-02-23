@@ -3,20 +3,11 @@
 /**
  *
  */
-
-
-
-
 class userController extends Controller
 {
-
-
     public function index()
     {
-        $this->model('Users');
-        $this->view('admin'.DIRECTORY_SEPARATOR.'accounts',['accounts'=>$this->model->all()]);
-        $this->view->pageTitle='admin index';
-        $this->view->render();
+        header("location:/home/index");
     }
 
 //
@@ -87,9 +78,14 @@ class userController extends Controller
 
         $category=  $this->model('Category');
         $cat = $category->get_category();
+        $sub_cat=array();
+        foreach ($cat as $parent){
+            array_push($sub_cat,$category->get_sub_cat([$parent['cat_id']]));
+        }
+        print_r($sub_cat);
 
         # show form view  to add new user
-        $this->view('home'.DIRECTORY_SEPARATOR.'index',["cat" => $cat,"form_id"=>1]);
+        $this->view('home'.DIRECTORY_SEPARATOR.'index',["sub_cat" => $sub_cat,"cat" => $cat,"form_id"=>1]);
         $this->view->pageTitle='Add New User';
         $this->view->render();
     }
@@ -121,7 +117,7 @@ class userController extends Controller
                     echo "ur examiner";
 
                 } elseif  ($user[0]["group_id"] == 3 && $user[0]["user_state"]==1 ){
-                    header("location:/exam/takeExam/5e39d0544399b");
+                    header("location:/home/index");
                     echo "ur members";
                 }elseif  ($user[0]["group_id"] == 1 && $user[0]["user_state"]==1 ) {
                     header('Location:/admin/dashboard');
@@ -146,7 +142,7 @@ class userController extends Controller
     }
     public function logout(){
         session_destroy();
-        header("location:/user/add");
+        header("location:/user/index");
     }
 //---------------------------------------------------start update user----------------------------------------------------------------------
 
@@ -172,10 +168,10 @@ class userController extends Controller
                 ':fullname' => htmlentities($_REQUEST['full_name']),
                 ':username' => htmlentities($_REQUEST['username']),
                 ':password' =>  Hashing::init($_REQUEST['password']),
-                ':email' => htmlentities($_REQUEST['email']),
-                ':mobile' => htmlentities($_REQUEST['phone']),
-                ':type' =>  htmlentities($_REQUEST['type']),
-                ':picture' => $updatefile,
+                ':email'    => htmlentities($_REQUEST['email']),
+                ':mobile'   => htmlentities($_REQUEST['phone']),
+                ':type'     =>  htmlentities($_REQUEST['type']),
+                ':picture'  => $updatefile,
                 ':id'=>$id
 
             );
@@ -185,8 +181,8 @@ class userController extends Controller
 
             $this->model('Users');
             if ($this->model->update($account)) {
-                Message::setMessage('msgState',1);
-                Message::setMessage('main','تم تحديث بيانات الحساب بنجاح');
+                Message::setMessage('msgState',1,'');
+                Message::setMessage('','main','تم تحديث بيانات الحساب بنجاح');
             }
         }
 
@@ -215,8 +211,8 @@ class userController extends Controller
     {
         $this->model('Users');
         $this->model->delete( array(0 => $id ));
-        Message::setMessage('status',1);
-        Message::setMessage('main','تم حذف الحساب بنجاحّ!');
+        Message::setMessage('status',1,'');
+        Message::setMessage('','main','تم حذف الحساب بنجاحّ!');
         header('Location:/user');
 
     }
@@ -226,8 +222,8 @@ class userController extends Controller
     {
         $this->model('Users');
         $this->model->updateActive( array(0 => $id ));
-        Message::setMessage('status',1);
-        Message::setMessage('main','الحساب بنجاحّ!');
+        Message::setMessage('status',1,'');
+        Message::setMessage('','main','الحساب بنجاحّ!');
         header('Location:/user');
 
     }
@@ -236,8 +232,8 @@ class userController extends Controller
     {
         $this->model('Users');
         $this->model->updatedisActive( array(0 => $id ));
-        Message::setMessage('status',1);
-        Message::setMessage('main','تقفلّ الحساب!');
+        Message::setMessage('status',1,'');
+        Message::setMessage('','main','تقفلّ الحساب!');
         header('Location:/user');
 
     }

@@ -2,177 +2,35 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            font-family: serif;
-            font-style: italic;
-            font-weight: bold;
-        }
-
-        body {
-            background-color: #fff;
-            margin: 0;
-            padding: 0;
-            font: normal 14px/1.4 Tahoma, Verdana, Segoe, sans-serif;
-            color: #36455b;
-
-        }
-
-        #wrap {
-            width: 800px;
-            margin: 0 auto;
-        }
-        .txt-ctr {
-            font-family: "Lucida Bright", Georgia, serif;
-            font-weight: 400;
-            line-height: 1.5;
-            margin: 10px ;
-            padding-left: 12px;
-
-        }
-        p{
-            padding:20px;
-        }
-
-    .examStudentIMG{
-        width:98%;
-        margin:0 auto;
-    }
-        .txt-ctr {
-            padding: 10px 0;
-            margin-bottom: 0;
-            color: #000;
-            border-bottom: 1px solid gray;
-
-        }
-        form.cf{
-
-            background-color: #f8f8ff;
-            margin-top: 10px;
-        }
-        @import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro);
-
-        *{
-            font-family: 'Source Sans Pro', sans-serif;
-            font-size: 18px;
-
-        }
-
-        .simple-radio {
-            padding-left: 30px;
-            margin: 2rem 0;
-        }
-
-        .simple-radio ul {
-            counter-reset: section;
-        }
-
-        .simple-radio li {
-            display: block;
-            line-height: 1.2em;
-            width: 50%;
-            color: #636363;
-            border: 1px solid #ccc;
-            counter-increment: section;
-            cursor: pointer;
-            margin: .5em .5em .5em 0em;
-            margin-left: 70px;
-            padding: .4em .4em .4em 1.8em;
-        }
-
-        .simple-radio li:before {
-            content: counter(section, upper-alpha) " ";
-            border:1px solid #ccc;
-            margin-left: -20px!important;
-            font-size: 14px;
-            text-align: center;
-            color: #999;
-            border-radius: 20%;
-            margin-right: 10px;
-            padding: 0 1px 0 4px;
-        }
-
-        .simple-radio li:hover:before, .simple-radio li.checked:before {
-            color: #fff;
-        }
-
-
-
-        .simple-radio .check {
-            display: inline-block;
-            text-align: center;
-            width: 1.5em;
-            line-height: 1em;
-            padding-top: .2em;
-            float: right;
-            font-size: 15px;
-            font-weight: 700;
-            color: #fff;
-        }
-
-        .simple-radio input,
-        .simple-radio li .check .yes,
-        .simple-radio li.checked .check .no {
-            display: none;
-        }
-        h2{
-            padding-left: 10px;
-        }
-
-        .simple-radio li:hover,
-        .simple-radio li.checked {
-            background-color: #34A853;
-            color: #ffffff;
-        }
-
-        .simple-radio li .check .no,
-        .simple-radio li.checked .check .yes {
-            display: inline;
-        }
-
-        .que li {
-            margin-left: 4%;
-            list-style: none;
-        }
-        #time{
-            background: #00a65a;
-            width: 10%;
-            height: 5%;
-            color: #fff;
-            border-radius: 0 10px 10px 0;
-            text-align: center;
-            margin-top: 5%;
-            position: fixed;
-            z-index: 9999;
-        }
-        @media screen and (max-width: 600px) {
-
-            #time{
-                width: 15%;
-                height: 4%;
-                font-size: 14px;
-                margin-top: 5%;
-                line-height: 20px;
-            }
-        }
-    </style>
-
     <title>take Exam</title>
     <script typy="text/javascript">
 
-        var duration=<?php echo $this->view_data["duration"]?>;
-        var timeLeft=1*1*60;
+        window.addEventListener('beforeunload', (event) => {
+            //localStorage.removeItem('timimg');
+            event.preventDefault();
+            event.returnValue = `Are you sure you want to leave?,we will save the Exam Mark`;
+            document.getElementById("endExam").click();
 
+        });
+
+        var duration=<?php echo $this->view_data["duration"]?>;
+        var examId="<?php echo $this->view_data["exam_id"]?>";
+        var timeLeft=1*duration*60;
         function timeout()
         {
+            console.log();
             if (!localStorage.timimg) {
                 localStorage.timimg=timeLeft;
+                localStorage.examId=examId;
             }
+            if(localStorage.examId!=examId){
+                localStorage.timimg=timeLeft;
+                localStorage.examId=examId;
+            }
+
             var hours=Math.floor(Number(localStorage.timimg)/3600);
             var minute=Math.floor(Number((localStorage.timimg-(hours*60*60)))/60);
             var second=Number(localStorage.timimg)%60;
@@ -180,7 +38,6 @@
             var hrs=checktime(hours);
             var mint=checktime(minute);
             var sec=checktime(second);
-
             if(Number(localStorage.timimg)<=0)
             {
                 localStorage.timimg=timeLeft;
@@ -190,7 +47,7 @@
             else
             {
                 // document.getElementById("time").innerHTML=hrs+":"+mint+":"+sec;
-                document.getElementById("time").innerHTML=hrs+":"+mint+":"+sec;
+                document.getElementById("time").innerHTML="<div class='hour'>"+hrs+"<small>h</small></div>"+"<div class='minute'>"+":"+mint+"<small>min</small></div>"+"<div class='second'>"+":"+sec+"<small>sec</small></div>";
                 localStorage.timimg--;
             }
             var tm= setTimeout(function(){timeout()},1000);
@@ -203,29 +60,38 @@
             }
             return msg;
         };
+
+
+
     </script>
 </head>
-<body onload="timeout()">
+<body onload="timeout()" oncontextmenu="return false;">
 <div id="time" ></div>
 <div class="container">
     <div class="row">
         <div class="col-md-2"></div>
         <div class="col-md-8">
-            <form class="cf" method="post" id="form1">
-                <div class="txt-ctr"><h2> EXAM </h2></div>
+            <form class="form" method="post" id="form1">
+                <div class="txt-ctr"><h2><?php echo $this->view_data['exam_name'];?></h2></div>
 <?php
     $i=0;
     foreach($this->view_data['q'] as $ques ){
-        echo "<p>".$ques["q_content"]."</p>
-              <img class='examStudentIMG rounded mx-auto d-block' src='/images/examsImg/".$ques["q_img"]."'
-                <ul class='que'  id=\"sr1\">
+        echo "<p class='Q_Content'>".$ques["q_content"]."</p>";
+        if($ques["q_img"]!="mm"){
+            echo" <img class='examStudentIMG rounded mx-auto d-block' src='/images/examsImg/".$ques["q_img"]."'>";
+        }
+        echo"<ul class='que'  id=\"sr1\">
                 <input type='hidden' name='q_id".$i."'  value=".$ques["q_id"]."> ";
         foreach ($this->view_data['choice'] as $choice){
+            $inputID=0;
             foreach ($choice as $row){
+                $inputID++;
                 if($row["q_id"]===$ques["q_id"]){
                     echo "<li class='q_".$i."' >
-                            <input type=\"radio\"  name=q_".$i." id='_".$i."' value=".$row["choice_id"].">
-                            ".$row["choice_content"]."
+                            <div class=\"inputGroup\">
+                                <input id='_".$i.$inputID."'  name=q_".$i." type=\"radio\" value=".$row["choice_id"].">
+                                <label for='_".$i.$inputID."'>".$row["choice_content"]."</label>
+                            </div>
                         </li> ";
                 }
                //class="simple-radio" <div class='check q_".$i.$i."'><span class=\"no\">&nbsp;</span><span class=\"yes\">&#10003;</span></div>
@@ -240,7 +106,7 @@
     }
 ?>
                 <div class="col-sm-11">
-                    <input type="submit" class="form-control btn btn-outline-primary"  name="endExam" id="endExam" value="done"></input>
+                    <input type="submit" class="form-control btn btn-outline-primary btnendexam"  name="endExam" id="endExam" value="done"></input>
                 </div>
                 <input type="hidden" name="q_num" value=<?php echo $i ?>>
                 </form>
@@ -256,46 +122,11 @@
         <div class="col-md-3"></div>
     </div>
 </div>
-<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="/js/jquery-3.3.1.min.js" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
 <script>
-    // simple radio - sets up shop
-    /*$( '.simple-radio li' ).click(function(){
-
-        var x=$(this).attr("class");
-        alert(x);
-        var c=$(this).children('input').attr("name");
-
-        var y=$(this).children('input').attr("id");
-        alert(y);
-        $('.simple-radio li').removeClass('checked');
-        $(this, "#"+y).attr('checked', 'checked');
-        $(this, "#"+y).prop({
-            checked: true
-        });
-        $("."+x).addClass('checked');
-
-    });*/
-    /*
-
-        $('.simple-radio li').each(function(index) {
-            if ($('input', this).prop('checked')) {
-                $(this).addClass('checked');
-            }
-        });
-
-        // simple radio - listen for click
-        $('.simple-radio li').click(function() {
-            $('.simple-radio input').removeAttr('checked');
-            $('input', this).attr('checked', 'checked');
-            $('input', this).prop({
-                checked: true
-            });
-            $('.simple-radio li').removeAttr('class');
-            $(this).addClass('checked');
-        });*/
 </script>
 
 </body>

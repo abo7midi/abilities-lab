@@ -6,16 +6,16 @@
 class categoryController extends Controller
 {
 
-    public function index()
-    {
-        $this->model('Category');
-        $this->view('admin'.DIRECTORY_SEPARATOR.'category',['categories'=>$this->model->allSubCate()]);
-        $this->view->pageTitle='admin category';
-        $this->view->render();
-    }
+  public function index()
+  {
+    $this->model('Category');
+    $this->view('admin'.DIRECTORY_SEPARATOR.'category',['categories'=>$this->model->allSubCate()]);
+    $this->view->pageTitle='admin category';
+    $this->view->render();
+  }
 
-    public function add()
-    {
+  public function add()
+  {
         // check if there submit
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $postErr=0;
@@ -26,7 +26,7 @@ class categoryController extends Controller
 
             if ($validate['status'] == 1)
             {
-                function checkcat($cn)
+                 function checkcat($cn)
                 {
                     $oStmt = DB::init()->preparation("select cat_name from categories WHERE cat_name = ? ");
                     $oStmt->execute([$cn]);
@@ -64,8 +64,8 @@ class categoryController extends Controller
             }
         }
 //        $this->view('admin'.DIRECTORY_SEPARATOR.'addCategory');
-        $this->model('Category');
-        $this->view('admin'.DIRECTORY_SEPARATOR.'addCategory',['categories'=>$this->model->allCategories()]);
+        $this->model('Admin');
+        $this->view('admin'.DIRECTORY_SEPARATOR.'addCategory',['mainCategories'=>$this->model->allMainCategories(),'admins' => $this->model->all()]);
 
 
         $this->view->pageTitle='admin category';
@@ -73,22 +73,18 @@ class categoryController extends Controller
 
     }
 
-    public function delete($id)
-    {
-        $this->model('Category');
-        $this->model->delete( array(0 => $id ));
-        Message::setMessage('status',1,'');
-        Message::setMessage('','main','تم حذف الفئة بنجاح ّ!');
-        header('Location:/category/index');
-
-    }
-
-
-//
-    public function edit($id)
-    {
+public function delete($id)
+{
+    $this->model('Category');
+    $this->model->delete(array(0 => $id));
+    Message::setMessage('status', 1, '');
+    Message::setMessage('', 'main', 'تم حذف الفئة بنجاح ّ!');
+    header('Location:/category/index');
+}
+public function edit($id) {
         // check if there submit
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
 
 
             //do validation to POST
@@ -138,22 +134,19 @@ class categoryController extends Controller
     public function nonactive($id)
     {
         $this->model('Category');
-        $this->model->updatedisActive( array(0 => $id ));
-        Message::setMessage('status',1,'');
-        Message::setMessage('','main','تقفلّ الحساب!');
+        $this->model->updatedisActive(array(0 => $id));
+        Message::setMessage('status', 1, '');
+        Message::setMessage('', 'main', 'تقفلّ الحساب!');
         header('Location:/category');
-
     }
 
     public function show_sub_cat($cat_id){
         $category=  $this->model('Category');
         $cat = $category->get_sub_cat([$cat_id]);
 
-        $this->view('home' . DIRECTORY_SEPARATOR . 'index', ["cat" => $cat,"form_id"=>2]);
+        $this->view('home' . DIRECTORY_SEPARATOR . 'index', ["sub_cat" => $cat,"form_id"=>2]);
         $this->view->pageTitle = 'Top Members in One Exam';
         $this->view->render();
     }
-
-
 }
 ?>
