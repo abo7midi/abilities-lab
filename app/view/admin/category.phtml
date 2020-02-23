@@ -1,5 +1,5 @@
-
 <?php
+
 include "side_bar.phtml";
 ?>
 
@@ -29,14 +29,14 @@ include "side_bar.phtml";
                     echo ' <td>'.$category["Created_By"].'</td>';
                     echo ' <td >'.$category["cat_updated_at"].'</td>';
 
-                   echo " <td><a href='/category/edit/".$category["cat_id"]. "'class='glyphicon glyphicon-edit edit'></a>&nbsp;&nbsp;&nbsp;
-                                            <a href='/category/delete/".$category["cat_id"]. "'class='glyphicon glyphicon-trash cat-trash'></a>&nbsp;&nbsp;&nbsp;";
+                   echo " <td><a href='/category/edit/".$category["cat_id"]. "'class='fa fa-edit edit'></a>&nbsp;&nbsp;&nbsp;
+                                            <a href='/category/delete/".$category["cat_id"]. "'class='fa fa-trash-o cat-trash'></a>&nbsp;&nbsp;&nbsp;";
 //
                     if ($category["cat_state"] == 0) {
-                        echo  ' <a href="/category/active/'.$category["cat_id"].'" class=" glyphicon glyphicon-remove-sign cat-non-active"></a></td>';
+                        echo  ' <a href="/category/active/'.$category["cat_id"].'" class=" fa fa-remove cat-non-active"></a></td>';
 
                     }elseif ($category["cat_state"] == 1){
-                        echo '<a href="/category/nonactive/'.$category["cat_id"].'" class="glyphicon glyphicon-ok-sign cat-actived"></a>';
+                        echo '<a href="/category/nonactive/'.$category["cat_id"].'" class="fa fa fa-check-circle cat-actived"></a>';
                     }
 
                     echo "</td>";

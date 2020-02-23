@@ -1,0 +1,88 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+<input type="text" name="search" id="search">
+<div id="result"></div>
+<div id="result2"></div>
+
+
+<script>
+    var jq = $.noConflict();
+jq(document).ready(function () {
+    function search_Exams(){
+        var searchTxt=jq("#search").val();
+        console.log(searchTxt);
+        // var selectd=jq("select#subcat").children("option:selected").val();
+        // var loading="<button class='btn btn-primary' disabled><span class='spinner-border spinner-border-sm'></span>Loading..</button>";
+        jq.ajax({
+            url:"/home/search",
+            method:"POST",
+            data:{
+                search:searchTxt
+            },
+            /*beforeSend:function() {
+                jq('#loadingDiv').html(loading);
+            }
+            ,*/
+                success:function(data)
+                {
+
+                    html='';
+                    jq('#result').html(html);
+                    var exams=JSON.parse(data);
+                    // alert(d)
+                    var count=1;
+                    html='<select name="resultSelect" id="resultSelect">';
+                    jq.each( exams.data, function( index, row ) {
+                        html+="<option value='"+row.exam_id+"' >"+row.exam_name+"</option>";
+                    });
+                    html+="</select>";
+                    jq('#result').html(html);
+                }
+            });
+    };
+
+    jq("#search").keyup(function () {
+        search_Exams();
+    });
+/******************************************************************************/
+    function result_Exams(){
+        var searchTxt=jq("#resultSelect").val();
+        console.log(searchTxt);
+        // var selectd=jq("select#subcat").children("option:selected").val();
+        // var loading="<button class='btn btn-primary' disabled><span class='spinner-border spinner-border-sm'></span>Loading..</button>";
+        jq.ajax({
+            url:"/home/showCategoryExams",
+            method:"POST",
+            data:{
+                resultSelect:searchTxt
+            },
+            /*beforeSend:function() {
+                jq('#loadingDiv').html(loading);
+            }
+            ,*/
+            success:function(data)
+            {
+                html='';
+                var exams=JSON.parse(data);
+                alert(data);
+                console.log(data);
+                jq.each( exams.data, function( index, row ) {
+                    html+="<br><a type=\"button\"  href=\"/exam/takeExam/'"+row.exam_id+"'\" class=\"btn btn-info\" >"+row.exam_name+"</a>";
+
+                });
+                //jq('#result2').html(html);
+                alert(html);
+            }
+        });
+    };
+
+
+    jq("select").change(function () {
+        alert("lklkn");
+    })
+});
+
+</script>

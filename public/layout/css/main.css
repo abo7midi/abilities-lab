@@ -24,6 +24,7 @@
   background-color: rgba(0, 0, 0, 0.3);
 }
 body {background-color: #ffffff}
+.login-body{ background-color: #44b7b92e}
 #contents {
   position: relative;
   transition: .3s;

@@ -45,15 +45,14 @@ class Category
         $oStmt = $this->db->preparation('UPDATE categories SET Existing = 0 WHERE cat_id = ?');
         return $oStmt->execute($id);
     }
-
-
+    
     public function update($aData)
     {
         $oStmt = $this->db->preparation('UPDATE categories
                                           SET cat_name=:name , cat_description=:description,
                                           cat_updated_at=now(),
                                           cat_main_cat=:cat,
-                                          user_id=:userID
+                                          user_id=:userID 
                                           WHERE cat_id=:id ');
         return $oStmt->execute($aData);
 
