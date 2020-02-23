@@ -1,0 +1,74 @@
+<?php
+
+include "side_bar.phtml";
+?>
+
+<h1 class="text-center"> Manage Categories <?php
+
+//    $p = array("controller" => Admin::class, );
+
+    ?></h1>
+<div class="container-fluid">
+    <div class="table-responsive">
+        <table class="main-table text-center table table-bordered">
+            <tr>
+                <td>#ID</td>
+                <td>Name</td>
+                <td>Created By</td>
+                <td>Created At</td>
+                <td>Updated By</td>
+                <td>Updated At</td>
+                <td>Control</td>
+            </tr>
+            <?php
+
+                $request = trim($_SERVER['REQUEST_URI'],'/');
+
+                if (!empty($request)) {
+                  $url=explode('/',$request);
+                  $this->controller=isset($url[0])?$url[0].'Controller':'homeController';
+                  $this->action=isset($url[1])?$url[1]:'index';
+
+                  unset($url[0],$url[1]);
+
+                  $this->params= $url[2];
+                }
+
+
+            if (array_key_exists('subCategories',$this->view_data)){
+
+                foreach ($this->view_data['subCategories'] as $category) {
+
+                        if ($url[2] == $category['cat_main_cat'] ) {
+
+                            echo '<tr class="bel">';
+                            echo ' <td>' . $category["cat_id"] . '</td>';
+                            echo ' <td>' . $category["cat_name"] . '</td>';
+                            echo ' <td>' . $category["Created_By"] . '</td>';
+                            echo ' <td>' . $category["cat_created_at"] . '</td>';
+                            echo ' <td>' . $category["Created_By"] . '</td>';
+                            echo ' <td >' . $category["cat_updated_at"] . '</td>';
+
+                            echo " <td><a href='/category/edit/" . $category["cat_id"] . "'class='fa fa-edit edit'></a>&nbsp;&nbsp;&nbsp;
+                                            <a href='/category/delete/" . $category["cat_id"] . "'class='fa fa-trash-o cat-trash'></a>&nbsp;&nbsp;&nbsp;";
+//
+                            if ($category["cat_state"] == 0) {
+                                echo ' <a href="/category/active/' . $category["cat_id"] . '" class=" fa fa-remove cat-non-active"></a></td>';
+
+                            } elseif ($category["cat_state"] == 1) {
+                                echo '<a href="/category/nonactive/' . $category["cat_id"] . '" class="fa fa fa-check-circle cat-actived"></a>';
+                            }
+
+                            echo "</td>";
+                            echo "</tr>";
+
+                        }
+                    }
+            }
+
+            ?>
+        </table>
+    </div>
+    <a href="/category/add/" class="btn btn-info btn-block"><i class="glyphicon glyphicon-plus"></i> Add New Category</a>
+</div>
+

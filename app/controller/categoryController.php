@@ -65,7 +65,7 @@ class categoryController extends Controller
         }
 //        $this->view('admin'.DIRECTORY_SEPARATOR.'addCategory');
         $this->model('Admin');
-        $this->view('admin'.DIRECTORY_SEPARATOR.'addCategory',['categories'=>$this->model->allCategories(),'admins' => $this->model->all()]);
+        $this->view('admin'.DIRECTORY_SEPARATOR.'addCategory',['mainCategories'=>$this->model->allMainCategories(),'admins' => $this->model->all()]);
 
 
         $this->view->pageTitle='admin category';
