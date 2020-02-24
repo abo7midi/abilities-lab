@@ -66,14 +66,11 @@ class userController extends Controller
                     );
 
                     $this->model('Users');
-
-
                     if ($this->model->add($post)) {
                         Message::setMessage(1,'main', 'تم اضافة المستخدم بنجاح');
                     }
                 }
             }
-
         }
 
         $category=  $this->model('Category');
@@ -82,8 +79,6 @@ class userController extends Controller
         foreach ($cat as $parent){
             array_push($sub_cat,$category->get_sub_cat([$parent['cat_id']]));
         }
-        print_r($sub_cat);
-
         # show form view  to add new user
         $this->view('home'.DIRECTORY_SEPARATOR.'index',["sub_cat" => $sub_cat,"cat" => $cat,"form_id"=>1]);
         $this->view->pageTitle='Add New User';
