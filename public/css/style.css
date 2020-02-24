@@ -44,7 +44,7 @@ a:hover {
 
 .navbar-expand-lg,
 .navbar-brand{
-  padding: 0px;
+  padding: 0px !important;
 }
 .navbar-brand {
   margin-left: 30px
@@ -61,7 +61,23 @@ a:hover {
   color: #1abc9c;
   color: #1abc9c;
 }
-
+.main-nav img {
+  max-width: 70% !important;
+  max-height: 70% !important;
+}
+.main-nav ul {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+.main-nav a {
+  padding: 0 !important;
+}
+.main-nav .logout {
+  font-size: 14px;
+  padding: 5px !important;
+  color: #37b2b5 !important;
+  border: 1px solid #37b2b5;
+}
 /*end navbar*/
 
 /*********************************** START ERROR MODEL ********************************/
@@ -1207,7 +1223,6 @@ p {
 /* About Section */
 .about {
 
-  margin-top: 30px;
   margin-bottom: 30px;
   background-color: #eaf5f2;
   padding: 47px;
@@ -2075,3 +2090,95 @@ div.answers p {
   transform: rotate(-360deg);
   right: 61px;
 }
+/******************* about us ******************************/
+.no-padding {
+  padding-right: 0;
+  padding-left: 0;
+}
+.about-row {
+  padding: 50px 0;
+  font-family: 'Open Sans', sans-serif;
+  background-color: #37B2B5;
+}
+.about-row .inner-about-row {
+  text-align: center;
+  color: #fff;
+  height: 400px;
+}
+.about-row .inner-about-row h1 {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 55px;
+}
+.about-row .input-group .form-control {
+  padding: 20px 10px 20px 50px;
+  height: auto;
+  font-size: 1.1em;
+  line-height: 1.3em;
+  border: none;
+}
+.about-row .input-group btn {
+  padding: 20px 10px 20px 50px;
+  height: 60px;
+}
+h4 {
+  -moz-transition: all 0.35s ease;
+  -ms-transition: all 0.35s ease;
+  -o-transition: all 0.35s ease;
+  -webkit-transition: all 0.35s ease;
+  background-color: #F4F4F1;
+  border-bottom: 3px solid #20c4ae;
+  margin: 0;
+  padding: 18px 15px;
+  transition: all 0.35s ease;
+  font-weight: 500;
+}
+h4:hover {
+  background-color: #37B2B5;
+  color: #0d4e45;
+  cursor: pointer;
+}
+h4::before {
+  content: "\276f";
+  font-size: 18px!important;
+  float: left;
+  line-height: 30px;
+  margin: 0 15px 0 5px;
+  opacity: 0.5;
+  -moz-transition: all 0.15s ease;
+  -ms-transition: all 0.15s ease;
+  -o-transition: all 0.15s ease;
+  -webkit-transition: all 0.15s ease;
+  transition: all 0.15s ease;
+}
+h4.faqsup {
+  cursor: pointer;
+}
+h4.faqsup::after {
+  content: "\2715";
+  float: right;
+  font-size: 11px;
+  font-weight: 300;
+  line-height: 30px;
+}
+h4.faqsup::before {
+  -moz-transform: rotate(-90deg) !important;
+  -ms-transform: rotate(-90deg) !important;
+  -o-transform: rotate(-90deg) !important;
+  -webkit-transform: rotate(-90deg) !important;
+  transform: rotate(-90deg) !important;
+}
+#faqs-accordion {
+  margin: 40px auto 0;
+  padding: 0 5%;
+}
+div.answers {
+  background: #fff;
+  margin-bottom: 20px;
+  line-height: 1.8em;
+}
+div.answers p {
+  font-weight: 400;
+  margin: 0;
+  padding: 25px 50px;
+}
+/******************* about us ******************************/

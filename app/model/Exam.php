@@ -41,7 +41,7 @@ class Exam
     public function add(array $aData)
     {
 
-        $oStmt = $this->db->preparation('insert into exams values(?,?,?,?,?,?,?,?,?,?,?,?,?,null)');
+        $oStmt = $this->db->preparation('insert into exams values(?,?,?,?,?,?,?,?,?,?,?,?,?,now())');
 
         return $oStmt->execute($aData);
 
