@@ -138,7 +138,7 @@ class userController extends Controller
 
     public function logout(){
         session_destroy();
-        header("location:/user/index");
+        header("location:/home/index");
     }
 //---------------------------------------------------start update user----------------------------------------------------------------------
 
