@@ -5,7 +5,8 @@ class DB {
 
    const DB_USER = 'root';
    const DB_PASS = '';
-    private  $dsn="mysql:host=localhost;dbname=examinatios";
+
+    private  $dsn="mysql:host=localhost;dbname=examinations";
     private static $PDO_OBJECT;
 
 

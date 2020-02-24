@@ -10,7 +10,8 @@ class sampleController extends Controller
             $sample_state=1;
             $exam_id =  $_SESSION['exam_id'];
             $t_mark =  $_SESSION['total_mark'];
-            $_SESSION['sample_id'] = $s_id = uniqid();
+            $s_id = uniqid();
+            $_SESSION['sample_id'] = $s_id;
             $sample = [
                 $s_id,
                 $sample_name,

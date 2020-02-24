@@ -14,6 +14,7 @@
         <tr>
             <td><h4>User_name</h4></td>
             <td><h4>Marks</h4></td>
+            <td><h4>No.Exams</h4></td>
 
 
 
@@ -27,8 +28,9 @@
 //            $exam_name =$row['exam_name'];
             ?>
             <tr>
-                <td><?php echo $user_name?></td>
+                <td><a href="/exam/student_profile/<?php echo $user_id ?>"><?php echo $user_name?></a></td>
                 <td><?php echo $marks ?></td>
+                <td><?php echo $row['rows'] ?></td>
 
 
 

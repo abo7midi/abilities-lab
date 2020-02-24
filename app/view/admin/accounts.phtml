@@ -1,5 +1,4 @@
 <?php
-
 include "side_bar.phtml";
 ?>
 
@@ -30,11 +29,11 @@ include "side_bar.phtml";
                     <td>Control</td>
                 </tr>
                     <?php
-                     if (array_key_exists('admins',$this->view_data)){
+                     if (array_key_exists('allAdmins',$this->view_data)){
 
                       $table='';
 
-                      foreach ($this->view_data['admins'] as $account) {
+                      foreach ($this->view_data['allAdmins'] as $account) {
 
                               $table.='<tr class="bel">';
                               $table.=' <td>'.$account["user_id"].'</td>';

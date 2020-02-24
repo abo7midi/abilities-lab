@@ -188,6 +188,10 @@ function preview(input) {
 		$form_signup.find('input[type="email"]').toggleClass('has-error').next('span').toggleClass('is-visible');
 	});
 
+	$(document).ready( function () {
+		$('#myTable').DataTable();
+	} );
+
 
 
 });

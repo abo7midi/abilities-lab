@@ -13,6 +13,11 @@ class Category
     {
         $this->db=new Model();
     }
+
+    public function all()
+    {
+        return $this->db->query("select users.*, groups.group_name as groupName from users INNER JOIN groups on users.group_id = groups.group_id WHERE Existing =-1");
+    }
 //
     public function allSubCate()
     {
@@ -36,7 +41,10 @@ class Category
         $oStmt = $this->db->preparation('insert into categories(cat_name,cat_description,cat_created_at,cat_main_cat,user_id) values(?,?,now(),?,?)');
 
         return $oStmt->execute($aData);
+    }
 
+    public function allCategories(){
+        return $this->db->query('select * from categories WHERE Existing = 1');
     }
 
     //

@@ -116,14 +116,14 @@ abstract class Message
       switch (Message::getMessage('msgState')) {
         case 0:
             if ($key=='main') {
-                $view='<div class="alert alert-danger" role="alert">'.Message::getMessage('main').'</div>';
+                $view=Message::getMessage('main');
             }
             else {
-              $view='<div class="alert alert-danger" role="alert">'.Message::getMessage($key).'</div>';
+              $view=Message::getMessage($key);
             }
           break;
         case 1:
-                $view='<div class="alert alert-success" role="alert">'.Message::getMessage($key).'</div>';
+                $view=Message::getMessage($key);
           break;
       }
     return $view;

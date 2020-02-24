@@ -95,7 +95,10 @@ class Exam
 
     }
     public function getExamDetails($s_id){
-        $Stmt = $this->db->preparation("select user_exam.user_id as e_u_id,user_exam.exam_id as exam_id,user_exam_date,users.full_name as full_name,user_exam_result as degrees from user_exam left join users on users.user_id=user_exam.user_id  where user_exam.sample_id=? GROUP BY user_exam.user_id ORDER BY degrees DESC");
+        $Stmt = $this->db->preparation("select user_exam.user_id as e_u_id,user_exam.exam_id as exam_id,user_exam_date,users.full_name as full_name,user_exam_result as degrees
+                                            from user_exam left join users on users.user_id=user_exam.user_id  where user_exam.sample_id=? 
+                                             GROUP BY user_exam.user_id ORDER BY degrees DESC");
+
         $Stmt->execute($s_id);
         return $Stmt->fetchAll();
 
@@ -129,7 +132,12 @@ class Exam
 
     public function top_members()
     {
-        $Stmt = $this->db->preparation('select SUM(user_exam_result) as degrees , user_name , user_exam.user_id from user_exam left join users on users.user_id=user_exam.user_id GROUP BY user_exam.user_id ORDER BY degrees DESC ');
+        $Stmt = $this->db->preparation('select SUM(t1.user_exam_result) as degrees , user_name , t1.user_id,count(*) rows 
+                                            from user_exam t1 left join users on users.user_id=t1.user_id 
+                                            WHERE t1.user_exam_date = (SELECT MAX(t2.user_exam_date)
+                                            FROM user_exam t2
+                                            WHERE t2.user_id = t1.user_id and t2.sample_id=t1.sample_id)
+                                            GROUP BY t1.user_id ORDER BY degrees DESC ');
 
         $Stmt->execute();
         return $Stmt->fetchAll();
@@ -169,6 +177,16 @@ class Exam
         return $Stmt->fetchAll();
 
     }
+
+    public function student_profile($u_id)
+    {
+        $Stmt = $this->db->preparation('select * from users where user_id=?');
+
+        $Stmt->execute($u_id);
+        return $Stmt->fetchAll();
+
+    }
+
 
     public function search_exams($examName)
     {

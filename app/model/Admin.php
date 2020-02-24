@@ -19,6 +19,10 @@ class Admin
         return $this->db->query("select users.*, groups.group_name as groupName from users INNER JOIN groups on users.group_id = groups.group_id WHERE Existing =-1");
     }
 
+    public function allCategories(){
+        return $this->db->query('select * from categories WHERE Existing = 1');
+    }
+
     public function allAdmin()
     {
         return $this->db->query("select users.*, groups.group_name as groupName from users INNER JOIN groups on users.group_id = groups.group_id WHERE Existing =-1 AND users.group_id = 1 AND users.user_state = 1");

@@ -7,11 +7,7 @@ class userController extends Controller
 {
     public function index()
     {
-        $this->model('Users');
-        $this->view('admin'.DIRECTORY_SEPARATOR.'index',['accounts'=>$this->model->all()]);
-
-        $this->view->pageTitle='admin index';
-        $this->view->render();
+        header("location:/home/index");
     }
 
 //
@@ -73,11 +69,10 @@ class userController extends Controller
                 }
 
 
-                $this->model('Users');
-
-
-                if ($this->model->add($post)) {
-                    Message::setMessage(1,'main', 'تم اضافة المستخدم بنجاح');
+                    $this->model('Users');
+                    if ($this->model->add($post)) {
+                        Message::setMessage(1,'main', 'تم اضافة المستخدم بنجاح');
+                    }
                 }
             }
         }
@@ -89,7 +84,6 @@ class userController extends Controller
         foreach ($cat as $parent){
             array_push($sub_cat,$category->get_sub_cat([$parent['cat_id']]));
         }
-
 
         # show form view  to add new user
         $this->view('home'.DIRECTORY_SEPARATOR.'index',["sub_cat" => $sub_cat,"cat" => $cat,"form_id"=>1]);

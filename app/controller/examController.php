@@ -16,12 +16,7 @@ class examController extends Controller
     public function endExam()
     {
         $_SESSION['qns_n']=1;
-        return var_dump('xxxxxxxxxxxxxxx');
 
-////        $this->model('Exam');
-////        $this->view('home' . DIRECTORY_SEPARATOR . 'exam', ['exam' => $this->model->all()]);
-////        $this->view->pageTitle = 'exam';
-////        $this->view->render();
     }
 
     public function exama()
@@ -34,15 +29,14 @@ class examController extends Controller
 
     public function add()
     {
-//        return var_dump( $_SESSION);
         if (!(Session::get("userGroup") == 2)) {
             header("location:/home/index");
         }
         $category = $this->model('Category');
+
         // check if there submit
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION['qns_n']=1;
-            //$validate=Validation::required(['name','no_q','total_mark','pass_mark','duration','category','level']);
             $validate = \Validation::validate([
                 'name' => array(['required' => 'required']),
                 'no_q' => array(['required' => 'required', 'minVal' => 1, "maxVal" => 100]),
@@ -53,7 +47,6 @@ class examController extends Controller
             ]);
 
             # add new record to the database
-
             if (count($validate) == 0) {
                 if (Validation::logicCheck($_POST['total_mark'], "<", $_POST['pass_mark'], "pass mark field should be less than full mark field") !== false) {
                     # prepare the array of post to send it to News model to insert to news table
@@ -68,7 +61,6 @@ class examController extends Controller
                     $desc = Validation::test_input($_POST['desc']);
                     $price = Validation::test_input($_POST['price']);
                     $_SESSION['exam_id'] = $id = uniqid();
-
 
                     switch ($level) {
                         case 'h':
@@ -112,9 +104,6 @@ class examController extends Controller
                     $sample->add(1);
                 }
             }
-//            else{
-//                Helper::back("/exam/add");
-//            }
         }
         $this->view('home' . DIRECTORY_SEPARATOR . 'addExam', ["category" => $category->allSubCate()]);
         $this->view->pageTitle = 'exam';
@@ -124,6 +113,11 @@ class examController extends Controller
     /**********************************     take Exam    ******************************/
     public function takeExam($Examid)
     {
+
+        if (!(Session::get("userGroup") == 3)) {
+            Message::setMessage("unauth","you should be login as a student",0);
+            header("location:/home/index");
+        }
         $exam = $this->model('Exam');
         $sample = $this->model('Sample');
         $Q = $this->model('Question');
@@ -246,17 +240,16 @@ class examController extends Controller
         foreach ($ex_exams as $ex) {
             array_push($samples, $sample->getExamSamples([$ex['exam_id']]));
         }
-        $this->view('admin' . DIRECTORY_SEPARATOR . 'details_for_examiner', ["ex_exams" => $ex_exams, "samples_ex" => $samples]);
-        $this->view->pageTitle = 'Details for examiner';
+
+        $this->view('home'.DIRECTORY_SEPARATOR.'details_for_examiner',["ex_exams"=>$ex_exams,"samples_ex"=>$samples]);
+        $this->view->pageTitle='Details for examiner';
         $this->view->render();
     }
-
-    public function who_do_exam($s_id)
-    {
-        $exam = $this->model('Exam');
-        $u_exams = $exam->getExamDetails([$s_id]);
-        $this->view('admin' . DIRECTORY_SEPARATOR . 'who_do_exam', ["u_exams" => $u_exams]);
-        $this->view->pageTitle = 'who_do_exam';
+    public function who_do_exam($s_id){
+        $exam=$this->model('Exam');
+        $u_exams= $exam->getExamDetails([$s_id]);
+        $this->view('home'.DIRECTORY_SEPARATOR.'who_do_exam',["u_exams"=>$u_exams]);
+        $this->view->pageTitle='who_do_exam';
         $this->view->render();
     }
 
@@ -372,6 +365,14 @@ class examController extends Controller
 
     }
 
+    public function student_profile($u_id){
+        $exam = $this->model('Exam');
+        $exams = $exam->student_profile([$u_id]);
+
+        $this->view('home' . DIRECTORY_SEPARATOR . 'student_profile', ["student" => $exams]);
+        $this->view->pageTitle = 'student_profile';
+        $this->view->render();
+    }
 }
 
 ?>

@@ -143,21 +143,11 @@ $this->view->pageTitle='this page of about Us';
              $this->index();
              return ;
            }
-
-
-
-
-
-
    }
    else {
      $this->index();
      return ;
    }
-
-
-
-
 
   }
 

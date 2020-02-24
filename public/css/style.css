@@ -64,7 +64,88 @@ a:hover {
 
 /*end navbar*/
 
+/*********************************** START ERROR MODEL ********************************/
+.modal-confirm {
+  color: #434e65;
+  width: 525px;
+}
+.modal-confirm .modal-content {
+  padding: 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: none;
+}
+.modal-confirm .modal-header {
+  background: #e85e6c;
+  border-bottom: none;
+  position: relative;
+  text-align: center;
+  margin: -20px -20px 0;
+  border-radius: 5px 5px 0 0;
+  padding: 35px;
+}
+.modal-confirm h4 {
+  text-align: center;
+  font-size: 36px;
+  margin: 10px 0;
+}
+.modal-confirm .form-control, .modal-confirm .btn {
+  min-height: 40px;
+  border-radius: 3px;
+}
+.modal-confirm .close {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  color: #fff;
+  text-shadow: none;
+  opacity: 0.5;
+}
+.modal-confirm .close:hover {
+  opacity: 0.8;
+}
+.modal-confirm .icon-box {
+  color: #fff;
+  width: 95px;
+  height: 95px;
+  display: inline-block;
+  border-radius: 50%;
+  z-index: 9;
+  border: 5px solid #fff;
+  padding: 15px;
+  text-align: center;
+  margin: auto;
+}
+.modal-confirm .icon-box i {
+  font-size: 58px;
+  margin: -2px 0 0 -2px;
 
+}
+.modal-confirm.modal-dialog {
+  margin-top: 80px;
+}
+.modal-confirm .btn {
+  color: #fff;
+  border-radius: 4px;
+  background: #eeb711;
+  text-decoration: none;
+  transition: all 0.4s;
+  line-height: normal;
+  border-radius: 30px;
+  margin-top: 10px;
+  padding: 6px 20px;
+  min-width: 150px;
+  border: none;
+}
+.modal-confirm .btn:hover, .modal-confirm .btn:focus {
+  background: #eda645;
+  outline: none;
+}
+.trigger-btn {
+  display: inline-block;
+  margin: 100px auto;
+}
+/*********************************** END ERROR MODEL ********************************/
 /*slider*/
 .slider img{
   height: 500px;
@@ -1054,5 +1135,44 @@ form.form_exam .btn-block {
 }
 .form .btnendexam:hover{
   background: #44b7b9;
+}
+
+#time {
+  background: #fff;
+  width: 15%;
+  margin: auto;
+  border-top: 0;
+  box-shadow: 2px 2px 2px #999;
+  text-align: center;
+  color: #37b2b5;
+  font-size: 24px;
+  position: fixed;
+  top:16%;
+  font-weight: lighter;
+  z-index: 9999;
+}
+#time div{
+  display: inline;
+}
+
+#time div small{
+  color: #999;
+  font-size: 11px
+}
+@media screen and (max-width: 600px) {
+  #time {
+    top: 10%;
+    font-size: 14px;
+    width: 9%;
+    text-align: left;
+
+  }
+  #time div small{
+    font-size: 10px
+  }
+  #time div{
+    margin: 6px 2px;
+    display: block;
+  }
 }
 /***************************** END TAKE EXAM PAGE *************************************/
