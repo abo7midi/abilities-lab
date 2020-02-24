@@ -88,7 +88,7 @@ class Exam
     }
 
     public function getExaminer_exams($u_id){
-        $Stmt = $this->db->preparation("select * from exams where user_id=?");
+        $Stmt = $this->db->preparation("select e.* ,COUNT(s.sample_id) sampleNo from exams e INNER join samples s using (exam_id) group by e.exam_id  having user_id=? ");
         $Stmt->execute($u_id);
         return $Stmt->fetchAll();
 
@@ -104,6 +104,15 @@ class Exam
 
 
     }
+
+    public function activateExam(array $aData)
+    {
+        $oStmt = $this->db->preparation('update  exams set exam_state =:exam_state WHERE exam_id=:exam_id');
+        return $oStmt->execute($aData);
+
+    }
+
+
 
     public function dismit_exam($e_id)
     {

@@ -7,7 +7,6 @@ html * {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
 *, *:after, *:before {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -1232,7 +1231,6 @@ p {
   padding: 30px;
   border-radius: 5px;
   margin: 50px 0px;
-  height: 5h400px;
 }
 
 .inner_about p {
@@ -2181,4 +2179,44 @@ div.answers p {
   margin: 0;
   padding: 25px 50px;
 }
-/******************* about us ******************************/
+/******************* end about us ******************************/
+
+
+/******************* START DETAILS EXAMINAR PAGE ******************************/
+.parentActive{
+  text-align: center;
+}
+.Activation1{
+  font-size: 3em;
+  color: #35b1b4;
+}
+.Activation0{
+  font-size: 3em;
+  color: #999;
+  margin: auto;
+}
+.Activation0 i{
+  -moz-transform: scale(-1, 1);
+  -webkit-transform: scale(-1, 1);
+  -o-transform: scale(-1, 1);
+  -ms-transform: scale(-1, 1);
+  transform: scale(-1, 1)
+}
+.tableTitle td{
+  text-align: center;
+  font-weight: bold;
+  background: #37B2B5;
+  color: #fff;
+  font-size: 20px;
+}
+.sampleNo{
+  text-align: center;
+}
+.examName a{
+  color:#0b2e13 !important;
+  font-size: 22px !important;
+
+}
+
+
+/******************* END DETAILS EXAMINAR PAGE ******************************/

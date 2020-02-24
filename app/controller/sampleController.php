@@ -24,7 +24,7 @@ class sampleController extends Controller
                 Message::setMessage(1,'main',' تم اضفة الفئة بنجاح');
             }
 
-        header("location:/question/add");
+
 
     }
 

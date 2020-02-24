@@ -62,7 +62,6 @@ class examController extends Controller
                 $_SESSION['total_mark'] = $total_mark = Validation::test_input($_POST['total_mark']);
                 $pass_mark = Validation::test_input($_POST['pass_mark']);
               //  echo "abc : ". $_POST['question_no'];
-                print_r($_SESSION);
 
                 $duration = Validation::test_input($_POST['duration']);
                 $category = Validation::test_input($_POST['category']);
@@ -108,14 +107,14 @@ class examController extends Controller
                 ];
                 $this->model('Exam');
                 if ($this->model->add($exam)) {
-                    die();
                     Message::setMessage(1, 'main', ' تم اضفة الفئة بنجاح');
+
+                    $this->view('home' . DIRECTORY_SEPARATOR . 'addQuestion');
+                    $this->view->pageTitle = 'exam';
+                    $this->view->render();
+                    return "";
                 }
-
             }
-
-
-
         }
 
 
@@ -130,6 +129,7 @@ class examController extends Controller
 
         if (!(Session::get("userGroup") == 3)) {
             Message::setMessage("unauth","you should be login as a student",0);
+
             header("location:/home/index");
         }
         $exam = $this->model('Exam');
@@ -204,18 +204,6 @@ class examController extends Controller
     /***************************************************************************************/
 
 
-    /************************************************************************************/
-//
-    public function delete($id)
-    {
-        $this->model('Category');
-        $this->model->delete(array(0 => $id));
-        Message::setMessage('status', 1);
-        Message::setMessage('main', 'تم حذف الفئة بنجاح ّ!');
-        header('Location:/category/index');
-
-    }
-
 
 //
     public function edit($id)
@@ -250,12 +238,7 @@ class examController extends Controller
         $sample = $this->model('Sample');
         $u_id = Session::get("userID");
         $ex_exams = $exam->getExaminer_exams([$u_id]);
-        $samples = array();
-        foreach ($ex_exams as $ex) {
-            array_push($samples, $sample->getExamSamples([$ex['exam_id']]));
-        }
-
-        $this->view('home'.DIRECTORY_SEPARATOR.'details_for_examiner',["ex_exams"=>$ex_exams,"samples_ex"=>$samples]);
+        $this->view('home'.DIRECTORY_SEPARATOR.'details_for_examiner',["ex_exams"=>$ex_exams]);
         $this->view->pageTitle='Details for examiner';
         $this->view->render();
     }
@@ -265,6 +248,18 @@ class examController extends Controller
         $this->view('home'.DIRECTORY_SEPARATOR.'who_do_exam',["u_exams"=>$u_exams]);
         $this->view->pageTitle='who_do_exam';
         $this->view->render();
+    }
+
+    public function active()
+    {
+
+        $data = array(
+            ':exam_id' => htmlentities($_REQUEST['id']),
+            ':exam_state' => htmlentities(($_REQUEST['status'] == 1) ? 0 : 1),
+        );
+        $course = $this->model('Exam');
+        $status = ($course->activateExam($data));
+        echo ($_REQUEST['status'] == 1) ? 0 : 1;
     }
 
     public function dismit_exam($e_id)
@@ -340,13 +335,12 @@ class examController extends Controller
 
     }
 
-    public function top_members_one_exam($exma_id)
+    public function top_members_one_exam()
     {
+        $exma_id=$_REQUEST['exam_id'];
         $exam = $this->model('Exam');
         $top = $exam->top_members_one_exam([$exma_id]);
-        $this->view('home' . DIRECTORY_SEPARATOR . 'top_members_one_exam', ["top_M_exam" => $top]);
-        $this->view->pageTitle = 'Top Members in One Exam';
-        $this->view->render();
+        echo json_encode($top);
 
     }
 
@@ -354,10 +348,7 @@ class examController extends Controller
     {
         $this->model('Exam');
         $this->model->activeExamner(array(0 => $id));
-        Message::setMessage('status', 1);
-        Message::setMessage('main', ' OK!');
-        header('Location:/exam/all');
-
+        header("Location:/exam/details");
     }
 
     public function nonactiveExamner($id)
