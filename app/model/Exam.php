@@ -41,7 +41,7 @@ class Exam
     public function add(array $aData)
     {
 
-        $oStmt = $this->db->preparation('insert into exams values(?,?,?,?,?,?,?,?,?,?,?,?,?)');
+        $oStmt = $this->db->preparation('insert into exams values(?,?,?,?,?,?,?,?,?,?,?,?,?,null)');
 
         return $oStmt->execute($aData);
 
@@ -132,7 +132,7 @@ class Exam
 
     public function top_members()
     {
-        $Stmt = $this->db->preparation('select SUM(t1.user_exam_result) as degrees , user_name , t1.user_id,count(*) rows
+        $Stmt = $this->db->preparation('select SUM(t1.user_exam_result) as degrees , user_name , t1.user_id,count(*) rows,image
                                             from user_exam t1 left join users on users.user_id=t1.user_id
                                             WHERE t1.user_exam_date = (SELECT MAX(t2.user_exam_date)
                                             FROM user_exam t2
@@ -172,7 +172,7 @@ class Exam
 
     public function get_exams($cat_id)
     {
-        $Stmt = $this->db->preparation('select * from exams where cat_id=? or exam_id=? and exam_state=1');
+        $Stmt = $this->db->preparation('select *,users.user_name as examiner from exams left join users on exams.user_id=users.user_id where cat_id=? or exam_id=? and exam_state=1');
         $Stmt->execute($cat_id);
         return $Stmt->fetchAll();
 
@@ -186,7 +186,7 @@ class Exam
         return $Stmt->fetchAll();
 
     }
-}
+
 
     public function search_exams($examName)
     {
