@@ -32,6 +32,140 @@ include "header.phtml";
 
 
 <!-- end slider-------------------------------------------------------------->
+
+<section class="about" id="about">
+    <div class="container h-100">
+        <div class="row h-100 justify-content-center align-items-center">
+            <div class="col-12">
+                <div class="title text-center">
+                    <h1 class= "animated slideInDown" style="animation-delay: 1s">Online Exam</h1>
+                    <div class="border"></div>
+                </div>
+                <div class="title text-center" >
+                    <p>
+                        This is the last online examination system you will ever need! With our easy online exam builder you will set up your own engaging exams that fit any kind of difficulty level. Build and create your online exams & tests with great ease and provide your users with appropriate feedback, so they will have a rich learning experience.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+<section class="about" id="about" style="background-color: #fff;">
+    <div class="container h-100">
+        <div class="row h-100 justify-content-center align-items-center">
+            <div class="col-12">
+                <div class="title text-center">
+                    <h1 class= "animated slideInDown" style="animation-delay: 1s">Why use our online examination tool?</h1>
+                    <div class="border"></div>
+                </div>
+                <div class="title text-center" >
+                    <p>Do you need some serious testing software for your students? Or do you need to hand out a lot of certificates? Do you want to easily set up your exam software and invite your participants, or do you need to connect your testing software with your internal software? Start using the Online Exam Builder and this is all within reach. Take a look at all the features and solutions.</p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+
+
+<section class="services" id="services">
+    <div class="container ">
+
+        <div class="row">
+            <div class=" col-md-4 col-sm-6 s_item text-center why2">
+                <div class="s_icon">
+                    <i class="fa fa-twitter animated bounceInRight" style="animation-delay: 1s"></i>
+
+                </div>
+                <h5  class= "animated bounceInLeft" style="animation-delay: 2s">Easy to use</h5>
+                <p class= "animated zoomIn" style="animation-delay: 1s">Our exam builder is simple and easy to use. For students as well as for the administrators. With our online exam builder it's easy to start, which makes it more fun.</p>
+            </div>
+            <div class=" col-md-4 col-sm-6 s_item text-center why2">
+                <div class="s_icon">
+                    <i class="fa fa-twitter animated bounceInRight" style="animation-delay: 1s"></i>
+                </div>
+                <h5 class= "animated bounceInLeft" style="animation-delay: 2s">Looks great on all devices</h5>
+                <p class= "animated zoomIn" style="animation-delay: 1s">It doesn't matter if you are on a phone, tablet or pc: your online exam will look beautiful. Our online examination system is fully responsive, so you can engage your audience on any platform.</p>
+            </div>
+            <div class=" col-md-4 col-sm-6 s_item text-center why2">
+                <div class="s_icon">
+                    <i class="fa fa-twitter animated bounceInRight" style="animation-delay: 1s"></i>
+                </div>
+                <h5 class= "animated bounceInLeft" style="animation-delay: 2s">Awesome support</h5>
+                <p class= "animated zoomIn" style="animation-delay: 1s">Do you have any questions about our online examination software? Our support owls are always by your side and provide you with the best possible support!</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+    <div class="container" align="center">
+        <div class="title text-center">
+            <h1>excellent students</h1>
+            <div class="border"></div>
+        </div>
+
+
+        <section class="best_student slider ">
+            <div class="row" >
+                <?php
+                $i=1;
+                foreach($this->view_data['top'] as $row ){
+                ?>
+                <div class="col-lg-2 col-sm-4 col-6">
+                    <div class="slide">
+                        <p ><?php echo $i++;?></p>
+                        <img src="/pictures/<?php echo $row['image']; ?>">
+                        <h5 ><?php echo $row['user_name']?></h5>
+                    </div>
+                </div>
+                <?php } ?>
+            </div>
+        </section>
+    </div>
+
+<div class="testimonial-section">
+    <div class="inner-width">
+        <h1>What Our Clients Say</h1>
+        <div class="testimonial-pics">
+            <img src="/pictures/p1.png" alt="test-1" class="active">
+            <img src="/pictures/p2.png" alt="test-2">
+            <img src="/pictures/p3.png" alt="test-3">
+            <img src="/pictures/p4.png" alt="test-4">
+        </div>
+
+        <div class="testimonial-contents">
+            <div class="testimonial active" id="test-1">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab consequatur et adipisci ut, impedit cumque, similique, eum tenetur, numquam eligendi aliquid. Nulla sit, cupiditate corporis labore, modi natus officiis asperiores!</p>
+                <span class="description">Emy / Developer</span>
+            </div>
+
+            <div class="testimonial" id="test-2">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elimet, consectetur adipisicing eli t. Ab consequatur et adipisci ut, impedit cumque, similique, eum tenetur, numquam eligendi aliquid. Nulla sit, cupiditate corporis labore, modi natus officiis asperiores!</p>
+                <span class="description">Carla / Developer</span>
+            </div>
+
+            <div class="testimonial" id="test-3">
+                <p>Lorem  similique, eum tenetur, numquam eligendi aliquid. Nulla sit, cupiditate corporis labore, modi natus officiis asperiores!</p>
+                <span class="description">Thomas / Developer</span>
+            </div>
+
+            <div class="testimonial" id="test-4">
+                <p>Lorem ipsum dolorng elit. Ab consequatur et adipisci ut, impedit cumque, similique, eum tenetur, numquam eligendi aliquid. Nulla sit, cupiditate corporis labore, modi natus officiis asperiores!</p>
+                <span class="description">Monica / Developer</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- oooooo -->
 <style>
     .mainCat{
         background: #2f9598;
@@ -230,7 +364,7 @@ border-radius: 0 0 10px 10px;
                 echo '<div class="col-sm-3 examContent">
                 <div class="titleExam">'.$exam['exam_name'].'</div>
                 <p>'.$exam['exam_description'].'</p>
-                <p>'.$exam['studentSample'] .'/'. $exam['allSample'] .'</p>
+                <p>Chances : '.$exam['studentSample'] .'/'. $exam['allSample'] .'</p>
                 <p>';
                 switch ($exam['exam_level']){
                     case 1: echo'<span style="float: left">level : Hard</span>';break;
@@ -257,55 +391,9 @@ border-radius: 0 0 10px 10px;
         </div>
     </div>
 </div>
-<div class="con">
-    <section class="about contact" id="contact">
-        <div class="container">
-            <div class="title text-center">
-                <h1>Our Contact</h1>
-                <div class="border"></div>
-            </div>
-            <div class="row ">
-                <div class="col-xs-12 col-sm-10 col-sm-offset-1">
-                    <div class="inner_about">
-                        <form action="">
-                            <input type="text" name="" id="" placeholder="Full Name" class="form-control">
-                            <input type="email" name="" id="" placeholder="Email Address" class="form-control">
-                            <input type="text" name="" id="" placeholder="Subject" class="form-control">
-                            <textarea name="" id="" class="form-control" placeholder="Message Body"></textarea>
-                            <input type="submit" value="Send" class="btn btn-info">
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-</div>
 
-<footer class="footer">
-    <div class="container">
-        <div class="row">
-            <div class="col-xs-12 col-sm-6">
-                <p>&copy; 2020 By
-                    <a href="#">Ability lab  </a>
-                </p>
-            </div>
-            <div class="col-xs-12 col-sm-6 text-right">
-                <a href="#">
-                    <i class="fa fa-facebook"></i>
-                </a>
-                <a href="#">
-                    <i class="fa fa-instagram"></i>
-                </a>
-                <a href="#">
-                    <i class="fa fa-twitter"></i>
-                </a>
-                <a href="#">
-                    <i class="fa fa-youtube"></i>
-                </a>
-            </div>
-        </div>
-    </div>
-</footer>
+
+
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
@@ -319,7 +407,9 @@ border-radius: 0 0 10px 10px;
             }
 
             function load_Exams(){
+
                 var selectd=jq("select#subcat").children("option:selected").val();
+                alert(selectd);
                 var loading="<button class='btn btn-primary' disabled><span class='spinner-border spinner-border-sm'></span>Loading..</button>";
                 jq.ajax({
                     url:"/home/showCategoryExams",
@@ -344,7 +434,8 @@ border-radius: 0 0 10px 10px;
                                    +row.exam_name
                                    +'</div>'
                                    +'<p>' + row.exam_description + '</p>'
-                                    +'<p>' + row.studentSample + '/' + row.allSample +'</p>'+
+                                    +'<p>Chances :' + row.studentSample + '/' + row.allSample +'</p>'+
+                                    '<p>Examiner: ' + row.examiner + '</p>'
                             '<p>';
                             switch (row.exam_level){
                                 case "1": html+='<span style="float: left">level : Hard</span>';break;

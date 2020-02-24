@@ -15,20 +15,12 @@ class userController extends Controller
 //controller for adding user by admin
     public function add()
     {
-//
-//        $login = array(
-//            ':username' => "kholodk",
-//            ':password' => Hashing::init("123456")
-//        );
-//
-//        $user=$this->model("Users");
-//           print_r( $user->checkLogin($login));
-        // check if there submit
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
 
             $validate= Validation::required(['full_name','username','password','email','phone','group_id']); //sure that first element in array most be null
 
-            if ($_FILES)
+            if (!empty($_FILES["image"]["size"]))
             {
                 $upload = 1;
                 $file = $_FILES["fileToUpload"]["name"];
@@ -39,6 +31,17 @@ class userController extends Controller
             }
 
             if ($validate['status']==1) {
+
+                $post = array(
+                    ':full_name' => htmlentities($_REQUEST['full_name']),
+                    ':user_name' => htmlentities($_REQUEST['username']),
+                    ':user_email' => htmlentities($_REQUEST['email']),
+                    ':phone' => htmlentities($_REQUEST['phone']),
+                    ':user_pass' => Hashing::init($_REQUEST['password']),
+                    ':group_id' => htmlentities($_REQUEST['type']),
+                    ':picture' => !empty($filename) ? $filename : "default.png"
+                );
+
                 function checkemail($us,$ue)
                 {
                     $oStmt = DB::init()->preparation("select user_name,user_email from users WHERE user_name = ? or user_email = ?");
@@ -51,7 +54,6 @@ class userController extends Controller
                         return false;
                     }
                 }
-
                 if (checkemail($_POST["username"], $_POST["email"]) == true) {
                     echo "This Is Existing";
                 } else {
@@ -62,19 +64,17 @@ class userController extends Controller
                         ':phone' => htmlentities($_REQUEST['phone']),
                         ':user_pass' => Hashing::init($_REQUEST['password']),
                         ':group_id' => htmlentities($_REQUEST['type']),
-                        ':picture' => $filename
+                        ':picture' => !empty($filename) ? $filename : "default.png"
                     );
+                }
 
                     $this->model('Users');
-
-
                     if ($this->model->add($post)) {
                         Message::setMessage(1,'main', 'تم اضافة المستخدم بنجاح');
                     }
-                }
             }
-
         }
+
 
         $category=  $this->model('Category');
         $cat = $category->get_category();
@@ -82,8 +82,6 @@ class userController extends Controller
         foreach ($cat as $parent){
             array_push($sub_cat,$category->get_sub_cat([$parent['cat_id']]));
         }
-        print_r($sub_cat);
-
         # show form view  to add new user
         $this->view('home'.DIRECTORY_SEPARATOR.'index',["sub_cat" => $sub_cat,"cat" => $cat,"form_id"=>1]);
         $this->view->pageTitle='Add New User';
@@ -130,16 +128,14 @@ class userController extends Controller
             $this->view('admin'.DIRECTORY_SEPARATOR.'addUser');
             $this->view->pageTitle='login User';
             $this->view->render();
-
-
         } else {
             $this->model('Admin');
             $this->view('admin'.DIRECTORY_SEPARATOR.'errorPage');
             $this->view->pageTitle='Error';
             $this->view->render();
-
         }
     }
+
     public function logout(){
         session_destroy();
         header("location:/home/index");

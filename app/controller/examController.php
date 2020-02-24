@@ -54,7 +54,7 @@ class examController extends Controller
                     $name = ucwords(strtolower($name));
                     $_SESSION['total_mark'] = $total_mark = Validation::test_input($_POST['total_mark']);
                     $pass_mark = Validation::test_input($_POST['pass_mark']);
-                    $_SESSION['number_que'] = $no_q = Validation::test_input($_POST['no_q']);
+                    $_SESSION['number_que'] = $no_q = $_POST['no_q'];
                     $duration = Validation::test_input($_POST['duration']);
                     $category = Validation::test_input($_POST['category']);
                     $level = Validation::test_input($_POST['level']);

@@ -302,8 +302,8 @@ h1{
 }
 
 .main-table tr:first-child td { /* You Can Use T Head */
-    background-color: #44b7b9;
-    color: #ffffff;
+    /*background-color: #44b7b9;*/
+    color: #000000;
     font-weight: bold;
 }
 
