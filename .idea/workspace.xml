@@ -2,19 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6a7219bf-f161-44d8-8f52-80819c55d6ea" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/view/home/about.phtml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/view/home/contact.phtml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/view/home/exam.phtml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/view/home/faq.phtml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/controller/examController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controller/examController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controller/homeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controller/homeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/model/Exam.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/model/Exam.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/view/header.phtml" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/header.phtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/view/home/addExam.phtml" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/home/addExam.phtml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/view/home/addQuestion.phtml" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/home/addQuestion.phtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/view/home/index.phtml" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/home/index.phtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/view/home/search.phtml" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/home/search.phtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/style.css" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -139,6 +130,8 @@
       <workItem from="1582525695811" duration="2191000" />
       <workItem from="1582528760769" duration="1446000" />
       <workItem from="1582531585216" duration="8470000" />
+      <workItem from="1582545911886" duration="1032000" />
+      <workItem from="1582551760915" duration="6890000" />
     </task>
     <servers />
   </component>

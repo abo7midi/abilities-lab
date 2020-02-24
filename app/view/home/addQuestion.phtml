@@ -189,6 +189,9 @@
     <!--    --><?php //return var_dump($_SESSION) ?>
 
     <?php
+
+    print_r($_SESSION);
+
     if (isset($_SESSION['qns_n'])?$_SESSION['qns_n']:1 < isset($_SESSION['number_que'])?$_SESSION['number_que']:2 )
     { ?>
     <div id="div_form">
