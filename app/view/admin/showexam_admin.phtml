@@ -1,0 +1,90 @@
+<?php
+include "side_bar.phtml";
+?>
+
+
+<html>
+<head>
+
+
+
+    <link href="media/css/jquery.dataTables.min.css" rel="stylesheet">
+
+
+
+</head>
+<body>
+
+
+<h1 class="text-center"> Manage Exams</h1>
+
+<div class="container-fluid">
+    <div class="table-responsive">
+
+<table id="myTable" class="main-table text-center table table-bordered">
+    <thead  style="background-color: #44b7b9">
+    <tr style="color: white">
+
+        <th>Name_exam</th>
+        <th>Name</th>
+        <th>Categories</th>
+        <th>Create Date</th>
+        <th>Control</th>
+    </tr>
+
+    </thead>
+    <tbody>
+    <tr>
+    <?php
+    if (array_key_exists('adminexam', $this->view_data)) {
+
+        $table = '';
+
+        foreach ($this->view_data['adminexam'] as $exams) {
+
+
+            $table .= '<tr >';
+            $table .= ' <input type="hidden" ' . $exams["exam_id"] . '>';
+            $table .= ' <td>' . $exams["exam_name"] . '</td>';
+            $table .= ' <td>' . $exams["user_name"] . '</td>';
+            $table .= ' <td >' . $exams["cat_name"] . '</td>';
+            $table .= ' <td>' . $exams["create_Date_exam"] . '</td>';
+
+            $table .= ' <td>';
+            if ($exams["exam_state"] == 0) {
+                $table .= ' <a href="/examadmin/ExamActive/' . $exams["exam_id"] . '" class=" fa fa-remove  non-active non-active-exam"></a></td>';
+
+            } elseif ($exams["exam_state"] == 1) {
+                $table .= '<a href="/examadmin/ExamdisActive/' .$exams["exam_id"] . '" class="fa fa-check-circle actived active-exam">
+</a>';
+            }
+
+            $table .= "</td>";
+            $table .= "</tr>";
+
+        }
+
+        echo $table;
+    }
+
+    ?>
+    </tr>
+    </tbody>
+
+</table>
+    </div>
+</div>
+
+<script src="media/js/jquery.js"></script>
+<script src="media/js/jquery.dataTables.min.js"></script>
+<script>
+    $(document).ready(function(){
+        $("#myTable").dataTable();
+    });
+
+</script>
+
+
+</body>
+</html>
+

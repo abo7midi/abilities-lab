@@ -7,11 +7,7 @@ class userController extends Controller
 {
     public function index()
     {
-        $this->model('Users');
-        $this->view('admin'.DIRECTORY_SEPARATOR.'index',['accounts'=>$this->model->all()]);
-
-        $this->view->pageTitle='admin index';
-        $this->view->render();
+        header("location:/home/index");
     }
 
 //

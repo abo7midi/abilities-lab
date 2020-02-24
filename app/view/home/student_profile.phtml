@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<?php
+
+?>
+<html>
+<head>
+
+    <title>student_profile</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+</head>
+
+
+<div id="time" ></div>
+<div class="container">
+    <?php foreach($this->view_data['student'] as $row )
+    {
+
+    ?>
+    <div class="card" style="width: 20rem;">
+        <img src="/pictures/<?php echo $row['image'] ?>" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">Name :  <?php echo $row['full_name'] ?></h5>
+            <p class="card-text">Phone : <?php echo $row['phone'] ?></p>
+            <p class="card-text">Email : <?php echo $row['user_email'] ?></p>
+        </div>
+    </div>
+    <?php  }  ?>
+
+
+
+</div>
+
+
+</body>
+</html>

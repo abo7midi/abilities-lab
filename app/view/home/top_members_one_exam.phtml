@@ -1,4 +1,7 @@
 <!DOCTYPE html>
+<?php
+include "header.phtml";
+?>
 <html>
 <head>
 
@@ -28,7 +31,7 @@
 //            $exam_name =$row['exam_name'];
             ?>
             <tr>
-                <td><?php echo $user_name?></td>
+                <td><a href="/exam/student_profile/<?php echo $user_id ?>"><?php echo $user_name?></a></td>
                 <td><?php echo $marks ?></td>
                 <td><?php echo $row['user_exam_date']; ?></td>
 

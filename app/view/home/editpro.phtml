@@ -1,0 +1,179 @@
+
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+<?php
+
+$modifying=$this->view_data['editPro'];
+
+
+?>
+
+<br>
+
+
+<div class="container"  >
+    <div class="row" >
+        <div class="col-lg-12" >
+
+
+            <div class="wrapper" >
+                <div class="left">
+
+                    <img class="preview" src="/pictures/<?php echo $modifying['image']; ?>"
+                         alt="user" width="200">
+                    <!--  <input type="button" value="Upload" class="upload-image btn-default"/>-->
+                    <input id="upload" type="file" name="fileToUpload" accept="image/*"/>
+
+                    <h4 name="username"><?php echo $modifying['user_name']; ?></h4>
+                    <p> Developer</p>
+                </div>
+
+
+                <!------------------------------------------------------->
+
+                <div class="right" id="editinfo">
+                    <div class="info">
+
+                        <h3>Edit Information</h3>
+                        <div class="info_data">
+
+                            <div class="container-fluid">
+                                <form role="form" class="form-horizontal" method='post' id="proedit" action='' enctype="multipart/form-data">
+                                    <div class="box-body">
+                                        <input type="hidden" name="id" value="<?php echo $modifying['user_id'];?>">
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label label-edit" for="exampleInputEmail1">fullname</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control input-edit" onkeyup="maxlength(this);"
+                                                       value="<?php echo $modifying['full_name']; ?>"  name="full_name">
+                                                <?php echo Message::check('fullname');  ?>
+                                            </div>
+                                        </div>
+
+
+
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label label-edit" for="exampleInputEmail1">email</label>
+                                            <div class="col-sm-10">
+                                                <input type="email" class="form-control input-edit" value="<?php echo $modifying['user_email']; ?>"  name="email">
+                                                <?php echo Message::check('email');  ?>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label label-edit" for="exampleInputPassword1">password</label>
+                                            <div class="col-sm-10">
+                                                <input type="hidden" name="old_pass" class="form-control input-edit" value="<?php echo $modifying['user_pwd']; ?>" >
+
+                                                <input type="password" class="form-control input-edit" value=""  name="password">
+
+                                                <?php echo Message::check('password');  ?>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label label-edit" for="exampleInputPassword2">phone</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control input-edit" onkeyup="numbersOnly(this)" value="<?php echo $modifying['phone']; ?>"  name="phone">
+                                                <?php echo Message::check('phone');  ?>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label label-edit" for="exampleInputPassword2">Your Image</label>
+                                            <div class="col-sm-10">
+                                                <input type="hidden"  value="<?php echo $modifying['image']; ?>" name="old_image">
+                                                <input type="file" value="" name="fileToUpload">
+                                                <?php echo Message::check('fileToUpload');  ?>
+                                            </div>
+                                        </div>
+
+
+
+                                        <!--                                                            </div>-->
+                                        <!--                                                                                                                      </div>-->
+
+                                    </div><!-- /.box-body -->
+
+                                    <div class="form-group">
+                                        <div class="col-sm-offset-2 col-sm-10">
+                                            <button type="submit" class="btn btn-primary"  value="register" name="submit">Save Update</button>
+                                        </div>
+                                    </div>
+                                </form>
+
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+</div >
+
+
+
+
+
+
+<div class="container" id="editinfo" style="display: none" >
+    <div class="row">
+        <div class="col-lg-12">
+
+
+            <div class="wrapper">
+
+
+
+
+            </div>
+        </div>
+
+
+    </div>
+
+
+</div>
+
+</div>
+
+
+
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+<script  src="/js/bootstrap.min.js"></script>
+<script  src="/js/jquery-3.3.1.min.js"></script>
+<script  src="/js/jquery.validate.js"></script>
+<script  src="/js/script.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
