@@ -77,7 +77,7 @@
     $i=0;
     foreach($this->view_data['q'] as $ques ){
         echo "<p class='Q_Content'>".$ques["q_content"]."</p>";
-        if($ques["q_img"]!="mm"){
+        if($ques["q_img"]!=null){
             echo" <img class='examStudentIMG rounded mx-auto d-block' src='/images/examsImg/".$ques["q_img"]."'>";
         }
         echo"<ul class='que'  id=\"sr1\">
