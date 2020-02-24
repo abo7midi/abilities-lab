@@ -114,7 +114,7 @@ public function edit($id) {
 
         $category=isset($this->model)?$this->model: $this->model('Category');
         $this->view('admin'.DIRECTORY_SEPARATOR.'editCategory',
-            ['categories'=>$category->find( array(0 =>$id)),'cats'=>$this->model->allCategories()]);
+            ['categories'=>$category->find( array(0 =>$id)),'cats'=>$this->model->allCategories(),'admins'=>$this->model->all()]);
         $this->view->pageTitle='this page of index';
         $this->view->render();
     }

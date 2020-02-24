@@ -1,12 +1,11 @@
 <?php
-Session::logged();
 include "side_bar.phtml";
 ?>
 
 <h1 class="text-center"> Manage Categories</h1>
 <div class="container-fluid">
     <div class="table-responsive">
-        <table class="main-table text-center table table-bordered">
+        <table id="myTable" class="main-table text-center table table-bordered">
             <tr>
                 <td>#ID</td>
                 <td>Name</td>
@@ -23,13 +22,13 @@ include "side_bar.phtml";
 
                     echo '<tr class="bel">';
                     echo ' <td>'.$category["cat_id"].'</td>';
-                    echo ' <td><a href="/admin/subCategory/'.$category['cat_id'].'">'.$category["cat_name"].'</a></td>';
+                    echo ' <td><a href="/admin/subCategory/'.$category['cat_id'].'" style="color : black;">'.$category["cat_name"].'</a></td>';
                     echo ' <td>'.$category["Created_By"].'</td>';
                     echo ' <td>'.$category["cat_created_at"].'</td>';
                     echo ' <td>'.$category["Created_By"].'</td>';
                     echo ' <td >'.$category["cat_updated_at"].'</td>';
 
-                   echo " <td><a href='/category/edit/".$category["cat_id"]. "'class='fa fa-edit edit'></a>&nbsp;&nbsp;&nbsp;
+                   echo " <td><a href='/admin/edit/".$category["cat_id"]. "'class='fa fa-edit edit'></a>&nbsp;&nbsp;&nbsp;
                                             <a href='/category/delete/".$category["cat_id"]. "'class='fa fa-trash-o cat-trash'></a>&nbsp;&nbsp;&nbsp;";
 //
                     if ($category["cat_state"] == 0) {
