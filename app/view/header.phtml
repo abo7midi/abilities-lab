@@ -128,77 +128,86 @@
 
                         <p class="fieldset">
                         <div class="input-group mb-3">
+                            <label  class="lablemassge" for="signin-password">UserName</label>
                             <div class="input-group-append">
-                                <span class="input-group-text" style="background: #ffffff;"><img src="/image/images (1).png" width="20px" height="20px"></span>
+                                <span class="input-group-text" style="background: #ffffff;"><img src="/image/at.png" width="20px" height="20px"></span>
                             </div>
 
-                            <input class="form-control" id="username" type="text" name="username" onkeyup="lettersOnly(this)" placeholder="   Enter Your UserName" >
+
+                            <input class=" gt-input form-control" id="username" type="text" name="username" onkeyup="lettersOnly(this)" >
                             <?php// echo Message::check('username');  ?>
                         </div>
                         </p>
 
                         <p class="fieldset">
                         <div class="input-group mb-3">
+                            <label class="lablemassge" for="signin-password">FullName</label>
                             <div class="input-group-append">
                                 <span class="input-group-text" style="background: #ffffff;"><img src="/image/email (4).png" width="20px" height="20px"></span>
                             </div>
-                            <input class="form-control" id="fullname" type="text" name="full_name" onkeyup="lettersOnlyTwo(this)" placeholder="   Enter Your FullName" >
-                            <?php// echo Message::check('full_name');  ?>
+                            <input class="gt-input form-control" id="fullname" type="text" name="full_name" onkeyup="lettersOnlyTwo(this)" >
+                            <!--                            --><?php //echo $message;
+                            echo Message::check('full_name');  ?>
                         </div>
                         </p>
 
                         <p class="fieldset">
                         <div class="input-group mb-3">
+                            <label class="lablemassge" for="signin-password">Phone</label>
                             <div class="input-group-append" >
-                                <select style="background: #ffffff; color: #007bff">
-                                    <option value="+967">+967</option>
-                                    <option value="+955">+955</option>
-                                    <option value="+224">+224</option>
-                                    <option value="+968">+968</option>
-                                </select>
+
+                                <span class="input-group-text" style="background: #ffffff;"><img src="/image/telephone.png" width="20px" height="20px"></span>
 
                             </div>
-                            <input class="form-control" id="phone" type="text" name="phone" onkeyup="numbersOnly(this)" placeholder="   Enter Your Phone" >
+                            <input class="gt-input form-control" id="phone" type="text" name="phone" onkeyup="numbersOnly(this)"  >
                         </div>
                         <?php// echo Message::check('phone');  ?>
                         </p>
 
                         <p class="fieldset">
                         <div class="input-group mb-3">
+                            <label class="lablemassge" for="signin-password">email</label>
+
                             <div class="input-group-append">
                                 <span class="input-group-text" style="background: #ffffff;"><img src="/image/download (4).png" width="20px" height="20px"></span>
                             </div>
-                            <input class="form-control" id="email" type="email" name="email" placeholder="  Enter Your Email" >
+
+                            <input class=" gt-input form-control " id="email" type="email" name="email">
                             <div class="input-group-append">
-                                <?php echo Message::check('email');  ?>
+
+
 
                             </div>
-
                         </div>
                         </p>
 
-                        <p class="fieldset">
 
-                            <label class="image-replace cd-password" for="signin-password">Password</label>
-                            <input class=" form-control full-width has-padding has-border" id="password" name="password" type="password"  placeholder="Enter Your Password">
-                            <a href="#0" class="hide-password">Show</a>
-                            <?php //echo Message::check('password');  ?>
 
-                        </p>
+                        <div class="fieldset">
+                            <div class="input-group mb-3">
+                                <label  class="lablemassge" for="signin-password">password</label>
 
-                        <div class="form-group">
-                            <label for="Select" class="col-sm-2 control-label">Type</label>
-
-                            <select id="Select" class="form-control" name="type">
-                                <option value="3">User</option>
-                                <option value="2">Examiner</option>
-                            </select>
-                            <?php// echo Message::check('type');  ?>
+                                <div class="input-group-append">
+                                    <span class="input-group-text" style="background: #ffffff;"><img src="/image/keypassword.png" width="20px" height="20px"></span>
+                                </div>
+                                <input class=" gt-input form-control"  id="signin-email" type="password" name="password"  >
+                                <?php echo Message::check('password');?>
+                            </div>
                         </div>
-
+                        <div class="fieldset">
+                            <div class="form-group">
+                                <label class="lablemassge"  for="signin-password">Type</label>
+                                <select id="Select" class="gt-input form-control" name="type">Type
+                                    <option value="3" >User</option>
+                                    <option value="2">Examiner</option>
+                                </select>
+                                <?php// echo Message::check('type');  ?>
+                            </div>
+                        </div>
                         <p class="fieldset">
                             <input type="checkbox" name="terms"  id="accept-terms" required >
-                            <label for="accept-terms" >I agree to the <a href="termsPage.php">Terms</a></label>
+                            <label class="lablemassge" for="accept-terms" style="margin-left: 10px; margin-top: -15px;" >I agree to the <a href="termsPage.php">Terms</a></label>
+
                         </p>
 
 
@@ -225,6 +234,7 @@
                             <input class="full-width has-padding" type="submit" value="Reset password">
                         </p>
                     </form>
+
 
                     <p class="cd-form-bottom-message"><a href="#0">Back to log-in</a></p>
                 </div> <!-- cd-reset-password -->
@@ -299,4 +309,24 @@
         load_Exams11(jq(this).attr("data-id"));
     })
 
+
+    const GTInput = document.querySelectorAll(".gt-input");
+
+    for (let i = 0; i < GTInput.length; i++) {
+        let currentLabel = GTInput[i].parentElement.firstElementChild;
+
+        if (GTInput[i].value !== "") {
+            currentLabel.classList.add("move-up");
+        }
+
+        GTInput[i].addEventListener("focus", function () {
+            currentLabel.classList.add("move-up");
+        })
+
+        GTInput[i].addEventListener("blur", function () {
+            if (GTInput[i].value === "") {
+                currentLabel.classList.remove("move-up");
+            }
+        })
+    }
 </script>
