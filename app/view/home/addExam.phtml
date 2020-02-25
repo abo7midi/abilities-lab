@@ -21,7 +21,7 @@
                 <div class="form-group row">
                     <label for="inputPassword3" class="col-sm-3 col-form-label">Question No.</label>
                     <div class="col-sm-9">
-                        <input type="number" class="form-control" id="inputDateEnd" value="<?php Helper::old('no_q',"auth")?>" name="no_q">
+                        <input type="number" class="form-control" id="inputDateEnd" value="<?php Helper::old('no_q',"auth")?>" name="question_no">
                         <small>you have range for question from 1 to 100</small>
                     </div>
                     <?php echo Message::getInputErrorMessage("no_q"); ?>
@@ -168,10 +168,6 @@
                     digits: "the value should be positive digits"
                 }
             }
-        });
-        $("form").submit(function () {
-
-            console.log( $("#total_mark").val());
         });
     });
 </script>

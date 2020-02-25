@@ -73,7 +73,7 @@ class userController extends Controller
                     if ($this->model->add($post)) {
                         Message::setMessage(1,'main', 'تم اضافة المستخدم بنجاح');
                     }
-                }
+
             }
         }
 
@@ -131,19 +131,17 @@ class userController extends Controller
             $this->view('admin'.DIRECTORY_SEPARATOR.'addUser');
             $this->view->pageTitle='login User';
             $this->view->render();
-
-
         } else {
             $this->model('Admin');
             $this->view('admin'.DIRECTORY_SEPARATOR.'errorPage');
             $this->view->pageTitle='Error';
             $this->view->render();
-
         }
     }
+
     public function logout(){
         session_destroy();
-        header("location:/user/index");
+        header("location:/home/index");
     }
 //---------------------------------------------------start update user----------------------------------------------------------------------
 
