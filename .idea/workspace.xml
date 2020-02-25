@@ -8,6 +8,7 @@
       <change beforePath="$PROJECT_DIR$/app/controller/homeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controller/homeController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/controller/userController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controller/userController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/core/View.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/core/View.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/model/Exam.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/model/Exam.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/view/admin/category.phtml" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/admin/category.phtml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/view/admin/dashboard.phtml" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/admin/dashboard.phtml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/view/admin/errorPage.phtml" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/admin/errorPage.phtml" afterDir="false" />
