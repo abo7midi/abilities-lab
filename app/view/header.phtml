@@ -6,27 +6,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Bootstrap CSS -->
     <link rel="icon" href="images/logo.png" type="image/png" sizes="16x16">
-    <link rel="stylesheet" href="/css/bootstrap.min.css" >
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/fontawesome.min.css">
-    <!-- Our CSS -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+   <!-- Our CSS -->
     <link rel="stylesheet" href="/css/style.css">
     <!-- js libraries-->
-    <script src="/js/jquery-3.3.1.min.js"  crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="/js/bootstrap.js"  crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/js/fontawesome.min.js"></script>
+    <script src="/layout/js/jquery.validate.js"></script>
+    <script src="/layout/js/backend.js"></script>
+    <script src="/js/main.js"></script>
 
-
-
+    <script src="/layout/js/script.js"></script>
     <title>ability lab</title>
 </head>
 <body>
 
 <!--navbar-------------------------------------------------------------->
 <nav class="navbar navbar-expand-lg ">
-    <a class="navbar-brand" href="#"><img src="/static/img/logo.png"  width="70px"  style="margin-bottom: 18px;"></a>
+    <a class="navbar-brand" href="#"><img src="/static/img/logo.png"  width="60px"  style="margin-bottom: 18px;"></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -38,18 +40,14 @@
             <li class="nav-item">
                 <a class="nav-link" href="#">Talents</a>
             </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    category
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <?php
-                    $category=new Category();
-                    foreach ($category->allSubCate() as $subcat){
-                        echo '<a class="dropdown-item" href="#">'.$subcat["cat_name"].'</a>';
-                    }
-                    ?>
-                </div>
+            <li class="nav-item">
+                <a class="nav-link" href="/home/aboutus">About Us</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="contact.html">Contact Us</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="faq.html">FAQs</a>
             </li>
         </ul>
 
@@ -61,10 +59,10 @@
                 <?php if(Session::has('userID')){
                     echo '<li><a href="/profile/index" style="width: 80px; height: 80px; overflow: hidden; position: absolute; top: 8%; left: -50%;">
                     <img class="" src="/pictures/'.Session::get('userImg').'" style=" width:100%; height:100%; border-radius: 50% "></a></li>
-                <li><a class="btn btn-outline-secondary my-2 my-sm-0" href="/user/logout" style="color:gray; margin-right: 10px; padding: 10px;">Log Out</a></li>';
+                <li><a class="btn btn-outline-secondary my-2 my-sm-0 logout" href="/user/logout" ><i class="fa fa-sign-out"></i>Exit</a></li>';
                 }else{
 
-                    echo '<li><a class="btn btn-outline-success my-2 my-sm-0" href="#0" style=" color:green; margin-right: 10px; padding: 10px;">Sign in</a></li>';
+                    echo '<li><a class="btn btn-outline-success my-2 my-sm-0 logout" href="#0" ><i class="fa fa-sign-in"></i>log in</a></li>';
        //         <li><a class="btn btn-outline-success my-2 my-sm-0" href="#0" style=" color:green; margin-right: 10px; padding: 10px;">Sign Out</a></li>'
                 }
                 ?>
@@ -238,3 +236,65 @@
 
 <!-- end navbar-------------------------------------------------------------->
 <!-- slider-------------------------------------------------------------->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<script>
+    var jq = $.noConflict();
+    function load_Exams11(id){
+        var selectd=id;
+        var loading="<button class='btn btn-primary' disabled><span class='spinner-border spinner-border-sm'></span>Loading..</button>";
+        jq.ajax({
+            url:"/home/showCategoryExams",
+            method:"POST",
+            data:{
+                subcat:selectd
+            },
+            beforeSend:function() {
+                jq('#loadingDiv').html(loading);
+            }
+            ,
+            success:function(data)
+            {
+                html='';
+                var exams=JSON.parse(data);
+                // alert(d)
+                var count=1;
+                console.log(data);
+                jq.each( exams.data, function( index, row ) {
+                    html+='<div class="col-sm-3 examContent">'
+                        +'<div class="titleExam">'
+                        +row.exam_name
+                        +'</div>'
+                        +'<p>' + row.exam_description + '</p>'
+                        +'<p>Chances :' + row.studentSample + '/' + row.allSample +'</p>'+
+                        '<p>Examiner: ' + row.examiner + '</p>'
+                    '<p>';
+                    switch (row.exam_level){
+                        case "1": html+='<span style="float: left">level : Hard</span>';break;
+                        case "2": html+='<span style="float: left">level : Mediam</span>';break;
+                        case "3": html+='<span style="float: left">level : Easy</span>';break;
+                        default: html+='';
+                    }
+                    switch (row.exam_price){
+                        case "0": html+='<span style="float: right">price : Free</span>';break;
+                        default:html+='<span style="float: right">price : '+row.exam_price+' $</span>';break;
+                    }
+                    if(row.studentSample=="0"){
+                        html+='</p><a type="button"  class="btn btn-info" disabled>Exam Done</a></div>';
+                    }
+                    else{
+                        html+='</p><a type="button" href="/exam/takeExam/'+row.exam_id+'" class="btn btn-info" >Get Start</a></div>';
+                    }
+
+                    count++;
+                });
+                jq('#loadingDiv').html(html);
+            }
+        });
+    };
+
+    jq(".categoriesItem").click(function () {
+        load_Exams11(jq(this).attr("data-id"));
+    })
+
+</script>

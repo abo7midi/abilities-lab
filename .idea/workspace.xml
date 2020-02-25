@@ -3,10 +3,18 @@
   <component name="ChangeListManager">
     <list default="true" id="6a7219bf-f161-44d8-8f52-80819c55d6ea" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controller/profileController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controller/profileController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controller/examController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controller/examController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controller/sampleController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controller/sampleController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/model/Exam.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/model/Exam.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/model/Profile.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/model/Profile.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/view/admin/index.phtml" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/admin/index.phtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/view/footer.phtml" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/footer.phtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/view/header.phtml" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/header.phtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/view/home/addQuestion.phtml" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/home/addQuestion.phtml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/view/home/details_for_examiner.phtml" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/home/details_for_examiner.phtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/view/home/index.phtml" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/home/index.phtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/view/home/takeExam.phtml" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/home/takeExam.phtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/view/home/top_members_one_exam.phtml" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/home/top_members_one_exam.phtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/style.css" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -43,16 +51,16 @@
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/view/home" />
     <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xamppNew\htdocs\abilities lab\app\view\home" />
+      <recent name="C:\xamppNew\htdocs\abilities lab\public\pictures" />
       <recent name="C:\wamp64\www\endexam\abilities-lab\public" />
       <recent name="C:\wamp64\www\endexam\abilities-lab\app\controller" />
       <recent name="C:\wamp64\www\endexam\abilities-lab\app\view\admin" />
-      <recent name="C:\wamp64\www\endexam\abilities-lab\app\model" />
-      <recent name="E:\abilities-lab\app\view\home" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -128,13 +136,12 @@
       <workItem from="1581941475631" duration="641000" />
       <workItem from="1582444424900" duration="1444000" />
       <workItem from="1582455892295" duration="71000" />
-      <workItem from="1582457156176" duration="1979000" />
-      <workItem from="1582459196129" duration="28000" />
-      <workItem from="1582459253919" duration="1785000" />
-      <workItem from="1582461076133" duration="1298000" />
-      <workItem from="1582462894904" duration="498000" />
-      <workItem from="1582529395663" duration="4076000" />
-      <workItem from="1582619087006" duration="83000" />
+      <workItem from="1582525695811" duration="2191000" />
+      <workItem from="1582528760769" duration="1446000" />
+      <workItem from="1582531585216" duration="8470000" />
+      <workItem from="1582545911886" duration="1032000" />
+      <workItem from="1582551760915" duration="7186000" />
+      <workItem from="1582565517322" duration="15995000" />
     </task>
     <servers />
   </component>

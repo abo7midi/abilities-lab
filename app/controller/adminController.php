@@ -28,15 +28,14 @@ class adminController extends Controller
         }
     }
 
-
-
     public function member()
     {
         if(isset($_SERVER['HTTP_REFERER'])) {
             $this->model('Admin');
-            $this->view('admin'.DIRECTORY_SEPARATOR.'accounts',['admins' => $this->model->allAdmin(),
+            $this->view('admin'.DIRECTORY_SEPARATOR.'accounts',['allAdmins' => $this->model->allAdmin(),
                                                                             'examiners'=>$this->model->allExaminer(),
-                                                                            'members'=>$this->model->allMember()]);
+                                                                            'members'=>$this->model->allMember(),
+                                                                            'admins'=>$this->model->all()]);
             $this->view->pageTitle='admin index';
             $this->view->render();
         } else {
@@ -51,9 +50,10 @@ class adminController extends Controller
     {
         if(isset($_SERVER['HTTP_REFERER'])) {
             $this->model('Admin');
-            $this->view('admin'.DIRECTORY_SEPARATOR.'accountsNonActive',['admins' => $this->model->allAdminPending(),
+            $this->view('admin'.DIRECTORY_SEPARATOR.'accountsNonActive',['allAdmins' => $this->model->allAdminPending(),
                                                                             'examiners'=>$this->model->allExaminerPending(),
-                                                                            'members'=>$this->model->allMemberPending()]);
+                                                                            'members'=>$this->model->allMemberPending(),
+                                                                              'admins'=>$this->model->all()]);
             $this->view->pageTitle='admin index';
             $this->view->render();
         } else {
@@ -84,7 +84,9 @@ class adminController extends Controller
     {
         if(isset($_SERVER['HTTP_REFERER'])) {
                 $this->model('Admin');
-                $this->view('admin' . DIRECTORY_SEPARATOR . 'subCategories', ['mainCategories'=>$this->model->allMainCategories(),'subCategories' => $this->model->allSubCategories()]);
+                $this->view('admin' . DIRECTORY_SEPARATOR . 'subCategories', ['mainCategories'=>$this->model->allMainCategories(),
+                                                                                        'subCategories' => $this->model->allSubCategories(),
+                                                                                        'admins'=>$this->model->all()]);
                 $this->view->pageTitle = 'admin index';
                 $this->view->render();
 

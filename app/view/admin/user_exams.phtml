@@ -6,17 +6,17 @@ include "side_bar.phtml";
 <html>
 <head>
 
-<style>
-    .ex{
-        color: #ffd700;
-        font-size: 19px;
-    }
+    <style>
+        .ex{
+            color: #ffd700;
+            font-size: 19px;
+        }
 
-    .w{
-        color: #efefeb;
-        font-size: 19px;
-    }
-</style>
+        .w{
+            color: #efefeb;
+            font-size: 19px;
+        }
+    </style>
 
 
 
@@ -39,9 +39,11 @@ include "side_bar.phtml";
             <tr style="color: white">
                 <th>#</th>
                 <th>Name</th>
-                <th>total_mark</th>
-                <th>pass_mark</th>
-                <th>exam_result</th>
+                <th>Total Mark</th>
+                <th>pass Mark</th>
+                <th>exam Result</th>
+                <th>Start Time</th>
+                <th>Finish Time</th>
                 <th>Control</th>
             </tr>
 
@@ -62,12 +64,11 @@ include "side_bar.phtml";
                         $table .= ' <td>' . $exams["exam_total_mark"] . '</td>';
                         $table .= ' <td >' . $exams["exam_pass_mark"] . '</td>';
                         $table .= ' <td>' . $exams["user_exam_result"] . '</td>';
+                        $table .= ' <td>' . $exams["user_exam_date"] . '</td>';
+                        $table .= ' <td>' . $exams["user_exam_finish_time"] . '</td>';
 
 
-
-                        $table.=" <td><div class=\"panel-body\"><a ".$exams["user_exam_id"]. "
-                                class=\"btn btn-success\" data-toggle=\"modal\" href=\"#myModal\">info
-                                               </a>&nbsp;&nbsp;&nbsp;";
+                        $table.=" <td>";
 //
 
                         if ($exams["user_exam_result"] >= 90) {
@@ -103,77 +104,12 @@ include "side_bar.phtml";
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
             </tr>
             </tbody>
 
         </table>
     </div>
 </div>
-<section class="panel">
-
-
-        <!-- Modal -->
-        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        <h4 class="modal-title">Modal Tittle</h4>
-                    </div>
-                    <div class="modal-body">
-
-
-<?php
-
-
-$table = '';
-
-foreach ($this->view_data['Date'] as $exams) {
-
-    $table .= ' <td >' . $exams["user_exam_id"] . '</td>';
-    $table .= ' <td >' . $exams["user_exam_finish_time"] . '</td>';
-    $table .= ' <td >' . $exams["user_exam_date "] . '</td>';
-}
-
-?>
-                    </div>
-                    <div class="modal-footer">
-                        <button data-dismiss="modal" class="btn btn-success" type="button">ok</button>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- modal -->
-
-
-
-    </div>
-</section>
 
 
 
@@ -192,7 +128,21 @@ foreach ($this->view_data['Date'] as $exams) {
 
 
 
-<script src="/media/js/jquery.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <script src="/media/js/jquery.dataTables.min.js"></script>
 <script>
     $(document).ready(function(){

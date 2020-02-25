@@ -391,23 +391,18 @@ border-radius: 0 0 10px 10px;
         </div>
     </div>
 </div>
-
-
-
-
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-
         <script>
             var jq = $.noConflict();
             var errorMessage="<?php echo Message::check("unauth")?>";
-            console.log(errorMessage);
             if(errorMessage!=''){
                 jq("#errorContent").html(errorMessage);
                 document.getElementById("trigger-btn").click();
             }
 
             function load_Exams(){
+
                 var selectd=jq("select#subcat").children("option:selected").val();
+                alert(selectd);
                 var loading="<button class='btn btn-primary' disabled><span class='spinner-border spinner-border-sm'></span>Loading..</button>";
                 jq.ajax({
                     url:"/home/showCategoryExams",

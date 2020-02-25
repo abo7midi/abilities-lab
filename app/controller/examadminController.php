@@ -42,7 +42,7 @@ class examadminController extends Controller
 
 //--------------------------------------------------user_exams----------------------------------------------------------------------------
 
-    public function usere()
+    public function userexam()
     {
         $this->model('ExamAdmin');
         $this->view('admin'.DIRECTORY_SEPARATOR.'user_exams',['Exams'=>$this->model->ResultUser()]);
@@ -52,15 +52,7 @@ class examadminController extends Controller
 
     }
 
-    public function date()
-    {
-        $this->model('ExamAdmin');
-        $this->view('admin'.DIRECTORY_SEPARATOR.'user_exams',['Date'=>$this->model->DateExam()]);
 
-        $this->view->pageTitle='ResultUser';
-        $this->view->render();
-
-    }
 
 
 

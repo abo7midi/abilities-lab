@@ -90,8 +90,8 @@ class homeController extends Controller
   public function aboutus()
   {
     // echo 'i am in '.__CLASS__.'<br>method '.__METHOD__.'';
-    $this->view('home'.DIRECTORY_SEPARATOR.'aboutUs');
-$this->view->pageTitle='this page of about Us';
+    $this->view('home'.DIRECTORY_SEPARATOR.'about');
+    $this->view->pageTitle='this page of about Us';
     $this->view->render();
   }
 
@@ -145,21 +145,11 @@ $this->view->pageTitle='this page of about Us';
              $this->index();
              return ;
            }
-
-
-
-
-
-
    }
    else {
      $this->index();
      return ;
    }
-
-
-
-
 
   }
 

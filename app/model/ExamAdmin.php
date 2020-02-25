@@ -48,17 +48,15 @@ class ExamAdmin
 
 
     public  function ResultUser(){
-        return $this->db->query('SELECT groups.group_name,user_exam.user_id ,user_exam_id,user_exam.exam_id,user_exam.user_exam_result
-                                                ,users.user_name ,exams.exam_name,exams.exam_total_mark,exams.exam_pass_mark  
+        return $this->db->query('SELECT groups.group_name,
+                                 user_exam.user_id ,user_exam_id,user_exam.exam_id,user_exam.user_exam_result,
+                                                users.user_name ,exams.exam_name,exams.exam_total_mark,exams.exam_pass_mark, 
+                                                user_exam_date ,user_exam_finish_time 
                                                 FROM `groups`
                                                  INNER JOIN users on users.group_id = groups.group_id
                                                   INNER JOIN user_exam on user_exam.user_id =users.user_id 
                                                   INNER JOIN exams on exams.exam_id=user_exam.exam_id 
                                                   WHERE groups.group_id=3 ');
-    }
-
-    public  function DateExam(){
-        return $this->db->query('SELECT user_exam_id,user_exam_date ,user_exam_finish_time from user_exam ');
     }
 }
 
