@@ -3,8 +3,21 @@
   <component name="ChangeListManager">
     <list default="true" id="6a7219bf-f161-44d8-8f52-80819c55d6ea" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controller/adminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controller/adminController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controller/categoryController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controller/categoryController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/controller/homeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controller/homeController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/controller/userController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controller/userController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/core/View.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/core/View.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/view/admin/category.phtml" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/admin/category.phtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/view/admin/dashboard.phtml" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/admin/dashboard.phtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/view/admin/errorPage.phtml" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/admin/errorPage.phtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/view/admin/showexam_admin.phtml" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/admin/showexam_admin.phtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/view/admin/side_bar.phtml" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/admin/side_bar.phtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/view/admin/user_exams.phtml" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/admin/user_exams.phtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/view/footer.phtml" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/footer.phtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/view/header.phtml" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/header.phtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/functions/function.php" beforeDir="false" afterPath="$PROJECT_DIR$/public/functions/function.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/layout/css/backend.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/layout/css/backend.css" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -152,6 +165,10 @@
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/app/controller/categoryController.php</url>
           <line>5</line>
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/app/view/admin/init.php</url>
+          <option name="timeStamp" value="7" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

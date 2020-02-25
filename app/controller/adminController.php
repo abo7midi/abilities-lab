@@ -18,7 +18,7 @@ class adminController extends Controller
     {
         if(isset($_SERVER['HTTP_REFERER'])) {
             $this->model('Admin');
-            $this->view('admin' . DIRECTORY_SEPARATOR . 'dashboard', ['admins' => $this->model->all()]);
+            $this->view('admin' . DIRECTORY_SEPARATOR . 'dashboard', ['admins'=>$this->model->all()]);
             $this->view->pageTitle = 'admin index';
             $this->view->render();
         } else {

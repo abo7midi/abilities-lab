@@ -29,6 +29,16 @@ public function getController()
   return (explode('\\',$this->view_file)[0]);
 }
 
+public static function getTitle()
+{
+  global $pageTitle;
+
+  if (isset($pageTitle)) {
+    echo $pageTitle;
+  } else {
+    echo 'Default';
+  }
+}
 
 }
 

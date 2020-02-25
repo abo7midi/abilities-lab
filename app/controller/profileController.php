@@ -10,7 +10,6 @@ class profileController extends Controller
     public function index()
     {
 
-
         $id = Session::get('userID');
 
         $this->model('Profile');

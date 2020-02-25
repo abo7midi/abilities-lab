@@ -48,11 +48,13 @@ class categoryController extends Controller
                     $name = $_POST['name'];
                     $desc = $_POST['description'];
                     $c = $_POST['cat'];
+                    $user = Session::logged();
 
                     $category = [
                         $name,
                         $desc,
-                        $c
+                        $c,
+                        $user
                     ];
 
                     $this->model('Category');
@@ -114,7 +116,7 @@ public function edit($id) {
 
         $category=isset($this->model)?$this->model: $this->model('Category');
         $this->view('admin'.DIRECTORY_SEPARATOR.'editCategory',
-            ['categories'=>$category->find( array(0 =>$id)),'cats'=>$this->model->allCategories(),'admins'=>$this->model->all()]);
+            ['categories'=>$category->find( array(0 =>$id)),'cats'=>$this->model->allMainCategories(),'admins'=>$this->model->all()]);
         $this->view->pageTitle='this page of index';
         $this->view->render();
     }

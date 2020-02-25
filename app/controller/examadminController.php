@@ -12,7 +12,7 @@ class examadminController extends Controller
     public function index()
     {
         $this->model('ExamAdmin');
-        $this->view('admin'.DIRECTORY_SEPARATOR.'showexam_admin',['adminexam'=>$this->model->showexam()]);
+        $this->view('admin'.DIRECTORY_SEPARATOR.'showexam_admin',['adminexam'=>$this->model->showexam(),'admins'=>$this->model->all()]);
 
         $this->view->pageTitle='exam';
         $this->view->render();
@@ -45,7 +45,7 @@ class examadminController extends Controller
     public function userexam()
     {
         $this->model('ExamAdmin');
-        $this->view('admin'.DIRECTORY_SEPARATOR.'user_exams',['Exams'=>$this->model->ResultUser()]);
+        $this->view('admin'.DIRECTORY_SEPARATOR.'user_exams',['Exams'=>$this->model->ResultUser(),'admins'=>$this->model->all()]);
 
         $this->view->pageTitle='ResultUser';
         $this->view->render();
