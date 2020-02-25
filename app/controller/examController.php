@@ -36,75 +36,90 @@ class examController extends Controller
 
         // check if there submit
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            $_SESSION['qns_n']=1;
+            $_SESSION['qns_n']=1;           // for counter Questions
             $validate = \Validation::validate([
                 'name' => array(['required' => 'required']),
-                'no_q' => array(['required' => 'required', 'minVal' => 1, "maxVal" => 100]),
+                'question_no' => array(['required' => 'required', 'minVal' => 1, "maxVal" => 100]),
                 'total_mark' => array(['required' => 'required', 'minVal' => 1]),
                 'pass_mark' => array(['required' => 'required', 'minVal' => 1, 'maxVal' => $_REQUEST['total_mark']]),
                 'duration' => array(['required' => 'required', 'minVal' => 1, 'maxVal' => 300]),
                 'price' => array(['minVal' => 0, 'maxVal' => 1000]),
             ]);
 
+            $sample = new sampleController();
+
             # add new record to the database
             if (count($validate) == 0) {
-                if (Validation::logicCheck($_POST['total_mark'], "<", $_POST['pass_mark'], "pass mark field should be less than full mark field") !== false) {
-                    # prepare the array of post to send it to News model to insert to news table
-                    $name = Validation::test_input($_POST['name']);
-                    $name = ucwords(strtolower($name));
-                    $_SESSION['total_mark'] = $total_mark = Validation::test_input($_POST['total_mark']);
-                    $pass_mark = Validation::test_input($_POST['pass_mark']);
-                    $_SESSION['number_que'] = $no_q = Validation::test_input($_POST['no_q']);
-                    $duration = Validation::test_input($_POST['duration']);
-                    $category = Validation::test_input($_POST['category']);
-                    $level = Validation::test_input($_POST['level']);
-                    $desc = Validation::test_input($_POST['desc']);
-                    $price = Validation::test_input($_POST['price']);
-                    $_SESSION['exam_id'] = $id = uniqid();
 
-                    switch ($level) {
-                        case 'h':
-                            $lv = '1';
-                            break;
-                        case 'm':
-                            $lv = '2';
-                            break;
-                        case 'e':
-                            $lv = '3';
-                            break;
+                $_SESSION['name']="ali";
+                 $_SESSION['number_que'] = $no_q = $_POST['question_no'];
+               // echo "mokhtar ".count($validate);
 
-                        default:
-                            $lv = '';
-                    }
-                    if (!$price == '') {
-                        $paid = '1';
-                    } else {
-                        $paid = '0';
-                    }
-                    $exam = $data = [
-                        $id,
-                        $name,
-                        $desc,
-                        $lv,
-                        $no_q,
-                        $duration,
-                        $price,
-                        $paid,
-                        "0",
-                        Session::get("userID"),
-                        $total_mark,
-                        $pass_mark,
-                        $category
-                    ];
-                    $this->model('Exam');
-                    if ($this->model->add($exam)) {
-                        Message::setMessage(1, 'main', ' تم اضفة الفئة بنجاح');
-                    }
-                    $sample = new sampleController();
-                    $sample->add(1);
+
+
+                # prepare the array of post to send it to News model to insert to news table
+                $name = Validation::test_input($_POST['name']);
+                $name = ucwords(strtolower($name));
+                $_SESSION['total_mark'] = $total_mark = Validation::test_input($_POST['total_mark']);
+                $pass_mark = Validation::test_input($_POST['pass_mark']);
+              //  echo "abc : ". $_POST['question_no'];
+
+                $duration = Validation::test_input($_POST['duration']);
+                $category = Validation::test_input($_POST['category']);
+                $level = Validation::test_input($_POST['level']);
+                $desc = Validation::test_input($_POST['desc']);
+                $price = Validation::test_input($_POST['price']);
+                $_SESSION['exam_id'] = $id = uniqid();
+
+                $sample->add(1);
+                switch ($level) {
+                    case 'h':
+                        $lv = '1';
+                        break;
+                    case 'm':
+                        $lv = '2';
+                        break;
+                    case 'e':
+                        $lv = '3';
+                        break;
+
+                    default:
+                        $lv = '';
+                }
+                if (!$price == '') {
+                    $paid = '1';
+                } else {
+                    $paid = '0';
+                }
+                $exam = $data = [
+                    $id,
+                    $name,
+                    $desc,
+                    $lv,
+                    5,
+                    $duration,
+                    $price,
+                    $paid,
+                    "0",
+                    Session::get("userID"),
+                    $total_mark,
+                    $pass_mark,
+                    $category
+                ];
+                $this->model('Exam');
+                if ($this->model->add($exam)) {
+                    Message::setMessage(1, 'main', ' تم اضفة الفئة بنجاح');
+
+                    $this->view('home' . DIRECTORY_SEPARATOR . 'addQuestion');
+                    $this->view->pageTitle = 'exam';
+                    $this->view->render();
+                    return "";
+
                 }
             }
         }
+
+
         $this->view('home' . DIRECTORY_SEPARATOR . 'addExam', ["category" => $category->allSubCate()]);
         $this->view->pageTitle = 'exam';
         $this->view->render();
@@ -116,6 +131,7 @@ class examController extends Controller
 
         if (!(Session::get("userGroup") == 3)) {
             Message::setMessage("unauth","you should be login as a student",0);
+
             header("location:/home/index");
         }
         $exam = $this->model('Exam');
@@ -190,18 +206,6 @@ class examController extends Controller
     /***************************************************************************************/
 
 
-    /************************************************************************************/
-//
-    public function delete($id)
-    {
-        $this->model('Category');
-        $this->model->delete(array(0 => $id));
-        Message::setMessage('status', 1);
-        Message::setMessage('main', 'تم حذف الفئة بنجاح ّ!');
-        header('Location:/category/index');
-
-    }
-
 
 //
     public function edit($id)
@@ -236,12 +240,7 @@ class examController extends Controller
         $sample = $this->model('Sample');
         $u_id = Session::get("userID");
         $ex_exams = $exam->getExaminer_exams([$u_id]);
-        $samples = array();
-        foreach ($ex_exams as $ex) {
-            array_push($samples, $sample->getExamSamples([$ex['exam_id']]));
-        }
-
-        $this->view('home'.DIRECTORY_SEPARATOR.'details_for_examiner',["ex_exams"=>$ex_exams,"samples_ex"=>$samples]);
+        $this->view('home'.DIRECTORY_SEPARATOR.'details_for_examiner',["ex_exams"=>$ex_exams]);
         $this->view->pageTitle='Details for examiner';
         $this->view->render();
     }
@@ -251,6 +250,18 @@ class examController extends Controller
         $this->view('home'.DIRECTORY_SEPARATOR.'who_do_exam',["u_exams"=>$u_exams]);
         $this->view->pageTitle='who_do_exam';
         $this->view->render();
+    }
+
+    public function active()
+    {
+
+        $data = array(
+            ':exam_id' => htmlentities($_REQUEST['id']),
+            ':exam_state' => htmlentities(($_REQUEST['status'] == 1) ? 0 : 1),
+        );
+        $course = $this->model('Exam');
+        $status = ($course->activateExam($data));
+        echo ($_REQUEST['status'] == 1) ? 0 : 1;
     }
 
     public function dismit_exam($e_id)
@@ -326,13 +337,12 @@ class examController extends Controller
 
     }
 
-    public function top_members_one_exam($exma_id)
+    public function top_members_one_exam()
     {
+        $exma_id=$_REQUEST['exam_id'];
         $exam = $this->model('Exam');
         $top = $exam->top_members_one_exam([$exma_id]);
-        $this->view('home' . DIRECTORY_SEPARATOR . 'top_members_one_exam', ["top_M_exam" => $top]);
-        $this->view->pageTitle = 'Top Members in One Exam';
-        $this->view->render();
+        echo json_encode($top);
 
     }
 
@@ -340,10 +350,7 @@ class examController extends Controller
     {
         $this->model('Exam');
         $this->model->activeExamner(array(0 => $id));
-        Message::setMessage('status', 1);
-        Message::setMessage('main', ' OK!');
-        header('Location:/exam/all');
-
+        header("Location:/exam/details");
     }
 
     public function nonactiveExamner($id)

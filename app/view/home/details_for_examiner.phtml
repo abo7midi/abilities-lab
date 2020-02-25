@@ -8,50 +8,83 @@ include "header.phtml";
     <title>Exam Details</title>
 </head>
 
+<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            ...
+        </div>
+    </div>
+</div>
 
 <div id="time" ></div>
 <div class="container">
 
 
-    <table class="table" style="width:100%; border-spacing: 5px;">
-        <tr>
-            <td><h4>Exam_id</h4></td>
-            <td><h4>Samples</h4></td>
-            <td><h4>Dismit Exam</h4></td>
-
-
-
+    <table class="table" >
+        <tr class="tableTitle">
+            <td>EXAM NAME</td>
+            <td>SAMPLES NO.</td>
+            <td>Active/DisActive</td>
         </tr>
         <?php
         foreach($this->view_data['ex_exams'] as $row ){
-            $ex_id =$row['exam_id'];
             ?>
             <tr>
 <!--            <td>--><?php //echo $ex_id ?><!--</td>-->
-            <td><a href="/exam/top_members_one_exam/<?php echo $ex_id ?>"><?php echo $row['exam_name'] ?></a></td>
-                <td>
-                   <ul>
+            <td class="examName"><a class="StudentExam" data-toggle="modal" data-target=".bd-example-modal-lg" data-exam-id="<?php echo $row['exam_id']; ?>"><?php echo $row['exam_name'] ?></a></td>
+                <td class="sampleNo">
+                    <?php echo $row['sampleNo'];?>
+                </td>
+                    <td class="parentActive"><a class="Active" data-id="<?php echo $row['exam_id']?>" data-status="<?php echo $row['exam_state']?>"><span class="Activation<?php echo$row['exam_state'] ?>" ><i class="fa fa-toggle-on"></i></span></a></td>
                 <?php
-        foreach($this->view_data['samples_ex'] as $s ){
-            foreach ($s as $sam){
-                if($ex_id==$sam['exam_id']){
-            ?>
-                <li><?php echo $sam['sample_name'] ?></li>
-
-        <?php }}}
-        echo "</ul></td>";
-      ?>
-                       <td><a href="/exam/dismit_exam/<?php echo $sam['exam_id'] ?>">Dismit exam</a></td>
-
-                       <?php
             echo"</tr>";
         } ?>
-
-
     </table>
-
 </div>
 
+<script>
+        $('.Active').on('click', function () {
+            var data = 'status=' + encodeURIComponent($(this).attr('data-status')) + '&id=' + encodeURIComponent($(this).attr('data-id'));
+            var url = '/exam/active';
+            var _this = $(this);
+            $.ajax({
+                url: url,//   var url=$('#news').attr('action');
+                method: 'POST',
+                dataType: 'json',// data type that i want to return
+                data: data,// var form=$('#news').serialize();
+                success: function (data) {
+                    _this.html("<span class=\"Activation"+data+"\" ><i class=\"fa fa-toggle-on\"></i></span>");
+                        _this.attr("data-status", data);
+                },
+                error: function (xhr, status, error) {
+                    alert(xhr.responseText);
+                }
+            });
+            return (false);
+        });
 
-</body>
-</html>
+        $('.StudentExam').on('click', function () {
+            var data = 'exam_id=' + encodeURIComponent($(this).attr('data-exam-id'));
+            var url = '/exam/top_members_one_exam';
+            var _this = $(this);
+            $.ajax({
+                url: url,//   var url=$('#news').attr('action');
+                method: 'POST',
+                dataType: 'json',// data type that i want to return
+                data: data,// var form=$('#news').serialize();
+                success: function (data) {
+                    alert(data);
+                },
+                error: function (xhr, status, error) {
+                    alert(xhr.responseText);
+                }
+            });
+            return (false);
+        });
+
+</script>
+
+<?php
+include "footer.phtml";
+?>
+
