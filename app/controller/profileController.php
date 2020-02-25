@@ -90,4 +90,16 @@ class profileController extends Controller
     }
 
 
+    public function examiner_profile(){
+        $u_id = Session::get("userID");
+        $profiles = $this->model('Profile');
+        $profile = $profiles->examiner_profile([$u_id]);
+
+        $this->view('home' . DIRECTORY_SEPARATOR . 'examiner_profile', ["profile" => $profile]);
+        $this->view->pageTitle = 'examiner_profile';
+        $this->view->render();
+
+
+    }
+
 }

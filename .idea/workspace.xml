@@ -3,12 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="6a7219bf-f161-44d8-8f52-80819c55d6ea" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controller/homeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controller/homeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controller/profileController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controller/profileController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/model/Exam.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/model/Exam.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/view/footer.phtml" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/footer.phtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/view/home/index.phtml" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/home/index.phtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/view/home/takeExam.phtml" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/home/takeExam.phtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/model/Profile.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/model/Profile.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/view/home/details_for_examiner.phtml" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/home/details_for_examiner.phtml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -135,6 +133,8 @@
       <workItem from="1582459253919" duration="1785000" />
       <workItem from="1582461076133" duration="1298000" />
       <workItem from="1582462894904" duration="498000" />
+      <workItem from="1582529395663" duration="4076000" />
+      <workItem from="1582619087006" duration="83000" />
     </task>
     <servers />
   </component>

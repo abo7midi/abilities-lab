@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<?php
+
+?>
+<html>
+<head>
+
+    <title>student_profile</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+</head>
+
+
+<div id="time" ></div>
+<div class="container">
+
+
+
+    <table class="table" style="width:100%; border-spacing: 5px;">
+        <tr>
+            <td><h4>User_name</h4></td>
+            <td><h4>Marks</h4></td>
+            <td><h4>phone</h4></td>
+            <td><h4>No.Exams</h4></td>
+
+
+
+        </tr>
+        <?php
+        foreach($this->view_data['profile'] as $row ){
+
+            ?>
+            <tr>
+                <td><img src="/pictures/<?php echo $row['image'] ?>" class="card-img-top" alt="..." style="width: 10%;height: 59px;"></td>
+                <td><?php echo $row['full_name']?></td>
+                <td><?php echo $row['phone'] ?></td>
+                <td><a href="/exam/details"><?php echo $row['No_exam'] ?></a></td>
+
+
+
+
+
+            </tr>
+        <?php }
+
+        ?>
+
+
+    </table>
+
+</div>
+
+
+</body>
+</html>
