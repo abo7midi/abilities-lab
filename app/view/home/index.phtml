@@ -32,6 +32,155 @@ include "header.phtml";
 
 
 <!-- end slider-------------------------------------------------------------->
+
+<section class="about" id="about">
+    <div class="container h-100">
+        <div class="row h-100 justify-content-center align-items-center">
+            <div class="col-12">
+                <div class="title text-center">
+                    <h1 class= "animated slideInDown" style="animation-delay: 1s">Online Exam</h1>
+                    <div class="border"></div>
+                </div>
+                <div class="title text-center" >
+                    <p>
+                        This is the last online examination system you will ever need! With our easy online exam builder you will set up your own engaging exams that fit any kind of difficulty level. Build and create your online exams & tests with great ease and provide your users with appropriate feedback, so they will have a rich learning experience.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+<section class="about" id="about" style="background-color: #fff;">
+    <div class="container h-100">
+        <div class="row h-100 justify-content-center align-items-center">
+            <div class="col-12">
+                <div class="title text-center">
+                    <h1 class= "animated slideInDown" style="animation-delay: 1s">Why use our online examination tool?</h1>
+                    <div class="border"></div>
+                </div>
+                <div class="title text-center" >
+                    <p>Do you need some serious testing software for your students? Or do you need to hand out a lot of certificates? Do you want to easily set up your exam software and invite your participants, or do you need to connect your testing software with your internal software? Start using the Online Exam Builder and this is all within reach. Take a look at all the features and solutions.</p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+
+
+<section class="services" id="services">
+    <div class="container ">
+
+        <div class="row">
+            <div class=" col-md-4 col-sm-6 s_item text-center why2">
+                <div class="s_icon">
+                    <i class="fa fa-twitter animated bounceInRight" style="animation-delay: 1s"></i>
+
+                </div>
+                <h5  class= "animated bounceInLeft" style="animation-delay: 2s">Easy to use</h5>
+                <p class= "animated zoomIn" style="animation-delay: 1s">Our exam builder is simple and easy to use. For students as well as for the administrators. With our online exam builder it's easy to start, which makes it more fun.</p>
+            </div>
+            <div class=" col-md-4 col-sm-6 s_item text-center why2">
+                <div class="s_icon">
+                    <i class="fa fa-twitter animated bounceInRight" style="animation-delay: 1s"></i>
+                </div>
+                <h5 class= "animated bounceInLeft" style="animation-delay: 2s">Looks great on all devices</h5>
+                <p class= "animated zoomIn" style="animation-delay: 1s">It doesn't matter if you are on a phone, tablet or pc: your online exam will look beautiful. Our online examination system is fully responsive, so you can engage your audience on any platform.</p>
+            </div>
+            <div class=" col-md-4 col-sm-6 s_item text-center why2">
+                <div class="s_icon">
+                    <i class="fa fa-twitter animated bounceInRight" style="animation-delay: 1s"></i>
+                </div>
+                <h5 class= "animated bounceInLeft" style="animation-delay: 2s">Awesome support</h5>
+                <p class= "animated zoomIn" style="animation-delay: 1s">Do you have any questions about our online examination software? Our support owls are always by your side and provide you with the best possible support!</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+    <div class="container" align="center">
+        <div class="title text-center">
+            <h1>excellent students</h1>
+            <div class="border"></div>
+        </div>
+
+
+        <section class="best_student slider ">
+            <div class="row" >
+                <?php
+                $i=1;
+                foreach($this->view_data['top'] as $row ){
+                ?>
+                <div class="col-lg-2 col-sm-4 col-6">
+                    <div class="slide">
+                        <p ><?php echo $i++;?></p>
+                      <a class="Studentinfo" data-user-id="<?php echo $row['user_id'] ?>" data-toggle="modal" data-target=".bd-example-modal-lgg"><img src="/pictures/<?php echo $row['image']; ?>"> </a>
+                        <h5 ><?php echo $row['user_name']?></h5>
+                    </div>
+                </div>
+                <?php } ?>
+            </div>
+        </section>
+    </div>
+
+<div class="testimonial-section">
+    <div class="inner-width">
+        <h1>What Our Clients Say</h1>
+        <div class="testimonial-pics">
+            <img src="/pictures/p1.png" alt="test-1" class="active">
+            <img src="/pictures/p2.png" alt="test-2">
+            <img src="/pictures/p3.png" alt="test-3">
+            <img src="/pictures/p4.png" alt="test-4">
+        </div>
+
+        <div class="testimonial-contents">
+            <div class="testimonial active" id="test-1">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab consequatur et adipisci ut, impedit cumque, similique, eum tenetur, numquam eligendi aliquid. Nulla sit, cupiditate corporis labore, modi natus officiis asperiores!</p>
+                <span class="description">Emy / Developer</span>
+            </div>
+
+            <div class="testimonial" id="test-2">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elimet, consectetur adipisicing eli t. Ab consequatur et adipisci ut, impedit cumque, similique, eum tenetur, numquam eligendi aliquid. Nulla sit, cupiditate corporis labore, modi natus officiis asperiores!</p>
+                <span class="description">Carla / Developer</span>
+            </div>
+
+            <div class="testimonial" id="test-3">
+                <p>Lorem  similique, eum tenetur, numquam eligendi aliquid. Nulla sit, cupiditate corporis labore, modi natus officiis asperiores!</p>
+                <span class="description">Thomas / Developer</span>
+            </div>
+
+            <div class="testimonial" id="test-4">
+                <p>Lorem ipsum dolorng elit. Ab consequatur et adipisci ut, impedit cumque, similique, eum tenetur, numquam eligendi aliquid. Nulla sit, cupiditate corporis labore, modi natus officiis asperiores!</p>
+                <span class="description">Monica / Developer</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--model for top talents-->
+<div class="modal fade bd-example-modal-lgg" id="modelContent" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content" id="talentExam2" style="width: 50%;">
+
+
+
+
+
+        </div>
+    </div>
+</div>
+
+
+<!-- oooooo -->
 <style>
     .mainCat{
         background: #2f9598;
@@ -259,71 +408,131 @@ border-radius: 0 0 10px 10px;
 </div>
 
         <script>
-            var jq = $.noConflict();
             var errorMessage="<?php echo Message::check("unauth")?>";
             if(errorMessage!=''){
-                jq("#errorContent").html(errorMessage);
+                $("#errorContent").html(errorMessage);
                 document.getElementById("trigger-btn").click();
             }
 
             function load_Exams(){
-                var selectd=jq("select#subcat").children("option:selected").val();
+
+
+                var selectd=$("select#subcat").children("option:selected").val();
                 var loading="<button class='btn btn-primary' disabled><span class='spinner-border spinner-border-sm'></span>Loading..</button>";
-                jq.ajax({
+                $.ajax({
                     url:"/home/showCategoryExams",
                     method:"POST",
                     data:{
                         subcat:selectd
                     },
                     beforeSend:function() {
-                        jq('#loadingDiv').html(loading);
+                        $('#loadingDiv').html(loading);
                     }
                     ,
                     success:function(data)
                     {
+                        console.log(data);
                         html='';
                         var exams=JSON.parse(data);
-                        // alert(d)
-                        var count=1;
-                        console.log(data);
-                        jq.each( exams.data, function( index, row ) {
-                            html+='<div class="col-sm-3 examContent">'
+                       if(exams.data=="no result"){
+                           html=exams.data;
+                       }
+                       else{
+                           $.each( exams.data, function( index, row ) {
+                               html+='<div class="col-sm-3 examContent">'
                                    +'<div class="titleExam">'
                                    +row.exam_name
                                    +'</div>'
                                    +'<p>' + row.exam_description + '</p>'
-                                    +'<p>' + row.studentSample + '/' + row.allSample +'</p>'+
-                            '<p>';
-                            switch (row.exam_level){
-                                case "1": html+='<span style="float: left">level : Hard</span>';break;
-                                case "2": html+='<span style="float: left">level : Mediam</span>';break;
-                                case "3": html+='<span style="float: left">level : Easy</span>';break;
-                                default: html+='';
-                            }
-                            switch (row.exam_price){
-                                case "0": html+='<span style="float: right">price : Free</span>';break;
-                                default:html+='<span style="float: right">price : '+row.exam_price+' $</span>';break;
-                            }
-                            if(row.studentSample=="0"){
-                                html+='</p><a type="button"  class="btn btn-info" disabled>Exam Done</a></div>';
-                            }
-                            else{
-                                html+='</p><a type="button" href="/exam/takeExam/'+row.exam_id+'" class="btn btn-info" >Get Start</a></div>';
-                            }
 
-                            count++;
-                        });
-                        jq('#loadingDiv').html(html);
+                                   +'<p>Chances :' + row.studentSample + '/' + row.allSample +'</p>'+
+                                   '<p>Examiner: ' + row.examiner + '</p>'
+                               '<p>';
+                               switch (row.exam_level){
+                                   case "1": html+='<span style="float: left">level : Hard</span>';break;
+                                   case "2": html+='<span style="float: left">level : Mediam</span>';break;
+                                   case "3": html+='<span style="float: left">level : Easy</span>';break;
+                                   default: html+='';
+                               }
+                               switch (row.exam_price){
+                                   case "0": html+='<span style="float: right">price : Free</span>';break;
+                                   default:html+='<span style="float: right">price : '+row.exam_price+' $</span>';break;
+                               }
+                               if(row.studentSample=="0"){
+                                   html+='</p><a type="button"  class="btn btn-info" disabled>Exam Done</a></div>';
+                               }
+                               else{
+                                   html+='</p><a type="button" href="/exam/takeExam/'+row.exam_id+'" class="btn btn-info" >Get Start</a></div>';
+                               }
+
+                           });
+                       }
+
+                        $('#loadingDiv').html(html);
                     }
                 });
             };
 
-            jq("select#subcat").change(function () {
+            $("select#subcat").change(function () {
                 load_Exams();
             })
 
+            $('.Studentinfo').on('click', function () {
+                var data = 'user_id=' + encodeURIComponent($(this).attr('data-user-id'));
+                var url = '/exam/student_profile';
+                var _this = $(this);
+                $.ajax({
+                    url: url,//   var url=$('#news').attr('action');
+                    method: 'POST',
+                    dataType: 'json',// data type that i want to return
+                    data: data,// var form=$('#news').serialize();
+                    success: function (data) {
+                        console.log(data);
+                        html='';
+                        var i=1;
+                        $.each( data, function( index, row ) {
+
+
+                            html+='<div class="our-team">\n' +
+                                '                    <div class="pic">\n' +
+                                '                        <img src="/pictures/'+row.image+'">\n' +
+                                '                    </div>\n' +
+                                '                    <div class="team-content">\n' +
+                                '                        <h3 class="title">'+row.full_name+'</h3>\n' +
+                                '                        <span class="post">Email:  '+row.user_email+'</span>\n' +
+                                '                        <span class="post">Phone:  '+row.phone+'</span>\n' +
+                                '                    </div>\n' +
+                                '                    <ul class="social">\n' +
+                                '                        <li>\n' +
+                                '                            <a href="#"  target="_blank"class="fa fa-facebook"></a>\n' +
+                                '                        </li>\n' +
+                                '                        <li>\n' +
+                                '                            <a href="#" class="fa fa-twitter"></a>\n' +
+                                '                        </li>\n' +
+                                '                        <li>\n' +
+                                '                            <a href="#" class="fa fa-google-plus"></a>\n' +
+                                '                        </li>\n' +
+                                '                        <li>\n' +
+                                '                            <a href="#" class="fa fa-linkedin"></a>\n' +
+                                '                        </li>\n' +
+                                '                    </ul>\n' +
+                                '                </div>';
+                            i++;
+                        });
+
+                        $('#talentExam2').html(html);
+                        $('#modelContent').modal('show');
+                    },
+                    error: function (xhr, status, error) {
+                        alert(xhr.responseText);
+                    }
+                });
+                return (false);
+            });
+
         </script>
-<?php
+
+        <?php
 include "footer.phtml";
 ?>
 

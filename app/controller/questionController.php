@@ -8,7 +8,7 @@ class questionController extends Controller
     {
         $this->model('Question');
         $this->view('home' . DIRECTORY_SEPARATOR . 'addQuestion', ['question' => $this->model->all()]);
-        $this->view->pageTitle = 'admin question';
+        $this->view->pageTitle = 'Questions';
         $this->view->render();
 
     }
@@ -140,7 +140,7 @@ class questionController extends Controller
             }*/
         /*}*/
         $this->view('home' . DIRECTORY_SEPARATOR . 'addQuestion');
-        $this->view->pageTitle = 'admin question';
+        $this->view->pageTitle = 'Questions';
         $this->view->render();
 
     }
@@ -290,49 +290,5 @@ class questionController extends Controller
             echo $_SESSION['sample_id'];
 
         }
-
-
     }
-
-
-//
-    public function delete($id)
-    {
-        $this->model('Category');
-        $this->model->delete( array(0 => $id ));
-        Message::setMessage('status',1);
-        Message::setMessage('main','تم حذف الفئة بنجاح ّ!');
-        header('Location:/category/index');
-
-    }
-
-
-//
-    public function edit($id)
-    {
-        // check if there submit
-        if ($_SERVER["REQUEST_METHOD"] == "POST"){
-            //do validation to POST
-
-            $validate=Validation::required(['','title']);
-            # add new record to the database
-
-            if ($validate['status'] == 1)
-            {
-                # prepare the array of post to send it to News model to insert to news table
-                $category= array(':title' => htmlentities($_REQUEST['title']),':id'=>$id);
-                $this->model('Category');
-                if ($this->model->update($category)) {
-                    Message::setMessage('msgState',1);
-                    Message::setMessage('main',' تم تحديث الفئة بنجاح');
-                }
-            }
-        }
-        $category=isset($this->model)?$this->model: $this->model('Category');
-        $this->view('admin'.DIRECTORY_SEPARATOR.'editCategory',['categories'=>$category->find( array(0 =>$id))]);
-        $this->view->pageTitle='this page of index';
-
-        $this->view->render();
-    }
-
 }

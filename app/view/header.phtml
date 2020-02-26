@@ -10,14 +10,12 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/fontawesome.min.css">
-    <!-- Our CSS -->
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
+   <!-- Our CSS -->
     <link rel="stylesheet" href="/css/style.css">
     <!-- js libraries-->
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/js/fontawesome.min.js"></script>
 
     <title>ability lab</title>
 </head>
@@ -35,20 +33,14 @@
                 <a class="nav-link" href="/home/index">Home<span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Talents</a>
+
+                <a class="nav-link" href="/home/aboutus">About Us</a>
             </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    category
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <?php
-                    $category=new Category();
-                    foreach ($category->allSubCate() as $subcat){
-                        echo '<a class="dropdown-item" href="#">'.$subcat["cat_name"].'</a>';
-                    }
-                    ?>
-                </div>
+            <li class="nav-item">
+                <a class="nav-link" href="/home/contact">Contact Us</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/home/faq">FAQs</a>
             </li>
         </ul>
 
@@ -110,8 +102,6 @@
 
                 <div id="cd-signup"> <!-- sign up form -->
                     <form class="cd-form" name="regform" id="signupForm" method="post" action="/user/add" enctype="multipart/form-data">
-
-
                         <div id="preview-container">
                             <div class="text-center">
                                 <h4> Your Image Profile </h4>
@@ -124,16 +114,12 @@
     margin-bottom: -60px;">
                             </div>
                         </div>
-
-
                         <p class="fieldset">
                         <div class="input-group mb-3">
                             <label  class="lablemassge" for="signin-password">UserName</label>
                             <div class="input-group-append">
                                 <span class="input-group-text" style="background: #ffffff;"><img src="/image/at.png" width="20px" height="20px"></span>
                             </div>
-
-
                             <input class=" gt-input form-control" id="username" type="text" name="username" onkeyup="lettersOnly(this)" >
                             <?php// echo Message::check('username');  ?>
                         </div>
@@ -222,20 +208,16 @@
 
                 <div id="cd-reset-password"> <!-- reset password form -->
                     <p class="cd-form-message">Lost your password? Please enter your email address. You will receive a link to create a new password.</p>
-
                     <form class="cd-form">
                         <p class="fieldset">
                             <label class="image-replace cd-email" for="reset-email">E-mail</label>
                             <input class="full-width has-padding has-border" id="reset-email" type="email" placeholder="E-mail">
                             <span class="cd-error-message">Error message here!</span>
                         </p>
-
                         <p class="fieldset">
                             <input class="full-width has-padding" type="submit" value="Reset password">
                         </p>
                     </form>
-
-
                     <p class="cd-form-bottom-message"><a href="#0">Back to log-in</a></p>
                 </div> <!-- cd-reset-password -->
                 <a href="#0" class="cd-close-form">Close</a>
@@ -251,18 +233,18 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
 <script>
-    var jq = $.noConflict();
+
     function load_Exams11(id){
         var selectd=id;
         var loading="<button class='btn btn-primary' disabled><span class='spinner-border spinner-border-sm'></span>Loading..</button>";
-        jq.ajax({
+        $.ajax({
             url:"/home/showCategoryExams",
             method:"POST",
             data:{
                 subcat:selectd
             },
             beforeSend:function() {
-                jq('#loadingDiv').html(loading);
+                $('#loadingDiv').html(loading);
             }
             ,
             success:function(data)
@@ -272,7 +254,7 @@
                 // alert(d)
                 var count=1;
                 console.log(data);
-                jq.each( exams.data, function( index, row ) {
+                $.each( exams.data, function( index, row ) {
                     html+='<div class="col-sm-3 examContent">'
                         +'<div class="titleExam">'
                         +row.exam_name
@@ -300,13 +282,13 @@
 
                     count++;
                 });
-                jq('#loadingDiv').html(html);
+                $('#loadingDiv').html(html);
             }
         });
     };
 
-    jq(".categoriesItem").click(function () {
-        load_Exams11(jq(this).attr("data-id"));
+    $(".categoriesItem").click(function () {
+        load_Exams11($(this).attr("data-id"));
     })
 
 

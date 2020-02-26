@@ -17,7 +17,7 @@ class examadminController extends Controller
         $this->model('ExamAdmin');
         $this->view('admin'.DIRECTORY_SEPARATOR.'showexam_admin',['adminexam'=>$this->model->showexam(),'admins'=>$this->model->all()]);
 
-        $this->view->pageTitle='exam';
+        $this->view->pageTitle='Exam';
         $this->view->render();
 
     }
@@ -62,13 +62,6 @@ class examadminController extends Controller
         $this->view->render();
 
     }
-
-
-
-
-
-
-
 }
 
 //
