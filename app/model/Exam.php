@@ -91,8 +91,6 @@ class Exam
         $Stmt = $this->db->preparation("select e.* ,COUNT(s.sample_id) sampleNo from exams e INNER join samples s using (exam_id) group by e.exam_id  having user_id=? ");
         $Stmt->execute($u_id);
         return $Stmt->fetchAll();
-
-
     }
     public function getExamDetails($s_id){
         $Stmt = $this->db->preparation("select user_exam.user_id as e_u_id,user_exam.exam_id as exam_id,user_exam_date,users.full_name as full_name,user_exam_result as degrees

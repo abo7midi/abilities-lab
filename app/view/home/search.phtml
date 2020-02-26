@@ -32,7 +32,7 @@
                     var exams=JSON.parse(data);
                     html='';
                     $.each( exams.data, function( index, row ) {
-                        html+="<li class=\"list-group-item link-class\" value='"+row.exam_id+"'>"+row.exam_name+"</li>";
+                        html+="<a href='#loadingDiv' id='f'> <li class=\"list-group-item link-class\" value='"+row.exam_id+"'>"+row.exam_name+"</li></a>";
                     });
                     $('#result').html(html);
                 }
@@ -47,13 +47,21 @@
         jq('#result').html("");
     });
 */
+
+        /******************************************************************************/
         $('#result').on('click', 'li', function() {
         var click_text = $(this).text().split('|');
             $('#search').val($.trim(click_text[0]));
             $("#result").html('');
-        result_Exams($(this).attr("value"));
-    });
-/******************************************************************************/
+             result_Exams($(this).attr("value"));
+
+
+            });
+        $("#f").click(function () {
+                    $('html , body').animate({
+                        scrollTop: $("#loadingDiv").offsetTop(1000)
+                });
+            });
     function result_Exams(liVal){
         var searchTxt=liVal;
         $.ajax({

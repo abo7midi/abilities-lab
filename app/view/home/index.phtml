@@ -430,10 +430,11 @@ border-radius: 0 0 10px 10px;
                     success:function(data)
                     {
                         console.log(data);
-                        html='';
+                        html='<h5 style="display: block; width: 100%; text-align: center ;background: #fff; padding: 20px; color:#37b2b5; font-size: 24px; font-weight: bolder; text-transform: uppercase; ">'+$("select#subcat").children("option:selected").text()+'</h5>';
                         var exams=JSON.parse(data);
+
                        if(exams.data=="no result"){
-                           html=exams.data;
+                           html='<h5 style="display: block; width: 100%; text-align: center ;background: #fff; padding: 20px; color:#37b2b5; font-size: 24px; font-weight: bolder; text-transform: uppercase; ">'+exams.data+'</h5>';
                        }
                        else{
                            $.each( exams.data, function( index, row ) {

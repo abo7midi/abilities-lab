@@ -139,7 +139,7 @@ function preview(input) {
 			$password_field = $this.prev('input');
 		
 		( 'password' == $password_field.attr('type') ) ? $password_field.attr('type', 'text') : $password_field.attr('type', 'password');
-		( 'Show' == $this.text() ) ? $this.text('Hide') : $this.text('Show');
+		( '<i class="fa fa-eye"></i>' == $this.html() ) ? $this.html('<i class="fa fa-eye-slash"></i>') : $this.html('<i class="fa fa-eye"></i>');
 		//focus and move cursor to the end of input field
 		$password_field.putCursorAtEnd();
 	});

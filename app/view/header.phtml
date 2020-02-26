@@ -72,16 +72,17 @@
                                 <div class="input-group-append">
                                     <span class="input-group-text" style="background: #ffffff;"><img src="/image/email (4).png" width="20px" height="20px"></span>
                                 </div>
-                                <input class="form-control"  id="signin-email" type="text" name="username" placeholder="  Enter Your Email" >
+                                <input class="form-control"  id="signin-username" type="text" name="username" placeholder="  Enter Your Email" >
                                 <?php echo Message::check('username');?>
                             </div>
                         </div>
                         <div class="fieldset">
                             <!--                        <div class="input-group mb-3">-->
                             <label class="image-replace cd-password" for="signin-password">Password</label>
+                            <a href="#0" class="hide-password"><i class="fa fa-eye"></i></a>
                             <input class=" form-control full-width has-padding has-border" id="signin-password" name="password" type="password"  placeholder="Enter Your Password">
+
                             <?php// echo Message::check('password');  ?>
-                            <a href="#0" class="hide-password">Show</a>
                         </div>
                         <!--                    </div>-->
 
@@ -105,17 +106,14 @@
                                 <img class="preview" src="/image/email (5).png"/>
                                 <!--  <input type="button" value="Upload" class="upload-image btn-default"/>-->
                                 <input id="upload" type="file" name="fileToUpload" accept="image/*"/>
-                                <img class="preview" src="/image/download (2).jpg"style="    width: 31px;
-    height: 28px;
-    margin-left: -30px;
-    margin-bottom: -60px;">
+
                             </div>
                         </div>
                         <p class="fieldset">
                         <div class="input-group mb-3">
-                            <label  class="lablemassge" for="signin-password">UserName</label>
+                            <label  class="lablemassge" >UserName</label>
                             <div class="input-group-append">
-                                <span class="input-group-text" style="background: #ffffff;"><img src="/image/at.png" width="20px" height="20px"></span>
+                                <span class="input-group-text" style="background: #ffffff;">@</span>
                             </div>
                             <input class=" gt-input form-control" id="username" type="text" name="username" onkeyup="lettersOnly(this)" >
                             <?php// echo Message::check('username');  ?>
@@ -136,10 +134,10 @@
 
                         <p class="fieldset">
                         <div class="input-group mb-3">
-                            <label class="lablemassge" for="signin-password">Phone</label>
+                            <label class="lablemassge">Phone</label>
                             <div class="input-group-append" >
 
-                                <span class="input-group-text" style="background: #ffffff;"><img src="/image/telephone.png" width="20px" height="20px"></span>
+                                <span class="input-group-text" style="background: #ffffff; color:#1C8ADB;"><i class="fa fa-phone"></i></span>
 
                             </div>
                             <input class="gt-input form-control" id="phone" type="text" name="phone" onkeyup="numbersOnly(this)"  >
@@ -149,7 +147,7 @@
 
                         <p class="fieldset">
                         <div class="input-group mb-3">
-                            <label class="lablemassge" for="signin-password">email</label>
+                            <label class="lablemassge" >email</label>
 
                             <div class="input-group-append">
                                 <span class="input-group-text" style="background: #ffffff;"><img src="/image/download (4).png" width="20px" height="20px"></span>
@@ -157,24 +155,18 @@
 
                             <input class=" gt-input form-control " id="email" type="email" name="email">
                             <div class="input-group-append">
-
-
-
                             </div>
                         </div>
                         </p>
-
-
-
                         <div class="fieldset">
                             <div class="input-group mb-3">
                                 <label  class="lablemassge" for="signin-password">password</label>
-
                                 <div class="input-group-append">
-                                    <span class="input-group-text" style="background: #ffffff;"><img src="/image/keypassword.png" width="20px" height="20px"></span>
+                                    <span class="input-group-text" style="background: #ffffff; color:#1C8ADB;"><i class="fa fa-key"></i></span>
                                 </div>
-                                <input class=" gt-input form-control"  id="signin-email" type="password" name="password"  >
+                                <input class=" gt-input form-control"  id="signin-email" type="password" name="password" >
                                 <?php echo Message::check('password');?>
+                                <a href="#0" class="hide-password"><i class="fa fa-eye"></i></a>
                             </div>
                         </div>
                         <div class="fieldset">
