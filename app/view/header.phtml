@@ -55,7 +55,7 @@
         <!----------------------------- start trying---------------------------------------------->
 
         <nav class="main-nav" style="position: relative;">
-            <ul>
+            <ol style="list-style: none">
                 <!-- inser more links here -->
                 <?php if(Session::has('userID')){
                     echo '<li><a href="/profile/index" style="width: 80px; height: 80px; overflow: hidden; position: absolute; top: 8%; left: -50%;">
@@ -63,11 +63,11 @@
                 <li><a class="btn btn-outline-secondary my-2 my-sm-0" href="/user/logout" style="color:gray; margin-right: 10px; padding: 10px;">Log Out</a></li>';
                 }else{
 
-                    echo '<li><a class="btn btn-outline-success my-2 my-sm-0" href="#0" style=" color:green; margin-right: 10px; padding: 10px;">Sign in</a></li>';
+                    echo '<li class="popSignUp"><a class="btn btn-outline-success my-2 my-sm-0" href="#0" style=" color:green; margin-right: 10px; padding: 10px;">Sign in</a></li>';
        //         <li><a class="btn btn-outline-success my-2 my-sm-0" href="#0" style=" color:green; margin-right: 10px; padding: 10px;">Sign Out</a></li>'
                 }
                 ?>
-            </ul>
+            </ol>
         </nav>
         <div class="cd-user-modal"> <!-- this is the entire modal form, including the background -->
             <div class="cd-user-modal-container"> <!-- this is the container wrapper -->
