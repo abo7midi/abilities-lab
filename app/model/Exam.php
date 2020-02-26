@@ -157,11 +157,11 @@ class Exam
     {
 
 
-        $Stmt = $this->db->preparation('SELECT t1.*,user_exam_result as degrees ,t1.user_id,user_name
+        $Stmt = $this->db->preparation('SELECT t1.*,users.*,user_exam_result as degrees ,t1.user_id,user_name
                                             FROM user_exam t1 left join users on users.user_id=t1.user_id
                                             WHERE t1.user_exam_date = (SELECT MAX(t2.user_exam_date)
                                             FROM user_exam t2
-                                            WHERE t2.user_id = t1.user_id) and t1.exam_id=? GROUP BY t1.user_id ORDER BY degrees DESC  ');
+                                            WHERE t2.user_id = t1.user_id and t2.sample_id=t1.sample_id) and t1.exam_id=? GROUP BY t1.user_id ORDER BY degrees DESC  ');
 
         $Stmt->execute($exam_id);
         return $Stmt->fetchAll();

@@ -122,7 +122,7 @@ include "header.phtml";
                 <div class="col-lg-2 col-sm-4 col-6">
                     <div class="slide">
                         <p ><?php echo $i++;?></p>
-                        <img src="/pictures/<?php echo $row['image']; ?>">
+                      <a class="Studentinfo" data-user-id="<?php echo $row['user_id'] ?>" data-toggle="modal" data-target=".bd-example-modal-lgg"><img src="/pictures/<?php echo $row['image']; ?>"> </a>
                         <h5 ><?php echo $row['user_name']?></h5>
                     </div>
                 </div>
@@ -164,6 +164,21 @@ include "header.phtml";
         </div>
     </div>
 </div>
+
+
+<!--model for top talents-->
+<div class="modal fade bd-example-modal-lgg" id="modelContent" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content" id="talentExam2" style="width: 50%;">
+
+
+
+
+
+        </div>
+    </div>
+</div>
+
 
 <!-- oooooo -->
 <style>
@@ -392,74 +407,129 @@ border-radius: 0 0 10px 10px;
     </div>
 </div>
         <script>
-            var jq = $.noConflict();
             var errorMessage="<?php echo Message::check("unauth")?>";
             if(errorMessage!=''){
-                jq("#errorContent").html(errorMessage);
+                $("#errorContent").html(errorMessage);
                 document.getElementById("trigger-btn").click();
             }
 
             function load_Exams(){
 
-                var selectd=jq("select#subcat").children("option:selected").val();
-                alert(selectd);
+                var selectd=$("select#subcat").children("option:selected").val();
                 var loading="<button class='btn btn-primary' disabled><span class='spinner-border spinner-border-sm'></span>Loading..</button>";
-                jq.ajax({
+                $.ajax({
                     url:"/home/showCategoryExams",
                     method:"POST",
                     data:{
                         subcat:selectd
                     },
                     beforeSend:function() {
-                        jq('#loadingDiv').html(loading);
+                        $('#loadingDiv').html(loading);
                     }
                     ,
                     success:function(data)
                     {
+                        console.log(data);
                         html='';
                         var exams=JSON.parse(data);
-                        // alert(d)
-                        var count=1;
-                        console.log(data);
-                        jq.each( exams.data, function( index, row ) {
-                            html+='<div class="col-sm-3 examContent">'
+                       if(exams.data=="no result"){
+                           html=exams.data;
+                       }
+                       else{
+                           $.each( exams.data, function( index, row ) {
+                               html+='<div class="col-sm-3 examContent">'
                                    +'<div class="titleExam">'
                                    +row.exam_name
                                    +'</div>'
                                    +'<p>' + row.exam_description + '</p>'
-                                    +'<p>Chances :' + row.studentSample + '/' + row.allSample +'</p>'+
-                                    '<p>Examiner: ' + row.examiner + '</p>'
-                            '<p>';
-                            switch (row.exam_level){
-                                case "1": html+='<span style="float: left">level : Hard</span>';break;
-                                case "2": html+='<span style="float: left">level : Mediam</span>';break;
-                                case "3": html+='<span style="float: left">level : Easy</span>';break;
-                                default: html+='';
-                            }
-                            switch (row.exam_price){
-                                case "0": html+='<span style="float: right">price : Free</span>';break;
-                                default:html+='<span style="float: right">price : '+row.exam_price+' $</span>';break;
-                            }
-                            if(row.studentSample=="0"){
-                                html+='</p><a type="button"  class="btn btn-info" disabled>Exam Done</a></div>';
-                            }
-                            else{
-                                html+='</p><a type="button" href="/exam/takeExam/'+row.exam_id+'" class="btn btn-info" >Get Start</a></div>';
-                            }
+                                   +'<p>Chances :' + row.studentSample + '/' + row.allSample +'</p>'+
+                                   '<p>Examiner: ' + row.examiner + '</p>'
+                               '<p>';
+                               switch (row.exam_level){
+                                   case "1": html+='<span style="float: left">level : Hard</span>';break;
+                                   case "2": html+='<span style="float: left">level : Mediam</span>';break;
+                                   case "3": html+='<span style="float: left">level : Easy</span>';break;
+                                   default: html+='';
+                               }
+                               switch (row.exam_price){
+                                   case "0": html+='<span style="float: right">price : Free</span>';break;
+                                   default:html+='<span style="float: right">price : '+row.exam_price+' $</span>';break;
+                               }
+                               if(row.studentSample=="0"){
+                                   html+='</p><a type="button"  class="btn btn-info" disabled>Exam Done</a></div>';
+                               }
+                               else{
+                                   html+='</p><a type="button" href="/exam/takeExam/'+row.exam_id+'" class="btn btn-info" >Get Start</a></div>';
+                               }
 
-                            count++;
-                        });
-                        jq('#loadingDiv').html(html);
+                           });
+                       }
+
+                        $('#loadingDiv').html(html);
                     }
                 });
             };
 
-            jq("select#subcat").change(function () {
+            $("select#subcat").change(function () {
                 load_Exams();
             })
 
+            $('.Studentinfo').on('click', function () {
+                var data = 'user_id=' + encodeURIComponent($(this).attr('data-user-id'));
+                var url = '/exam/student_profile';
+                var _this = $(this);
+                $.ajax({
+                    url: url,//   var url=$('#news').attr('action');
+                    method: 'POST',
+                    dataType: 'json',// data type that i want to return
+                    data: data,// var form=$('#news').serialize();
+                    success: function (data) {
+                        console.log(data);
+                        html='';
+                        var i=1;
+                        $.each( data, function( index, row ) {
+
+
+                            html+='<div class="our-team">\n' +
+                                '                    <div class="pic">\n' +
+                                '                        <img src="/pictures/'+row.image+'">\n' +
+                                '                    </div>\n' +
+                                '                    <div class="team-content">\n' +
+                                '                        <h3 class="title">'+row.full_name+'</h3>\n' +
+                                '                        <span class="post">Email:  '+row.user_email+'</span>\n' +
+                                '                        <span class="post">Phone:  '+row.phone+'</span>\n' +
+                                '                    </div>\n' +
+                                '                    <ul class="social">\n' +
+                                '                        <li>\n' +
+                                '                            <a href="#"  target="_blank"class="fa fa-facebook"></a>\n' +
+                                '                        </li>\n' +
+                                '                        <li>\n' +
+                                '                            <a href="#" class="fa fa-twitter"></a>\n' +
+                                '                        </li>\n' +
+                                '                        <li>\n' +
+                                '                            <a href="#" class="fa fa-google-plus"></a>\n' +
+                                '                        </li>\n' +
+                                '                        <li>\n' +
+                                '                            <a href="#" class="fa fa-linkedin"></a>\n' +
+                                '                        </li>\n' +
+                                '                    </ul>\n' +
+                                '                </div>';
+                            i++;
+                        });
+
+                        $('#talentExam2').html(html);
+                        $('#modelContent').modal('show');
+                    },
+                    error: function (xhr, status, error) {
+                        alert(xhr.responseText);
+                    }
+                });
+                return (false);
+            });
+
         </script>
-<?php
+
+        <?php
 include "footer.phtml";
 ?>
 

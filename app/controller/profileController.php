@@ -12,12 +12,15 @@ class profileController extends Controller
 
 
         $id = Session::get('userID');
-
-        $this->model('Profile');
-        $this->view('home' . DIRECTORY_SEPARATOR . 'showProfile', ['eProfile' => $this->model->all($id)]);
-        $this->view->pageTitle = 'admin showProfile';
-        $this->view->render();
-
+        if(Session::get("userGroup")==3){
+            $this->model('Profile');
+            $this->view('home' . DIRECTORY_SEPARATOR . 'showProfile', ['eProfile' => $this->model->all($id)]);
+            $this->view->pageTitle = 'admin showProfile';
+            $this->view->render();
+            return "";
+        }elseif(Session::get("userGroup")==2){
+            header("location:/profile/examiner_profile");
+        }
 
     }
 
@@ -89,6 +92,19 @@ class profileController extends Controller
         $this->view->pageTitle='edit Profile';
         $this->view->render();
     }
+
+    public function examiner_profile(){
+        $u_id = Session::get("userID");
+        $profiles = $this->model('Profile');
+        $profile = $profiles->examiner_profile([$u_id]);
+
+        $this->view('home' . DIRECTORY_SEPARATOR . 'examiner_profile', ["profile" => $profile]);
+        $this->view->pageTitle = 'examiner_profile';
+        $this->view->render();
+
+
+    }
+
 
 
 }

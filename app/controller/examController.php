@@ -9,14 +9,14 @@ class examController extends Controller
     {
         $this->model('Exam');
         $this->view('home' . DIRECTORY_SEPARATOR . 'exam', ['exam' => $this->model->all()]);
-        $this->view->pageTitle = 'exam';
+        $this->view->pageTitle = 'Exam';
         $this->view->render();
     }
 /**/
     public function endExam()
     {
         $_SESSION['qns_n']=1;
-
+        header("location:/exam/details");
     }
 
     public function exama()
@@ -110,7 +110,7 @@ class examController extends Controller
                     Message::setMessage(1, 'main', ' تم اضفة الفئة بنجاح');
 
                     $this->view('home' . DIRECTORY_SEPARATOR . 'addQuestion');
-                    $this->view->pageTitle = 'exam';
+                    $this->view->pageTitle = 'Questions';
                     $this->view->render();
                     return "";
                 }
@@ -119,7 +119,7 @@ class examController extends Controller
 
 
         $this->view('home' . DIRECTORY_SEPARATOR . 'addExam', ["category" => $category->allSubCate()]);
-        $this->view->pageTitle = 'exam';
+        $this->view->pageTitle = 'Exams';
         $this->view->render();
     }
 
@@ -191,7 +191,7 @@ class examController extends Controller
         } else {
             if (!isset($_SESSION[$Examid])) {
                 $this->view('home' . DIRECTORY_SEPARATOR . 'takeExam', ["exam_name"=>$oneExam[0]["exam_name"],"q" => $Questions, "choice" => Helper::getChoicesOfQuestions($Questions), "duration" => $oneExamTime,"exam_id" =>$Examid]);
-                $this->view->pageTitle = 'take Exam';
+                $this->view->pageTitle = 'Start Exam';
                 $this->view->render();
                 return "";
             } else {
@@ -206,30 +206,6 @@ class examController extends Controller
 
 
 //
-    public function edit($id)
-    {
-        // check if there submit
-        if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            $postErr = 0;
-            //do validation to POST
-            $validate = Validation::required(['', 'title']);
-            # add new record to the database
-            if ($validate['status'] == 1) {
-                # prepare the array of post to send it to News model to insert to news table
-                $category = array(':title' => htmlentities($_REQUEST['title']), ':id' => $id);
-                $this->model('Category');
-                if ($this->model->update($category)) {
-                    Message::setMessage('msgState', 1);
-                    Message::setMessage('main', ' تم تحديث الفئة بنجاح');
-                }
-            }
-        }
-        $category = isset($this->model) ? $this->model : $this->model('Category');
-        $this->view('admin' . DIRECTORY_SEPARATOR . 'editCategory', ['categories' => $category->find(array(0 => $id))]);
-        $this->view->pageTitle = 'this page of index';
-        $this->view->render();
-    }
-
     /* details for examiner */
     public function details()
     {
@@ -246,7 +222,7 @@ class examController extends Controller
         $exam=$this->model('Exam');
         $u_exams= $exam->getExamDetails([$s_id]);
         $this->view('home'.DIRECTORY_SEPARATOR.'who_do_exam',["u_exams"=>$u_exams]);
-        $this->view->pageTitle='who_do_exam';
+        $this->view->pageTitle='Who Do Exam';
         $this->view->render();
     }
 
@@ -365,18 +341,15 @@ class examController extends Controller
         $exam = $this->model('Exam');
         $exams = $exam->get_exams([$sub_cat_id]);
         $this->view('home' . DIRECTORY_SEPARATOR . 'index', ["exams" => $exams, "form_id" => 3]);
-        $this->view->pageTitle = 'Top Members in One Exam';
+        $this->view->pageTitle = 'Top Members in This Exam';
         $this->view->render();
-
     }
 
-    public function student_profile($u_id){
+    public function student_profile(){
+        $u_id=$_REQUEST['user_id'];
         $exam = $this->model('Exam');
         $exams = $exam->student_profile([$u_id]);
-
-        $this->view('home' . DIRECTORY_SEPARATOR . 'student_profile', ["student" => $exams]);
-        $this->view->pageTitle = 'student_profile';
-        $this->view->render();
+        echo json_encode($exams);
     }
 }
 

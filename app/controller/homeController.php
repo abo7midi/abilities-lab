@@ -26,7 +26,7 @@ class homeController extends Controller
       $top = $exam->top_members();
 
       $this->view('home'.DIRECTORY_SEPARATOR.'index',["sub_cat" => $sub_cat,"cat" => $cat,"form_id"=>1,"top" => $top]);
-      $this->view->pageTitle='this page of index';
+      $this->view->pageTitle='Home';
     $this->view->render();
   }
 
@@ -60,6 +60,9 @@ class homeController extends Controller
               }
           }
       }
+      if(empty($results))
+          $results="no result";
+
       echo json_encode(['statusCode'=>200,'data'=>  $results]);
 }
     public function search()
@@ -91,9 +94,23 @@ class homeController extends Controller
   {
     // echo 'i am in '.__CLASS__.'<br>method '.__METHOD__.'';
     $this->view('home'.DIRECTORY_SEPARATOR.'about');
-    $this->view->pageTitle='this page of about Us';
+    $this->view->pageTitle='about Us';
     $this->view->render();
   }
+    public function contact()
+    {
+        // echo 'i am in '.__CLASS__.'<br>method '.__METHOD__.'';
+        $this->view('home'.DIRECTORY_SEPARATOR.'contact');
+        $this->view->pageTitle='contact us';
+        $this->view->render();
+    }
+    public function faq()
+    {
+        // echo 'i am in '.__CLASS__.'<br>method '.__METHOD__.'';
+        $this->view('home'.DIRECTORY_SEPARATOR.'faq');
+        $this->view->pageTitle='FAQs';
+        $this->view->render();
+    }
 
 
   public function loggin()
@@ -176,28 +193,6 @@ public function viewPost($id)
 }
 
 
-public function addComment()
-  {
-
- if ($_SERVER["REQUEST_METHOD"] == "POST") {
-   //do validation to POST
-
-        $validate=Validation::required(['','comment']);
-
-             if ($validate['status'] == 0){
-                 $this->back();
-                 return;
-                 }
-
-print_r($_REQUEST);
-          $userForm= array(':text_com' =>$_REQUEST['comment'] ,':user_id' =>Session::get('userID') ,':news_id' =>$_REQUEST['news_id']);
-          $this->model('Comments');
-         $this->model->add($userForm);
-         Message::setMessage('status',1);
-         Message::setMessage('main','تم اضافة التعليق بنجاح ّ!');
-         $this->back();       }
-}
-
 public function categoryItem($id)
 {
 
@@ -212,18 +207,6 @@ public function categoryItem($id)
   $this->view->render();
 
 }
-
-public function findTag($tag)
-{
-  $news= $this->model('News');
-  $category= $this->model('Category');
-
-  $this->view('home'.DIRECTORY_SEPARATOR.'tags',['news'=>$news->findTags($tag),'category'=>$category->all()]);
-  $this->view->pageTitle='this page of Tags ';
-
-  $this->view->render();
-}
-
 
 }
 

@@ -37,4 +37,12 @@ class Profile
 
     }
 
+    /*Examiner Profile*/
+
+    public function examiner_profile($u_id){
+        $oStmt = $this->db->preparation("select *,COUNT(*) No_exam ,exams.user_id,users.user_id from users left join exams on users.user_id=exams.user_id WHERE users.user_id=? GROUP BY users.full_name");
+        $oStmt->execute($u_id);
+        return $oStmt->fetchAll();
+    }
+
 }

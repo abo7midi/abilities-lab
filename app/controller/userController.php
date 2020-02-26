@@ -111,7 +111,7 @@ class userController extends Controller
                     $user[0]['image']]);
 
                 if ($user[0]["group_id"] == 2 && $user[0]["user_state"]==1 ) {
-                    header("location:/exam/add");
+                    header("location:/profile/examiner_profile");
                     echo "ur examiner";
 
                 } elseif  ($user[0]["group_id"] == 3 && $user[0]["user_state"]==1 ){

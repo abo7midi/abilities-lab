@@ -2088,6 +2088,55 @@ div.answers p {
   transform: rotate(-360deg);
   right: 61px;
 }
+/*************************** Start Search box **************************************************/
+
+#result {
+  position: absolute;
+  width: 70%;
+  cursor: pointer;
+  overflow-y: auto;
+  max-height: 400px;
+  box-sizing: border-box;
+  z-index: 1001;
+  color: #555;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+}
+.link-class:hover{
+  background-color:#f1f1f1;
+}
+#search{
+  border:none;
+  border-bottom: 1px #fff solid;
+  border-radius: initial;
+  width: 80%;
+  background: none;
+  color: #fff;
+}
+#search:focus{
+  box-shadow: none !important;
+}
+
+
+#search::placeholder{
+  color: #fff !important;
+}
+.searchArea{
+  position: relative;
+  padding: 80px;
+  padding-bottom: 100px;
+  background: linear-gradient(338deg, rgba(79, 202, 205, 1) 0%, rgba(71, 175, 177, 1) 47%, rgba(40, 149, 152, 1) 100%);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: #fff;
+  width: 100%;
+}
+/*************************** End Search box **************************************************/
+
+
 /******************* about us ******************************/
 .no-padding {
   padding-right: 0;
@@ -2218,5 +2267,41 @@ div.answers p {
 
 }
 
+#modelContent{
+    width: 100%;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
 
+}
+
+.modal-content{
+    width: 50%;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+
+    padding: 10px;
+}
+.telentMember{
+    margin: 0 auto;
+    width:95%;
+    background: #f9f9f9;
+    padding: 20px;
+    margin-bottom: 5px;
+}
+.talentNo{
+    border-right:5px solid #fff;
+    height: 100px;
+}
+.telentMember img{
+    width: 20%;
+    border-radius: 50%;
+}
+.telentMember .talentName,
+.telentMember .talentMark{
+    width: 10%;
+}
 /******************* END DETAILS EXAMINAR PAGE ******************************/
