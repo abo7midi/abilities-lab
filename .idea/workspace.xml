@@ -3,13 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="6a7219bf-f161-44d8-8f52-80819c55d6ea" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controller/adminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controller/adminController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controller/examadminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controller/examadminController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/model/ExamAdmin.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/model/ExamAdmin.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/view/admin/accounts.phtml" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/admin/accounts.phtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/view/admin/accountsNonActive.phtml" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/admin/accountsNonActive.phtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/view/admin/category.phtml" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/admin/category.phtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/view/admin/showexam_admin.phtml" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/admin/showexam_admin.phtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/view/admin/subCategories.phtml" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/admin/subCategories.phtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/view/admin/user_exams.phtml" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/admin/user_exams.phtml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -132,7 +128,7 @@
       <workItem from="1582444424900" duration="1444000" />
       <workItem from="1582455892295" duration="71000" />
       <workItem from="1582530249334" duration="2453000" />
-      <workItem from="1582701677940" duration="3073000" />
+      <workItem from="1582701677940" duration="5347000" />
     </task>
     <servers />
   </component>

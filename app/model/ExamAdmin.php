@@ -33,13 +33,13 @@ class ExamAdmin
 
     public function ExamActive($aData)
     {
-        $oStmt = $this->db->preparation('UPDATE exams set exam_state=1 where exam_id=? ');
+        $oStmt = $this->db->preparation('UPDATE exams set exam_state = 1 where exam_id=? ');
         return $oStmt->execute($aData);
 
     }
     public function ExamdisActive($aData)
     {
-        $oStmt = $this->db->preparation('UPDATE exams set exam_state=0 where exam_id=? ');
+        $oStmt = $this->db->preparation('UPDATE exams set exam_state = 0 where exam_id=? ');
         return $oStmt->execute($aData);
 
     }
