@@ -2274,6 +2274,7 @@ div.answers p {
     margin-left: auto;
     margin-right: auto;
 
+
 }
 
 .modal-content{
@@ -2305,3 +2306,40 @@ div.answers p {
     width: 10%;
 }
 /******************* END DETAILS EXAMINAR PAGE ******************************/
+.lablemassge {
+  position: absolute;
+  font-size:18px;
+  color: rgba(192, 193, 201, 0.92);
+  transition: all .4s;
+  top:24px;
+  transform:translateY(-50%);
+  margin-left:76px;
+  cursor:text;
+  z-index: 1;
+  margin-top: -6px;
+}
+
+
+
+.move-up {
+  margin-top:-32px;
+  margin-left:0px;
+  font-size:14px;
+  background: #1fb7ff;
+  border-radius:8px 0;
+  color:white;
+  padding:4px 8px;
+  min-width:100px;
+}
+.error{
+  margin-top: 21px;
+  margin-left: 134px;
+}
+.btn-primary {
+  color: #fff;
+  background-color: #007bff;
+  border-color: #007bff;
+  width: 46%;
+  margin-left: 119px;
+}
+
