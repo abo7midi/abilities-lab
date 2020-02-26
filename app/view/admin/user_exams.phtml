@@ -38,6 +38,7 @@ include "side_bar.phtml";
             <tr style="color: white">
                 <th>#</th>
                 <th>Name</th>
+                <th>Exam Name</th>
                 <th>total_mark</th>
                 <th>pass_mark</th>
                 <th>exam_result</th>
@@ -57,6 +58,7 @@ include "side_bar.phtml";
                         $table .= '<tr >';
                         $table .= ' <td >' . $exams["user_exam_id"] . '</td>';
                         $table .= ' <td>' . $exams["user_name"] . '</td>';
+                        $table .= ' <td>' . $exams["Exam_Name"] . '</td>';
                         $table .= ' <td>' . $exams["exam_total_mark"] . '</td>';
                         $table .= ' <td >' . $exams["exam_pass_mark"] . '</td>';
                         $table .= ' <td>' . $exams["user_exam_result"] . '</td>';
@@ -153,7 +155,6 @@ include "side_bar.phtml";
 
 
 
-<script src="/media/js/jquery.js"></script>
 <script src="/media/js/jquery.dataTables.min.js"></script>
 <script>
     $(document).ready(function(){
