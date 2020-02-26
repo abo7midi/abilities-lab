@@ -43,7 +43,7 @@ a:hover {
 
 .navbar-expand-lg,
 .navbar-brand{
-  padding: 0px !important;
+  padding: 0px;
 }
 .navbar-brand {
   margin-left: 30px
@@ -60,23 +60,7 @@ a:hover {
   color: #1abc9c;
   color: #1abc9c;
 }
-.main-nav img {
-  max-width: 70% !important;
-  max-height: 70% !important;
-}
-.main-nav ul {
-  padding: 0 !important;
-  margin: 0 !important;
-}
-.main-nav a {
-  padding: 0 !important;
-}
-.main-nav .logout {
-  font-size: 14px;
-  padding: 5px !important;
-  color: #37b2b5 !important;
-  border: 1px solid #37b2b5;
-}
+
 /*end navbar*/
 
 /*********************************** START ERROR MODEL ********************************/
@@ -347,9 +331,8 @@ a {
   text-decoration: none;
 }
 
-.main-nav ul li a img {
-  max-width: 80%;
-  max-height: 80%;
+img {
+  max-width: 100%;
 }
 
 input, textarea {
@@ -441,6 +424,7 @@ header[role=banner]::after {
   line-height: 50px;
   padding-left: 5%;
   background: #292a34;
+  border-top: 1px solid #3b3d4b;
   color: #FFF;
 }
 @media only screen and (min-width: 768px) {
@@ -1190,6 +1174,7 @@ form.form_exam .btn-block {
     display: block;
   }
 }
+
 /***************************** END TAKE EXAM PAGE *************************************/
 
 /*after marge */
@@ -2261,6 +2246,7 @@ div.answers p {
     width: 10%;
 }
 /******************* END DETAILS EXAMINAR PAGE ******************************/
+
 .lablemassge {
   position: absolute;
   font-size:18px;

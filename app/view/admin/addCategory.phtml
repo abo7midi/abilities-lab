@@ -1,30 +1,34 @@
 <?php
 include "side_bar.phtml";
 ?>
-<link rel="stylesheet" type="text/css" href="/layout/css/bootstrap.min.css">
-<link rel="stylesheet" type="text/css" href="/layout/css/font-awesome.min.css">
-<link rel="stylesheet" type="text/css" href="/layout/css/backend.css">
-<link rel="stylesheet" type="text/css" href="/layout/css/main.css">
+
 
 <h1 class="text-center"> Add New Category </h1>
-<div class="container-fluid">
+<div class="container-fluid cat-e">
     <form class="form-horizontal" action="/category/add" method="POST">
 
         <!-- Start Name Field -->
         <div class="form-group">
-            <label class="col-sm-2 control-label label-edit"> Name </label>
-            <div class="col-sm-10">
-                <input type="text" name="name" class="form-control input-edit category_name " onkeyup="lettersOnlyTwo(this)" autocomplete="off" required="required" placeholder="Name Of The Categories"/>
+            <div class="row">
+                <div class="col-sm-2">
+                  <label class=" control-label label-edit"> Name </label>
+                </div>
+                <div class="col-sm-10">
+                    <input type="text" name="name" class="form-control input-edit category_name " onkeyup="lettersOnlyTwo(this)" autocomplete="off" required="required" placeholder="Name Of The Categories"/>
+                </div>
             </div>
         </div>
         <!-- End Name Field -->
 
         <!-- Start Description Field -->
         <div class="form-group">
-            <label class="col-sm-2 control-label label-edit"> Description </label>
-            <div class="col-sm-10">
-                <input type="text" name="description" class="form-control input-edit" placeholder="Describe The Category" />
-
+            <div class="row">
+                <div class="col-sm-2">
+                  <label class="control-label label-edit"> Description </label>
+                </div>
+                 <div class="col-sm-10">
+                      <input type="text" name="description" class="form-control input-edit" placeholder="Describe The Category" />
+                 </div>
             </div>
         </div>
         <!-- End Description Field -->
@@ -32,38 +36,44 @@ include "side_bar.phtml";
 
 
         <div class="form-group">
-            <label class="col-sm-2 control-label label-edit"> Type Of Category </label>
-            <div class="col-sm-10" id="type_category">
-
-                <div>
-                    <input class="main_cat" type="radio" name="cat" id="cat-main" value="0" onkeyup="lettersOnlyTwo(this)">
-                    <label for="cat-main">Main Category</label>
+            <div class="row">
+                <div class="col-sm-2">
+                    <label class="control-label label-edit"> Type Of Category </label>
                 </div>
+                <div class="col-sm-10" id="type_category">
+                    <div>
+                        <input class="main_cat" type="radio" name="cat" id="cat-main" value="0" onkeyup="lettersOnlyTwo(this)">
+                        <label for="cat-main">Main Category</label>
+                    </div>
 
-                <div>
-                    <input class="sub_cat" type="radio" name="cat" id="cat-sub" value="0">
-                    <label for="cat-sub">Sub Category</label>
-                </div>
-
+                    <div>
+                        <input class="sub_cat" type="radio" name="cat" id="cat-sub" value="0">
+                        <label for="cat-sub">Sub Category</label>
+                    </div>
+                 </div>
             </div>
         </div>
 
-        <label class="col-sm-2 control-label label-edit"> Choose The Main Category </label>
-        <div class="col-sm-10">
-            <select name="categories" class="categories form-control select-option" onchange="getValueFromOptionToInput(this.value);">
-                <option value=""></option>
-                <?php
-                foreach ($this->view_data['mainCategories'] as $category) {
-                    echo "<option value='" . $category['cat_id'] . "'>" . $category['cat_name'] . "</option>";
-                }
-                ?>
-            </select>
+        <div class="row">
+            <div class="col-sm-2">
+                <label class=" control-label label-edit"> Choose The Main Category </label>
+            </div>
+            <div class="col-sm-10">
+                <select name="categories" class="categories form-control select-option" onchange="getValueFromOptionToInput(this.value);">
+                    <option value=""></option>
+                    <?php
+                    foreach ($this->view_data['mainCategories'] as $category) {
+                        echo "<option value='" . $category['cat_id'] . "'>" . $category['cat_name'] . "</option>";
+                    }
+                    ?>
+                </select>
+            </div>
         </div>
 
         <!-- Start Submit Field -->
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
-                <input type="submit" value="Add Category" class="btn btn-primary" />
+                <input type="submit" value="Add Category" class="btn btn-success btn-c" />
             </div>
         </div>
         <!-- End Submit Field -->
@@ -71,9 +81,3 @@ include "side_bar.phtml";
     </form>
 </div>
 
-<script src="/layout/js/jquery-2.1.3.min.js"></script>
-<script src="/layout/js/bootstrap.min.js"></script>
-<script src="/layout/js/backend.js"></script>
-<script src="/layout/js/main.js"></script>
-<script src="/js/jquery.validate.js"></script>
-<script src="/js/script.js"></script>

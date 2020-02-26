@@ -16,9 +16,12 @@ class adminController extends Controller
 
     public function dashboard()
     {
+        if(!(Session::get('userGroup') == 1))
+            header('Location:/admin/login');
+
         if(isset($_SERVER['HTTP_REFERER'])) {
             $this->model('Admin');
-            $this->view('admin' . DIRECTORY_SEPARATOR . 'dashboard', ['admins' => $this->model->all()]);
+            $this->view('admin' . DIRECTORY_SEPARATOR . 'dashboard', ['admins'=>$this->model->all()]);
             $this->view->pageTitle = 'admin index';
             $this->view->render();
         } else {
@@ -30,6 +33,8 @@ class adminController extends Controller
 
     public function member()
     {
+        if(!(Session::get('userGroup') == 1))
+            header('Location:/admin/login');
         if(isset($_SERVER['HTTP_REFERER'])) {
             $this->model('Admin');
             $this->view('admin'.DIRECTORY_SEPARATOR.'accounts',['allAdmins' => $this->model->allAdmin(),
@@ -48,6 +53,8 @@ class adminController extends Controller
 
     public function memberPending()
     {
+        if(!(Session::get('userGroup') == 1))
+            header('Location:/admin/login');
         if(isset($_SERVER['HTTP_REFERER'])) {
             $this->model('Admin');
             $this->view('admin'.DIRECTORY_SEPARATOR.'accountsNonActive',['allAdmins' => $this->model->allAdminPending(),
@@ -68,6 +75,8 @@ class adminController extends Controller
 
     public function category()
     {
+        if(!(Session::get('userGroup') == 1))
+            header('Location:/admin/login');
         if(isset($_SERVER['HTTP_REFERER'])) {
             $this->model('Admin');
             $this->view('admin'.DIRECTORY_SEPARATOR.'category',['mainCategories'=>$this->model->allMainCategories(),'admins' => $this->model->all()]);
@@ -82,6 +91,9 @@ class adminController extends Controller
 
     public function subCategory()
     {
+        if(!(Session::get('userGroup') == 1))
+            header('Location:/admin/login');
+
         if(isset($_SERVER['HTTP_REFERER'])) {
                 $this->model('Admin');
                 $this->view('admin' . DIRECTORY_SEPARATOR . 'subCategories', ['mainCategories'=>$this->model->allMainCategories(),
@@ -169,6 +181,8 @@ class adminController extends Controller
 
     public function delete($id)
     {
+        if(!(Session::get('userGroup') == 1))
+            header('Location:/admin/login');
         $this->model('Admin');
         $this->model->delete( array(0 => $id ));
         Message::setMessage('status',1,'');
@@ -180,6 +194,9 @@ class adminController extends Controller
 //---------------------------------------------------start active user----------------------------------------------------------------------
     public function active($id)
     {
+        if(!(Session::get('userGroup') == 1))
+            header('Location:/admin/login');
+
         $this->model('Admin');
         $this->model->updateActive( array(0 => $id ));
         Message::setMessage('status',1,'');
@@ -190,6 +207,9 @@ class adminController extends Controller
 
     public function nonactive($id)
     {
+        if(!(Session::get('userGroup') == 1))
+            header('Location:/admin/login');
+
         $this->model('Admin');
         $this->model->updatedisActive( array(0 => $id ));
         Message::setMessage('status',1,'');

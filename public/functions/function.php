@@ -5,16 +5,7 @@
      ** Has The Variable $pageTitle And Echo Default Title For Other Pages
      */
 
-    function getTitle()
-    {
-        global $pageTitle;
 
-        if (isset($pageTitle)) {
-            echo $pageTitle;
-        } else {
-            echo 'Default';
-        }
-    }
     /*
      ** Home Redirect Function v2.0
      ** This Function Accept Parameters

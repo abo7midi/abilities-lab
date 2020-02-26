@@ -47,6 +47,14 @@ class Category
         return $this->db->query('select * from categories WHERE Existing = 1');
     }
 
+    public function allMainCategories()
+    {
+        return $this->db->query("select categories.*, users.user_name AS Created_By 
+                                        from categories 
+                                        INNER JOIN users 
+                                        ON categories.user_id = users.user_id WHERE categories.cat_main_cat = 0");
+    }
+
     //
     public function delete($id)
     {

@@ -10,7 +10,6 @@ class profileController extends Controller
     public function index()
     {
 
-
         $id = Session::get('userID');
         if(Session::get("userGroup")==3){
             $this->model('Profile');

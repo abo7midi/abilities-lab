@@ -50,6 +50,7 @@ class examController extends Controller
 
             # add new record to the database
             if (count($validate) == 0) {
+
                 $_SESSION['name']="ali";
                  $_SESSION['number_que'] = $no_q = $_POST['question_no'];
                // echo "mokhtar ".count($validate);
@@ -113,6 +114,7 @@ class examController extends Controller
                     $this->view->pageTitle = 'Questions';
                     $this->view->render();
                     return "";
+
                 }
             }
         }

@@ -45,13 +45,7 @@ $(function(){
     });
 
     //  Add Asterisk On Required Field
-    $('input').each(function () {
 
-        if($(this).attr('required') === 'required'){
-            $(this).after("<span class='asterisk'>*</span>");
-        }
-
-    });
 
     // Convert Password Field To Text Field On Hover
 
@@ -132,6 +126,73 @@ $(function(){
         $('.n8').css('background-color','#44b7b9');
         $('.nav-item8').css('color','#ffffff');
     });
+
+    ///////////////////////////////////////////////////////////////////////////////////
+    $('.b').hover(function () {
+        $('.b').css('background-color','#ffffff');
+        $('.nav-item').css('color','#44b7b9');
+    }, function () {
+        $('.b').css('background-color','#44b7b9');
+        $('.nav-item').css('color','#ffffff');
+    });
+
+    $('.n11').hover(function () {
+        $('.n11').css('background-color','#ffffff');
+        $('.nav-item11').css('color','#44b7b9');
+    }, function () {
+        $('.n11').css('background-color','#44b7b9');
+        $('.nav-item11').css('color','#ffffff');
+    });
+
+    $('.n21').hover(function () {
+        $('.n21').css('background-color','#ffffff');
+        $('.nav-item21').css('color','#44b7b9');
+    }, function () {
+        $('.n21').css('background-color','#44b7b9');
+        $('.nav-item21').css('color','#ffffff');
+    });
+
+    $('.n31').hover(function () {
+        $('.n31').css('background-color','#ffffff');
+        $('.nav-item31').css('color','#44b7b9');
+    }, function () {
+        $('.n31').css('background-color','#44b7b9');
+        $('.nav-item31').css('color','#ffffff');
+    });
+
+    $('.n41').hover(function () {
+        $('.n41').css('background-color','#ffffff');
+        $('.nav-item41').css('color','#44b7b9');
+    }, function () {
+        $('.n41').css('background-color','#44b7b9');
+        $('.nav-item41').css('color','#ffffff');
+    });
+
+    $('.n5').hover(function () {
+        $('.n5').css('background-color','#ffffff');
+        $('.nav-item5').css('color','#44b7b9');
+    }, function () {
+        $('.n5').css('background-color','#44b7b9');
+        $('.nav-item5').css('color','#ffffff');
+    });
+
+    $('.n61').hover(function () {
+        $('.n61').css('background-color','#ffffff');
+        $('.nav-item61').css('color','#44b7b9');
+    }, function () {
+        $('.n61').css('background-color','#44b7b9');
+        $('.nav-item61').css('color','#ffffff');
+    });
+
+    $('.n71').hover(function () {
+        $('.n71').css('background-color','#ffffff');
+        $('.nav-item71').css('color','#44b7b9');
+    }, function () {
+        $('.n71').css('background-color','#44b7b9');
+        $('.nav-item71').css('color','#ffffff');
+    });
+
+    ///////////////////////////////////////////////////////////////////////////////////
 
     $('.dropdown').hover(function () {
         $('.dropdown').css('background-color','#ffffff');

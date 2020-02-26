@@ -379,7 +379,7 @@ border-radius: 0 0 10px 10px;
                 echo '<div class="col-sm-3 examContent">
                 <div class="titleExam">'.$exam['exam_name'].'</div>
                 <p>'.$exam['exam_description'].'</p>
-                <p>Chances : '.$exam['studentSample'] .'/'. $exam['allSample'] .'</p>
+                <p>'.$exam['studentSample'] .'/'. $exam['allSample'] .'</p>
                 <p>';
                 switch ($exam['exam_level']){
                     case 1: echo'<span style="float: left">level : Hard</span>';break;
@@ -406,6 +406,7 @@ border-radius: 0 0 10px 10px;
         </div>
     </div>
 </div>
+
         <script>
             var errorMessage="<?php echo Message::check("unauth")?>";
             if(errorMessage!=''){
@@ -414,6 +415,7 @@ border-radius: 0 0 10px 10px;
             }
 
             function load_Exams(){
+
 
                 var selectd=$("select#subcat").children("option:selected").val();
                 var loading="<button class='btn btn-primary' disabled><span class='spinner-border spinner-border-sm'></span>Loading..</button>";
@@ -443,6 +445,7 @@ border-radius: 0 0 10px 10px;
                                    +row.exam_name
                                    +'</div>'
                                    +'<p>' + row.exam_description + '</p>'
+
                                    +'<p>Chances :' + row.studentSample + '/' + row.allSample +'</p>'+
                                    '<p>Examiner: ' + row.examiner + '</p>'
                                '<p>';

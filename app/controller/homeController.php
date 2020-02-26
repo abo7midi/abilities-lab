@@ -23,6 +23,7 @@ class homeController extends Controller
       $allSamples=array();
       $results=[];
 
+
       $top = $exam->top_members();
 
       $this->view('home'.DIRECTORY_SEPARATOR.'index',["sub_cat" => $sub_cat,"cat" => $cat,"form_id"=>1,"top" => $top]);
@@ -93,6 +94,7 @@ class homeController extends Controller
   public function aboutus()
   {
     // echo 'i am in '.__CLASS__.'<br>method '.__METHOD__.'';
+
     $this->view('home'.DIRECTORY_SEPARATOR.'about');
     $this->view->pageTitle='about Us';
     $this->view->render();
@@ -162,11 +164,16 @@ class homeController extends Controller
              $this->index();
              return ;
            }
+
    }
    else {
      $this->index();
      return ;
    }
+
+
+
+
 
   }
 

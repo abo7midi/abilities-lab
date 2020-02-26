@@ -1,5 +1,4 @@
-
-/* Start Main Rules */
+@import url('https://fonts.googleapis.com/css?family=Fanwood+Text&display=swap');/* Start Main Rules */
 body{
     background-color: #ffffff;
     color: #245269;
@@ -261,9 +260,13 @@ body{
 
 /* Start Member Page */
 h1{
-    color: #002435;
-    font-weight: bold;
-    font-size: 50px;
+    color: #44b7b9;
+
+    font-size: 40px;
+    margin-left: -100px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    font-family: 'Fanwood Text' ;    /*font-family: ;*/
 }
 
 .show-pass{
@@ -272,16 +275,21 @@ h1{
     top: 448px;
 }
 
-.label-edit{
-    color: #45ad79;
-    font-weight: bold;
-    font-size: 15px;
+.cat-e{
+    margin-left: 173px;
 }
+.label-edit{
+    color: #44b7b9;
+    font-size: 20px;
+}
+
+
 
 .input-edit{
     width: 50%;
     padding: 20px;
     position: relative;
+    margin-left: 0px;
 }
 
 .select-option{
@@ -289,12 +297,18 @@ h1{
     height: 45px;
 }
 
+.btn-c{
+    margin-top: 40px;
+    margin-left: 166px;
+    width: 51%;
+}
+
 .table-bordered>tbody>tr>td{
     border: none;
     border:1px solid #ffffff;
 }
 
-.main-table td{
+.table-bordered td{
     background-color: #ffffff;
     border: 1px;
     border-color: #28a745;
@@ -302,12 +316,12 @@ h1{
 }
 
 .main-table tr:first-child td { /* You Can Use T Head */
-    /*background-color: #44b7b9;*/
-    color: #000000;
+    background-color: #44b7b9;
+    color: #ffffff;
     font-weight: bold;
 }
 
-.main-table tr td .edit,
+.table-bordered tr td .edit,
 .admins .admin .edit,
 .latest-user .glyphicon-edit,
 .categories .cat .hidden-buttons .edit
@@ -318,9 +332,10 @@ h1{
     text-decoration: none;
 }
 
-.main-table tr td .non-active,
+.table-bordered tr td .non-active,
+.table-bordered tr td .non-active,
 .admins .admin .non-active,
-.main-table tr td .cat-non-active,
+.table-bordered tr td .cat-non-active,
 .latest-user .glyphicon-remove-sign,
 .categories .cat .hidden-buttons .non-active{
     font-size: 22px;
@@ -329,8 +344,9 @@ h1{
     text-decoration: none;
 }
 
-.main-table tr td .actived,
-.main-table tr td .cat-actived,
+.table-bordered tr td .actived,
+.table-bordered tr td .actived,
+.table-bordered tr td .cat-actived,
 .latest-user .glyphicon-ok-sign{
     font-size: 22px;
     color: #1e9600;
@@ -339,10 +355,10 @@ h1{
 }
 
 
-.main-table tr td .trash,
+.table-bordered tr td .trash,
 .admins .admin .trash,
-.main-table tr td .post-trash,
-.main-table tr td .cat-trash,
+.table-bordered tr td .post-trash,
+.table-bordered tr td .cat-trash,
 .latest-user .glyphicon-trash,
 .categories .cat .hidden-buttons .cat-trash{
     font-size: 20px;
@@ -501,7 +517,7 @@ hr{
 }
 
 .btns-div{
-    margin-top: 30px;
+    margin-top: 0px;
     margin-bottom: 15px;
 }
 

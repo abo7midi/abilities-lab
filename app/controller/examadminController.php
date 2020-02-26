@@ -11,8 +11,11 @@ class examadminController extends Controller
 
     public function index()
     {
+        if(!(Session::get('userGroup') == 1))
+            header('Location:/admin/login');
+
         $this->model('ExamAdmin');
-        $this->view('admin'.DIRECTORY_SEPARATOR.'showexam_admin',['adminexam'=>$this->model->showexam()]);
+        $this->view('admin'.DIRECTORY_SEPARATOR.'showexam_admin',['adminexam'=>$this->model->showexam(),'admins'=>$this->model->all()]);
 
         $this->view->pageTitle='Exam';
         $this->view->render();
@@ -22,20 +25,25 @@ class examadminController extends Controller
     //---------------------------------------------------start active user----------------------------------------------------------------------
     public function ExamActive($id)
     {
+        if(!(Session::get('userGroup') == 1))
+            header('Location:/admin/login');
         $this->model('ExamAdmin');
         $this->model->ExamActive( array(0 => $id ));
-        Message::setMessage('status',1);
-        Message::setMessage('main','الحساب بنجاحّ!');
+        Message::setMessage('','status',1);
+        Message::setMessage('main','الحساب بنجاحّ!','');
         header('Location:/examadmin');
 
     }
 
     public function ExamdisActive($id)
     {
+        if(!(Session::get('userGroup') == 1))
+            header('Location:/admin/login');
+
         $this->model('ExamAdmin');
         $this->model->ExamdisActive( array(0 => $id ));
-        Message::setMessage('status',1);
-        Message::setMessage('main','تقفلّ الحساب!');
+        Message::setMessage('','status',1);
+        Message::setMessage('main','تقفلّ الحساب!','');
         header('Location:/examadmin');
 
     }
@@ -44,8 +52,11 @@ class examadminController extends Controller
 
     public function userexam()
     {
+        if(!(Session::get('userGroup') == 1))
+            header('Location:/admin/login');
+
         $this->model('ExamAdmin');
-        $this->view('admin'.DIRECTORY_SEPARATOR.'user_exams',['Exams'=>$this->model->ResultUser()]);
+        $this->view('admin'.DIRECTORY_SEPARATOR.'user_exams',['Exams'=>$this->model->ResultUser(),'admins'=>$this->model->all()]);
 
         $this->view->pageTitle='ResultUser';
         $this->view->render();
