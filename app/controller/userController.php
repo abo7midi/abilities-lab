@@ -110,7 +110,8 @@ class userController extends Controller
                 Session::loggIn([$user[0]['user_id'],
                     $user[0]['user_name'],
                     $user[0]['group_id'],
-                    $user[0]['image']]);
+                    $user[0]['image'],
+                    $user[0]["user_state"]]);
 
                 if ($user[0]["group_id"] == 2 && $user[0]["user_state"]==1 ) {
                     header("location:/profile/examiner_profile");
@@ -127,7 +128,7 @@ class userController extends Controller
                 }
 
             }
-            $this->view('admin'.DIRECTORY_SEPARATOR.'addUser');
+            $this->view('home'.DIRECTORY_SEPARATOR.'index');
             $this->view->pageTitle='login User';
             $this->view->render();
 

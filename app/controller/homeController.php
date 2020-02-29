@@ -26,6 +26,7 @@ class homeController extends Controller
 
       $top = $exam->top_members();
 
+
       $this->view('home'.DIRECTORY_SEPARATOR.'index',["sub_cat" => $sub_cat,"cat" => $cat,"form_id"=>1,"top" => $top]);
       $this->view->pageTitle='Home';
     $this->view->render();

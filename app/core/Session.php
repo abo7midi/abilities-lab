@@ -19,6 +19,7 @@ abstract class Session
             $_SESSION['userName'] = $user[1];
             $_SESSION['userGroup'] = $user[2];
             $_SESSION['userImg'] = $user[3];
+            $_SESSION['userState'] = $user[4];
     }
 
     public static function  logged()

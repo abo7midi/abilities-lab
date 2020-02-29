@@ -170,11 +170,6 @@ include "header.phtml";
 <div class="modal fade bd-example-modal-lgg" id="modelContent" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content" id="talentExam2" style="width: 50%;">
-
-
-
-
-
         </div>
     </div>
 </div>
@@ -432,6 +427,7 @@ border-radius: 0 0 10px 10px;
                     success:function(data)
                     {
                         console.log(data);
+
                         html='<h5 style="display: block; width: 100%; text-align: center ;background: #fff; padding: 20px; color:#37b2b5; font-size: 24px; font-weight: bolder; text-transform: uppercase; ">'+$("select#subcat").children("option:selected").text()+'</h5>';
                         var exams=JSON.parse(data);
 
@@ -439,6 +435,7 @@ border-radius: 0 0 10px 10px;
                            html='<h5 style="display: block; width: 100%; text-align: center ;background: #fff; padding: 20px; color:#37b2b5; font-size: 24px; font-weight: bolder; text-transform: uppercase; ">'+exams.data+'</h5>';
                        }
                        else{
+
                            $.each( exams.data, function( index, row ) {
                                html+='<div class="col-sm-3 examContent">'
                                    +'<div class="titleExam">'
@@ -470,9 +467,13 @@ border-radius: 0 0 10px 10px;
                        }
 
                         $('#loadingDiv').html(html);
+
                     }
                 });
             };
+
+
+
 
             $("select#subcat").change(function () {
                 load_Exams();
