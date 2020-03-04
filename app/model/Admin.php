@@ -59,13 +59,13 @@ class Admin
     }
 
     public function countAllUsers(){
-        $stmt = $this->db->preparation("SELECT * FROM users where user_state = 1");
+        $stmt = $this->db->preparation("SELECT * FROM users where user_state = 1 AND Existing = -1");
         $stmt->execute();
         return $stmt->rowCount();
     }
 
     public function countAllPendingUsers(){
-        $stmt = $this->db->preparation("SELECT * FROM users where user_state = 0");
+        $stmt = $this->db->preparation("SELECT * FROM users where user_state = 0 AND Existing = -1");
         $stmt->execute();
         return $stmt->rowCount();
     }

@@ -6,17 +6,17 @@ include "side_bar.phtml";
 <html>
 <head>
 
-    <style>
-        .ex{
-            color: #ffd700;
-            font-size: 19px;
-        }
+<style>
+    .ex{
+        color: #ffd700;
+        font-size: 19px;
+    }
 
-        .w{
-            color: #efefeb;
-            font-size: 19px;
-        }
-    </style>
+    .w{
+        color: #efefeb;
+        font-size: 19px;
+    }
+</style>
 
 
 
@@ -29,27 +29,24 @@ include "side_bar.phtml";
 
 
 <h1 class="text-center"> Manage User Exams</h1>
-<br>
 
 <div class="container-fluid">
     <div class="table-responsive">
 
-        <table id="myTable" class="main-table text-center table table-bordered">
+        <table id="myexam" class=" text-center table table-bordered">
             <thead style="background-color: #44b7b9">
             <tr style="color: white">
                 <th>#</th>
                 <th>Name</th>
-                <th>Total Mark</th>
-                <th>pass Mark</th>
-                <th>exam Result</th>
-                <th>Start Time</th>
-                <th>Finish Time</th>
+                <th>Exam Name</th>
+                <th>total_mark</th>
+                <th>pass_mark</th>
+                <th>exam_result</th>
                 <th>Control</th>
             </tr>
 
             </thead>
             <tbody>
-            <tr>
                 <?php
                 if (array_key_exists('Exams', $this->view_data)) {
 
@@ -61,36 +58,32 @@ include "side_bar.phtml";
                         $table .= '<tr >';
                         $table .= ' <td >' . $exams["user_exam_id"] . '</td>';
                         $table .= ' <td>' . $exams["user_name"] . '</td>';
+                        $table .= ' <td>' . $exams["Exam_Name"] . '</td>';
                         $table .= ' <td>' . $exams["exam_total_mark"] . '</td>';
                         $table .= ' <td >' . $exams["exam_pass_mark"] . '</td>';
                         $table .= ' <td>' . $exams["user_exam_result"] . '</td>';
-                        $table .= ' <td>' . $exams["user_exam_date"] . '</td>';
-                        $table .= ' <td>' . $exams["user_exam_finish_time"] . '</td>';
 
 
-                        $table.=" <td>";
+
+                        $table.=" <td><div class=\"panel-body\"><a ".$exams["user_exam_id"]. "
+                                class=\"btn btn-success\" data-toggle=\"modal\" href=\"#myModal\">info
+                                               </a>&nbsp;&nbsp;&nbsp;";
 //
 
                         if ($exams["user_exam_result"] >= 90) {
-                            $table .= '<i class=" ex fa fa-star"></i><i class=" ex fa fa-star"></i><i class=" ex fa fa-star"></i><i class=" ex fa fa-star"><i class=" ex fa fa-star">
- </td>';
-
+                            $table .= '<i class=" ex fa fa-star"></i><i class=" ex fa fa-star"></i><i class=" ex fa fa-star"></i><i class=" ex fa fa-star"><i class=" ex fa fa-star"></td>';
                         }
                         elseif ($exams["user_exam_result"] >70 && $exams["user_exam_result"]<90) {
-                            $table .= '<i class=" ex fa fa-star"></i><i class=" ex fa fa-star"></i><i class=" ex fa fa-star"></i><i class=" ex fa fa-star"><i class=" w fa fa-star">
-</a>';
+                            $table .= '<i class=" ex fa fa-star"></i><i class=" ex fa fa-star"></i><i class=" ex fa fa-star"></i><i class=" ex fa fa-star"><i class=" w fa fa-star"></a>';
                         }
                         elseif ($exams["user_exam_result"] >65 && $exams["user_exam_result"]<80) {
-                            $table .= '<i class=" ex fa fa-star"></i><i class=" ex fa fa-star"></i><i class=" ex fa fa-star"></i><i class=" w fa fa-star"><i class=" w fa fa-star">
-</a>';
+                            $table .= '<i class=" ex fa fa-star"></i><i class=" ex fa fa-star"></i><i class=" ex fa fa-star"></i><i class=" w fa fa-star"><i class=" w fa fa-star"></a>';
                         }
                         elseif ($exams["user_exam_result"] >50 && $exams["user_exam_result"]<65) {
-                            $table .= '<i class=" ex fa fa-star"></i><i class=" ex fa fa-star"></i><i class=" w fa fa-star"></i><i class=" w fa fa-star"><i class=" w fa fa-star">
-</a>';
+                            $table .= '<i class=" ex fa fa-star"></i><i class=" ex fa fa-star"></i><i class=" w fa fa-star"></i><i class=" w fa fa-star"><i class=" w fa fa-star"></a>';
                         }
                         elseif ($exams["user_exam_result"] <=50) {
-                            $table .= '<i class=" ex fa fa-star"></i><i class=" w fa fa-star"></i><i class=" w fa fa-star"></i><i class=" w fa fa-star"><i class=" w fa fa-star">
-</a>';
+                            $table .= '<i class=" ex fa fa-star"></i><i class=" w fa fa-star"></i><i class=" w fa fa-star"></i><i class=" w fa fa-star"><i class=" w fa fa-star"></a>';
                         }
 
                         $table.="</td>";
@@ -102,29 +95,48 @@ include "side_bar.phtml";
                 }
                 ?>
 
-
-
-            </tr>
             </tbody>
-
         </table>
     </div>
 </div>
+<section class="panel">
+
+
+        <!-- Modal -->
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title">Modal Tittle</h4>
+                    </div>
+                    <div class="modal-body">
+
+
+                        <div class="modal-body">
+                            <?php
+
+                            echo '<p>'.$exams["user_exam_id"].'</p>';
+                            echo '<p>'.$exams["user_exam_finish_time"].'</p>';
+                            echo '<p>'.$exams["user_exam_date"].'</p>';
+
+
+                            ?>
+                    </div>
+                    <div class="modal-footer">
+                        <button data-dismiss="modal" class="btn btn-success" type="button">ok</button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- modal -->
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
+    </div>
+</section>
 
 
 
@@ -146,7 +158,7 @@ include "side_bar.phtml";
 <script src="/media/js/jquery.dataTables.min.js"></script>
 <script>
     $(document).ready(function(){
-        $("#myTable").dataTable();
+        $("#myexam").dataTable();
     });
 
 </script>

@@ -4,21 +4,19 @@ include "header.phtml";
 ?>
 <html>
 <head>
-
     <title>Exam Details</title>
 </head>
-
-<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+<div class="modal fade bd-example-modal-lg" id="modelContent" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            ...
+        <div class="modal-content" id="talentExam">
+
         </div>
     </div>
 </div>
 
 <div id="time" ></div>
 <div class="container">
-
+    <div class="row" align="center"><a class="btn btn-success" href="/exam/add">New Exam</a></div>
 
     <table class="table" >
         <tr class="tableTitle">
@@ -31,7 +29,7 @@ include "header.phtml";
             ?>
             <tr>
 <!--            <td>--><?php //echo $ex_id ?><!--</td>-->
-            <td class="examName"><a class="StudentExam" data-toggle="modal" data-target=".bd-example-modal-lg" data-exam-id="<?php echo $row['exam_id']; ?>"><?php echo $row['exam_name'] ?></a></td>
+            <td class="examName"><a class="StudentExam" data-toggle="modal" data-target=".bd-example-modal-lg" data-exam-id="<?php echo $row['exam_id']; ?>"><?php echo $row['exam_name']?></a></td>
                 <td class="sampleNo">
                     <?php echo $row['sampleNo'];?>
                 </td>
@@ -73,7 +71,17 @@ include "header.phtml";
                 dataType: 'json',// data type that i want to return
                 data: data,// var form=$('#news').serialize();
                 success: function (data) {
-                    alert(data);
+
+                    html='';
+                    var i=1;
+                    $.each( data, function( index, row ) {
+
+                            html+="<p class='telentMember'><span class='talentNo'>"+i+"</span> <img src='/pictures/"+row.image+"'> <span class='talentName' >Name: "+row.full_name+" | </span><span class='talentMark'>Mark: "+row.user_exam_result+"</span></p>";
+                            i++;
+                    });
+
+                    $('#talentExam').html(html);
+                    $('#modelContent').modal('show');
                 },
                 error: function (xhr, status, error) {
                     alert(xhr.responseText);

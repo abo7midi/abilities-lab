@@ -9,27 +9,35 @@ $category = $this->view_data['categories'];
 
     ?>
 
-    <h1 class="text-center"> Edit Category <?php echo Session::logged();?> </h1>
-    <div class="container-fluid">
+    <h1 class="text-center"> Edit Category </h1>
+    <div class="container-fluid cat-e">
         <form class="form-horizontal" action="" method="POST">
             <input type="hidden" name="catid" value="<?php echo $category['cat_id']; ?>">
             <!-- Start Name Field -->
             <div class="form-group">
-                <label class="col-sm-2 control-label label-edit"> Name </label>
-                <div class="col-sm-10">
-                    <input type="text" name="name" class="form-control input-edit"
-                           value="<?php echo $category['cat_name']; ?>" autocomplete="off" required="required"
-                           placeholder="Name Of The Categories"/>
+                <div class="row">
+                    <div class="col-sm-2">
+                       <label class=" control-label label-edit"> Name </label>
+                    </div>
+                    <div class="col-sm-10">
+                        <input type="text" name="name" class="form-control input-edit"
+                               value="<?php echo $category['cat_name']; ?>" autocomplete="off" required="required"
+                               placeholder="Name Of The Categories"/>
+                    </div>
                 </div>
             </div>
             <!-- End Name Field -->
 
             <!-- Start Description Field -->
             <div class="form-group">
-                <label class="col-sm-2 control-label label-edit"> Description </label>
-                <div class="col-sm-10">
-                    <input type="text" name="description" class="form-control input-edit"
-                           value="<?php echo $category['cat_description']; ?>" placeholder="Describe The Category"/>
+                <div class="row">
+                    <div class="col-sm-2">
+                        <label class="control-label label-edit"> Description </label>
+                    </div>
+                    <div class="col-sm-10">
+                        <input type="text" name="description" class="form-control input-edit"
+                               value="<?php echo $category['cat_description']; ?>" placeholder="Describe The Category"/>
+                    </div>
                 </div>
             </div>
             <!-- End Description Field -->
@@ -37,9 +45,11 @@ $category = $this->view_data['categories'];
 
 <!-------------------------------------------------------------------------------------------->
             <div class="form-group">
-                <label class="col-sm-2 control-label label-edit"> Type Of Category </label>
-                <div class="col-sm-10" id="type_category">
-
+                <div class="row">
+                    <div class="col-sm-2">
+                      <label class=" control-label label-edit"> Type Of Category : </label>
+                    </div>
+                    <div class="col-sm-10" id="type_category">
                     <div>
                         <input class="main_cat" type="radio" name="cat" id="cat-main" value="0" onkeyup="lettersOnlyTwo(this)" <?php if ($category['cat_main_cat'] == 0) {
                             echo 'checked';
@@ -57,25 +67,29 @@ $category = $this->view_data['categories'];
                         >
                         <label for="cat-sub">Sub Category</label>
                     </div>
-
+                    </div>
                 </div>
             </div>
 
-            <label class="col-sm-2 control-label label-edit"> Choose The Main Category </label>
-            <div class="col-sm-10">
-                <select name="categories" class="categories form-control select-option" onchange="getValueFromOptionToInput(this.value);">
+            <div class="row">
+                <div class="col-sm-2 ">
+                 <label class="control-label label-edit"> Choose The Main Category </label>
+                </div>
+                <div class="col-sm-10">
+                    <select name="categories" class="categories form-control select-option" onchange="getValueFromOptionToInput(this.value);">
 
-                    <?php
-                    foreach ($this->view_data['cats'] as $cat) {
-                        echo "<option value='" . $cat['cat_id'] . "'";
-                        if($category['cat_main_cat'] == $cat['cat_id']){
-                            echo 'selected';
+                        <?php
+                        foreach ($this->view_data['cats'] as $cat) {
+                            echo "<option value='" . $cat['cat_id'] . "'";
+                            if($category['cat_main_cat'] == $cat['cat_id']){
+                                echo 'selected';
+                            }
+                             echo ">".$cat['cat_name'] . "</option>";
                         }
-                         echo ">".$cat['cat_name'] . "</option>";
-                    }
 
-                    ?>
-                </select>
+                        ?>
+                    </select>
+                </div>
             </div>
 
             <!-------------------------------------------------------------------------------------------->
@@ -86,7 +100,7 @@ $category = $this->view_data['categories'];
             <!-- Start Submit Field -->
             <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10">
-                    <input type="submit" value="Update Category" class="btn btn-primary"/>
+                    <input type="submit" value="Update Category" class="btn btn-success btn-c"/>
                 </div>
             </div>
             <!-- End Submit Field -->

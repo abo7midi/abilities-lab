@@ -1,5 +1,4 @@
 <?php
-include "header.phtml";
 if (array_key_exists('eProfile',$this->view_data)) {
 foreach ($this->view_data['eProfile'] as $pro) {
 
@@ -36,16 +35,19 @@ foreach ($this->view_data['eProfile'] as $pro) {
                                 <h4>FulNmae</h4>
 
 
-                                <p><?php echo $pro['full_name']; ?></p>
+                                <p><?php echo $pro['fullname']; ?></p>
                                 <input class="editInput fname form-control input-sm"
                                        type="text"
                                        name="first_name"
                                        value="<?php echo $pro['ful_name']; ?>"
                                        style="display: none;">
+
+
+
                             </div>
                             <div class="data">
                                 <h4>Email</h4>
-                                <p><?php echo $pro['user_email']; ?></p>
+                                <p><?php echo $pro['email']; ?></p>
                             </div>
                             <div class="data">
                                 <h4>Phone</h4>
@@ -61,6 +63,7 @@ foreach ($this->view_data['eProfile'] as $pro) {
                         </div>
 
                     </div>
+
                     <div class="projects" >
                         <h3>Projects</h3>
                         <div class="projects_data">
@@ -81,12 +84,35 @@ foreach ($this->view_data['eProfile'] as $pro) {
                     }?>
 
                 </div>
+
             </div>
+
+
         </div>
+
+
     </div>
+
 </div >
+
+
+
+
+
+
+
 </div>
 
+
+
+
+
+
+
+
+
+
+</script>
 
 
 

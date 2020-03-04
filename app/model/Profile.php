@@ -16,7 +16,7 @@ class Profile
     {
 //
 
-        return $this->db->query("select  users.user_id,full_name,user_name,phone,user_email,image ,exams.exam_pass_mark,exam_name  
+        return $this->db->query("select  users.user_id,full_name ,phone ,user_email  ,image ,exams.exam_pass_mark,exam_name
                      from exams RIGHT JOIN users on exams.user_id= users.user_id WHERE users.user_id=$id ");
     }
 
@@ -44,6 +44,5 @@ class Profile
         $oStmt->execute($u_id);
         return $oStmt->fetchAll();
     }
-
 
 }

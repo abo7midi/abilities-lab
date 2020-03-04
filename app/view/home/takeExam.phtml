@@ -8,13 +8,6 @@
     <title>take Exam</title>
     <script typy="text/javascript">
 
-        window.addEventListener('beforeunload', (event) => {
-            //localStorage.removeItem('timimg');
-            event.preventDefault();
-            event.returnValue = `Are you sure you want to leave?,we will save the Exam Mark`;
-            document.getElementById("endExam").click();
-
-        });
 
         var duration=<?php echo $this->view_data["duration"]?>;
         var examId="<?php echo $this->view_data["exam_id"]?>";

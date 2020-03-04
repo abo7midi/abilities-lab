@@ -77,6 +77,10 @@ a:hover {
   color: #37b2b5 !important;
   border: 1px solid #37b2b5;
 }
+
+.main-nav ul li a img {
+  max-width: 80%;
+  max-height: 80%;}
 /*end navbar*/
 
 /*********************************** START ERROR MODEL ********************************/
@@ -347,9 +351,8 @@ a {
   text-decoration: none;
 }
 
-.main-nav ul li a img {
-  max-width: 80%;
-  max-height: 80%;
+img {
+  max-width: 100%;
 }
 
 input, textarea {
@@ -435,13 +438,26 @@ header[role=banner]::after {
   -o-transform: translateY(50px);
   transform: translateY(50px);
 }
+.main-nav img {
+  max-width: 70% !important;
+  max-height: 70% !important;
+}
+.main-nav ul {
+  padding: 0 !important;
+  margin: 0 !important;
+}
 .main-nav a {
-  display: block;
-  height: 50px;
-  line-height: 50px;
-  padding-left: 5%;
-  background: #292a34;
-  color: #FFF;
+  padding: 0 !important;
+}
+.main-nav .logout {
+  font-size: 14px;
+  padding: 5px !important;
+  color: #37b2b5 !important;
+  border: 1px solid #37b2b5;
+}
+.main-nav ul li a img {
+  max-width: 80%;
+  max-height: 80%;
 }
 @media only screen and (min-width: 768px) {
   .main-nav {
@@ -1031,10 +1047,11 @@ form.form_exam .btn-block {
 /***************************** START TAKE EXAM PAGE *************************************/
 .inputGroup {
   background-color: #fff;
+
   display: block;
   margin: 2%;
-  position: relative;
   box-shadow: #9f9f9f .5px .5px 2px ;
+
 }
 
 .inputGroup:hover {
@@ -1056,7 +1073,7 @@ form.form_exam .btn-block {
 }
 
 .inputGroup label:before {
-  width: 10px;
+  width: 20px;
   height: 10px;
   border-radius: 50%;
   content: "";
@@ -1190,6 +1207,7 @@ form.form_exam .btn-block {
     display: block;
   }
 }
+
 /***************************** END TAKE EXAM PAGE *************************************/
 
 /*after marge */
@@ -1635,6 +1653,7 @@ p {
   padding: 20px 10px 20px 50px;
   height: 60px;
 }
+/*
 h4 {
   -moz-transition: all 0.35s ease;
   -ms-transition: all 0.35s ease;
@@ -1682,6 +1701,7 @@ h4.faqsup::before {
   -webkit-transform: rotate(-90deg) !important;
   transform: rotate(-90deg) !important;
 }
+*/
 #faqs-accordion {
   margin: 40px auto 0;
   padding: 0 5%;
@@ -2088,6 +2108,55 @@ div.answers p {
   transform: rotate(-360deg);
   right: 61px;
 }
+/*************************** Start Search box **************************************************/
+
+#result {
+  position: absolute;
+  width: 70%;
+  cursor: pointer;
+  overflow-y: auto;
+  max-height: 400px;
+  box-sizing: border-box;
+  z-index: 1001;
+  color: #555;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+}
+.link-class:hover{
+  background-color:#f1f1f1;
+}
+#search{
+  border:none;
+  border-bottom: 1px #fff solid;
+  border-radius: initial;
+  width: 80%;
+  background: none;
+  color: #fff;
+}
+#search:focus{
+  box-shadow: none !important;
+}
+
+
+#search::placeholder{
+  color: #fff !important;
+}
+.searchArea{
+  position: relative;
+  padding: 80px;
+  padding-bottom: 100px;
+  background: linear-gradient(338deg, rgba(79, 202, 205, 1) 0%, rgba(71, 175, 177, 1) 47%, rgba(40, 149, 152, 1) 100%);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: #fff;
+  width: 100%;
+}
+/*************************** End Search box **************************************************/
+
+
 /******************* about us ******************************/
 .no-padding {
   padding-right: 0;
@@ -2117,53 +2186,6 @@ div.answers p {
 .about-row .input-group btn {
   padding: 20px 10px 20px 50px;
   height: 60px;
-}
-h4 {
-  -moz-transition: all 0.35s ease;
-  -ms-transition: all 0.35s ease;
-  -o-transition: all 0.35s ease;
-  -webkit-transition: all 0.35s ease;
-  background-color: #F4F4F1;
-  border-bottom: 3px solid #20c4ae;
-  margin: 0;
-  padding: 18px 15px;
-  transition: all 0.35s ease;
-  font-weight: 500;
-}
-h4:hover {
-  background-color: #37B2B5;
-  color: #0d4e45;
-  cursor: pointer;
-}
-h4::before {
-  content: "\276f";
-  font-size: 18px!important;
-  float: left;
-  line-height: 30px;
-  margin: 0 15px 0 5px;
-  opacity: 0.5;
-  -moz-transition: all 0.15s ease;
-  -ms-transition: all 0.15s ease;
-  -o-transition: all 0.15s ease;
-  -webkit-transition: all 0.15s ease;
-  transition: all 0.15s ease;
-}
-h4.faqsup {
-  cursor: pointer;
-}
-h4.faqsup::after {
-  content: "\2715";
-  float: right;
-  font-size: 11px;
-  font-weight: 300;
-  line-height: 30px;
-}
-h4.faqsup::before {
-  -moz-transform: rotate(-90deg) !important;
-  -ms-transform: rotate(-90deg) !important;
-  -o-transform: rotate(-90deg) !important;
-  -webkit-transform: rotate(-90deg) !important;
-  transform: rotate(-90deg) !important;
 }
 #faqs-accordion {
   margin: 40px auto 0;
@@ -2218,5 +2240,80 @@ div.answers p {
 
 }
 
+#modelContent{
+    width: 100%;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
 
+
+}
+
+.modal-content{
+    width: 50%;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+
+    padding: 10px;
+}
+.telentMember{
+    margin: 0 auto;
+    width:95%;
+    background: #f9f9f9;
+    padding: 20px;
+    margin-bottom: 5px;
+}
+.talentNo{
+    border-right:5px solid #fff;
+    height: 100px;
+}
+.telentMember img{
+    width: 20%;
+    border-radius: 50%;
+}
+.telentMember .talentName,
+.telentMember .talentMark{
+    width: 10%;
+}
 /******************* END DETAILS EXAMINAR PAGE ******************************/
+
+.lablemassge {
+  position: absolute;
+  font-size:18px;
+  color: rgba(192, 193, 201, 0.92);
+  transition: all .4s;
+  top:24px;
+  transform:translateY(-50%);
+  margin-left:76px;
+  cursor:text;
+  z-index: 1;
+  margin-top: -6px;
+}
+
+
+
+.move-up {
+  margin-top:-32px;
+  margin-left:0px;
+  font-size:14px;
+  background: #1fb7ff;
+  border-radius:8px 0;
+  color:white;
+  padding:4px 8px;
+  min-width:100px;
+}
+.error{
+  margin-top: 21px;
+  margin-left: 134px;
+}
+.btn-primary {
+  color: #fff;
+  background-color: #007bff;
+  border-color: #007bff;
+  width: 46%;
+  margin-left: 119px;
+}
+

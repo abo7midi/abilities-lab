@@ -205,6 +205,18 @@ body {background-color: #ffffff}
   }
 }
 
+@media (min-width: 767px) {
+  .th-bars{
+  display: none;
+  }
+}
+
+.fa-align-right:before{
+  margin-left: 245px;
+}
+
+
+
 /* End side navigation bar  */
 /* Start welcome */
 

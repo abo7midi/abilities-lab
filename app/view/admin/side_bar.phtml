@@ -1,7 +1,14 @@
+
 <?php Session::logged();?>
+
+<?php include "init.php"?>
+
+<title><?php
+    View::getTitle();
+    ?>
+</title>
+
 <div id="contents">
-    <?php include "init.php"?>
-    <title><?php getTitle();?></title>
     <link rel="icon" href="images/logo.png" type="image/png" sizes="16x16">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -27,7 +34,7 @@
 
                 <li class="n n1"><a class="nav-item1 active" href="/admin/dashboard"><i class="fa fa-home"  style="font-size: 22px;"></i> </br><?php echo lang('HOME_ADMIN')?></a></li>
                 <li class="n n2"><a class="nav-item2" href="/admin/category"><i class="fa fa-th" style="font-size: 22px;"></i></br><?php echo lang('CATEGORIES')?></a></li>
-                <li class="n n3"><a class="nav-item3" href="#"><i class="fa fa-star"  style="font-size: 22px;"></i></br><?php echo lang('STARS')?></a></li>
+                <li class="n n3"><a class="nav-item3" href="/examadmin/userexam"><i class="fa fa-star"  style="font-size: 22px;"></i></br><?php echo lang('STARS')?></a></li>
                 <li class="n n4"><a class="nav-item4" href="/admin/member"><i class="fa fa-users"  style="font-size: 22px;"></i></br><?php echo lang('MEMBERS')?></a></li>
                 <li class="n n5"><a class="nav-item5" href="#"><i class="fa fa-info-circle"  style="font-size: 22px;"></i></br><?php echo lang('ABOUT_US')?></a></li>
                 <li class="n n6"><a class="nav-item6" href="#"><i class="fa fa-signal"  style="font-size: 22px;"></i></br><?php echo lang('STATISTICS')?></a></li>
@@ -63,10 +70,23 @@
         </div>
     </nav>
 
-    <aside class="side-nav" id="show-side-navigation1">
-        <i class="fa fa-align-right close-aside hidden-sm hidden-md hidden-lg" data-close="show-side-navigation1"></i>
+
+    <aside class="side-nav navbar-collapse" id="show-side-navigation1">
+        <ul class="nav navbar-nav">
+            <li class="b1"><a href="#" class="nav-item text-center"><i data-show="show-side-navigation1" class="fa fa-align-right show-side-btn th-bars" style="font-size: 22px;"></i></a></li>
+        </ul>
         <div class="heading">
-            <img src="https://uniim1.shutterfly.com/ng/services/mediarender/THISLIFE/021036514417/media/23148907008/medium/1501685726/enhance" alt="">
+            <img src="/pictures/<?php
+            if (array_key_exists('admins',$this->view_data)) {
+                foreach ($this->view_data['admins'] as $admin) {
+                    if ($admin['user_id'] == Session::logged()) {
+                        echo $admin['image'];
+                    }
+                }
+            } else {
+                echo "error";
+            }
+            ?>" alt="">
             <div class="info">
                 <h3><a href="#"><?php
                         if (array_key_exists('admins',$this->view_data)) {
@@ -83,68 +103,75 @@
                 <p>Lorem ipsum dolor sit amet consectetur.</p>
             </div>
         </div>
-        <div class="search">
-            <input type="text" placeholder="Type here"><i class="fa fa-search"></i>
-        </div>
+
         <ul class="categories">
-            <li><i class="fa fa-home fa-fw" aria-hidden="true"></i><a data-toggle="collapse" href="#about"> About us</a>
-                <div class="collapse" id="about">
-                    <a href="#">Lorem ipsum</a><br>
-                    <a href="#">ipsum dolor</a><br>
-                    <a href="#">dolor ipsum</a><br>
-                    <a href="#">amet consectetur</a><br>
-                    <a href="#">ipsum dolor sit</a><br>
-                </div>
-            </li>
-            <li><i class="fa fa-support fa-fw"></i><a data-toggle="collapse" href="#subscribe-us"> Subscribe us</a>
-                <div class="collapse" id="subscribe-us">
-                    <a href="#">Lorem ipsum</a><br>
-                    <a href="#">ipsum dolor</a><br>
-                    <a href="#">dolor ipsum</a><br>
-                    <a href="#">amet consectetur</a><br>
-                    <a href="#">ipsum dolor sit</a><br>
-                </div>
-            </li>
-            <li><i class="fa fa-envelope fa-fw"></i><a data-toggle="collapse" href="#contact-us"> Contact us</a>
-                <div class="collapse" id="contact-us">
-                    <a href="#">Lorem ipsum</a><br>
-                    <a href="#">ipsum dolor</a><br>
-                    <a href="#">dolor ipsum</a><br>
-                    <a href="#">amet consectetur</a><br>
-                    <a href="#">ipsum dolor sit</a><br>
-                </div>
-            </li>
-            <li><i class="fa fa-users fa-fw"></i><a data-toggle="collapse" href="#our-team"> Our team</a>
-                <div class="collapse" id="our-team">
-                    <a href="#">Belques Darwish</a><br>
-                    <a href="#">Kholod Aljalal</a><br>
-                    <a href="#">Mohammed Alhumaidi</a><br>
-                    <a href="#">Refat Alwajeeh</a><br>
-                    <a href="#">Somia Alsaidi</a><br>
-                </div>
-            </li>
-            <li><i class="fa fa-bolt fa-fw"></i><a data-toggle="collapse" href="#test"> Testimonials</a>
-                <div class="collapse" id="test">
-                    <a href="#">Lorem ipsum</a><br>
-                    <a href="#">ipsum dolor</a><br>
-                    <a href="#">dolor ipsum</a><br>
-                    <a href="#">amet consectetur</a><br>
-                    <a href="#">ipsum dolor sit</a><br>
-                </div>
-            </li>
-            <p>Example:</p>
-            <li><i class="fa fa-envelope-open-o fa-fw"></i><a href="#"> Messages <span class="num dang">56</span></a></li>
-            <li><i class="fa fa-wrench fa-fw"></i><a data-toggle="collapse" href="#setting"> Settings <span class="num prim">6</span></a>
-                <div class="collapse" id="setting">
-                    <a href="#">Lorem ipsum</a><br>
-                    <a href="#">ipsum dolor</a><br>
-                    <a href="#">dolor ipsum</a><br>
-                    <a href="#">amet consectetur</a><br>
-                    <a href="#">ipsum dolor sit</a><br>
-                </div>
-            </li>
-            <li><i class="fa fa-laptop fa-fw"></i><a href="#"> About UI &amp; UX <span class="num succ">43</span></a></li>
-            <li><i class="fa fa-comments-o fa-fw"></i><a href="#"> Something else</a></li>
+            <li class="n n11"><a class="nav-item11 active" href="/admin/dashboard"><i class="fa fa-home"  style="font-size: 22px;"></i> &nbsp; &nbsp;<?php echo lang('HOME_ADMIN')?></a></li>
+            <li class="n n21"><a class="nav-item21" href="/admin/category"><i class="fa fa-th" style="font-size: 22px;"></i> &nbsp; &nbsp;<?php echo lang('CATEGORIES')?></a></li>
+            <li class="n n31"><a class="nav-item31" href="/examadmin/userexam"><i class="fa fa-star"  style="font-size: 22px;"></i> &nbsp; &nbsp;<?php echo lang('STARS')?></a></li>
+            <li class="n n41"><a class="nav-item41" href="/admin/member"><i class="fa fa-users"  style="font-size: 22px;"></i> &nbsp; &nbsp;<?php echo lang('MEMBERS')?></a></li>
+            <li class="n n51"><a class="nav-item51" href="#"><i class="fa fa-info-circle"  style="font-size: 22px;"></i> &nbsp; &nbsp;<?php echo lang('ABOUT_US')?></a></li>
+            <li class="n n61"><a class="nav-item61" href="#"><i class="fa fa-signal"  style="font-size: 22px;"></i> &nbsp; &nbsp;<?php echo lang('STATISTICS')?></a></li>
+            <li class="n n71"><a class="nav-item71" href="/examadmin"><i class="fa fa-signal"  style="font-size: 22px;"></i> &nbsp; &nbsp;<?php echo lang('EXAM')?></a></li>
+            <!--
+                                  <li><i class="fa fa-home fa-fw" aria-hidden="true"></i><a data-toggle="collapse" href="#about"> About us</a>-->
+<!--                <div class="collapse" id="about">-->
+<!--                    <a href="#">Lorem ipsum</a><br>-->
+<!--                    <a href="#">ipsum dolor</a><br>-->
+<!--                    <a href="#">dolor ipsum</a><br>-->
+<!--                    <a href="#">amet consectetur</a><br>-->
+<!--                    <a href="#">ipsum dolor sit</a><br>-->
+<!--                </div>-->
+<!--            </li>-->
+
+<!--            <li><i class="fa fa-support fa-fw"></i><a data-toggle="collapse" href="#subscribe-us"> Subscribe us</a>-->
+<!--            <div class="collapse" id="subscribe-us">-->
+<!--                    <a href="#">Lorem ipsum</a><br>-->
+<!--                    <a href="#">ipsum dolor</a><br>-->
+<!--                    <a href="#">dolor ipsum</a><br>-->
+<!--                    <a href="#">amet consectetur</a><br>-->
+<!--                    <a href="#">ipsum dolor sit</a><br>-->
+<!--                </div>-->
+<!--            </li>-->
+<!--            <li><i class="fa fa-envelope fa-fw"></i><a data-toggle="collapse" href="#contact-us"> Contact us</a>-->
+<!--            <div class="collapse" id="contact-us">-->
+<!--                    <a href="#">Lorem ipsum</a><br>-->
+<!--                    <a href="#">ipsum dolor</a><br>-->
+<!--                    <a href="#">dolor ipsum</a><br>-->
+<!--                    <a href="#">amet consectetur</a><br>-->
+<!--                    <a href="#">ipsum dolor sit</a><br>-->
+<!--                </div>-->
+<!--            </li>-->
+<!--            <li><i class="fa fa-users fa-fw"></i><a data-toggle="collapse" href="#our-team"> Our team</a>-->
+<!--                <div class="collapse" id="our-team">-->
+<!--                    <a href="#">Belques Darwish</a><br>-->
+<!--                    <a href="#">Kholod Aljalal</a><br>-->
+<!--                    <a href="#">Mohammed Alhumaidi</a><br>-->
+<!--                    <a href="#">Refat Alwajeeh</a><br>-->
+<!--                    <a href="#">Somia Alsaidi</a><br>-->
+<!--                </div>-->
+<!--            </li>-->
+<!--            <li><i class="fa fa-bolt fa-fw"></i><a data-toggle="collapse" href="#test"> Testimonials</a>-->
+<!--                <div class="collapse" id="test">-->
+<!--                    <a href="#">Lorem ipsum</a><br>-->
+<!--                    <a href="#">ipsum dolor</a><br>-->
+<!--                    <a href="#">dolor ipsum</a><br>-->
+<!--                    <a href="#">amet consectetur</a><br>-->
+<!--                    <a href="#">ipsum dolor sit</a><br>-->
+<!--                </div>-->
+<!--            </li>-->
+<!--            <p>Example:</p>-->
+<!--            <li><i class="fa fa-envelope-open-o fa-fw"></i><a href="#"> Messages <span class="num dang">56</span></a></li>-->
+<!--            <li><i class="fa fa-wrench fa-fw"></i><a data-toggle="collapse" href="#setting"> Settings <span class="num prim">6</span></a>-->
+<!--                <div class="collapse" id="setting">-->
+<!--                    <a href="#">Lorem ipsum</a><br>-->
+<!--                    <a href="#">ipsum dolor</a><br>-->
+<!--                    <a href="#">dolor ipsum</a><br>-->
+<!--                    <a href="#">amet consectetur</a><br>-->
+<!--                    <a href="#">ipsum dolor sit</a><br>-->
+<!--                </div>-->
+<!--            </li>-->
+<!--            <li><i class="fa fa-laptop fa-fw"></i><a href="#"> About UI &amp; UX <span class="num succ">43</span></a></li>-->
+<!--            <li><i class="fa fa-comments-o fa-fw"></i><a href="#"> Something else</a></li>-->
         </ul>
     </aside>
 

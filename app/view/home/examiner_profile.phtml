@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <?php
-
+include "header.phtml";
 ?>
 <html>
 <head>
@@ -18,13 +18,11 @@
 
     <table class="table" style="width:100%; border-spacing: 5px;">
         <tr>
-            <td><h4>User_name</h4></td>
-            <td><h4>Marks</h4></td>
-            <td><h4>phone</h4></td>
-            <td><h4>No.Exams</h4></td>
-
-
-
+            <td><h3>User image</h3></td>
+            <td><h3>User Name</h3></td>
+            <td><h3>phone</h3></td>
+            <td><h3>No.Exams</h3></td>
+            <td><h3>Add Exam</h3></td>
         </tr>
         <?php
         foreach($this->view_data['profile'] as $row ){
@@ -35,17 +33,10 @@
                 <td><?php echo $row['full_name']?></td>
                 <td><?php echo $row['phone'] ?></td>
                 <td><a href="/exam/details"><?php echo $row['No_exam'] ?></a></td>
-
-
-
-
-
+                <td><a class="btn btn-success" href="/exam/add">New Exam</a></td>
             </tr>
         <?php }
-
         ?>
-
-
     </table>
 
 </div>

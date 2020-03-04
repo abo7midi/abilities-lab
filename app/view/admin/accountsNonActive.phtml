@@ -2,7 +2,9 @@
 include "side_bar.phtml";
 ?>
 
+<link href="/media/css/jquery.dataTables.min.css" rel="stylesheet">
 
+<h1 class="text-center"> Manage nonActive Users</h1>
 
 <div class="container-fluid">
     <div class="table-responsive">
@@ -16,18 +18,21 @@ include "side_bar.phtml";
 
 
         <div class="content-div1">
-            <table  class="main-table text-center table table-bordered ">
-                <tr>
-                    <td>#ID</td>
-                    <td>FullName</td>
-                    <td>Username</td>
-                    <td>Phone</td>
-                    <td>Email</td>
-                    <td>Type</td>
-                    <td>Registered Date</td>
-                    <td>Image</td>
-                    <td>Control</td>
-                </tr>
+            <table  id="myaccount1" class="text-center table table-bordered ">
+                <thead style="background-color: #44b7b9">
+                    <tr>
+                        <th>#ID</th>
+                        <th>FullName</th>
+                        <th>Username</th>
+                        <th>Phone</th>
+                        <th>Email</th>
+                        <th>Type</th>
+                        <th>Registered Date</th>
+                        <th>Image</th>
+                        <th>Control</th>
+                    </tr>
+                </thead>
+                <tbody>
                 <?php
                 if (array_key_exists('allAdmins',$this->view_data)){
 
@@ -61,22 +66,26 @@ include "side_bar.phtml";
                     echo $table;
                 }
                 ?>
+                </tbody>
             </table>
         </div>
 
         <div class="content-div2">
-            <table  class="main-table text-center table table-bordered ">
-                <tr>
-                    <td>#ID</td>
-                    <td>FullName</td>
-                    <td>Username</td>
-                    <td>Phone</td>
-                    <td>Email</td>
-                    <td>Type</td>
-                    <td>Registered Date</td>
-                    <td>Image</td>
-                    <td>Control</td>
-                </tr>
+            <table id="myaccount2"  class="text-center table table-bordered ">
+                <thead style="background-color: #44b7b9">
+                    <tr>
+                        <th>#ID</th>
+                        <th>FullName</th>
+                        <th>Username</th>
+                        <th>Phone</th>
+                        <th>Email</th>
+                        <th>Type</th>
+                        <th>Registered Date</th>
+                        <th>Image</th>
+                        <th>Control</th>
+                    </tr>
+                </thead>
+                <tbody>
                 <?php
                 if (array_key_exists('examiners',$this->view_data)){
 
@@ -110,22 +119,26 @@ include "side_bar.phtml";
                     echo $table;
                 }
                 ?>
+                </tbody>
             </table>
         </div>
 
         <div class="content-div3">
-            <table  class="main-table text-center table table-bordered ">
-                <tr>
-                    <td>#ID</td>
-                    <td>FullName</td>
-                    <td>Username</td>
-                    <td>Phone</td>
-                    <td>Email</td>
-                    <td>Type</td>
-                    <td>Registered Date</td>
-                    <td>Image</td>
-                    <td>Control</td>
-                </tr>
+            <table id="myaccount3"  class="text-center table table-bordered ">
+                <thead style="background-color: #44b7b9">
+                    <tr>
+                        <th>#ID</th>
+                        <th>FullName</th>
+                        <th>Username</th>
+                        <th>Phone</th>
+                        <th>Email</th>
+                        <th>Type</th>
+                        <th>Registered Date</th>
+                        <th>Image</th>
+                        <th>Control</th>
+                    </tr>
+                </thead>
+                <tbody>
                 <?php
                 if (array_key_exists('members',$this->view_data)){
 
@@ -159,9 +172,19 @@ include "side_bar.phtml";
                     echo $table;
                 }
                 ?>
+                </tbody>
             </table>
         </div>
 
     </div>
 </div>
 
+<script src="/media/js/jquery.dataTables.min.js"></script>
+<script>
+    $(document).ready(function(){
+        $("#myaccount1").dataTable();
+        $("#myaccount2").dataTable();
+        $("#myaccount3").dataTable();
+    });
+
+</script>

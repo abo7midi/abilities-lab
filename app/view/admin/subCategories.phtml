@@ -3,6 +3,9 @@
 include "side_bar.phtml";
 ?>
 
+<link href="/media/css/jquery.dataTables.min.css" rel="stylesheet">
+
+
 <h1 class="text-center"> Manage Categories <?php
 
 //    $p = array("controller" => Admin::class, );
@@ -10,16 +13,19 @@ include "side_bar.phtml";
     ?></h1>
 <div class="container-fluid">
     <div class="table-responsive">
-        <table class="main-table text-center table table-bordered">
-            <tr>
-                <td>#ID</td>
-                <td>Name</td>
-                <td>Created By</td>
-                <td>Created At</td>
-                <td>Updated By</td>
-                <td>Updated At</td>
-                <td>Control</td>
-            </tr>
+        <table id="mysubcategory" class="text-center table table-bordered">
+            <thead  style="background-color: #44b7b9">
+                <tr>
+                    <th>#ID</th>
+                    <th>Name</th>
+                    <th>Created By</th>
+                    <th>Created At</th>
+                    <th>Updated By</th>
+                    <th>Updated At</th>
+                    <th>Control</th>
+                </tr>
+            </thead>
+            <tbody>
             <?php
 
                 $request = trim($_SERVER['REQUEST_URI'],'/');
@@ -67,8 +73,15 @@ include "side_bar.phtml";
             }
 
             ?>
+            </tbody>
         </table>
     </div>
     <a href="/category/add/" class="btn btn-info btn-block"><i class="glyphicon glyphicon-plus"></i> Add New Category</a>
 </div>
 
+<script src="/media/js/jquery.dataTables.min.js"></script>
+<script>
+    $(document).ready(function(){
+        $("#mysubcategory").dataTable();
+    });
+</script>

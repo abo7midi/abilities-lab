@@ -10,6 +10,7 @@ function lang($phrase){
         'ABOUT_US'    => 'About Us',
         'STATISTICS' => 'Statistics',
         'LOGS'       => 'Logs',
+        'EXAM'       => 'Exam'
     );
 
     return $lang[$phrase];

@@ -185,11 +185,11 @@
 <body>
 <div class="content">
     <!--////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
-<!--    --><?php //echo $_SESSION['sample_id'] ?>
+    <?php echo $_SESSION['sample_id'] ?>
     <!--    --><?php //return var_dump($_SESSION) ?>
 
     <?php
-    if (isset($_SESSION['qns_n'])?$_SESSION['qns_n']:1 < isset($_SESSION['number_que'])?$_SESSION['number_que']:2 )
+    if (($_SESSION['qns_n']) < $_SESSION['number_que'] )
     { ?>
     <div id="div_form">
         <form id="msform" method="post" enctype="multipart/form-data">
@@ -301,7 +301,7 @@
             '&sample_id=' + encodeURIComponent(sample_id.val()) +
             '&exam_id=' + encodeURIComponent(exam_id.val());
 
-        alert(radio.val());
+
         var div_sample = $('#div_new_sample');
         var url = '/question/saveQuestion';
         $.ajax({
@@ -311,7 +311,6 @@
             data: data,// var form=$('#news').serialize();
             success: function (data) {
                 // alert(data);
-                alert(data);
                 if (data == 0) {
                     // $('#btn_save').attr('disabled', 'true');
                     div_sample.html('<form id="msform2" action="/exam/endExam" align="center" method="post" enctype="multipart/form-data">\n' +
@@ -457,7 +456,7 @@
     $('#btn_save').on('click', function () {
 
         if (validateForm() == false)
-            alert('يرجى ملى جميع الحقول يا استاذ ');
+            alert('please fill all the fields ');
         else {
             addQuestion();
         }

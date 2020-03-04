@@ -1,58 +1,5 @@
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/fontawesome.min.css">
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/js/fontawesome.min.js"></script>
-
-<style>
-
-    #result {
-        position: absolute;
-        width: 70%;
-        cursor: pointer;
-        overflow-y: auto;
-        max-height: 400px;
-        box-sizing: border-box;
-        z-index: 1001;
-        color: #555;
-        margin-left: auto;
-        margin-right: auto;
-        left: 0;
-        right: 0;
-    }
-    .link-class:hover{
-        background-color:#f1f1f1;
-    }
-    #search{
-        border:none;
-        border-bottom: 1px #fff solid;
-        border-radius: initial;
-        width: 80%;
-        background: none;
-        color: #fff;
-    }
-    #search:focus{
-        box-shadow: none !important;
-    }
 
 
-    ::placeholder{
-        color: #fff !important;
-    }
-    .searchArea{
-        position: relative;
-        padding: 80px;
-        padding-bottom: 100px;
-        background: linear-gradient(338deg, rgba(79, 202, 205, 1) 0%, rgba(71, 175, 177, 1) 47%, rgba(40, 149, 152, 1) 100%);
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: cover;
-        color: #fff;
-        width: 100%;
-    }
-</style>
 <div class="container-fluid searchArea">
 <div align="center" >
     <input type="text" name="search" id="search" placeholder="Search Exam" class="form-control" />
@@ -61,14 +8,14 @@
 </div>
 
 <script>
-    var jq = $.noConflict();
-jq(document).ready(function () {
+
+    $(document).ready(function () {
     function search_Exams(){
-        var searchTxt=jq("#search").val();
+        var searchTxt=$("#search").val();
         console.log(searchTxt);
         // var selectd=jq("select#subcat").children("option:selected").val();
         // var loading="<button class='btn btn-primary' disabled><span class='spinner-border spinner-border-sm'></span>Loading..</button>";
-        jq.ajax({
+        $.ajax({
             url:"/home/search",
             method:"POST",
             data:{
@@ -82,18 +29,18 @@ jq(document).ready(function () {
                 {
 
                     html='';
-                    jq('#result').html(html);
+                    $('#result').html(html);
                     var exams=JSON.parse(data);
                     html='';
-                    jq.each( exams.data, function( index, row ) {
-                        html+="<li class=\"list-group-item link-class\" value='"+row.exam_id+"'>"+row.exam_name+"</li>";
+                    $.each( exams.data, function( index, row ) {
+                        html+="<a href='#loadingDiv' id='f'> <li class=\"list-group-item link-class\" value='"+row.exam_id+"'>"+row.exam_name+"</li></a>";
                     });
-                    jq('#result').html(html);
+                    $('#result').html(html);
                 }
             });
     };
 
-    jq("#search").keyup(function () {
+        $("#search").keyup(function () {
         search_Exams();
     });
     /*
@@ -101,16 +48,24 @@ jq(document).ready(function () {
         jq('#result').html("");
     });
 */
-    jq('#result').on('click', 'li', function() {
-        var click_text = jq(this).text().split('|');
-        jq('#search').val(jq.trim(click_text[0]));
-        jq("#result").html('');
-        result_Exams(jq(this).attr("value"));
-    });
-/******************************************************************************/
+
+        /******************************************************************************/
+        $('#result').on('click', 'li', function() {
+        var click_text = $(this).text().split('|');
+            $('#search').val($.trim(click_text[0]));
+            $("#result").html('');
+             result_Exams($(this).attr("value"));
+
+
+            });
+        $("#f").click(function () {
+                    $('html , body').animate({
+                        scrollTop: $("#loadingDiv").offsetTop(1000)
+                });
+            });
     function result_Exams(liVal){
         var searchTxt=liVal;
-        jq.ajax({
+        $.ajax({
             url:"/home/showCategoryExams",
             method:"POST",
             data:{
@@ -125,7 +80,7 @@ jq(document).ready(function () {
                 html='';
                 var exams=JSON.parse(data);
                 console.log(data);
-                jq.each( exams.data, function( index, row ) {
+                $.each( exams.data, function( index, row ) {
                     html+='<div class="col-sm-3 examContent">'
                         +'<div class="titleExam">'
                         +row.exam_name
@@ -150,9 +105,8 @@ jq(document).ready(function () {
                         html+='</p><a type="button" href="/exam/takeExam/'+row.exam_id+'" class="btn btn-info" >Get Start</a></div>';
                     }
 
-                    count++;
                 });
-                jq('#loadingDiv').html(html);
+                $('#loadingDiv').html(html);
             }
         });
     };

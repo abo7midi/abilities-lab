@@ -9,7 +9,7 @@ jQuery(function($)
 		$tab_signup = $form_modal_tab.children('li').eq(1).children('a'),
 		$forgot_password_link = $form_login.find('.cd-form-bottom-message a'),
 		$back_to_login_link = $form_forgot_password.find('.cd-form-bottom-message a'),
-		$main_nav = $('.main-nav');
+		$main_nav = $('.popSignUp');
 
 	$('#signupForm').validate({
 		rules: {
@@ -139,7 +139,7 @@ function preview(input) {
 			$password_field = $this.prev('input');
 		
 		( 'password' == $password_field.attr('type') ) ? $password_field.attr('type', 'text') : $password_field.attr('type', 'password');
-		( 'Show' == $this.text() ) ? $this.text('Hide') : $this.text('Show');
+		( '<i class="fa fa-eye"></i>' == $this.html() ) ? $this.html('<i class="fa fa-eye-slash"></i>') : $this.html('<i class="fa fa-eye"></i>');
 		//focus and move cursor to the end of input field
 		$password_field.putCursorAtEnd();
 	});
