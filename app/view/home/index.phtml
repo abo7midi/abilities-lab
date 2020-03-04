@@ -123,7 +123,12 @@ include "header.phtml";
                     <div class="slide">
                         <p ><?php echo $i++;?></p>
                         <img src="/pictures/<?php echo $row['image']; ?>">
-                        <h5 ><?php echo $row['user_name']?></h5>
+                        <h5 ><button id="modal-no-fade"><?php echo $row['user_name']?></button></h5>
+                        <a href="#" id="openDialog">Open a Dialog</a>
+
+                        <div id="dialog" title="Title of dialog">
+                            This is a test dialog!
+                        </div>
                     </div>
                 </div>
                 <?php } ?>
@@ -458,6 +463,17 @@ border-radius: 0 0 10px 10px;
                 load_Exams();
             })
 
+
+            /*Dialog*/
+            jq("#modal-no-fade").click(function() {
+                jq.dialog({
+                    "body": "jQueryScript.net!",
+                    "title": "jQuery Dialog Plugin Demo",
+                    "show": true,
+                    "modal": true,
+                    "transitionMask": false
+                });
+            });
         </script>
 <?php
 include "footer.phtml";
